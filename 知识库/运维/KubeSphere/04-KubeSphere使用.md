@@ -1,0 +1,15 @@
+# 多租户
+
+### 角色
+
+| 角色   |    备注       |
+| :----- |    :--------- |
+| workspaces-manager   |   管理所有企业空间   |
+| users-manager | 管理所有用户 |
+| platform-regular   |   普通用户 |
+| platform-admin   |  超级管理员  |
+
+超级管理员`admin` -> 创建用户管理员`hr` -> 创建企业空间管理员`boss` -> 创建企业空间 -> `chengdu`、`hangzhou`
+                                    -> 创建普通用户`pm-person`    
+                                    -> 创建普通用户`dev-person`    
+                                    -> 创建普通用户`ui-person`    

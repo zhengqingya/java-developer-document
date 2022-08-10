@@ -1,0 +1,48 @@
+# Arthas - Java诊断工具
+
+> [https://arthas.aliyun.com/doc/quick-start.html](https://arthas.aliyun.com/doc/quick-start.html)
+
+### 环境准备
+
+##### jar
+
+```shell script
+# 启动arthas
+curl -O https://arthas.aliyun.com/arthas-boot.jar
+java -jar arthas-boot.jar
+```
+
+##### Dockerfile使用Arthas
+
+[Dockerfile](./Dockerfile)
+
+启动arthas
+
+```shell script
+docker exec -it app /bin/sh -c "java -jar /opt/arthas/arthas-boot.jar"
+```
+
+---
+
+选择应用java进程进入。
+
+如果只是退出当前的连接，可以用`quit`或者`exit`命令。 Attach到目标进程上的arthas还会继续运行，端口会保持开放，下次连接时可以直接连接上。
+
+如果想完全退出arthas，可以执行`stop`命令。
+
+### 卸载
+
+###### Windows
+
+```shell
+# 删除相关数据目录
+rd /s /q C:\Users\Administrator\.arthas
+rd /s /q C:\Users\Administrator\logs\arthas
+```
+
+###### Liunx
+
+```shell
+rm -rf ~/.arthas/
+rm -rf ~/logs/arthas
+```

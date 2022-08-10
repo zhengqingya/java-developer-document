@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script src="./vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ publishedBooksMessage }}</p>
+      <p>{{ publishedBooksMessage }}</p>
+      <p>{{ publishedBooksMessage }}</p>
+      <input type="text" v-model="name" />
+      <button v-on:click="publishedBooksMessage = 'Hello'">click</button>
+    </div>
+
+    <script>
+      const App = {
+        data: function () {
+          return {
+            name: "小郑",
+          };
+        },
+        // 计算属性：只要依赖值不变，返回值就不会变 -- 类似于缓存
+        computed: {
+          // 计算属性的 getter
+          //   publishedBooksMessage() {
+          //     console.log("计算属性");
+          //     // `this` 指向 vm 实例
+          //     return this.name;
+          //   },
+          publishedBooksMessage: {
+            // getter
+            get() {
+              console.log("计算属性get" + this.name);
+              return this.name;
+            },
+            // setter
+            set(newValue) {
+              console.log("计算属性set" + newValue);
+              this.name = newValue;
+            },
+          },
+        },
+      };
+      let app = Vue.createApp(App).mount("#app");
+      console.log(app);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script src="./vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 
+        v-model   数据双向绑定
+        原理：  
+            1、v-bind绑定一个value属性
+            2、v-on给当前元素添加一个input事件
+       -->
+      <p>{{ msg }}</p>
+      <input v-model="msg" />
+      <input :value="msg" @input="msg=$event.target.value" />
+
+      <hr />
+      <input type="checkbox" v-model="isCheck" />
+      <span>{{isCheck}}</span>
+
+      <hr />
+      <!-- 多选框 -->
+      <input type="checkbox" v-model="fruits" value="西瓜" /> 西瓜
+      <input type="checkbox" v-model="fruits" value="苹果" /> 苹果
+      <input type="checkbox" v-model="fruits" value="香蕉" /> 香蕉
+      <p>{{fruits}}</p>
+
+      <hr />
+      <!-- 单选框 -->
+      <input type="radio" v-model="sex" value="男" /> 男
+      <input type="radio" v-model="sex" value="女" /> 女
+      <p>{{sex}}</p>
+
+      <hr />
+      <!-- 选项框-单选 -->
+      <select name="" id="" v-model="city">
+        <option value="成都">成都</option>
+        <option value="眉山">眉山</option>
+        <option value="乐山">乐山</option>
+      </select>
+      <p>{{city}}</p>
+      <!-- 选项框-多选 -->
+      <select name="" id="" v-model="cityList" multiple>
+        <option value="成都">成都</option>
+        <option value="眉山">眉山</option>
+        <option value="乐山">乐山</option>
+      </select>
+      <p>{{cityList}}</p>
+
+      <hr />
+      <!-- 
+        修饰符
+            v-model.lazy     在 change 事件之后进行同步，即输入框失去焦点之后再同步数据
+            v-model.number   自动将用户的输入值转为数值类型
+            v-model.trim     自动过滤用户输入的首尾空白字符
+      -->
+      <p>{{ msg }}</p>
+      <input v-model.lazy="msg" />
+
+      <p>{{ typeof num }}</p>
+      <input v-model.number="num" />
+
+      <p>{{ msg }}</p>
+      <input v-model.trim="msg" @keydown="downMsg" />
+    </div>
+
+    <script>
+      const App = {
+        data: function () {
+          return {
+            msg: "HelloWorld",
+            isCheck: true,
+            fruits: [],
+            sex: "男",
+            city: null,
+            cityList: ["成都", "眉山", "乐山"],
+            num: 0,
+          };
+        },
+        methods: {
+          downMsg() {
+            console.log(this.msg);
+          },
+        },
+      };
+      let app = Vue.createApp(App).mount("#app");
+      console.log(app);
+    </script>
+  </body>
+</html>

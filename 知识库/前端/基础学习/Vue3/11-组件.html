@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script src="./vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+    </div>
+
+    <script>
+      const App = {
+        data: function () {
+          return {
+            msg: "HelloWorld",
+          };
+        },
+      };
+      // 创建应用实例 & 挂载到app    tips:在这里演示的是一个简单的示例，但是在典型的 Vue 应用中，我们使用单文件组件而不是字符串模板
+      let app = Vue.createApp(App)
+        .component("button-counter", {
+          data() {
+            return {
+              count: 0,
+            };
+          },
+          template: `
+              <button @click="count++">
+                You clicked me {{ count }} times.
+              </button>
+              `,
+        })
+        .mount("#app");
+      console.log(app);
+    </script>
+  </body>
+</html>

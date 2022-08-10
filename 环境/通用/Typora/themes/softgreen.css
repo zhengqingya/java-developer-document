@@ -1,0 +1,392 @@
+:root {
+    --bg-color: #fffbe8;
+    --text-color: #499504ff;
+    /*change color of meta characetrs like `*` in markdown */
+    --md-char-color: #577909;
+    /*change color of meta contents like image text or link address in markdown */
+    --meta-content-color: #0d1171ff;
+    --table-border-color: #ddd6c1;
+
+    /* color of primary buttons */
+    --primary-color: #b58900;
+    --primary-btn-border-color: #cc9a00;
+    --primary-btn-text-color: #fff;
+
+    /*border for sidebar, etc*/
+    --window-border: 1px solid #eee8d5;
+
+    /*background color if list item in file tree or file list*/
+    --active-file-bg-color: #dfca8844;
+    --active-file-text-color: inherit;
+    --active-file-border-color: #cc9a00;
+
+    /*change background of sidebar*/
+    --side-bar-bg-color: #eee8d5;
+    /*background of control items when hover, like menu in sidebar*/
+    --item-hover-bg-color: #dfca8844;
+    --item-hover-text-color: inherit;
+    /*monospace font for codes, fences*/
+    --monospace: "Monaco", "Consolas", monospace;
+
+    --rawblock-edit-panel-bd: #eee8d5;
+
+    --search-select-bg-color: #b58900;
+    --active-search-item-bg-color: #dfca88;
+}
+
+/* html, body{
+    font-family: "你需要的1", "你需要的2";
+} */
+
+p {
+    margin: 0.5rem 0;
+}
+
+code,
+.md-fences,
+tt {
+    font-size: 1rem;
+    border: 1px solid #ddd6c1;
+    border-radius: 0.25rem;
+    padding: 0 0.125rem;
+    background: transparent;
+    /* font-family: var(--monospace); */
+}
+
+blockquote {
+    background-color: var(--side-bar-bg-color);
+    position: relative;
+    margin: 1rem 0rem 1.25rem 0rem;
+    padding-left: 0.75rem;
+    font-family: var(--monospace);
+}
+
+blockquote::before {
+    content: "";
+    position: absolute;
+    left: 0rem;
+    height: 100%;
+    width: .25rem;
+    background: var(--primary-color);
+}
+
+table {
+    border: 1px solid #ddd6c1;
+    margin: 1rem 0;
+}
+
+thead {
+    background: #e8dfc4;
+}
+
+table tr:nth-child(2n) {
+    background: #eee8d5;
+}
+
+td,
+th {
+    padding: 0.35rem 0.7rem;
+    border: 1px solid #ddd6c1;
+}
+
+hr {
+    border-color: var(--table-border-color);
+}
+
+mark {
+    padding: 2px 1px;
+    color: darkred;
+}
+
+#write {
+    position: static;
+    padding-left: 10ch;
+    padding-right: 10ch;
+    line-height: 1.6;
+    transform: none;
+}
+
+/* YAML block on the top */
+#write .md-meta-block {
+    background-color: #eee8d5b0;
+    border-bottom: 2px solid #ddd6c1;
+    /* margin: 0 0 0 0; */
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+    /* opacity: 0.82; */
+}
+
+#write .md-task-list-item>input {
+    -webkit-appearance: initial;
+    display: block;
+    position: absolute;
+    border: 1px solid #ddd6c1;
+    border-radius: 0.25rem;
+    margin-top: 0.1rem;
+    margin-left: -1.8rem;
+    height: 1.2rem;
+    width: 1.2rem;
+    transition: background 0.3s;
+}
+
+#write .md-task-list-item>input:hover {
+    background: #d47405;
+}
+
+#write .md-task-list-item>input[checked]::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    height: 60%;
+    width: 2px;
+    transform: rotate(40deg);
+    background: var(--primary-color);
+}
+
+#write .md-task-list-item>input[checked]::after {
+    content: "";
+    position: absolute;
+    top: 46%;
+    left: 25%;
+    height: 30%;
+    width: 2px;
+    transform: rotate(-40deg);
+    background:var(--primary-color);
+}
+
+#write .md-task-list-item>p {
+    transition: color 0.3s;
+}
+
+#write .md-task-list-item.task-list-done>p {
+    color: var(--primary-color);
+    text-decoration: line-through;
+}
+
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container),
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) *,
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) ol,
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) ul {
+    color: #499504ff !important;
+}
+
+#write .md-toc-item {
+    color: var(--primary-btn-border-color);
+}
+
+#write .md-toc-h1 {
+    font-size: 1.3rem;
+}
+
+#write .md-toc-h2 {
+    font-size: 1.2rem;
+}
+
+#write h1::before,
+#write h2::before,
+#write h3::before,
+#write h4::before,
+#write h5::before,
+#write h6::before {
+    position: absolute;
+    right: calc(100% + 10px);
+    bottom: 0;
+    color: #ddd6c1;
+    font-size: 1rem;
+    font-weight: bold;
+    font-variant: "small-caps";
+    border: 0;
+    border-radius: 0;
+    left: auto;
+    float: none;
+    padding: 0;
+    vertical-align: baseline;
+    line-height: 20px;
+}
+
+#write h1 {
+    font-size: 1.8rem;
+    margin: 1rem 0;
+}
+
+#write h1::before {
+    content: "H1";
+    bottom: 0.45rem;
+}
+
+#write h2 {
+    font-size: 1.4rem;
+    margin: 0.7rem 0;
+}
+
+#write h2::before {
+    content: "H2";
+    bottom: 0.2rem;
+}
+
+#write h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+#write h3::before {
+    content: "H3";
+    bottom: 0.18rem;
+}
+
+#write h4 {
+    font-size: 1.1rem;
+    margin: 0.2rem 0;
+}
+
+#write h4::before {
+    content: "H4";
+    bottom: 0.15rem;
+}
+
+#write h5,
+#write h6 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+#write h5::before,
+#write h6::before {
+    bottom: 0.1rem;
+}
+
+#write h5::before {
+    content: "H5";
+}
+
+#write h6::before {
+    content: "H6";
+}
+
+#outline-content li .outline-item-open>.outline-children {
+    border-left: var(--primary-btn-border-color) 1px dashed;
+}
+
+/* diagrams like mermaid, sequence, gantt, flow etc */
+#write .md-focus .md-diagram-panel {
+    border-color: var(--table-border-color);
+}
+
+/* hover tooltip for formula etc */
+.code-tooltip.md-hover-tip {
+    color: var(--text-color);
+    background-color: #e8dfc4ff;
+}
+.md-hover-tip .md-arrow:after {
+    background: #e8dfc4ff;
+}
+
+/* for ``` code block */
+.md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
+    background: #e8dfc470;
+}
+
+.cm-s-inner .cm-number {
+    color: #9b3affff;
+}
+
+.cm-s-inner .cm-keyword {
+    color: #577909;
+    font-weight: bold;
+}
+
+.cm-s-inner .cm-def {
+    color: #499504;
+}
+
+.cm-s-inner .cm-variable {
+    color: #499504;
+}
+
+.cm-s-inner .cm-variable-2 {
+    color: #05a;
+}
+
+.cm-s-inner .cm-variable-3 {
+    color: #085;
+}
+
+.cm-s-inner .cm-property {
+    color: #934b3cff;
+}
+
+.cm-s-inner .cm-operator {
+    color: #577909;
+    font-weight: bold;
+}
+
+.cm-s-inner .cm-comment,
+.cm-s-inner.cm-comment {
+    color: #95a3abff;
+}
+
+.cm-s-inner .cm-string {
+    color: #2aa198;
+}
+
+.cm-s-inner .cm-string-2 {
+    color: #f50;
+}
+
+.cm-s-inner .cm-meta {
+    color: #577909;
+    font-weight: bold;
+}
+
+.cm-s-inner .cm-builtin {
+    color: #9b3affff;
+}
+
+.cm-s-inner .cm-tag {
+    color: #2369b6ff;
+}
+
+.cm-s-inner .cm-attribute {
+    color: #cb2d01ff;
+}
+
+.cm-s-inner .cm-quote,
+.cm-s-inner.cm-quote {
+    color: #0b6125ff;
+    background-color: #bbbbbb30;
+}
+
+/* for win10 unibody, which lacks the sense of beauty, not fully tested */
+#megamenu-menu-sidebar {
+    color: #586e75;
+    background-color: var(--side-bar-bg-color);
+}
+
+#megamenu-menu-sidebar .megamenu-menu-header {
+    background-color: var(--primary-color);
+}
+
+#megamenu-back-btn {
+    color: var(--primary-btn-text-color);
+}
+
+#megamenu-menu-header-title {
+    color: var(--primary-color);
+}
+
+#megamenu-menu-list .li :hover {
+    background-color: var(--item-hover-bg-color) !important;
+}
+
+#megamenu-menu-list .li>.active {
+    color: var(--primary-color);
+}
+
+#megamenu-content {
+    background-color: var(--bg-color);
+}
+
+/* source mode, for WIDE screen */
+#typora-source .CodeMirror-lines {
+    max-width: 128rem;
+}

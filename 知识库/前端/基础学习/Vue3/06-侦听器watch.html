@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script src="./vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ name }}</p>
+      <input type="text" v-model="name" />
+
+      <p>{{ name2 }}</p>
+      <input type="text" v-model="name2" />
+
+      <p>{{ user }}</p>
+      <input type="text" v-model="user.name" />
+      <input type="text" v-model="user.age" />
+    </div>
+
+    <script>
+      const App = {
+        data: function () {
+          return {
+            name: "hello1",
+            name2: "hello2",
+            user: {
+              name: "小郑",
+              age: 18,
+            },
+          };
+        },
+        watch: {
+          // 监听属性值的变化
+          name(newValue, oldValue) {
+            console.log("watch: " + newValue);
+            console.log("watch: " + oldValue);
+          },
+          name2: {
+            immediate: true, // 初始化的时候(刷新页面)就调用函数
+            handler(newValue, oldValue) {
+              console.log("watch2: " + newValue);
+              console.log("watch2: " + oldValue);
+            },
+          },
+          // ****** 深度监听 ******
+          user: {
+            deep: true, // 是否深度监听
+            handler(newValue) {
+              // 侦听器会一层层的向下遍历，给对象的每一个属性都加上侦听器
+              console.log("deep-watch");
+              console.log(newValue);
+            },
+          },
+          // 给对象的具体属性加上监听
+          "user.age": {
+            deep: true, // 是否深度监听
+            handler(newValue) {
+              console.log("deep-watch-age");
+              console.log(newValue);
+            },
+          },
+        },
+      };
+      let app = Vue.createApp(App).mount("#app");
+      console.log(app);
+    </script>
+  </body>
+</html>

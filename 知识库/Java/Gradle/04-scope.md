@@ -1,0 +1,40 @@
+### 依赖作用域
+
+build.gradle
+
+```
+dependencies
+{
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+```
+
+#### `implementation`
+
+默认的scope。该作用域会让依赖在编译和运行时均包含在内，但是不会暴露在类库使用者的编译时。
+ex: 如果我们的类库包含了gson，那么其他人使用我们的类库时，编译时不会出现gson的依赖。
+
+#### `api`
+
+和implementation类似，都是编译和运行时都可见的依赖。但是api允许我们将自己类库的依赖暴露给我们类库的使用者。
+
+#### `compileOnly`
+
+只在编译时可见
+
+#### `runtimeOnly`
+
+只在运行时可见
+
+#### `testImplementation`
+
+在测试编译时和运行时可见
+
+#### `testCompileOnly`
+
+作用于测试编译时
+
+#### `testRuntimeOnly`
+
+作用于测试运行时

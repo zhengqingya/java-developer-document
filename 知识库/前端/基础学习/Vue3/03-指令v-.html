@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script src="./vue.js"></script>
+    <style>
+      #btn {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <!--  
+        v-html    设置标签中的html
+        v-once    只初始化一次值，之后不会再改变
+        v-bind    绑定属性或对象
+        v-on      注册事件
+        v-model   数据双向绑定
+        v-if      判断表达式的值,true则显示,false则隐藏 -- 控制dom元素的创建和销毁，应避免频繁切换状态
+        v-show    和v-if区别 --  始终会被渲染并保留在dom中，只是css被隐藏了 "display: none;"  一次性的
+        v-for     循环
+      -->
+      <p v-html="html"></p>
+      <p v-once>{{ person }}</p>
+
+      <button v-bind:disabled="isButtonDisabled">v-bind</button>
+
+      <button
+        v-on:click="isButtonDisabled = !isButtonDisabled"
+        v-bind:id="`btn`"
+      >
+        v-on:click
+      </button>
+
+      <br />
+
+      <span v-if="person.age == 18">{{ person.age }} -- </span>
+      <span v-else-if="person.age < 18"> 年龄小于18 -- </span>
+      <span v-else>年龄??? -- </span>
+
+      <span v-show="person.age >= 18">年龄大于等于18</span>
+
+      <br />
+
+      <input v-model="person.age" />
+
+      <hr />
+
+      <p
+        v-for="(value, key, index) in person"
+        :key="index"
+        style="color: rgb(238, 70, 126)"
+      >
+        {{ value }} - {{ key }} - {{ index }}
+      </p>
+
+      <hr />
+
+      <!-- 
+          为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一的 key attribute
+          key:唯一标识
+          不要使用对象或数组之类的非基本类型值作为 v-for 的 key。请用字符串或数值类型的值。
+          方便dom快速找到节点，减少渲染次数，提升性能
+       -->
+      <ul>
+        <li
+          v-for="(item, index) in userList"
+          :key="item.name"
+          style="color: rgb(189, 124, 233)"
+        >
+          <input type="checkbox" />
+          {{ item }} - {{ index }}
+        </li>
+      </ul>
+      <button v-on:click="addUser">addUser</button>
+    </div>
+
+    <script>
+      const App = {
+        data: function () {
+          return {
+            html: "<h1>HelloWorld</h1>",
+            isButtonDisabled: true,
+            type: "text",
+            person: {
+              name: "张三",
+              age: 18,
+            },
+            userList: [
+              {
+                name: "张三",
+                age: 18,
+              },
+              {
+                name: "李四",
+                age: 18,
+              },
+            ],
+          };
+        },
+        methods: {
+          addUser() {
+            /*
+              数组更新检测 变更方法
+                          push()    数组末尾添加元素
+                          pop()     删除末尾元素
+                          shift()   删除第一位元素
+                          unshift() 添加元素到首位
+                          splice()  删除、插入、替换元素  -- splice(操作元素下标,   操作元素个数--如果为0表示插入元素,   元素...  -- 如果没有元素则是删除操作 有&第二个属性=0则是新增 有&第二个属性>0则是替换元素)
+                          sort()    排序(默认从小到大)
+                          reverse() 翻转
+            */
+            this.userList.unshift({
+              name: "王五",
+              age: 19,
+            });
+          },
+        },
+      };
+      let app = Vue.createApp(App).mount("#app");
+      console.log(app);
+    </script>
+  </body>
+</html>

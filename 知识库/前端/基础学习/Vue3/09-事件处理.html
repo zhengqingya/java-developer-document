@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script src="./vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ msg }}</p>
+      <button v-on:click="counter++">{{counter}}</button>
+      <button v-on:click="hi">hi</button>
+      <button v-on:click="addCounter(2,$event)">addCounter</button>
+      <button @click="addCounter(2),addAge(1)">{{counter}} -- {{age}}</button>
+      <!-- 
+        事件修饰符
+            @click.stop          阻止单击事件继续冒泡
+            @click.prevent       提交事件不再重载页面，即阻止默认行为
+            @click.stop.prevent  修饰符可以串联
+            @click.once          点击事件将只会触发一次
+            @click.capture       添加事件监听器时使用事件捕获模式，即内部元素触发的事件先在此处理，然后才交由内部元素进行处理
+            @click.self          只当在 event.target 是当前元素自身时触发处理函数，即事件不是从内部元素触发的
+            @click.passive       滚动事件的默认行为 (即滚动行为) 将会立即触发，而不会等待 `onScroll` 完成，以防止其中包含 `event.preventDefault()` 的情况
+       -->
+      <div @click="divClick">
+        <button @click.stop="btnClick">父子元素</button>
+      </div>
+
+      <hr />
+
+      <form action="">
+        <input type="submit" @click.prevent="submitClick" />
+      </form>
+
+      <button v-on:click.once="counter++">只触发一次 -- {{counter}}</button>
+
+      <hr />
+
+      <!-- 
+        按键修饰符
+            @keyup.enter
+            @keyup.tab
+            @keyup.delete (捕获“删除”和“退格”键)
+            @keyup.esc
+            @keyup.space
+            @keyup.up
+            @keyup.down
+            @keyup.left
+            @keyup.right
+       -->
+      <!-- 任意键都会触发（除浏览器特定键功能） -->
+      <input @keyup="counter++" v-model="counter" />
+      <input @keyup.down="counter++" v-model="counter" />
+    </div>
+
+    <script>
+      const App = {
+        data: function () {
+          return {
+            counter: 0,
+            age: 18,
+            msg: "HelloWorld",
+          };
+        },
+        methods: {
+          // e:事件对象
+          hi(e) {
+            console.log(e);
+            alert("你好");
+          },
+          addCounter(num, e) {
+            console.log(e);
+            this.counter += num;
+          },
+          addAge(age) {
+            console.log(age);
+            this.age += age;
+          },
+          divClick() {
+            console.log("父元素");
+          },
+          btnClick() {
+            console.log("子元素");
+          },
+          submitClick() {
+            console.log("提交数据");
+          },
+        },
+      };
+      let app = Vue.createApp(App).mount("#app");
+      console.log(app);
+    </script>
+  </body>
+</html>
