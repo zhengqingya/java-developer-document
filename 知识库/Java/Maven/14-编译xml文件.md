@@ -4,6 +4,8 @@ maven默认不编译xml文件
 
 > 此配置可解决mybatis中mapper与xml映射关系不对应问题
 
+`pom.xml`
+
 ```
 <build>
     <resources>

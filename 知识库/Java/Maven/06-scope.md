@@ -1,6 +1,6 @@
 ### 依赖作用域
 
-pom.xml
+`pom.xml`
 
 ```
 <dependencyManagement>
