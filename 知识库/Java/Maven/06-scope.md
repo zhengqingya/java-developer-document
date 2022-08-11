@@ -69,14 +69,35 @@ pom.xml
 
 只能在`dependencyManagement`中使用，能解决maven单继承问题，import的依赖实际上并不参与依赖传递。
 
-ex: 通过`<scope>import</scope>`实现多继承，导入SpringBoot和SpringCloud两个父模块的jar包依赖
+ex: 通过`<scope>import</scope>`实现多继承，导入SpringBoot和SpringCloud两个父模块的jar包管理
 
 ```
+<!-- maven单继承 -->
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.7.2</version>
 </parent>
+
+<!-- maven多继承 -->
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>2.7.0</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>2021.0.2</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
 ```
 
 ![idea-maven-pom.png](images/idea-maven-pom.png)
