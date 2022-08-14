@@ -1,12 +1,10 @@
-# java-developer-document
+### 开发环境
 
-## 开发环境
+阿里云盘链接：https://www.aliyundrive.com/s/JZAFEwfUUC1
 
-> Java开发环境系列分享
-> 1. 百度网盘链接：https://pan.baidu.com/s/1jIB_5E-1g3_XrMSloF88YA  提取码：8xa5
-     > ![soft](images/java-soft.png)
-> 2. 阿里云盘链接：https://www.aliyundrive.com/s/JZAFEwfUUC1
-     > 温馨小提示： 阿里云盘分享目前存在bug，分享的部分文件可能无权限查看和下载
+> tips: 阿里云盘分享目前存在bug，分享的部分文件可能无权限查看和下载
+
+![soft](images/java-soft.png)
 
 ### Windows10专业版
 
@@ -25,8 +23,3 @@
 ### Other Tools
 
 [mysql、redis、mq等可通过`docker-compose`直接安装，点击进入查看详情](https://gitee.com/zhengqingya/docker-compose)
-
-
-
-
-
