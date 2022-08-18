@@ -1,5 +1,33 @@
-### Python
+### Python解释器安装
 
-1. [点击下载解释器](https://www.python.org/getit/)
-2. [点击查看解释器安装教程](https://zhengqing.blog.csdn.net/article/details/81464255)
-3. [点击查看PyCharm安装教程](https://zhengqing.blog.csdn.net/article/details/104180344)
+下载解释器 https://www.python.org/downloads
+
+![python-downloads.png](images/python-downloads.png)
+
+双击进入，选择自定义安装
+
+![python-install-01.png](images/python-install-01.png)
+
+![python-install-02.png](images/python-install-02.png)
+
+![python-install-03.png](images/python-install-03.png)
+
+安装完成后点击`禁用系统的path长度自动限制` => 避免麻烦
+
+![python-install-04.png](images/python-install-04.png)
+
+安装结束
+
+![python-install-05.png](images/python-install-05.png)
+
+---
+
+验证
+
+> win+r 输入 cmd 进入命令行
+
+```shell
+python -V
+```
+
+![python-install-06.png](images/python-install-06.png)
