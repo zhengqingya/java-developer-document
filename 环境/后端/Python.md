@@ -20,6 +20,8 @@
 
 ![python-install-05.png](images/python-install-05.png)
 
+![python-install-06.png](images/python-install-06.png)
+
 ---
 
 验证
@@ -30,4 +32,4 @@
 python -V
 ```
 
-![python-install-06.png](images/python-install-06.png)
+![python-install-07.png](images/python-install-07.png)
