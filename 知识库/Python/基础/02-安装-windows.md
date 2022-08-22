@@ -20,6 +20,8 @@
 
 ![python-install-05.png](images/python-windows-install-05.png)
 
+> `python.exe`：解释器程序
+
 ![python-install-06.png](images/python-windows-install-06.png)
 
 ---
