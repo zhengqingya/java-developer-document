@@ -1,4 +1,4 @@
-# liunx -- 安装redis6.0.8
+# linux -- 安装redis6.0.8
 
 ```shell
 # 安装6版本的redis，gcc版本一定要5.3以上!

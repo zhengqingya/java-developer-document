@@ -25,7 +25,7 @@ docker 镜像加速器
 ```shell
 # 环境准备
 git clone https://gitee.com/zhengqingya/docker-compose.git
-cd docker-compose/Liunx
+cd docker-compose/Linux
 
 # 运行服务...
 

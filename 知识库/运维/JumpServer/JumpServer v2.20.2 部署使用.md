@@ -32,7 +32,8 @@ cd /opt/jumpserver-installer-v2.20.2
 
 #### 2、离线部署
 
-> 下载 [https://community.fit2cloud.com/#/products/jumpserver/downloads](https://community.fit2cloud.com/#/products/jumpserver/downloads)
+>
+下载 [https://community.fit2cloud.com/#/products/jumpserver/downloads](https://community.fit2cloud.com/#/products/jumpserver/downloads)
 
 ```shell
 cd /opt
@@ -67,7 +68,7 @@ cat config-example.txt
 ```shell
 # 准备
 git clone https://gitee.com/zhengqingya/docker-compose.git
-cd docker-compose/Liunx/jumpserver
+cd docker-compose/Linux/jumpserver
 cp config_example.conf .env
 # 运行
 docker-compose -f docker-compose-redis.yml -f docker-compose-mariadb.yml -f docker-compose.yml up
@@ -93,7 +94,6 @@ docker-compose -f docker-compose-redis.yml -f docker-compose-mariadb.yml -f dock
 ##### b、用户管理 -- 创建用户组
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f5d83de4e6e5489f83bcc9654db013d7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-
 
 ##### c、用户管理 -- 创建用户
 

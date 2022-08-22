@@ -42,7 +42,8 @@ tail -fn 100 /var/log/nps.log
 
 ### 三、Windows上启动客户端
 
-> 下载解压 [https://github.com/ehang-io/nps/releases/download/v0.26.10/windows_386_client.tar.gz](https://github.com/ehang-io/nps/releases/download/v0.26.10/windows_386_client.tar.gz)
+>
+下载解压 [https://github.com/ehang-io/nps/releases/download/v0.26.10/windows_386_client.tar.gz](https://github.com/ehang-io/nps/releases/download/v0.26.10/windows_386_client.tar.gz)
 
 ```shell
 npc.exe -server=www.zhengqingya.com:8024 -vkey=test123 -type=tcp
@@ -57,11 +58,13 @@ npc.exe -server=www.zhengqingya.com:8024 -vkey=test123 -type=tcp
 访问 `8100` 端口可代理到本地 `127.0.0.1:20040`
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1c6b2ac73b5f4bc385224c7680493cb3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
 
-### 五、SSH连接局域网Liunx服务器
+### 五、SSH连接局域网Linux服务器
 
 #### 1、修改 `TCP隧道` -> `目标 (IP:端口)` -> `127.0.0.1:22`
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/9fc7898a6f114de79b9bea7aa844248e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-#### 2、局域网Liunx服务器启动客户端
+
+#### 2、局域网Linux服务器启动客户端
 
 ```shell
 # 下载服务端
@@ -79,6 +82,7 @@ sudo ./npc -server=www.zhengqingya.com:8024 -vkey=test123 -type=tcp
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/cf186b1e9c614a7bb5fd12342478f9f9.png)
 
 #### 3、SSH 连接
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/8dd5527a7e724fdaa3cca8deecd4deea.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/49baa074b4724e7e9fe12f340a0260b3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
 
@@ -89,7 +93,7 @@ sudo ./npc -server=www.zhengqingya.com:8024 -vkey=test123 -type=tcp
 ```shell
 # 准备
 git clone https://gitee.com/zhengqingya/docker-compose.git
-cd docker-compose/Liunx
+cd docker-compose/Linux
 
 # 运行服务端 NPS
 docker-compose -f docker-compose-nps.yml -p nps up -d
@@ -97,7 +101,6 @@ docker-compose -f docker-compose-nps.yml -p nps up -d
 # 运行客户端 NPC
 docker run -d --name npc --net=host ffdfgdfg/npc:v0.26.10 -server=服务端ip地址:8024 -vkey=唯一验证密钥 -type=tcp
 ```
-
 
 --- 
 

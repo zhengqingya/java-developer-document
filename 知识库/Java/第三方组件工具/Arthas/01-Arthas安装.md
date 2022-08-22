@@ -40,7 +40,7 @@ rd /s /q C:\Users\Administrator\.arthas
 rd /s /q C:\Users\Administrator\logs\arthas
 ```
 
-###### Liunx
+###### Linux
 
 ```shell
 rm -rf ~/.arthas/
