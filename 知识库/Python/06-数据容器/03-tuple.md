@@ -47,7 +47,7 @@ my_tuple = ("zhengqingya", 666, True)
 print(f"下标索引获取值：{my_tuple[1]}")
 ```
 
-#### 元素常用操作方法
+#### 常用操作方法
 
 | 方法                 | 描述         |
 |--------------------|------------|
@@ -86,7 +86,7 @@ while index < len(my_tuple):
     index += 1
 ```
 
-##### while循环
+##### for循环
 
 ```
 my_tuple = ("c++", "python", "go")
