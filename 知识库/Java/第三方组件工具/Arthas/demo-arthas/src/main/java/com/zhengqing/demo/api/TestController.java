@@ -39,11 +39,14 @@ public class TestController {
     @GetMapping("time")
     @ApiOperation("time")
     public Map<String, Object> time(@RequestParam String key) {
-        log.info("time: {}", DateTime.now());
+        // log.info(".......")    ???
         LOCAL_NUM += 1;
+        // 处理业务1...
         this.handleBusiness1();
         Assert.notBlank(key, "key not blank !");
+        // 处理业务2...
         this.handleBusiness2();
+        // 处理业务3...
         this.handleBusiness3();
         return new HashMap<String, Object>(3) {{
             this.put("time", DateTime.now().toString());
@@ -57,7 +60,7 @@ public class TestController {
 
     @SneakyThrows(Exception.class)
     private void handleBusiness1() {
-        TimeUnit.MICROSECONDS.sleep(1);
+        TimeUnit.MICROSECONDS.sleep(0);
     }
 
     @SneakyThrows(Exception.class)
@@ -67,7 +70,7 @@ public class TestController {
 
     @SneakyThrows(Exception.class)
     private void handleBusiness3() {
-        TimeUnit.SECONDS.sleep(1);
+        TimeUnit.SECONDS.sleep(0);
     }
 
 }
