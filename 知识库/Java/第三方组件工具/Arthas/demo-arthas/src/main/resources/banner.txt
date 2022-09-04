@@ -1,0 +1,14 @@
+${AnsiColor.BRIGHT_GREEN}
+
+${AnsiColor.BRIGHT_CYAN}       _
+${AnsiColor.BRIGHT_CYAN}      | |
+${AnsiColor.BRIGHT_CYAN}    __| |   ___   _ __ ___     ___
+${AnsiColor.BRIGHT_CYAN}   / _` |  / _ \ | '_ ` _ \   / _ \
+${AnsiColor.BRIGHT_CYAN}  | (_| | |  __/ | | | | | | | (_) |
+${AnsiColor.BRIGHT_CYAN}   \__,_|  \___| |_| |_| |_|  \___/
+
+${AnsiColor.BLUE}
+Application Name: ${spring.application.name}
+Server Port: ${server.port}
+Spring Boot Version: ${spring-boot.version}${spring-boot.formatted-version}
+Knife4j 访问地址: http://127.0.0.1:${server.port}/doc.html

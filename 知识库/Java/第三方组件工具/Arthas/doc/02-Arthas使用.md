@@ -6,7 +6,7 @@
 
 选择应用java进程
 
-![arthas-use.png](./arthas-use.png)
+![arthas-use.png](images/arthas-use.png)
 
 > http://127.0.0.1:3658
 > 或者使用命令行进入：win+R—>cmd—>telnet 127.0.0.1 3658，同样可以出现上面的arthas语境
@@ -71,7 +71,7 @@ watch com.zhengqing.demo.api.TestController time "{params[0],returnObj}" -x 3
 watch com.zhengqing.demo.api.TestController time "{params[0],returnObj,throwExp}" -x 3 -n 2
 ```
 
-![watch.png](watch.png)
+![watch.png](images/watch.png)
 
 ### trace
 
@@ -85,7 +85,7 @@ trace com.zhengqing.demo.api.TestController time
 trace com.zhengqing.demo.api.TestController time '#cost>2000'
 ```
 
-![trace.png](trace.png)
+![trace.png](images/trace.png)
 
 ### jad
 

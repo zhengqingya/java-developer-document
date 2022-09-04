@@ -1,0 +1,6 @@
+server:
+  port: 666
+
+spring:
+  application:
+    name: demo

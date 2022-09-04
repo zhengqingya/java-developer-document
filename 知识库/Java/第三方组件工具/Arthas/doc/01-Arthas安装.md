@@ -14,7 +14,7 @@ java -jar arthas-boot.jar
 
 ##### Dockerfile使用Arthas
 
-[Dockerfile](./Dockerfile)
+[Dockerfile](Dockerfile)
 
 启动arthas
 
@@ -40,7 +40,7 @@ rd /s /q C:\Users\Administrator\.arthas
 rd /s /q C:\Users\Administrator\logs\arthas
 ```
 
-###### Linux
+###### Liunx
 
 ```shell
 rm -rf ~/.arthas/
