@@ -18,6 +18,7 @@ server {
     }
 }
 
+
 # HTTPS server  -- https://www.zhengqingya.com
 server {
     # SSL使用443端口
@@ -29,6 +30,7 @@ server {
     ssl_certificate      /home/ssl/fullchain.cer;
     # 证书key文件
     ssl_certificate_key  /home/ssl/cert.key;
+    
     # 启用 SSL Session 缓存
     ssl_session_cache    shared:SSL:1m;
     # 缓存SSL握手产生的参数和加密密钥的时长
