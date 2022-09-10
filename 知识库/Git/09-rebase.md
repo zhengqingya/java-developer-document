@@ -16,4 +16,9 @@
 
 ![git-rebase-interactively.png](images/git-rebase-interactively-04.png)
 
+---
+
+> 或者选择要压缩合并的日志直接操作即可
+> ![git-squash-commit-message.png](images/git-squash-commit-message.png)
+
 ### 合并分支
