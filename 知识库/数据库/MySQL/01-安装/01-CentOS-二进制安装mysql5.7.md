@@ -186,6 +186,8 @@ chkconfig --list mysql
 chkconfig --del mysql
 ```
 
+### 其它
+
 ```shell
 # 查看mysql运行状态
 service mysql status
