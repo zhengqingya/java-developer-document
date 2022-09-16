@@ -21,3 +21,13 @@ https://www.macwk.com/soft/obs-studio
 
 之后就可以看见音频在动了
 ![obs.png](images/obs-interface.png)
+
+### windows获取抖音推流码
+
+需在windows上安装`Win10Pcap` 和 `Wireshark`
+
+服务器
+![rtmpt.png](images/rtmpt-01.png)
+
+串流密钥
+![rtmpt.png](images/rtmpt-02.png)
