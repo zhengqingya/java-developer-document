@@ -2,7 +2,10 @@
 
 ### 一、前言
 
-1. Charles请求转发可参考 [https://zhengqing.blog.csdn.net/article/details/111597213](https://zhengqing.blog.csdn.net/article/details/111597213)
+1.
+
+Charles请求转发可参考 [https://zhengqing.blog.csdn.net/article/details/111597213](https://zhengqing.blog.csdn.net/article/details/111597213)
+
 2. Charles下载地址 [https://www.charlesproxy.com/download](https://www.charlesproxy.com/download)
 3. 解决半小时使用 [https://www.zzzmode.com/mytools/charles](https://www.zzzmode.com/mytools/charles)
 
@@ -43,6 +46,10 @@
 手机证书到这里已经处理完成，再次发起https请求测试抓包，发现正常了。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/83925302759d499582ea9d3610f4e9fe.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
 
+### 五、其它
+
+如果出现无法抓取手机https的时候，可尝试保存电脑的证书提供给手机下载使用
+![charles-ssl-save.png](images/charles-ssl-save.png)
 
 ---
 
