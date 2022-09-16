@@ -4,4 +4,6 @@
 
 https://macwk.com/soft/loopback
 
-![loopback.png](images/loopback.png)
+监听麦克风和系统内部声音
+
+![loopback.png](images/loopback-voice.png)
