@@ -45,13 +45,13 @@ plugins=(
 # ------------------------------------------------------
 
 # 如果zsh提示如下：
-[oh-my-zsh] plugin 'zsh-autosuggestions' not found
+# [oh-my-zsh] plugin 'zsh-autosuggestions' not found
 [oh-my-zsh] plugin 'zsh-syntax-highlighting' not found
 # 则执行如下命令：
 # 进入oh-my-zsh自定义插件目录
 cd ~/.oh-my-zsh/custom/plugins
-git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+# git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 # 在配置文件最后加上source...
 echo "source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 
