@@ -19,20 +19,38 @@
 
 在字段上打断点时，会监听值的整个生命周期的变化。
 
-![idea-debug.png](images/idea-debug-01.png)
+![idea-debug.png](images/idea-debug-breakpoint-field.png)
 
 ### 异常断点
 
 全局监听，当出现相关异常时会自动断点停在异常代码处。
 
-![idea-debug.png](images/idea-debug-02.png)
+![idea-debug.png](images/idea-debug-breakpoint-exception.png)
 
 ### 方法断点
 
 在方法上打断点时，会自动进入方法第一行断点以及最后出方法时断点，方便查看结果。
 
-![idea-debug.png](images/idea-debug-03.png)
+![idea-debug.png](images/idea-debug-breakpoint-method.png)
 
 当不确定接口由哪一个具体的类实现时，可接口方法处进行断点，方法调用时会自动进入具体的实现类中。
 
-![idea-debug.png](images/idea-debug-04.png)
+![idea-debug.png](images/idea-debug-breakpoint-interface-method.png)
+
+### 手动制造抛出异常
+
+![idea-debug.png](images/idea-debug-throw-exception.png)
+
+### 强制返回
+
+不再执行之后的代码
+![idea-debug.png](images/idea-debug-force-return.png)
+
+### stream调试
+
+![idea-debug.png](images/idea-debug-stream.png)
+
+### 线程调试
+
+通过切换线程控制线程执行顺序
+![idea-debug.png](images/idea-debug-thread.png)
