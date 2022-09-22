@@ -1,5 +1,7 @@
 # IDEA DEBUG 调试
 
+### 基础
+
 ![idea-debug.png](./images/idea-debug.png)
 
 从左到右依次如下
@@ -12,3 +14,25 @@
 6. Drop Frame (默认无)：回退断点。
 7. Run to Cursor (Alt + F9)：运行到光标处，你可以将光标定位到你需要查看的那一行，然后使用这个功能，代码会运行至光标行，而不需要打断点。
 8. Evaluate Expression (Alt + F8)：计算表达式。
+
+### 字段断点
+
+在字段上打断点时，会监听值的整个生命周期的变化。
+
+![idea-debug.png](images/idea-debug-01.png)
+
+### 异常断点
+
+全局监听，当出现相关异常时会自动断点停在异常代码处。
+
+![idea-debug.png](images/idea-debug-02.png)
+
+### 方法断点
+
+在方法上打断点时，会自动进入方法第一行断点以及最后出方法时断点，方便查看结果。
+
+![idea-debug.png](images/idea-debug-03.png)
+
+当不确定接口由哪一个具体的类实现时，可接口方法处进行断点，方法调用时会自动进入具体的实现类中。
+
+![idea-debug.png](images/idea-debug-04.png)
