@@ -2,7 +2,7 @@
 
 ### 基础
 
-![idea-debug.png](./images/idea-debug.png)
+![idea-debug.png](images/idea-debug.png)
 
 从左到右依次如下
 

@@ -37,6 +37,3 @@ go run hello.go
 go build hello.go    # 此命令会生成hello.exe文件
 hello.exe            # 运行
 ```
-
-
-

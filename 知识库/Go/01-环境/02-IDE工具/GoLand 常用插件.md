@@ -10,14 +10,13 @@ File -> Settings... -> Plugins
 | Save Actions             | 自动删除一些不用的导入               |
 | Vue.js             | vue文件样式               |
 
-
 ---
 
 ### 自动格式化代码配置 - File Watchers
 
 File -> Settings... -> Tools -> File Watchers -> 右边加号 -> 选择`go fmt` -> 默认内容即可，OK保存
 
-![File Watchers.png](../images/File Watchers.png)
+![File Watchers.png](images/File%20Watchers.png)
 
 之后`Ctrl+S`就会自动格式化代码了...
 

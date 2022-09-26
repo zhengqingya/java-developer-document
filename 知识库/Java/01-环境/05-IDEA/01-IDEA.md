@@ -15,3 +15,7 @@
 # 注：因为路径有空格原因直接进不去，需要一层一层进入或路径加上双引号进入
 open "/Users/zhengqingya/Library/Application Support/JetBrains/IntelliJIdea2021.1"
 ```
+
+### IDE激活
+
+申请开源开发许可证 ->  https://www.jetbrains.com/shop/eform/opensource
