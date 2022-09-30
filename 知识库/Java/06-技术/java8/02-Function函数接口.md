@@ -67,18 +67,58 @@ public class Java8Function {
 }
 ```
 
+![java8-function.png](images/java8-function-apply.png)
+
 ### `compose`/`andThen`
 
 多个`Function`函数组合使用
 
+1. `compose`: 调用
+2. `andThen`:
+
 ```java
 public class Java8Function {
     @Test
-    public void test_andThen() throws Exception {
+    public void test_compose_andThen() throws Exception {
         Function<String, String> helloFunction = str -> "hello: " + str;
         Function<String, String> hello2Function = str -> "你好: " + str;
-        System.out.println(helloFunction.andThen(hello2Function).apply("zhengqingya")); // 你好: hello: zhengqingya
         System.out.println(helloFunction.compose(hello2Function).apply("zhengqingya")); // hello: 你好: zhengqingya
+        System.out.println(helloFunction.andThen(hello2Function).apply("zhengqingya")); // 你好: hello: zhengqingya
     }
 }
 ```
+
+![java8-function.png](images/java8-function-compose-andThen.png)
+
+### 作为方法参数传入
+
+将函数接口作为方法参数传入，可以解决只有部分差异的相同业务代码中的硬编码问题，让代码更灵活通用。
+
+ex: 将list转成map。通过传入不同的处理方式实现不同的结果。
+
+```java
+public class Java8Function {
+    @Test
+    public void test_listToMap() throws Exception {
+        List<String> list = Lists.newArrayList("zhengqingya");
+        Map<String, String> result = listToMap(list, str -> {
+            return "hello:" + str;
+        });
+        System.out.println(result);
+        Map<String, String> result2 = listToMap(list, str -> {
+            return "你好:" + str;
+        });
+        System.out.println(result2);
+    }
+
+    public static <T, R> Map<T, R> listToMap(List<T> list, Function<T, R> function) {
+        HashMap<T, R> hashMap = Maps.newHashMap();
+        for (T t : list) {
+            hashMap.put(t, function.apply(t));
+        }
+        return hashMap;
+    }
+}
+```
+
+![java8-function.png](images/java8-function-list-to-map.png)
