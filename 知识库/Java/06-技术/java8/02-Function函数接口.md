@@ -73,8 +73,7 @@ public class Java8Function {
 
 多个`Function`函数组合使用
 
-1. `compose`: 调用
-2. `andThen`:
+> tips: 执行顺序差异
 
 ```java
 public class Java8Function {
