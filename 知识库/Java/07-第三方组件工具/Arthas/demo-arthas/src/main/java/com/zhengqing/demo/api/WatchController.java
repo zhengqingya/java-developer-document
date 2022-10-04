@@ -22,13 +22,13 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
-@RequestMapping("api")
-@Api(tags = "测试api")
+@RequestMapping("api/watch")
+@Api(tags = "test-watch")
 public class WatchController {
 
 
     /**
-     * curl http://127.0.0.1:666/api/test
+     * curl http://127.0.0.1:666/api/watch/test
      */
     @GetMapping("test")
     @ApiOperation("test")
@@ -38,7 +38,7 @@ public class WatchController {
 
     /**
      * Arthas: 监听方法的执行情况  ex: 入参、返回值
-     * curl http://127.0.0.1:666/api/test1
+     * curl http://127.0.0.1:666/api/watch/test1
      */
     @GetMapping("test1")
     @ApiOperation("test1")
@@ -52,7 +52,7 @@ public class WatchController {
     }
 
     /**
-     * curl http://127.0.0.1:666/api/test2
+     * curl http://127.0.0.1:666/api/watch/test2
      */
     @PostMapping("test2")
     @ApiOperation("test2")

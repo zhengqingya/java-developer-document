@@ -18,16 +18,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-@RequestMapping("api")
-@Api(tags = "test")
-public class TestController {
+@RequestMapping("api/ognl")
+@Api(tags = "test-ognl")
+public class OgnlController {
+
+    private static Integer LOCAL_NUM = 0;
 
     /**
-     * curl http://127.0.0.1:666/api/test
+     * curl http://127.0.0.1:666/api/ognl/test
      */
     @GetMapping("test")
     @ApiOperation("test")
     public String test() {
+        LOCAL_NUM++;
         return "66";
     }
 
