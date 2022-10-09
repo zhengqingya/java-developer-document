@@ -56,6 +56,8 @@ list.stream().distinct().forEach(System.err::print);
 
 ```
 list.forEach(System.out::println);
+
+map.forEach((k, v) -> System.out.println("key:value = " + k + ":" + v));
 ```
 
 ---
