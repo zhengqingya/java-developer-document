@@ -1,4 +1,4 @@
-# Optional
+# Optional 预防空指针
 
 Optional类: Java8解决null值判断问题，避免null导致的NPE（NullPointerException）。
 
