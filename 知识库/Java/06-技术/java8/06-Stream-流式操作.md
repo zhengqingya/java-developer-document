@@ -61,6 +61,21 @@ List<Integer> removeUserIdList = userIdListOld.stream().filter(userIdOld -> !use
 List<Integer> addUserIdList = userIdListNew.stream().filter(userIdNew -> !userIdListOld.contains(userIdNew)).collect(Collectors.toList());
 ```
 
+#### 分类统计数量
+
+```
+// 多字段统计 -- ex: 统计相同name下相同age的个数
+Map<String, Map<Integer, Long>> map = list.stream().collect(
+                Collectors.groupingBy(User::getName, Collectors.groupingBy(User::getAge, Collectors.counting()))
+        );
+
+// 单字段统计 [LongSummaryStatistics中包含总数、最小值、最大值、平均值等信息]   --  ex: 根据名称去统计
+Map<String, LongSummaryStatistics> map = list.stream()
+        .collect(
+                Collectors.groupingBy(User::getName, Collectors.summarizingLong(User::getAge))
+        );
+```
+
 #### 求list重复元素值
 
 ```
