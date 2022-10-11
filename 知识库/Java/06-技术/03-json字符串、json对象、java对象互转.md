@@ -33,4 +33,7 @@ String json = JSONUtil.toJsonStr(user);
 User user = JSONObject.parseObject(json, User.class);
 
 User user = JSONUtil.toBean(json, User.class);
+
+// 泛型 -- ex: 用上面的方式应该也可，看情况选择吧
+User<User> user = JSONObject.parseObject(jsonObj, new TypeReference<User<User>>() {});
 ```
