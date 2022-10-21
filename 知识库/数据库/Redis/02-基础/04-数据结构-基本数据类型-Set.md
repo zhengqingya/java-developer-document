@@ -10,9 +10,11 @@ sadd my_set_a 1 2 3 4 five
 # 查看集合元素
 smembers my_set_a
 # 判断集合是否包含指定value 包含返回1 不包含返回0
-sismember my_set_a 1
+sismember my_set_a five
 # 移除集合key中的元素
 srem my_set_a 3
+# 查看元素个数
+scard my_set_a
 
 
 sadd my_set_b 2 3 6
