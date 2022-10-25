@@ -6,7 +6,7 @@
 恢复速度快,持久化性能高.但是存在数据丢失风险
 可每小时备份一次rdb文件数据到自己的数据中心防止数据丢失
 
-### 启用快照
+### 启用快照 (rdb触发机制)
 
 redis.conf
 
@@ -14,7 +14,7 @@ redis.conf
 # 触发时间策略  
 # 格式：save <seconds> <changes>
 # 可设置多个
-# 900秒内，如果超过1个key被修改，则发起快照保存
+# 900秒内，如果超过1个key被修改，则发起快照保存  执行的是`bgsave`命令
 save 900 1
 # 300秒内，如果超过10个key被修改，则发起快照保存
 save 300 10
@@ -25,24 +25,22 @@ save 60 10000
 # 文件名称
 dbfilename dump.rdb
 
-
 # 文件保存路径，AOF文件同样存放在此目录下。默认为当前工作目录。
 dir ./
-
 
 # 如果持久化出错，主进程是否停止写入操作，yes->停止 => 为了保护持久化的数据一致性问题
 stop-writes-on-bgsave-error yes
 
-
 # 是否压缩
 rdbcompression yes
-
 
 # 导入时是否检查
 rdbchecksum yes
 ```
 
 会产生一个`dump.rdb`文件
+
+> redis停机时会自动保存一次rdb
 
 ### 禁用快照
 
@@ -64,12 +62,19 @@ save
 
 #### BGSAVE
 
-派生(fork)一个子进程来创建新的RDB文件，记录接收到BGSAVE当时的数据库状态，
-父进程继续处理接收到的命令，子进程完成文件的创建之后，会发送信号给父进程，
-而与此同时，父进程处理命令的同时，通过轮询来接收子进程的信号。
+- fork主进程得到一个子进程，共享内存空间
+- 子进程读取内存数据并写入新的RDB文件
+- 用新RDB文件替换旧的RDB文件
 
 ```shell
 bgsave
 # 查看操作是否成功
 lastsave
 ```
+
+![redis-bgsave](images/redis-bgsave.png)
+
+### RDB缺点？
+
+- RDB执行间隔时间长，两次RDB之间写入数据有丢失的风险
+- fork子进程、压缩、写出RDB文件都比较耗时
