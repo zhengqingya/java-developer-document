@@ -6,7 +6,18 @@
 恢复速度快,持久化性能高.但是存在数据丢失风险
 可每小时备份一次rdb文件数据到自己的数据中心防止数据丢失
 
+### 执行时机
+
+RDB持久化在四种情况下会执行：
+
+1. 执行save命令
+2. 执行bgsave命令
+3. Redis停机时
+4. 触发RDB条件时
+
 ### 启用快照 (rdb触发机制)
+
+> RDB默认开启，可不用改
 
 redis.conf
 
@@ -40,8 +51,6 @@ rdbchecksum yes
 
 会产生一个`dump.rdb`文件
 
-> redis停机时会自动保存一次rdb
-
 ### 禁用快照
 
 redis.conf
@@ -62,15 +71,20 @@ save
 
 #### BGSAVE
 
-- fork主进程得到一个子进程，共享内存空间
-- 子进程读取内存数据并写入新的RDB文件
-- 用新RDB文件替换旧的RDB文件
-
 ```shell
 bgsave
 # 查看操作是否成功
 lastsave
 ```
+
+- fork主进程得到一个子进程，共享内存空间
+- 子进程读取内存数据并写入新的RDB文件
+- 用新RDB文件替换旧的RDB文件
+
+fork采用的是copy-on-write技术：
+
+- 当主进程执行读操作时，访问共享内存；
+- 当主进程执行写操作时，则会拷贝一份数据，执行写操作。
 
 ![redis-bgsave](images/redis-bgsave.png)
 
