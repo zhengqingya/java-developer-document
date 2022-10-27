@@ -1,9 +1,8 @@
 # Java
 
-### RedisTemplate
+### RedisTemplate访问分片集群
 
-在Sentinel集群监管下的Redis主从集群，其节点会因为自动故障转移而发生变化，Redis的客户端必须感知这种变化，及时更新连接信息。
-Spring的RedisTemplate底层利用lettuce实现了节点的感知和自动切换。
+RedisTemplate底层基于lettuce实现了分片集群的支持
 
 #### 1、`pom.xml`中引入依赖
 
@@ -19,16 +18,15 @@ Spring的RedisTemplate底层利用lettuce实现了节点的感知和自动切换
 ```yml
 spring:
   redis:
-    sentinel:
-      # 集群名
-      master: mymaster
-      # 集群节点
+    # 分片集群配置
+    cluster:
       nodes:
-        - 127.0.0.1:26379
-        - 127.0.0.1:26380
-        - 127.0.0.1:26381
-      # sentinel认证密码
-      password: 123456
+        - 127.0.0.1:6381
+        - 127.0.0.1:6382
+        - 127.0.0.1:6383
+        - 127.0.0.1:6384
+        - 127.0.0.1:6385
+        - 127.0.0.1:6386
     # redis认证密码
     password: 123456
 ```
