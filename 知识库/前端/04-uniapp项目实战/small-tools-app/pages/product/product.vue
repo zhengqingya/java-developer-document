@@ -26,22 +26,15 @@
 		onLoad() {
 			console.log('---------------------------')
 			// console.log(this.$api)
-			this.getLoginCap()
+			this.test()
 		},
 		methods: {
-			//获取验证码
-			getLoginCap() {
-				let phone = '13519102731'
-				console.log(phone)
-				this.$api.login.goPhoneCode({
-					phone
-				}).then(res => {
-					debugger
-					if (res.data.code == 200) {}
-				})
+			async test() {
+				let res = await this.$api.spu.test()
+				console.log(22233, res)
 			},
 			spuList() {
-				this.$api.get_label().then((res) => {
+				this.$api.spu.test().then((res) => {
 					console.log(11, res)
 				})
 			},
