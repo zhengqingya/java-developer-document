@@ -1,36 +1,36 @@
 import request from '@/utils/request'
 
-const BASE_API = '/web/api/demo/test/time'
+const BASE_API = '/mini/api/mall/spu'
 
 export default {
-  test(code) {
-    return request({
-      url: BASE_API + '',
-      method: 'get',
-      params: { code: code },
-    })
-  },
-  add(data) {
-    return request({
-      url: BASE_API,
-      method: 'post',
-      data,
-    })
-  },
-  update(data) {
-    return request({
-      url: BASE_API,
-      method: 'put',
-      data,
-    })
-  },
-  delete(id) {
-    return request({
-      url: BASE_API,
-      method: 'delete',
-      params: {
-        id: id,
-      },
-    })
-  },
+	page(params) {
+		return request({
+			url: BASE_API + '/page',
+			method: 'get',
+			params: params,
+		})
+	},
+	add(data) {
+		return request({
+			url: BASE_API,
+			method: 'post',
+			data,
+		})
+	},
+	update(data) {
+		return request({
+			url: BASE_API,
+			method: 'put',
+			data,
+		})
+	},
+	delete(id) {
+		return request({
+			url: BASE_API,
+			method: 'delete',
+			params: {
+				id: id,
+			},
+		})
+	},
 }

@@ -30,8 +30,11 @@
 		},
 		methods: {
 			async test() {
-				let res = await this.$api.spu.test()
-				console.log(22233, res)
+				let params = {
+					name: '1',
+				}
+				let productList = await this.$api.spu.page(params)
+				console.log(22233, productList)
 			},
 			spuList() {
 				this.$api.spu.test().then((res) => {

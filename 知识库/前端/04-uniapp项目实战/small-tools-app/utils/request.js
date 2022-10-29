@@ -1,10 +1,11 @@
-const BASE_URL = "http://localhost:80" //公共请求头
+const BASE_URL = "http://127.0.0.1:10020"
 
 const request = ({
-	url,
-	method,
-	data,
-	headers
+	url, // 请求url
+	method, // 请求方式：get/post/put/delete
+	params, // get请求提交参数
+	data, // post/put请求提交参数
+	headers // 请求头
 }) => {
 	return new Promise((resolve, reject) => {
 		if (!headers) {
@@ -16,7 +17,7 @@ const request = ({
 		}
 		uni.request({
 			url: BASE_URL + url,
-			data: data,
+			data: method === 'get' ? params : data,
 			method: method,
 			header: headers,
 			// 收到开发者服务器成功返回的回调函数
@@ -38,7 +39,8 @@ const request = ({
 			},
 			// 接口调用失败的回调函数
 			fail(error) {
-				alert(1)
+				console.log('请求错误：', error)
+				// alert(1)
 				return reject(error)
 			},
 			// 接口调用结束的回调函数（调用成功、失败都会执行）
