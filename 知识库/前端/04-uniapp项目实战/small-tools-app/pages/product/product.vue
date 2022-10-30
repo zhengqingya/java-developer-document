@@ -1,18 +1,19 @@
 <template>
 	<view>
-		<text>helloworld</text>
-		<!-- <view class="goods-list">
-			<view v-for="(item, index) in goodsList" :key="index" class="goods-item" @click="navToDetailPage(item)">
-				<view class="image-wrapper">
-					<image :src="item.picUrl" mode="aspectFill"></image>
+		<!-- <text>helloworld</text> -->
+		<!-- <text>{{productList}}</text> -->
+		<view class="product-item">
+			<view v-for="(item,index) in productList" :key="index" @click="goToDetail(item)">
+				<view class="product-image">
+					<image :src="item.coverImg" mode="aspectFill"></image>
 				</view>
-				<text class="title clamp">{{ item.name }}</text>
-				<view class="price-box">
-					<text class="price">{{ item.price/100 }}</text>
-					<text>已售 {{ item.sales }}</text>
+				<text class="product-name">{{ item.name }}</text>
+				<view class="product-info-box">
+					<text>{{ item.sellPrice / 100 }}</text>
+					<text>已售 {{ item.useStock }}</text>
 				</view>
 			</view>
-		</view> -->
+		</view>
 	</view>
 </template>
 
@@ -20,33 +21,25 @@
 	export default {
 		data() {
 			return {
-
+				productList: []
 			}
 		},
 		onLoad() {
-			console.log('---------------------------')
-			// console.log(this.$api)
-			this.test()
+			this.spuList()
 		},
 		methods: {
-			async test() {
+			async spuList() {
 				let params = {
-					name: '1',
+					name: '',
 				}
-				let productList = await this.$api.spu.page(params)
-				console.log(22233, productList)
+				let result = await this.$api.spu.page(params);
+				this.productList = result.records
+				// console.log(22233, this.productList)
 			},
-			spuList() {
-				this.$api.spu.test().then((res) => {
-					console.log(11, res)
-				})
-			},
-
 			//详情
-			navToDetailPage(item) {
-				let id = item.id;
+			goToDetail(item) {
 				uni.navigateTo({
-					url: `/pages/product/product?id=${id}`
+					url: `/pages/product/product?id=${item.id}`
 				});
 			},
 		}
