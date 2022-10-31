@@ -5,6 +5,8 @@
 > https://nodejs.org/zh-cn/download/
 
 ```shell script
+cd /home/soft
+
 # 下载`node-v12.18.3-linux-x64.tar.xz` : https://nodejs.org/en/download/
 wget https://nodejs.org/dist/v12.18.3/node-v12.18.3-linux-x64.tar.xz
 # 解压

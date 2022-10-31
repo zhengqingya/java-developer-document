@@ -14,6 +14,9 @@
 				</view>
 			</view>
 		</view>
+		<view>
+			<blockquote>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut, quos.</blockquote>
+		</view>
 	</view>
 </template>
 
