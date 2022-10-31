@@ -40,7 +40,11 @@ const request = ({
 			// 接口调用失败的回调函数
 			fail(error) {
 				console.log('请求错误：', error)
-				// alert(1)
+				uni.showToast({
+					icon: 'none',
+					duration: 3000,
+					title: '网络异常，请稍后重试！'
+				});
 				return reject(error)
 			},
 			// 接口调用结束的回调函数（调用成功、失败都会执行）
