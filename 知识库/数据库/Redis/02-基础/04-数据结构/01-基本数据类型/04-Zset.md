@@ -13,8 +13,8 @@ zscore myscore_set aa
 zrange myscore_set 0 -1
 zrange myscore_set 0 -1 withscores
 # 查看前3个元素 - 根据score倒序排序
-zrevrange myscore_set 0 3
-zrevrange myscore_set 0 3 withscores
+zrevrange myscore_set 0 2
+zrevrange myscore_set 0 2 withscores
 
 # 根据score查询100-0之间的数据，偏移量为0(即从100-0之间数据的第一个元素开始查)，每页查询3条数据
 zrevrangebyscore myscore_set 100 0 withscores limit 0 3
