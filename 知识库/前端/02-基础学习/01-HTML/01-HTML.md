@@ -6,10 +6,11 @@
 
 ### 文档资料
 
-| 已阅 | 来源                                                          |
-|----|-------------------------------------------------------------|
-| √  | html标签查询  https://developer.mozilla.org/zh-CN/docs/Web/HTML |
-| √  | 黑马前端-pink零基础  https://gitee.com/xiaoqiang001/html_css_material |
+| 已阅 | 来源                                                            |
+|---|---------------------------------------------------------------|
+| √ | html标签查询  https://developer.mozilla.org/zh-CN/docs/Web/HTML   |
+| √ | 黑马前端-pink零基础  https://gitee.com/xiaoqiang001/html_css_material |
+|   | 黑马前端-pink零基础html学习笔记  https://blog.csdn.net/augenstern_qxl/category_10946310.html                                        |
 
 ### 教学视频
 
