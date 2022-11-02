@@ -27,3 +27,12 @@ https://console.cloud.tencent.com/tke2/cluster
 ![img.png](images/tke-cluster-08.png)
 
 ![img.png](images/tke-cluster-09.png)
+
+### 删除集群
+
+> tips: 如果有保护，需要先关闭集群删除保护，再删除
+> 如果是集群中创建的机器则会在删除集群时自动释放相关机器
+
+![img.png](images/tke-cluster-10.png)
+
+![img.png](images/tke-cluster-11.png)
