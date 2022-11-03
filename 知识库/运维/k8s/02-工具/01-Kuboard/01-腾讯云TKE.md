@@ -2,6 +2,8 @@
 
 https://console.cloud.tencent.com/tke2/cluster
 
+> tips: 这里是用3台云机器按量收费，使用完之后记得删除相应资源，避免继续计费问题。
+
 ### 创建集群
 
 > https://cloud.tencent.com/document/product/457/32189
