@@ -612,11 +612,11 @@ show tables;
 
 ## 三、导入导出
 
-### 1、
+### 1、导出YAML
 
-### 2、
+![img.png](images/kuboard-springblade-export-yaml.png)
 
-### 3、
+### 2、导入YAML
 
 ## 四、监控及日志
 
