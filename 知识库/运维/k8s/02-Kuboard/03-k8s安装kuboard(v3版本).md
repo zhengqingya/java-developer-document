@@ -20,7 +20,7 @@ kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
 watch kubectl get pods -n kuboard
 ```
 
-访问 Kuboard： `http://your-node-ip-address:30080`
+访问 Kuboard： `http://集群任意节点IP:30080`
 
 - 用户名： admin
 - 密码： Kuboard123

@@ -13,7 +13,7 @@ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | gre
 echo $(kubectl -n kube-system get secret $(kubectl -n kube-system get secret | grep ^kuboard-user | awk '{print $1}') -o go-template='{{.data.token}}' | base64 -d)
 ```
 
-访问： `http://IP:32567/dashboard`
+访问： `http://集群任意节点IP:32567/dashboard`
 
 ![img.png](images/kuboard-dashboard-v2.png)
 
