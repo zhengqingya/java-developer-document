@@ -1,0 +1,1841 @@
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-admin
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-admin
+  annotations: {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-admin
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-admin
+    spec:
+      containers:
+        - name: blade-admin
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-admin:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-auth
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-auth
+  annotations:
+    k8s.kuboard.cn/workload: blade-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-auth
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-auth
+    spec:
+      containers:
+        - name: blade-auth
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-auth:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-desk
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-desk
+  annotations:
+    k8s.kuboard.cn/workload: blade-desk
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-desk
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-desk
+    spec:
+      containers:
+        - name: blade-desk
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-desk:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-develop
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-develop
+  annotations:
+    k8s.kuboard.cn/workload: blade-develop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-develop
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-develop
+    spec:
+      containers:
+        - name: blade-develop
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-develop:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-gateway
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: blade-gateway
+  annotations: {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: gateway
+      k8s.kuboard.cn/name: blade-gateway
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: gateway
+        k8s.kuboard.cn/name: blade-gateway
+    spec:
+      containers:
+        - name: blade-gateway
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-gateway:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-log
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-log
+  annotations:
+    k8s.kuboard.cn/workload: blade-log
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-log
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-log
+    spec:
+      containers:
+        - name: blade-log
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-log:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-report
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-report
+  annotations:
+    k8s.kuboard.cn/workload: blade-report
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-report
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-report
+    spec:
+      containers:
+        - name: blade-report
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-report:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-resource
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-resource
+  annotations:
+    k8s.kuboard.cn/workload: blade-resource
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-resource
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-resource
+    spec:
+      containers:
+        - name: blade-resource
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-resource:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-system
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-system
+  annotations:
+    k8s.kuboard.cn/workload: blade-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-system
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-system
+      annotations:
+        kubectl.kubernetes.io/restartedAt: '2022-11-04T11:56:47+08:00'
+    spec:
+      containers:
+        - name: blade-system
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-system:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: blade-user
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: svc
+    k8s.kuboard.cn/name: blade-user
+  annotations:
+    k8s.kuboard.cn/workload: blade-user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: svc
+      k8s.kuboard.cn/name: blade-user
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: svc
+        k8s.kuboard.cn/name: blade-user
+    spec:
+      containers:
+        - name: blade-user
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-user:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: saber-web
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: saber-web
+  annotations: {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: db
+      k8s.kuboard.cn/name: saber-web
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: db
+        k8s.kuboard.cn/name: saber-web
+    spec:
+      containers:
+        - name: saber-web
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/saber-web:3.0.3'
+          ports:
+            - name: web
+              containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              memory: 100Mi
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: swagger
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: swagger
+  annotations: {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: cloud
+      k8s.kuboard.cn/name: swagger
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: cloud
+        k8s.kuboard.cn/name: swagger
+    spec:
+      containers:
+        - name: blade-swagger
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/blade-swagger:3.0.3'
+          args:
+            - '--spring.profiles.active=${PROFILE}'
+            - '--spring.cloud.nacos.config.server-addr=${NACOS_SERVER_ADDR}'
+            - '--spring.cloud.nacos.discovery.server-addr=${NACOS_SERVER_ADDR}'
+            - >-
+              --spring.cloud.sentinel.transport.dashboard=${SENTINEL_DASHBOARD_ADDR}
+            - '--server.port=80'
+          ports:
+            - name: server
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: blade-config
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: nacos
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: nacos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: cloud
+      k8s.kuboard.cn/name: nacos
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: cloud
+        k8s.kuboard.cn/name: nacos
+    spec:
+      volumes:
+        - name: volume-ydbzb
+          configMap:
+            name: nacos-config
+            items:
+              - key: custom.properties
+                path: custom.properties
+            defaultMode: 420
+      containers:
+        - name: nacos
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/nacos-server:2.0.0'
+          ports:
+            - name: client
+              containerPort: 8848
+              protocol: TCP
+            - name: client-rpc
+              containerPort: 9848
+              protocol: TCP
+            - name: raft-rpc
+              containerPort: 9849
+              protocol: TCP
+          env:
+            - name: MODE
+              value: standalone
+            - name: PREFER_HOST_MODE
+              value: hostname
+            - name: SPRING_DATASOURCE_PLATFORM
+              value: mysql
+            - name: MYSQL_SERVICE_HOST
+              value: nacos-mysql-0.nacos-mysql
+            - name: MYSQL_SERVICE_DB_NAME
+              value: nacos_test
+            - name: MYSQL_SERVICE_PORT
+              value: '3306'
+            - name: MYSQL_SERVICE_USER
+              value: nacos
+            - name: MYSQL_SERVICE_PASSWORD
+              value: nacos
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          volumeMounts:
+            - name: logs
+              mountPath: /home/nacos/logs
+            - name: volume-ydbzb
+              readOnly: true
+              mountPath: /home/nacos/init.d/custom.properties
+              subPath: custom.properties
+          livenessProbe:
+            httpGet:
+              path: /nacos/v1/ns/instance/list?serviceName=nacos
+              port: 8848
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /nacos/v1/ns/instance/list?serviceName=nacos
+              port: 8848
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 2
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /nacos/v1/ns/instance/list?serviceName=nacos
+              port: 8848
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: logs
+        creationTimestamp: null
+        annotations:
+          k8s.kuboard.cn/pvcType: Dynamic
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 2Gi
+        storageClassName: nfs-storage
+        volumeMode: Filesystem
+      status:
+        phase: Pending
+  serviceName: nacos
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: nacos-mysql
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: nacos-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: db
+      k8s.kuboard.cn/name: nacos-mysql
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: db
+        k8s.kuboard.cn/name: nacos-mysql
+      annotations:
+        kubectl.kubernetes.io/restartedAt: '2022-11-04T10:14:24+08:00'
+    spec:
+      containers:
+        - name: mysql
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/nacos-mysql:5.7'
+          ports:
+            - name: mysql
+              containerPort: 3306
+              protocol: TCP
+          env:
+            - name: MYSQL_ALLOW_EMPTY_PASSWORD
+              value: '1'
+            - name: MYSQL_DATABASE
+              value: nacos_test
+            - name: MYSQL_USER
+              value: nacos
+            - name: MYSQL_PASSWORD
+              value: nacos
+          resources:
+            limits:
+              memory: 1000Mi
+            requests:
+              memory: 100Mi
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/mysql
+          livenessProbe:
+            exec:
+              command:
+                - mysqladmin
+                - ping
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            exec:
+              command:
+                - mysql
+                - '-h'
+                - 127.0.0.1
+                - '-e'
+                - select 1
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 2
+            failureThreshold: 3
+          startupProbe:
+            exec:
+              command:
+                - mysql
+                - '-h'
+                - 127.0.0.1
+                - '-e'
+                - select 1
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: data
+        creationTimestamp: null
+        annotations:
+          k8s.kuboard.cn/pvcType: Dynamic
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 2Gi
+        storageClassName: nfs-storage
+        volumeMode: Filesystem
+      status:
+        phase: Pending
+  serviceName: nacos-mysql
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: redis
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: db
+      k8s.kuboard.cn/name: redis
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: db
+        k8s.kuboard.cn/name: redis
+    spec:
+      containers:
+        - name: redis
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/redis:5.0.2-alpine'
+          command:
+            - redis-server
+            - '--appendonly'
+            - 'yes'
+          ports:
+            - name: redis
+              containerPort: 6379
+              protocol: TCP
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              memory: 100Mi
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          livenessProbe:
+            tcpSocket:
+              port: 6379
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 6379
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            tcpSocket:
+              port: 6379
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: data
+        creationTimestamp: null
+        annotations:
+          k8s.kuboard.cn/pvcType: Dynamic
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 2Gi
+        storageClassName: nfs-storage
+        volumeMode: Filesystem
+      status:
+        phase: Pending
+  serviceName: redis
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: saber-db
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: saber-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: db
+      k8s.kuboard.cn/name: saber-db
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: db
+        k8s.kuboard.cn/name: saber-db
+    spec:
+      containers:
+        - name: saber-db
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/saber-db:3.0.3'
+          ports:
+            - name: mysql
+              containerPort: 3306
+              protocol: TCP
+          env:
+            - name: MYSQL_ALLOW_EMPTY_PASSWORD
+              value: '1'
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 200Mi
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/mysql
+          livenessProbe:
+            exec:
+              command:
+                - mysqladmin
+                - '-uroot'
+                - '-proot'
+                - ping
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            exec:
+              command:
+                - mysql
+                - '-uroot'
+                - '-proot'
+                - '-e'
+                - select 1
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            exec:
+              command:
+                - mysql
+                - '-uroot'
+                - '-proot'
+                - '-e'
+                - select 1
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 30
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: data
+        creationTimestamp: null
+        annotations:
+          k8s.kuboard.cn/pvcType: Dynamic
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 2Gi
+        storageClassName: nfs-storage
+        volumeMode: Filesystem
+      status:
+        phase: Pending
+  serviceName: saber-db
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: sentinel
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: sentinel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: db
+      k8s.kuboard.cn/name: sentinel
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: db
+        k8s.kuboard.cn/name: sentinel
+      annotations:
+        kubectl.kubernetes.io/restartedAt: '2022-11-04T10:27:21+08:00'
+    spec:
+      containers:
+        - name: sentinel
+          image: 'swr.cn-east-2.myhuaweicloud.com/blade/sentinel-dashboard:1.8.0'
+          ports:
+            - name: web
+              containerPort: 8858
+              protocol: TCP
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              memory: 100Mi
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8858
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8858
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /
+              port: 8858
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 20
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  serviceName: sentinel
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: blade-gateway
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: blade-gateway
+spec:
+  ports:
+    - name: server
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: blade-gateway
+  type: ClusterIP
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  internalTrafficPolicy: Cluster
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nacos
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: nacos
+spec:
+  ports:
+    - name: nacos-client
+      protocol: TCP
+      port: 8848
+      targetPort: 8848
+      nodePort: 32000
+  selector:
+    k8s.kuboard.cn/layer: cloud
+    k8s.kuboard.cn/name: nacos
+  type: NodePort
+  sessionAffinity: ClientIP
+  externalTrafficPolicy: Cluster
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  internalTrafficPolicy: Cluster
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nacos-mysql
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: nacos-mysql
+spec:
+  ports:
+    - name: mysql
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+  selector:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: nacos-mysql
+  clusterIP: None
+  clusterIPs:
+    - None
+  type: ClusterIP
+  sessionAffinity: None
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  internalTrafficPolicy: Cluster
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: redis
+spec:
+  ports:
+    - name: redis
+      protocol: TCP
+      port: 6379
+      targetPort: 6379
+  selector:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: redis
+  clusterIP: None
+  clusterIPs:
+    - None
+  type: ClusterIP
+  sessionAffinity: None
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  internalTrafficPolicy: Cluster
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: saber-db
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: saber-db
+spec:
+  ports:
+    - name: mysql
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+  selector:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: saber-db
+  clusterIP: None
+  clusterIPs:
+    - None
+  type: ClusterIP
+  sessionAffinity: None
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  internalTrafficPolicy: Cluster
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: saber-web
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: saber-web
+spec:
+  ports:
+    - name: web
+      protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 32102
+  selector:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: saber-web
+  type: NodePort
+  sessionAffinity: ClientIP
+  externalTrafficPolicy: Cluster
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  internalTrafficPolicy: Cluster
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: sentinel
+  namespace: spring-blade
+  labels:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: sentinel
+spec:
+  ports:
+    - name: sentinel
+      protocol: TCP
+      port: 8858
+      targetPort: 8858
+      nodePort: 32100
+  selector:
+    k8s.kuboard.cn/layer: db
+    k8s.kuboard.cn/name: sentinel
+  type: NodePort
+  sessionAffinity: ClientIP
+  externalTrafficPolicy: Cluster
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  internalTrafficPolicy: Cluster
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: blade-config
+  namespace: spring-blade
+data:
+  NACOS_SERVER_ADDR: 'nacos-0.nacos:8848'
+  PROFILE: test
+  SENTINEL_DASHBOARD_ADDR: 'sentinel-0.sentinel:8858'
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nacos-config
+  namespace: spring-blade
+data:
+  custom.properties: |-
+    #spring.security.enabled=false
+    #management.security=false
+    #security.basic.enabled=false
+    #nacos.security.ignore.urls=/**
+    #management.metrics.export.elastic.host=http://localhost:9200
+    # metrics for prometheus
+    management.endpoints.web.exposure.include=*
+
+    # metrics for elastic search
+    #management.metrics.export.elastic.enabled=false
+    #management.metrics.export.elastic.host=http://localhost:9200
+
+    # metrics for influx
+    #management.metrics.export.influx.enabled=false
+    #management.metrics.export.influx.db=springboot
+    #management.metrics.export.influx.uri=http://localhost:8086
+    #management.metrics.export.influx.auto-create-db=true
+    #management.metrics.export.influx.consistency=one
+    #management.metrics.export.influx.compressed=true
+

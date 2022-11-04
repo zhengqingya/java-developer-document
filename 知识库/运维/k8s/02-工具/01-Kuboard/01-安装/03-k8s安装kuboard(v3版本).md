@@ -34,7 +34,12 @@ watch kubectl get pods -n kuboard
 相关日志：
 
 ```shell
-[root@VM-0-12-centos ~]# kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
+连接主机...
+连接主机成功
+Welcome to TencentOS 3 64bit
+Version 3.1 20220921
+tlinux3.1-64bit-5.4.119-19.0009-20220921
+[root@VM-0-16-centos ~]# kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
 namespace/kuboard created
 configmap/kuboard-v3-config created
 serviceaccount/kuboard-boostrap created
@@ -42,16 +47,16 @@ clusterrolebinding.rbac.authorization.k8s.io/kuboard-boostrap-crb created
 daemonset.apps/kuboard-etcd created
 deployment.apps/kuboard-v3 created
 service/kuboard-v3 created
-[root@VM-0-12-centos ~]# kubectl get nodes
+[root@VM-0-16-centos ~]# kubectl get nodes
 NAME        STATUS   ROLES    AGE   VERSION
-10.0.0.12   Ready    <none>   17m   v1.22.5-tke.5
-10.0.0.17   Ready    <none>   17m   v1.22.5-tke.5
-10.0.0.2    Ready    <none>   17m   v1.22.5-tke.5
-[root@VM-0-2-centos ~]# kubectl label nodes 10.0.0.12 k8s.kuboard.cn/role=etcd
-node/10.0.0.12 labeled
-[root@VM-0-12-centos ~]# kubectl delete daemonset kuboard-etcd -n kuboard
+10.0.0.16   Ready    <none>   15m   v1.22.5-tke.5
+10.0.0.4    Ready    <none>   15m   v1.22.5-tke.5
+10.0.0.9    Ready    <none>   15m   v1.22.5-tke.5
+[root@VM-0-16-centos ~]# kubectl label nodes 10.0.0.16 k8s.kuboard.cn/role=etcd
+node/10.0.0.16 labeled
+[root@VM-0-16-centos ~]# kubectl delete daemonset kuboard-etcd -n kuboard
 daemonset.apps "kuboard-etcd" deleted
-[root@VM-0-12-centos ~]# kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
+[root@VM-0-16-centos ~]# kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
 namespace/kuboard unchanged
 configmap/kuboard-v3-config unchanged
 serviceaccount/kuboard-boostrap unchanged
@@ -59,12 +64,12 @@ clusterrolebinding.rbac.authorization.k8s.io/kuboard-boostrap-crb unchanged
 daemonset.apps/kuboard-etcd created
 deployment.apps/kuboard-v3 unchanged
 service/kuboard-v3 unchanged
-[root@VM-0-12-centos ~]# watch kubectl get pods -n kuboard
-Every 2.0s: kubectl get pods -n kuboard                                                                                                                                                         VM-0-12-centos: Wed Nov  2 15:40:24 2022
+[root@VM-0-16-centos ~]# watch kubectl get pods -n kuboard
+Every 2.0s: kubectl get pods -n kuboard                                                                                                                                                         VM-0-16-centos: Fri Nov  4 09:53:03 2022
 
-NAME                               READY   STATUS    RESTARTS        AGE
-kuboard-agent-2-688876d6dd-svb8n   1/1     Running   2 (3m1s ago)    3m8s
-kuboard-agent-69bbcb58bd-4nk84     1/1     Running   2               3m8s
-kuboard-etcd-wfwhh                 1/1     Running   0               2m8s
-kuboard-v3-5fc46b5557-qc5zh        1/1     Running   3 (3m29s ago)   7m59s
+NAME                               READY   STATUS    RESTARTS      AGE
+kuboard-agent-2-589c6dd588-7wjwc   1/1     Running   2 (34s ago)   42s
+kuboard-agent-7484bf754d-9thqd     1/1     Running   2 (34s ago)   42s
+kuboard-etcd-klzrc                 1/1     Running   0             2m20s
+kuboard-v3-5fc46b5557-skxrd        1/1     Running   1 (62s ago)   2m42s
 ```

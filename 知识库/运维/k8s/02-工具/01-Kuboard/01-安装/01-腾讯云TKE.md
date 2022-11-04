@@ -8,6 +8,8 @@ https://console.cloud.tencent.com/tke2/cluster
 
 > https://cloud.tencent.com/document/product/457/32189
 
+> tips: 节点pod数量根据自己的情况配置哦，不然后面部署服务会报错：`FailedScheduling 0/3 nodes are available: 3 Too many pods.`
+
 ![img.png](images/tke-cluster-01.png)
 
 ![img.png](images/tke-cluster-02.png)
