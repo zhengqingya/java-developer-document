@@ -16,9 +16,9 @@
 
 腾讯云tke的节点pod数量限制
 
-![img.png](config/tke-cluster-pod-num-01.png)
+![img.png](images/tke-cluster-pod-num-01.png)
 
 增大一点即可...
 
-![img.png](config/tke-cluster-pod-num-02.png)
+![img.png](images/tke-cluster-pod-num-02.png)
 
