@@ -1,112 +1,8 @@
-# 实战-部署微服务SpringBlade
+# 部署Nacos
 
-> https://gitee.com/smallc/SpringBlade
+### 1、部署nacos-mysql
 
-| 机器        | 说明       |
-|-----------| ---------- |
-| 10.0.0.15 | k8s-master |
-| 10.0.0.5  | k8s-node1  |
-| 10.0.0.16 | k8s-node2  |
-
-## 一、环境准备
-
-### 1、准备一个有效的存储类
-
-这里使用 NFS 作为存储类
-
-#### 1.1、`[主节点]` 搭建NFS Server
-
-```shell
-# 安装 nfs 服务器所需的软件包
-yum install -y rpcbind nfs-utils
-
-
-# 创建 exports 文件
-echo "/root/nfs_root/ *(insecure,rw,sync,no_root_squash)" > /etc/exports
-
-
-# 启动 nfs 服务
-mkdir /root/nfs_root
-
-systemctl enable rpcbind
-systemctl enable nfs-server
-
-systemctl start rpcbind
-systemctl start nfs-server
-exportfs -r
-
-# 检查配置是否生效
-exportfs
-# 输出结果如下所示
-# /root/nfs_root  <world>
-```
-
-![img.png](images/kuboard-springblade-01.png)
-
-#### 1.2、`[从节点]` 在客户端测试nfs
-
-```shell
-# 安装 nfs 客户端所需的软件包
-yum install -y nfs-utils
-
-# 执行以下命令检查 nfs 服务器端是否有设置共享目录
-# showmount -e $(nfs服务器的IP)   -- tips: 使用内网IP
-showmount -e 10.0.0.15
-# 输出结果如下所示
-# Export list for 10.0.0.15:
-# /root/nfs_root *
-
-# 执行以下命令挂载 nfs 服务器上的共享目录到本机路径 /root/nfsmount
-mkdir /root/nfsmount
-# mount -t nfs $(nfs服务器的IP):/root/nfs_root /root/nfsmount
-mount -t nfs 10.0.0.15:/root/nfs_root /root/nfsmount
-# 写入一个测试文件
-echo "hello nfs server" > /root/nfsmount/test.txt
-```
-
-![img_1.png](images/kuboard-springblade-22.png)
-
-`[主节点]` 在 nfs 服务器上执行以下命令，验证文件写入成功
-
-```shell
-cat /root/nfs_root/test.txt
-```
-
-![img_2.png](images/kuboard-springblade-02.png)
-
-### 2、在Kuboard中创建 NFS 存储类
-
-`集群管理` -> `概要` -> `创建存储类`
-
-![img_3.png](images/kuboard-springblade-03.png)
-
-![img_4.png](images/kuboard-springblade-04.png)
-
-![img_5.png](images/kuboard-springblade-05.png)
-
-完成
-
-![img_6.png](images/kuboard-springblade-06.png)
-
-### 3、创建 Kubernetes 名称空间
-
-创建一个 Kubernetes 名称空间用于部署 SpringBlade，ex:`spring-blade`
-
-`打开 Kuboard 首页` -> `选择一个已就绪的集群` -> `编辑名称空间列表` -> `创建名称空间`
-
-![img_7.png](images/kuboard-springblade-07.png)
-
-![img_8.png](images/kuboard-springblade-08.png)
-
-![img_09.png](images/kuboard-springblade-09.png)
-
-## 二、部署 SpringBlade
-
-### 1、部署Nacos
-
-#### 1.1、部署nacos-mysql
-
-##### 1.1.1、创建 StatefulSet
+#### 1.1、创建 StatefulSet
 
 > `StatefulSet`: 有状态应用 ex: redis、mysql
 
@@ -224,7 +120,7 @@ cat /root/nfs_root/test.txt
     > 整个启动过程中，kubelet 执行了 2 次失败的 `Startup probe failed` `容器启动检查探针`，
     > 只要这个次数在前面定义的 `容器启动检查探针` -> `不健康阈值` 的范围之内，kubelet 仍将继续等待该容器的启动，否则 kublet 将强制重启该容器。
 
-##### 1.1.2、验证部署结果
+#### 1.2、验证部署结果
 
 进入 `bash` 界面
 
@@ -235,9 +131,9 @@ show databases;
 
 ![img_21.png](images/kuboard-springblade-21.png)
 
-#### 1.2、部署nacos
+### 2、部署nacos
 
-##### 1.2.1、创建 StatefulSet
+#### 2.1、创建 StatefulSet
 
 `名称空间` -> `spring-blade` -> `常用操作` -> `创建工作负载`
 
@@ -367,7 +263,7 @@ show databases;
 
 ![img_14.png](images/kuboard-springblade-nacos-15.png)
 
-##### 1.2.2、验证部署结果
+#### 2.2、验证部署结果
 
 点击 容器端口 8848 后面对应的绿色图标，修改 `访问路径` 字段后，点击 `在浏览器窗口打开` 按钮，将会打开一个新的窗口
 
@@ -382,9 +278,9 @@ show databases;
 
 ![img_17.png](images/kuboard-springblade-nacos-18.png)
 
-#### 1.3、导入配置到nacos
+### 3、导入配置到nacos
 
-##### 导入配置
+##### 3.1、导入配置
 
 | 字段名   | 字段值                                                       | 备注                                                         |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -402,7 +298,7 @@ show databases;
 
 ![img_18.png](images/kuboard-springblade-nacos-19.png)
 
-##### 验证配置存储
+##### 3.2、验证配置存储
 
 在 Kuboard 中切换到 StatefulSet `nacos-mysql` 的详情页中，点击 `sh` 按钮，打开终端界面
 
@@ -415,214 +311,3 @@ select data_id, group_id, gmt_create from config_info;
 ```
 
 ![img_19.png](images/kuboard-springblade-nacos-21.png)
-
-### 2、部署其它基础软件
-
-#### 2.1、redis
-
-##### 2.1.1、创建 StatefulSet
-
-###### ->`基本信息`
-
-![img_22.png](images/kuboard-springblade-redis-01.png)
-
-###### ->`容器信息`
-
-| 字段名称            | 字段值                                            | 备注 |
-|-----------------|------------------------------------------------| ---- |
-| 名称              | `redis`                                        |      |
-| 容器镜像            | `swr.cn-east-2.myhuaweicloud.com/blade/redis:5.0.2-alpine` |      |
-| 镜像拉取策略          | `始终拉取新镜像（Always）`                              |      |
-| 命令参数            | 命令 `redis-server --appendonly yes`             |      |
-| 资源请求/限制         | 内存资源请求：`100Mi` 内存资源限制：`1024Mi`                 |      |
-| 容器端口            | `TCP` `redis` `6379`                           |      |
-| 健康检查-->容器启动检查探针 | 探测方式： `TCP连接` TCP端口： `6379` 不健康阈值：`20`         |      |
-| 健康检查-->容器存活检查探针 | 探测方式： `TCP连接` TCP端口： `6379`                    |      |
-| 健康检查-->容器就绪检查探针 | 探测方式： `TCP连接` TCP端口： `6379`                    |      |
-
-![img_21.png](images/kuboard-springblade-redis-02.png)
-
-![img_23.png](images/kuboard-springblade-redis-03.png)
-
-###### ->`存储挂载`
-
-![img_24.png](images/kuboard-springblade-redis-04.png)
-
-###### ->`高级设置`
-
-![img_25.png](images/kuboard-springblade-redis-05.png)
-
-###### ->`服务/应用路由`
-
-![img_26.png](images/kuboard-springblade-redis-06.png)
-
-保存操作
-
-![img_27.png](images/kuboard-springblade-redis-07.png)
-
-##### 2.1.2、验证部署结果
-
-![img_28.png](images/kuboard-springblade-redis-08.png)
-
-![img_29.png](images/kuboard-springblade-redis-09.png)
-
-#### 2.2、sentinel
-
-##### 2.2.1、创建 StatefulSet
-
-###### ->`基本信息`
-
-![img_30.png](images/kuboard-springblade-sentinel-01.png)
-
-###### ->`容器信息`
-
-|                          |                                                                  |      |
-| ------------------------ |------------------------------------------------------------------| ---- |
-| 字段名称                 | 字段值                                                              | 备注 |
-| 名称                     | `sentinel`                                                       |      |
-| 容器镜像         | `swr.cn-east-2.myhuaweicloud.com/blade/sentinel-dashboard:1.8.0` |      |
-| 镜像拉取策略             | `始终拉取新镜像（Always）`                                                |      |
-| 资源请求/限制            | 内存资源请求：`100Mi` 内存资源限制：`1024Mi`                                   |      |
-| 容器端口                 | `TCP` `web` `8858`                                               |      |
-| 健康检查-->容器启动检查探针 | 探测方式： `HTTP请求` HTTP请求端口： `8858` HTTP请求路径：`/` 不健康阈值：`20`          |      |
-| 健康检查-->容器存活检查探针 | 探测方式： `HTTP请求` HTTP请求端口： `8858` HTTP请求路径：`/`                     |      |
-| 健康检查-->容器就绪检查探针 | 探测方式： `TCP连接` HTTP请求端口： `8858` HTTP请求路径：`/`                      |      |
-
-![img_35.png](images/kuboard-springblade-sentinel-02.png)
-
-###### ->`存储挂载`
-
-无
-
-###### ->`高级设置`
-
-![img_33.png](images/kuboard-springblade-sentinel-03.png)
-
-###### ->`服务/应用路由`
-
-![img_34.png](images/kuboard-springblade-sentinel-04.png)
-
-保存操作
-
-![img_31.png](images/kuboard-springblade-sentinel-05.png)
-
-##### 2.2.2、验证部署结果
-
-![img_32.png](images/kuboard-springblade-sentinel-06.png)
-
-访问： `http://任意节点IP:32100`
-
-- 用户名： sentinel
-- 密码： sentinel
-
-![img_36.png](images/kuboard-springblade-sentinel-07.png)
-
-![img_37.png](images/kuboard-springblade-sentinel-08.png)
-
-#### 2.3、saber-db
-
-##### 2.3.1、创建 StatefulSet
-
-###### ->`基本信息`
-
-![img_38.png](images/kuboard-springblade-db-01.png)
-
-###### ->`容器信息`
-
-| 字段名称                    | 字段值                                                                        | 备注                                          |
-| --------------------------- |----------------------------------------------------------------------------| --------------------------------------------- |
-| 名称                        | `saber-db`                                                                 |                                               |
-| 容器镜像                    | `swr.cn-east-2.myhuaweicloud.com/blade/saber-db:3.0.3`                          |                                               |
-| 镜像拉取策略                | `始终拉取新镜像（Always）`                                                          |                                               |
-| 环境变量                    | `MYSQL_ALLOW_EMPTY_PASSWORD`=`1` `MYSQL_ROOT_PASSWORD`=`root`              | 类型为 `值`，点击 `名值对` 按钮可添加一组 |
-| 资源请求/限制               | 内存资源请求：`200Mi` 内存资源限制：`2048Mi`                                             |                                               |
-| 容器端口                    | `mysql` `3306`                                                             |                                               |
-| 健康检查-->容器启动检查探针 | 探测方式： `命令行` 执行命令： `mysql -uroot -proot -e 'select 1'` 初始延迟：`30` 不健康阈值：`20` |                                               |
-| 健康检查-->容器存活检查探针 | 探测方式： `命令行` 执行命令： `mysqladmin -uroot -proot ping`                          |                                               |
-| 健康检查-->容器就绪检查探针 | 探测方式： `命令行` 执行命令： `mysql -uroot -proot -e 'select 1'`                      |                                               |
-
-![img_39.png](images/kuboard-springblade-db-02.png)
-
-###### ->`存储挂载`
-
-![img_40.png](images/kuboard-springblade-db-03.png)
-
-###### ->`高级设置`
-
-![img_41.png](images/kuboard-springblade-db-04.png)
-
-###### ->`服务/应用路由`
-
-![img_42.png](images/kuboard-springblade-db-05.png)
-
-保存操作
-
-![img_43.png](images/kuboard-springblade-db-06.png)
-
-##### 2.3.2、验证部署结果
-
-点击`sh`按钮
-
-```shell
-mysql -uroot -proot
-show databases;
-use blade;
-show tables;
-```
-
-![img_44.png](images/kuboard-springblade-db-07.png)
-
-#### 2.4、接口网关
-
-##### 2.4.1、创建 StatefulSet
-
-###### ->`基本信息`
-
-###### ->`容器信息`
-
-###### ->`存储挂载`
-
-###### ->`高级设置`
-
-###### ->`服务/应用路由`
-
-##### 2.4.2、验证部署结果
-
-#### 2.5、swagger
-
-##### 2.5.1、创建 StatefulSet
-
-###### ->`基本信息`
-
-###### ->`容器信息`
-
-###### ->`存储挂载`
-
-###### ->`高级设置`
-
-###### ->`服务/应用路由`
-
-##### 2.5.2、验证部署结果
-
-### 3、部署微服务层
-
-### 4、部署saber-web
-
-### 5、验证SpringBlade部署结果
-
-## 三、导入导出
-
-### 1、导出YAML
-
-![img.png](images/kuboard-springblade-export-yaml.png)
-
-### 2、导入YAML
-
-## 四、监控及日志
-
-### 1、
-
-### 2、
-
-### 3、
-
