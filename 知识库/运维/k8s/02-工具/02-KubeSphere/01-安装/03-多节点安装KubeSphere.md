@@ -19,7 +19,7 @@
 | 192.168.101.22 | node2  | worker       |
 
 > 这里小编先将之前环境保存下快照，然后用一个干净的环境来进行操作。
-> ![在这里插入图片描述](https://img-blog.csdnimg.cn/5b8e2f7e075a49bbaf5f57e3e40a3622.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+> ![img_16.png](images/kubesphere-on-multiple-01.png)
 
 #### 1、配置主机名
 
@@ -70,7 +70,7 @@ chmod +x kk
 vim config-sample.yaml
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c9a76ff83dba4607b6940af9c0e99bf2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_17.png](images/kubesphere-on-multiple-02.png)
 
 ```yml
 spec:
@@ -98,11 +98,11 @@ spec:
 ./kk create cluster -f config-sample.yaml
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f87f368d4a164466ab1cca0adff0c48a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_18.png](images/kubesphere-on-multiple-03.png)
 然后等它自己慢慢安装吧...
-![在这里插入图片描述](https://img-blog.csdnimg.cn/452c2454e3b04de6a2ba58ce05437aab.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_19.png](images/kubesphere-on-multiple-04.png)
 10分钟左右安装完成`^_^`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6a39c4a57ff5455893862775cdef1d9a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_20.png](images/kubesphere-on-multiple-05.png)
 
 #### 4、验证安装
 
@@ -115,8 +115,8 @@ kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l app=
 访问`集群任意机器IP:30880`
 初始账号密码: `admin/P@88w0rd`
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7d4c6fead1e042259572ad95d7d6f980.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ac466f8fcabb45f6b37990123349a710.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_21.png](images/kubesphere-on-multiple-06.png)
+![img_22.png](images/kubesphere-on-multiple-07.png)
 
 ### 四、卸载KubeSphere和Kubernetes
 
@@ -124,7 +124,7 @@ kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l app=
 ./kk delete cluster -f config-sample.yaml
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c8afba3a04b14938b30bcc021c254ec6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_23.png](images/kubesphere-on-multiple-08.png)
 
 
 --- 

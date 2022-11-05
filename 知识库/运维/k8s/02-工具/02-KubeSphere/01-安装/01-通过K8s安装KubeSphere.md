@@ -17,7 +17,7 @@
 | 192.168.101.21 | k8s-node1  |
 | 192.168.101.22 | k8s-node2  |
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ea22605443fa4069912fdd81483a0ce7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img.png](images/kubesphere-on-k8s-01.png)
 
 #### 1、配置k8s集群中的默认存储类型 -- NFS
 
@@ -213,7 +213,7 @@ kubectl apply -f storageclass.yaml
 kubectl get sc
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ded34dfabdc94e67b541522f3bd0ea32.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_1.png](images/kubesphere-on-k8s-02.png)
 
 创建一个PVC测试一下动态供应能力
 
@@ -242,7 +242,7 @@ kubectl get pvc
 kubectl get pv
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0df71a10d6714e2bb8da4900ed78d767.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_2.png](images/kubesphere-on-k8s-03.png)
 
 #### 2、metrics-server
 
@@ -452,7 +452,7 @@ kubectl top pods
 kubectl top pods -A
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d583846cec724fce9991801f5845992f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_3.png](images/kubesphere-on-k8s-04.png)
 
 ### 三、安装KubeSphere
 
@@ -476,12 +476,13 @@ kubectl get pod --all-namespaces
 kubectl get svc/ks-console -n kubesphere-system
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/09ec20e2c6d54f95ad38a517785a7617.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_4.png](images/kubesphere-on-k8s-05.png)
 
 访问`集群任意机器IP:30880`
 初始账号密码: `admin/P@88w0rd`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1996811378ed423cb27674a98132f9fb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/98de7e115c824eb9b1f46236999b978e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+
+![img_5.png](images/kubesphere-on-k8s-06.png)
+![img_6.png](images/kubesphere-on-k8s-07.png)
 
 ### 四、卸载KubeSphere
 
