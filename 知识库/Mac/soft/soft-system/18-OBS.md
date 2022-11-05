@@ -31,3 +31,14 @@ https://www.macwk.com/soft/obs-studio
 
 串流密钥
 ![rtmpt.png](images/rtmpt-02.png)
+
+### 问题: 电脑内置声音输出&麦克风输入声音都没有
+
+> 问题环境：`macOS 10.15 Catalina` +  `OBS_27.2.0-rc1.dmg`
+> 解决：
+>   - 建议下载最新版obs  "obs-studio-28.1.1-macos-x86_64.dmg"
+>   - 或使用下面命令启动obs
+
+```shell
+open /Applications/OBS.app/Contents/MacOS/OBS --args -picture
+```
