@@ -14,6 +14,8 @@
 
 ### 2、创建存储卷 - mysql数据挂载卷
 
+> tips: 建议在`工作负载` -> `存储卷设置` -> `添加存储卷模板` 中去创建关联存储卷。(不使用下面方式)
+
 > /var/lib/mysql
 
 ![img_4.png](images/kubesphere-deploy-mysql-05.png)
