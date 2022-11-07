@@ -16,7 +16,7 @@
 | 192.168.101.21 | k8s-node1  |
 | 192.168.101.22 | k8s-node2  |
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/43038cc03bb04956b9dedf6c41406095.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img.png](images/k8s-install-centos-01.png)
 
 > tips: 除了特别说明的地方，所有机器都要做相同操作
 
@@ -171,7 +171,7 @@ kubeadm init \
 ```
 
 日志信息如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/77a822dc25134a528cbbf5c7c3919919.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_1.png](images/k8s-install-centos-02.png)
 
 ```
 Your Kubernetes control-plane has initialized successfully!
@@ -226,8 +226,7 @@ curl https://docs.projectcalico.org/manifests/calico.yaml -O
 cat calico.yaml | grep 192.168.0.0
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ce10a691aa754a20aae92f319126ed39.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-
+![img_2.png](images/k8s-install-centos-03.png)
 
 ```shell
 # 修改过后再次查看
@@ -244,20 +243,20 @@ kubectl apply -f calico.yaml
 kubectl get pod -A
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e9df509868774aec9831443c24c919b5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_3.png](images/k8s-install-centos-04.png)
 
 #### 5、加入node节点
 
 > tips: node机器执行
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2e75759be0cc41978c0880222a4c05b2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_4.png](images/k8s-install-centos-05.png)
 
 ```shell
 kubeadm join cluster-endpoint:6443 --token pm47n2.n9nl7oudlm3mlxoc \
     --discovery-token-ca-cert-hash sha256:3b979b2842feba026a0bbb8f5e74dd6eca52c2da664ed2eacbf14dbfd1c2b13a
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a0a40f9c3af5443db7e578c0d70c4fda.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_5.png](images/k8s-install-centos-06.png)
 
 ```shell
 # 如果忘记也可在master机器执行如下命令生成新令牌，然后拿到命令去node机器执行加入
@@ -274,7 +273,7 @@ kubectl get nodes
 kubectl get pods -A
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/032e26db92864dd28e6bd56f3daed309.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_6.png](images/k8s-install-centos-07.png)
 
 ### 五、测试集群 -- 创建nginx容器
 
@@ -291,10 +290,9 @@ kubectl expose deployment nginx --port=80 --target-port=80 --type=NodePort
 kubectl get service nginx
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7327cd066b294753876a6f5b281c1552.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_7.png](images/k8s-install-centos-08.png)
 访问： `http://集群任意IP:32474`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b7aeed84c322439a83193c10b37254b7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-
+![img_8.png](images/k8s-install-centos-09.png)
 
 ### 六、部署`Kubernetes Dashboard` -- 可视化界面
 
@@ -315,13 +313,13 @@ kubectl edit svc kubernetes-dashboard -n kubernetes-dashboard
 kubectl get svc -A |grep kubernetes-dashboard
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e68049c6cba14ec983034d674865eb54.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_9.png](images/k8s-install-centos-10.png)
 
 访问： `https://集群任意IP:30586`
 
 > tips: 小编使用虚拟机环境部署，通过谷歌浏览器无法正常访问，然后换了个火狐浏览器正常访问 `^_^`
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1889be5ce8254da5b9173305d7757d90.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_10.png](images/k8s-install-centos-11.png)
 
 #### 2、创建访问账号
 
@@ -354,12 +352,12 @@ kubectl apply -f kubernetes-dashboard-user.yaml
 kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
 ````
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8a0e3ff04821432986170a37c539f7c5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_11.png](images/k8s-install-centos-12.png)
 
 #### 4、访问
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/107e723246984ed2b4ed694d7dd9e664.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/557d1fe86edc4bbb901b5867ae829247.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![img_12.png](images/k8s-install-centos-13.png)
+![img_13.png](images/k8s-install-centos-14.png)
 
 --- 
 
