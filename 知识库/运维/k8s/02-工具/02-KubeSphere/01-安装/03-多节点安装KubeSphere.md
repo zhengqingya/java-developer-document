@@ -92,7 +92,9 @@ spec:
     port: 6443
 ```
 
-> tips: 可查看[config-sample.yaml](config-sample.yaml)配置文件开启部分功能 修改的地方用`# TODO`开头标注
+> tips: 可查看[config-sample.yaml](config-sample.yaml)配置文件开启部分功能
+> 修改的地方用`# TODO`开头标注
+> 机器内存小的别全部开启！！！
 
 #### 3、使用配置文件创建集群
 
@@ -111,6 +113,8 @@ spec:
 ```shell
 kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l app=ks-install -o jsonpath='{.items[0].metadata.name}') -f
 ```
+
+![img.png](images/kubesphere-on-multiple-09.png)
 
 #### 5、访问
 

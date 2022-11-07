@@ -109,12 +109,12 @@ spec:
       externalElasticsearchHost: ""
       externalElasticsearchPort: ""
   alerting:
-    enabled: true # TODO 系统告警功能
+    enabled: false # TODO 系统告警功能
     # thanosruler:
     #   replicas: 1
     #   resources: {}
   auditing:
-    enabled: true  # TODO 审计日志
+    enabled: false  # TODO 审计日志
     # operator:
     #   resources: {}
     # webhook:
@@ -128,7 +128,7 @@ spec:
     jenkinsJavaOpts_Xmx: 512m
     jenkinsJavaOpts_MaxRAM: 2g
   events:
-    enabled: true # TODO 事件系统
+    enabled: false # TODO 事件系统
     # operator:
     #   resources: {}
     # exporter:
@@ -138,7 +138,7 @@ spec:
     #   replicas: 2
     #   resources: {}
   logging:
-    enabled: true # TODO
+    enabled: false # TODO
     containerruntime: docker
     logsidecar:
       enabled: true
@@ -188,9 +188,9 @@ spec:
     store:
       enabled: true # TODO 应用商店
   servicemesh:
-    enabled: true # TODO 微服务治理功能
+    enabled: false # TODO 微服务治理功能
   kubeedge:
-    enabled: true  # TODO 边缘计算
+    enabled: false  # TODO 边缘计算
     cloudCore:
       nodeSelector: { "node-role.kubernetes.io/worker": "" }
       tolerations: [ ]
