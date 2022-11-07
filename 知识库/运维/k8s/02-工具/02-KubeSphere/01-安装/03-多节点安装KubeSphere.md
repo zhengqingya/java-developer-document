@@ -92,6 +92,8 @@ spec:
     port: 6443
 ```
 
+> tips: 可查看[config-sample.yaml](config-sample.yaml)配置文件开启部分功能 修改的地方用`# TODO`开头标注
+
 #### 3、使用配置文件创建集群
 
 ```shell
