@@ -73,3 +73,13 @@ kuboard-agent-7484bf754d-9thqd     1/1     Running   2 (34s ago)   42s
 kuboard-etcd-klzrc                 1/1     Running   0             2m20s
 kuboard-v3-5fc46b5557-skxrd        1/1     Running   1 (62s ago)   2m42s
 ```
+
+# 卸载
+
+```shell
+# 卸载
+kubectl delete -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
+
+# 清理遗留数据 -- 在 master 节点以及带有 k8s.kuboard.cn/role=etcd 标签的节点上执行
+rm -rf /usr/share/kuboard
+```
