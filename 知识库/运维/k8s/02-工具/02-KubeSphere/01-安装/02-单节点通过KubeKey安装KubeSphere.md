@@ -2,24 +2,32 @@
 
 ### 一、前言
 
-KubeSphere 是在 Kubernetes 之上构建的以应用为中心的多租户容器平台，提供全栈的 IT 自动化运维的能力，简化企业的 DevOps 工作流。KubeSphere
-提供了运维友好的向导式操作界面，帮助企业快速构建一个强大和功能丰富的容器云平台。
+KubeSphere 是在 Kubernetes 之上构建的以应用为中心的多租户容器平台，提供全栈的 IT 自动化运维的能力，简化企业的 DevOps 工作流。
+KubeSphere 提供了运维友好的向导式操作界面，帮助企业快速构建一个强大和功能丰富的容器云平台。
 
 本文将基于`CentOS Linux release 7.6.1810 (Core)`以 `All-in-One` 模式安装`KubeSphere`
 
-> 可参考 [https://kubesphere.io/zh/docs/quick-start/all-in-one-on-linux](https://kubesphere.io/zh/docs/quick-start/all-in-one-on-linux)
+>
+可参考 [https://kubesphere.io/zh/docs/quick-start/all-in-one-on-linux](https://kubesphere.io/zh/docs/quick-start/all-in-one-on-linux)
 
-### 二、安装Docker
+### 二、环境准备
 
 ```shell
-# 通过yum源安装docker
-yum -y install docker
-# 启动docker
-systemctl start docker
-# 开机自启
-systemctl enable docker
+# 配置yum源
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+    --add-repo \
+    http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+    
+# 安装Docker -- 指定版本安装
+sudo yum install -y docker-ce-20.10.7 docker-ce-cli-20.10.7 containerd.io-1.4.6
+# 设置开机自启 & 现在启动
+sudo systemctl enable --now docker
 # 查看运行情况
-service docker status
+sudo systemctl status docker
+
+# 配置主机名
+hostnamectl set-hostname master
 ```
 
 ### 三、以 `All-in-One` 模式安装 `KubeSphere`
@@ -77,7 +85,8 @@ kubectl get pod --all-namespaces
 
 ### 五、卸载
 
-> 可参考 [https://kubesphere.io/zh/docs/installing-on-linux/uninstall-kubesphere-and-kubernetes](https://kubesphere.io/zh/docs/installing-on-linux/uninstall-kubesphere-and-kubernetes)
+>
+可参考 [https://kubesphere.io/zh/docs/installing-on-linux/uninstall-kubesphere-and-kubernetes](https://kubesphere.io/zh/docs/installing-on-linux/uninstall-kubesphere-and-kubernetes)
 
 ```shell
 ./kk delete cluster
