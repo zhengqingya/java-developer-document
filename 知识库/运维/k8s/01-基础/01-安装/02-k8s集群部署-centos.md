@@ -142,7 +142,7 @@ etcd:3.4.13-0
 pause:3.2
 )
 for imageName in ${images[@]} ; do
-docker pull registry.cn-hangzhou.aliyuncs.com/lfy_k8s_images/$imageName
+docker pull registry.cn-hangzhou.aliyuncs.com/zhengqing/k8s-$imageName
 done
 EOF
    

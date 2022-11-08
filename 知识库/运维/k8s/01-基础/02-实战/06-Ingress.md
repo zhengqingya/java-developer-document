@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
       - name: service1
-        image: registry.cn-hangzhou.aliyuncs.com/lfy_k8s_images/hello-server
+        image: registry.cn-hangzhou.aliyuncs.com/zhengqing/k8s-hello-server
         ports:
         - containerPort: 9000
 ---

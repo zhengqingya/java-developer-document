@@ -7,7 +7,8 @@
 
 本文将基于`CentOS Linux release 7.6.1810 (Core)`通过`Kubernetes`最小化安装`KubeSphere`
 
-> 可参考 [https://kubesphere.io/zh/docs/quick-start/minimal-kubesphere-on-k8s](https://kubesphere.io/zh/docs/quick-start/minimal-kubesphere-on-k8s)
+>
+可参考 [https://kubesphere.io/zh/docs/quick-start/minimal-kubesphere-on-k8s](https://kubesphere.io/zh/docs/quick-start/minimal-kubesphere-on-k8s)
 
 ### 二、环境准备
 
@@ -111,7 +112,7 @@ spec:
       serviceAccountName: nfs-client-provisioner
       containers:
         - name: nfs-client-provisioner
-          image: registry.cn-hangzhou.aliyuncs.com/lfy_k8s_images/nfs-subdir-external-provisioner:v4.0.2
+          image: registry.cn-hangzhou.aliyuncs.com/zhengqing/k8s-nfs-subdir-external-provisioner:v4.0.2
           # resources:
           #    limits:
           #      cpu: 10m
@@ -387,7 +388,7 @@ spec:
         - --secure-port=4443
         - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
         - --kubelet-use-node-status-port
-        image: registry.cn-hangzhou.aliyuncs.com/lfy_k8s_images/metrics-server:v0.4.3
+        image: registry.cn-hangzhou.aliyuncs.com/zhengqing/k8s-metrics-server:v0.4.3
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
