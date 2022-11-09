@@ -97,6 +97,62 @@ kubectl get pod --all-namespaces
 
 ![img_15.png](images/kubesphere-on-one-09.png)
 
+### 六、使用 KubeKey 升级 （`kubesphere v3.2.1` -> `kubesphere v3.3.1`）
+
+> tips: 您需要有一个运行 KubeSphere v3.2.x 的集群。
+> 如果您的 KubeSphere 是 v3.1.0 或更早的版本，请先升级至 v3.2.x。
+
+```shell
+# 下载 KubeKey
+export KKZONE=cn
+curl -sfL https://get-kk.kubesphere.io | VERSION=v2.3.0 sh -
+# 为 kk 添加可执行权限
+chmod +x kk
+# All-in-One 集群: 运行以下命令使用 KubeKey 将您的单节点集群升级至 KubeSphere 3.3 和 Kubernetes v1.22.12：
+./kk upgrade --with-kubernetes v1.22.12 --with-kubesphere v3.3.1
+```
+
+![img.png](images/kubesphere-on-one-10.png)
+
+![img.png](images/kubesphere-on-one-11.png)
+
+> tips: 经测试升级后devops不能正常使用`一直在等待中`...
+> ![img.png](images/kubesphere-on-one-12.png)
+> 通过卸载devops后重新启用也不可用...
+> 个人感觉为了避免后期再有其它功能异常，这里直接重装新版kubesphere吧... 当然我这里里面目前也没啥东西，所以不重要...
+
+---
+
+> 补充说明：
+> 重装也没用... 可能是我等太久太着急了 后面发现还有一个在Pending...
+> `kubectl get pod -n kubesphere-devops-system`
+> ![img.png](images/kubesphere-on-one-13.png)
+
+下面来尝试下解决
+
+```shell
+# 查看原因
+kubectl describe pod devops-jenkins-6f665b6758-6fztr -n kubesphere-devops-system
+
+# QoS Class:                   Burstable
+# Node-Selectors:              <none>
+# Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+#                              node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+# Events:
+#   Type     Reason            Age                 From               Message
+#   ----     ------            ----                ----               -------
+#   Warning  FailedScheduling  38s (x13 over 12m)  default-scheduler  0/1 nodes are available: 1 Insufficient cpu.
+
+# 查看节点信息
+kubectl get nodes
+kubectl describe node master
+```
+
+算了... 搞不懂，暂时放弃，恢复旧版本`kubesphere v3.2.1` ^_^
+
+会不会是因为新版本jenkins运行内存太大申请不了足够内存导致？？ 目前测试机条件有限，到处为止吧...
+
+![img.png](images/kubesphere-on-one-14.png)
 
 --- 
 
