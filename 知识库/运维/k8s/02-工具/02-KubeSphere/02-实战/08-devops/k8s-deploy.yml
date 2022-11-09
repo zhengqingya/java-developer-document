@@ -22,9 +22,9 @@ spec:
         app: service-test # TODO 应用名
     spec:
       imagePullSecrets:
-        - name: aliyun-docker-hub  # TODO 提前在项目下配置访问阿里云的账号密码
+        - name: aliyun-docker-registry-auth  # TODO 提前在项目下配置访问阿里云的账号密码
       containers:
-        - image: registry.cn-hangzhou.aliyuncs.com/zhengqingya/springboot-demo:$BUILD_NUMBER # TODO 镜像
+        - image: registry.cn-hangzhou.aliyuncs.com/zhengqingya/test:$BUILD_NUMBER # TODO 镜像
           #          readinessProbe:
           #            httpGet:
           #              path: /actuator/health
