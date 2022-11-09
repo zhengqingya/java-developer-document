@@ -12,6 +12,9 @@ KubeSphere 提供了运维友好的向导式操作界面，帮助企业快速构
 
 ### 二、环境准备
 
+> tips: 这一步可以不操作，后面`kubekey`会自动安装最新版本的docker；
+> 如果想指定docker版本的话，这里就可以提前安装docker
+
 ```shell
 # 配置yum源
 sudo yum install -y yum-utils
@@ -25,14 +28,14 @@ sudo yum install -y docker-ce-20.10.7 docker-ce-cli-20.10.7 containerd.io-1.4.6
 sudo systemctl enable --now docker
 # 查看运行情况
 sudo systemctl status docker
-
-# 配置主机名
-hostnamectl set-hostname master
 ```
 
 ### 三、以 `All-in-One` 模式安装 `KubeSphere`
 
 ```shell
+# 配置主机名
+hostnamectl set-hostname master
+
 # 准备
 mkdir -p /home/soft/kubesphere
 cd /home/soft/kubesphere
