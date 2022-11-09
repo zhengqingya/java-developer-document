@@ -150,9 +150,13 @@ kubectl describe node master
 
 算了... 搞不懂，暂时放弃，恢复旧版本`kubesphere v3.2.1` ^_^
 
-会不会是因为新版本jenkins运行内存太大申请不了足够内存导致？？ 目前测试机条件有限，到处为止吧...
+会不会是因为新版本jenkins运行cpu太大申请调度不了足够cpu导致？？ 目前测试机条件有限，到处为止吧...
 
 ![img.png](images/kubesphere-on-one-14.png)
+
+看了下旧版的cpu果然要小些，那么是否我尝试下修改新版配置就可以正常运行了呢？ 后期再测试吧...
+
+![img.png](images/kubesphere-on-one-15.png)
 
 --- 
 

@@ -1,0 +1,57 @@
+pipeline {
+    agent {
+        node {
+            label 'maven'
+        }
+
+    }
+    stages {
+        stage('拉取代码') {
+            steps {
+                container('maven') {
+                    git(credentialsId: 'gitee-auth', url: 'https://gitee.com/zhengqingya/test.git', branch: 'master', changelog: true, poll: false)
+                }
+
+            }
+        }
+
+        stage('项目编译') {
+            agent none
+            steps {
+                container('maven') {
+                    sh 'mvn clean package -Dmaven.test.skip=true'
+                    sh 'ls'
+                }
+
+            }
+        }
+
+        stage('docker镜像构建&推送') {
+            agent none
+            steps {
+                sh 'docker build -f Dockerfile --build-arg JAVA_OPTS="-XX:+UseG1GC -Xms100m -Xmx100m" --build-arg APP_NAME="test" --build-arg APP_PORT="8080" -t $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER .'
+                withCredentials([usernamePassword(credentialsId: 'aliyun-docker-registry-auth', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME',)]) {
+                    sh 'echo "$DOCKER_PASSWORD" | docker login $REGISTRY -u "$DOCKER_USERNAME" --password-stdin'
+                    sh 'docker push $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER'
+                }
+
+            }
+        }
+
+        stage('发布到k8s') {
+            agent none
+            steps {
+                kubernetesDeploy(configs: './k8s/**', enableConfigSubstitution: true, kubeconfigId: 'kubeconfig-auth')
+            }
+        }
+
+    }
+    environment {
+        REGISTRY = 'registry.cn-hangzhou.aliyuncs.com'
+        DOCKERHUB_NAMESPACE = 'zhengqingya'
+        APP_NAME = 'test'
+    }
+    parameters {
+        string(name: 'TAG_NAME', defaultValue: '', description: '')
+    }
+}
