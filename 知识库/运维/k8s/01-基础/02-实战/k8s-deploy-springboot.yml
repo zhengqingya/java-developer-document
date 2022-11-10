@@ -3,10 +3,10 @@
 apiVersion: apps/v1
 kind: Deployment  # 无状态部署
 metadata:
-  name: ${APP_NAME}
+  name: springboot-app
   namespace: my-project   # TODO 命名空间
   labels:
-    app: ${APP_NAME}
+    app: springboot-app
 spec:
   replicas: 3 # TODO 3个副本
   strategy:
@@ -15,21 +15,21 @@ spec:
       maxUnavailable: 1  # 滚动升级时允许的最大Unavailable的pod个数
   selector:
     matchLabels:
-      app: ${APP_NAME}
+      app: springboot-app
   template:
     metadata:
       labels:
-        app: ${APP_NAME}
+        app: springboot-app
     spec:
       imagePullSecrets:
         - name: aliyun-docker-registry-auth  # TODO 提前在项目下配置访问阿里云仓库的账号密码
       containers:
-        - name: ${APP_NAME}
-          image: ${APP_DOCKER_IMAGE} # TODO 镜像地址
+        - name: springboot-app
+          image: registry.cn-hangzhou.aliyuncs.com/zhengqingya/springboot-demo # TODO 镜像地址
           imagePullPolicy: Always
           env: # 环境变量
             - name: JAVA_OPTS
-              value: ${JAVA_OPTS}
+              value: -XX:+UseG1GC -Xms100m -Xmx100m -Dserver.port=8080
           ports:
             - name: http
               containerPort: 8080
@@ -53,11 +53,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ${APP_NAME}  # TODO 服务名
+  name: springboot-app  # TODO 服务名
   namespace: my-project   # TODO 命名空间
 spec:
   selector:
-    app: ${APP_NAME} # TODO  label selector配置，将选择具有label标签的Pod作为管理
+    app: springboot-app # TODO  label selector配置，将选择具有label标签的Pod作为管理
   type: ClusterIP # 访问方式  ClusterIP/NodePort
   ports:
     - name: http            # 端口名称

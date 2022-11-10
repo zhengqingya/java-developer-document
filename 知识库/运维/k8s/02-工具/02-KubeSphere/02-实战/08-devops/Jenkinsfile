@@ -1,65 +1,100 @@
 pipeline {
-  agent {
-    node {
-      label 'maven'
-    }
-
-  }
-  stages {
-    stage('拉取代码') {
-      agent none
-      steps {
-        container('maven') {
-          git(credentialsId: 'gitee-auth', url: 'https://gitee.com/zhengqingya/test.git', branch: 'master', changelog: true, poll: false)
-          sh 'ls'
+    agent {
+        node {
+            label 'maven'
         }
 
-      }
     }
 
-    stage('项目编译') {
-      agent none
-      steps {
-        container('maven') {
-          sh 'mvn clean package -Dmaven.test.skip=true'
-          sh 'ls'
-          sh 'cp target/*.jar docker'
-          sh 'ls docker'
+    environment {
+        DOCKER_REGISTRY_AUTH = "aliyun-docker-registry-auth"
+        DOCKER_REGISTRY = 'registry.cn-hangzhou.aliyuncs.com'
+        DOCKER_REGISTRY_NAMESPACE = 'zhengqingya'
+        APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/${DOCKER_REGISTRY_NAMESPACE}/${APP_NAME}:${BRANCH_NAME}"
+        PROJECT_GIT_URL = 'https://gitee.com/zhengqingya/test.git'
+        APP_NAME = 'test'
+        BRANCH_NAME = 'master'
+        IS_SKIP_BUILD = 'false'
+        JAVA_OPTS = "-XX:+UseG1GC -Xms100m -Xmx100m -Dserver.port=8080"
+    }
+//    parameters {
+//        string(name: 'BRANCH_NAME', defaultValue: 'master', description: 'git分支名')
+//        booleanParam(name: 'IS_SKIP_BUILD', defaultValue: 'false', description: '是否跳过构建,直接部署')
+//        choice(name: 'SERVICE_NAMES', defaultValue: 'test', description: '需要构建的服务')
+//    }
+
+    stages {
+
+        stage('参数验证') {
+            agent none
+            steps {
+                container('maven') {
+                    sh """
+                        echo "分支: ${BRANCH_NAME}"
+                        echo "是否跳过构建，直接部署(tips:适用于之前已经进行过构建打包的情景)：${IS_SKIP_BUILD}"
+                        echo "app镜像: ${APP_DOCKER_IMAGE}"
+                        echo "构建运行ID: ${BUILD_NUMBER}"
+                        echo "JAVA_OPTS: ${JAVA_OPTS}"
+                    """
+                }
+            }
         }
 
-      }
-    }
-
-    stage('docker镜像构建&推送') {
-      agent none
-      steps {
-        container('maven') {
-          sh 'docker build -f docker/Dockerfile  -t $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$BUILD_NUMBER ./docker'
-          withCredentials([usernamePassword(credentialsId: 'aliyun-docker-registry-auth', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME',)]) {
-            sh 'echo "$DOCKER_PASSWORD" | docker login $REGISTRY -u "$DOCKER_USERNAME" --password-stdin'
-            sh 'docker push $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$BUILD_NUMBER'
-          }
-
+        stage('拉取代码') {
+            agent none
+            steps {
+                container('maven') {
+                    git(credentialsId: 'gitee-auth', url: "${PROJECT_GIT_URL}", branch: "${BRANCH_NAME}", changelog: true, poll: false)
+                    sh 'ls -al'
+                }
+            }
         }
 
-      }
-    }
+        stage('项目编译') {
+            agent none
+            steps {
+                container('maven') {
+                    sh 'mvn clean package -Dmaven.test.skip=true'
+                    sh 'ls -al'
+                }
+            }
+        }
 
-    stage('发布到k8s') {
-      agent none
-      steps {
-        sh 'ls'
-        kubernetesDeploy(enableConfigSubstitution: true, deleteResource: false, kubeconfigId: 'kubeconfig-auth', configs: 'k8s/**')
-      }
-    }
+        stage('docker镜像构建&推送') {
+            agent none
+            steps {
+                container('maven') {
+                    sh 'cp target/*.jar docker'
+                    sh """
+                        cd docker
+                        ls
+                        echo "app镜像: ${APP_DOCKER_IMAGE}"
+                        docker build -f Dockerfile  -t ${APP_DOCKER_IMAGE} . --no-cache
+                    """
+                    withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_AUTH}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME',)]) {
+                        sh 'echo "$DOCKER_PASSWORD" | docker login $DOCKER_REGISTRY -u "$DOCKER_USERNAME" --password-stdin'
+                        sh 'docker push ${APP_DOCKER_IMAGE}'
+                        sh "echo 镜像推送成功：${APP_DOCKER_IMAGE}"
+                        sh 'ls -al'
+                    }
 
-  }
-  environment {
-    REGISTRY = 'registry.cn-hangzhou.aliyuncs.com'
-    DOCKERHUB_NAMESPACE = 'zhengqingya'
-    APP_NAME = 'test'
-  }
-  parameters {
-    string(name: 'TAG_NAME', defaultValue: '', description: '')
-  }
+                }
+
+            }
+        }
+
+        stage('发布到k8s') {
+            agent none
+            steps {
+                container('maven') {
+                    sh 'ls -al'
+                    withCredentials([kubeconfigFile(credentialsId: 'kubeconfig-auth', variable: 'KUBECONFIG')]) {
+                        // envsubst: 将相关参数传给该yml文件
+                        sh 'envsubst < k8s/k8s-deploy.yml | kubectl apply -f -'
+                    }
+                }
+            }
+        }
+
+    }
 }
