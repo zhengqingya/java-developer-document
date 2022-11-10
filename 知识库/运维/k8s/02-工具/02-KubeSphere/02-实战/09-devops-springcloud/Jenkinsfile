@@ -17,10 +17,11 @@ pipeline {
         IS_SKIP_BUILD = 'false'
         JAVA_OPTS = "-XX:+UseG1GC -Xms100m -Xmx100m -Dserver.port=8080"
     }
+
 //    parameters {
 //        string(name: 'BRANCH_NAME', defaultValue: 'master', description: 'git分支名')
-//        booleanParam(name: 'IS_SKIP_BUILD', defaultValue: 'false', description: '是否跳过构建,直接部署')
-//        choice(name: 'SERVICE_NAMES', defaultValue: 'test', description: '需要构建的服务')
+//        choice(name: 'IS_SKIP_BUILD', choices: ['false', 'true'], description: '是否跳过构建,直接部署')
+//        choice(name: 'SERVICE_NAMES', choices: ['test', 'system' ,'all'], description: '请选择要构建的服务,支持单个服务发布或全部服务发布')
 //    }
 
     stages {
