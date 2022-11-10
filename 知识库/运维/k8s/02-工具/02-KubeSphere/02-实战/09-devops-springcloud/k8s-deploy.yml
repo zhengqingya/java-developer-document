@@ -1,0 +1,68 @@
+---
+# 定义工作负载
+apiVersion: apps/v1
+kind: Deployment  # 无状态部署
+metadata:
+  name: ${APP_NAME}
+  namespace: my-project   # TODO 命名空间
+  labels:
+    app: ${APP_NAME}
+spec:
+  replicas: 3 # TODO 3个副本
+  strategy:
+    rollingUpdate: # 由于replicas为3,则整个升级,pod个数在2-4个之间
+      maxSurge: 1        # 滚动升级时会先启动1个pod
+      maxUnavailable: 1  # 滚动升级时允许的最大Unavailable的pod个数
+  selector:
+    matchLabels:
+      app: ${APP_NAME}
+  template:
+    metadata:
+      labels:
+        app: ${APP_NAME}
+    spec:
+      imagePullSecrets:
+        - name: aliyun-docker-registry-auth  # TODO 提前在项目下配置访问阿里云仓库的账号密码
+      containers:
+        - name: ${APP_NAME}
+          image: ${APP_DOCKER_IMAGE} # TODO 镜像地址
+          imagePullPolicy: Always
+          env: # 环境变量
+            - name: JAVA_OPTS
+              value: ${JAVA_OPTS}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          # CPU内存限制
+          resources:
+            limits:
+              cpu: 300m
+              memory: 600Mi
+          # 就绪探针
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
+#            timeoutSeconds: 10
+#            failureThreshold: 30
+#            periodSeconds: 5
+
+---
+# 定义服务
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${APP_NAME}  # TODO 服务名
+  namespace: my-project   # TODO 命名空间
+spec:
+  selector:
+    app: ${APP_NAME} # TODO  label selector配置，将选择具有label标签的Pod作为管理
+  type: ClusterIP # 访问方式  ClusterIP/NodePort
+  ports:
+    - name: http            # 端口名称
+      port: 8080
+      protocol: TCP    # 端口协议，支持TCP和UDP，默认TCP
+      targetPort: 8080
+      # nodePort: 666  # TODO 当`type = NodePort`时 对外开放端口
+  sessionAffinity: None  # 是否支持session
