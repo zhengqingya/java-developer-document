@@ -228,4 +228,3 @@ stage('发布到k8s') {
 最终发布成功
 
 ![img.png](images/kubesphere-devops-21.png)
-
