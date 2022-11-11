@@ -1,5 +1,7 @@
 # DevOps
 
+> demo源码见：https://gitee.com/zhengqingya/java-workspace
+
 自动检出 (Checkout) 代码、测试、分析、构建、部署并发布
 
 ![img.png](images/kubesphere-devops-01.png)
