@@ -109,7 +109,7 @@ pipeline {
                                     pwd
                                     rm -rf docker/*.jar
                                     cp ${jar_dir_prefix}/target/*.jar docker
-                                    cd docker
+                                    cd small-tools-api/docker
                                     ls
                                     echo "app镜像: ${APP_DOCKER_IMAGE}"
                                     docker build -f Dockerfile  -t ${APP_DOCKER_IMAGE} . --no-cache
