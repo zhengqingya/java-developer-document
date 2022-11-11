@@ -1,6 +1,7 @@
 # DevOps
 
 > demo源码见：https://gitee.com/zhengqingya/java-workspace
+> 基于`kubesphere 3.2.1`
 
 自动检出 (Checkout) 代码、测试、分析、构建、部署并发布
 
@@ -30,6 +31,10 @@ cat /root/.kube/config
 ```
 
 ![img.png](images/kubesphere-devops-04.png)
+
+将内容中的`https://lb.kubesphere.local:6443` -> `https://指定IP:6443`，不然之后部署可能会出现问题...
+
+![img.png](images/kubesphere-devops-20.png)
 
 ---
 
@@ -82,7 +87,7 @@ kubectl get secrets -n my-project
 
 ![img.png](images/kubesphere-devops-12.png)
 
-进入后可以点击`编辑流水线`，提供了一些模块
+进入后可以点击`编辑流水线`，提供了一些模板
 
 ![img.png](images/kubesphere-devops-13.png)
 

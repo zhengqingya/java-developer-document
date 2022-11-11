@@ -8,35 +8,48 @@ pipeline {
 
     environment {
         DOCKER_REGISTRY_AUTH = "aliyun-docker-registry-auth"
-        DOCKER_REGISTRY = 'registry.cn-hangzhou.aliyuncs.com'
-        DOCKER_REGISTRY_NAMESPACE = 'zhengqingya'
-        APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/${DOCKER_REGISTRY_NAMESPACE}/${APP_NAME}:${BRANCH_NAME}"
-        PROJECT_GIT_URL = 'https://gitee.com/zhengqingya/test.git'
-        APP_NAME = 'test'
+        DOCKER_REGISTRY = 'registry.cn-hangzhou.aliyuncs.com/zhengqingya'
+        PROJECT_GIT_URL = 'https://gitee.com/zhengqingya/small-tools.git'
+        // 需要处理的服务
+        SERVICE_HANDLE_LIST = ""
+        K8S_NAMESPACE = "my-project"
         BRANCH_NAME = 'master'
         IS_SKIP_BUILD = 'false'
         JAVA_OPTS = "-XX:+UseG1GC -Xms100m -Xmx100m -Dserver.port=8080"
+        SERVICE_NAMES = "test,system,demo"
     }
 
 //    parameters {
 //        string(name: 'BRANCH_NAME', defaultValue: 'master', description: 'git分支名')
+//        string(name: 'SERVICE_NAMES', defaultValue: 'auth, gateway, demo, mall-mini, mall-web, system, tool', description: '请选择要构建的服务,英文逗号分隔')
 //        choice(name: 'IS_SKIP_BUILD', choices: ['false', 'true'], description: '是否跳过构建,直接部署')
-//        choice(name: 'SERVICE_NAMES', choices: ['test', 'system' ,'all'], description: '请选择要构建的服务,支持单个服务发布或全部服务发布')
+//        choice(name: 'IS_BUILD_ALL_SERVICE', choices: ['false', 'true'], description: '是否全部服务部署')
+//        string(name: 'JAVA_OPTS', defaultValue: '-XX:+UseG1GC -Xms100m -Xmx100m -Dserver.port=8080', description: 'java运行参数')
 //    }
 
     stages {
 
-        stage('参数验证') {
+        stage('初始化准备') {
             agent none
             steps {
                 container('maven') {
-                    sh """
-                        echo "分支: ${BRANCH_NAME}"
-                        echo "是否跳过构建，直接部署(tips:适用于之前已经进行过构建打包的情景)：${IS_SKIP_BUILD}"
-                        echo "app镜像: ${APP_DOCKER_IMAGE}"
-                        echo "构建运行ID: ${BUILD_NUMBER}"
-                        echo "JAVA_OPTS: ${JAVA_OPTS}"
-                    """
+                    script {
+                        sh """
+                            echo "分支: ${BRANCH_NAME}"
+                            echo "是否跳过构建，直接部署(tips:适用于之前已经进行过构建打包的情景)：${IS_SKIP_BUILD}"
+                            echo "构建运行ID: ${BUILD_NUMBER}"
+                            echo "JAVA_OPTS: ${JAVA_OPTS}"
+                        """
+                        SERVICE_HANDLE_LIST = "${SERVICE_NAMES}".split(",")
+                        for (service in SERVICE_HANDLE_LIST) {
+                            println "待处理服务： ${service}"
+                        }
+
+                        echo '****************************** 镜像仓库认证 ******************************'
+                        withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_AUTH}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME',)]) {
+                            sh 'echo "$DOCKER_PASSWORD" | docker login $DOCKER_REGISTRY -u "$DOCKER_USERNAME" --password-stdin'
+                        }
+                    }
                 }
             }
         }
@@ -51,47 +64,87 @@ pipeline {
             }
         }
 
-        stage('项目编译') {
+        stage('项目打包') {
             agent none
             steps {
                 container('maven') {
-                    sh 'mvn clean package -Dmaven.test.skip=true'
-                    sh 'ls -al'
-                }
-            }
-        }
-
-        stage('docker镜像构建&推送') {
-            agent none
-            steps {
-                container('maven') {
-                    sh 'cp target/*.jar docker'
-                    sh """
-                        cd docker
-                        ls
-                        echo "app镜像: ${APP_DOCKER_IMAGE}"
-                        docker build -f Dockerfile  -t ${APP_DOCKER_IMAGE} . --no-cache
-                    """
-                    withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_AUTH}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME',)]) {
-                        sh 'echo "$DOCKER_PASSWORD" | docker login $DOCKER_REGISTRY -u "$DOCKER_USERNAME" --password-stdin'
-                        sh 'docker push ${APP_DOCKER_IMAGE}'
-                        sh "echo 镜像推送成功：${APP_DOCKER_IMAGE}"
-                        sh 'ls -al'
+                    script {
+                        if ("${IS_SKIP_BUILD}" != "true") {
+                            sh 'mvn clean package -Dmaven.test.skip=true'
+                            sh 'ls -al'
+                        }
                     }
-
                 }
-
             }
         }
+
+        stage('docker镜像-构建&推送') {
+            agent none
+            steps {
+                container('maven') {
+                    script {
+                        if ("${IS_SKIP_BUILD}" != "true") {
+                            for (service in SERVICE_HANDLE_LIST) {
+                                stage("build&push ${service}") {
+                                    def jar_dir_prefix = "small-tools-api/"
+                                    println "****** 处理服务：${service}"
+                                    switch ("${service}".trim()) {
+                                        case "gateway":
+                                            jar_dir_prefix = "${jar_dir_prefix}" + "${service}".trim()
+                                            break
+                                        case "mall-mini":
+                                        case "mall-web":
+                                            jar_dir_prefix = "service/" + "${service}".trim().split("-")[0] + "/${service}".trim()
+                                            break
+                                        case "demo":
+                                        case "pay":
+                                        case "system":
+                                        case "tool":
+                                        case "ums":
+                                            jar_dir_prefix = "service/" + "${service}".trim()
+                                            break
+                                    }
+                                    def APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/" + "${service}".trim()
+                                    sh """
+                                    pwd
+                                    rm -rf docker/*.jar
+                                    cp ${jar_dir_prefix}/target/*.jar docker
+                                    cd docker
+                                    ls
+                                    echo "app镜像: ${APP_DOCKER_IMAGE}"
+                                    docker build -f Dockerfile  -t ${APP_DOCKER_IMAGE} . --no-cache
+                                    docker push ${APP_DOCKER_IMAGE}
+                                    echo 镜像推送成功：${APP_DOCKER_IMAGE}
+                                """
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         stage('发布到k8s') {
             agent none
             steps {
                 container('maven') {
-                    sh 'ls -al'
-                    withCredentials([kubeconfigFile(credentialsId: 'kubeconfig-auth', variable: 'KUBECONFIG')]) {
-                        // envsubst: 将相关参数传给该yml文件
-                        sh 'envsubst < k8s/k8s-deploy.yml | kubectl apply -f -'
+                    script {
+                        for (service in SERVICE_HANDLE_LIST) {
+                            stage("deploy ${service}") {
+                                println "****** 部署服务：${service}"
+                                APP_NAME = "${service}"
+                                if ("${service}".trim() == "gateway") {
+                                    APP_PORT = 8080
+                                } else {
+                                    APP_PORT = 1218
+                                }
+                                withCredentials([kubeconfigFile(credentialsId: 'kubeconfig-auth', variable: 'KUBECONFIG')]) {
+                                    // envsubst: 将相关参数传给该yml文件
+                                    sh 'envsubst < k8s/k8s-deploy.yml | kubectl apply -f -'
+                                }
+                            }
+                        }
                     }
                 }
             }
