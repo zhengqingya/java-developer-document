@@ -1,0 +1,86 @@
+---
+# 定义工作负载
+apiVersion: apps/v1
+kind: Deployment  # 无状态部署
+metadata:
+  name: ${APP_NAME}
+  namespace: ${K8S_NAMESPACE}   # 命名空间
+  labels:
+    app: ${APP_NAME}
+spec:
+  replicas: 1 # TODO 副本数量
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: ${APP_NAME}
+  template:
+    metadata:
+      labels:
+        app: ${APP_NAME}
+    spec:
+      imagePullSecrets:
+        - name: aliyun-docker-registry-auth  # TODO 提前在项目下配置访问阿里云仓库的账号密码
+      containers:
+        - name: ${APP_NAME}
+          image: ${APP_DOCKER_IMAGE} # 镜像地址
+          imagePullPolicy: Always
+          env: # 环境变量
+            - name: JAVA_OPTS
+              value: ${JAVA_OPTS}
+          ports:
+            - name: http
+              containerPort: ${APP_PORT}
+              protocol: TCP
+          # CPU内存限制
+          resources:
+            limits:
+              cpu: 300m
+              memory: 600Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          # 就绪探针
+          readinessProbe:
+            initialDelaySeconds: 90
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+            httpGet:
+              scheme: HTTP
+              port: ${APP_PORT}
+              path: /nacos/health
+          # 存活探针
+          livenessProbe:
+            initialDelaySeconds: 100
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+            httpGet:
+              scheme: HTTP
+              port: $PORT
+              path: /nacos/health
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always # Pod重启策略
+      terminationGracePeriodSeconds: 30
+
+---
+# 定义服务
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${APP_NAME}
+  namespace: ${K8S_NAMESPACE}
+spec:
+  selector:
+    app: ${APP_NAME} # label selector配置，将选择具有label标签的Pod作为管理
+  type: NodePort # 访问方式  ClusterIP/NodePort
+  ports:
+    - name: http            # 端口名称
+      port: ${APP_PORT}
+      protocol: TCP    # 端口协议，支持TCP和UDP，默认TCP
+      targetPort: ${APP_PORT}
+      nodePort: ${APP_PORT}  # TODO 当`type = NodePort`时 对外开放端口
+  sessionAffinity: None  # 是否支持session

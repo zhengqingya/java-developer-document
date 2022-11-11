@@ -134,14 +134,14 @@ pipeline {
                             stage("deploy ${service}") {
                                 println "****** 部署服务：${service}"
                                 APP_NAME = "${service}"
-                                if ("${service}".trim() == "gateway") {
-                                    APP_PORT = 8080
-                                } else {
-                                    APP_PORT = 1218
-                                }
                                 withCredentials([kubeconfigFile(credentialsId: 'kubeconfig-auth', variable: 'KUBECONFIG')]) {
-                                    // envsubst: 将相关参数传给该yml文件
-                                    sh 'envsubst < k8s/k8s-deploy.yml | kubectl apply -f -'
+                                    if ("${service}".trim() == "gateway") {
+                                        APP_PORT = 1218
+                                        sh 'envsubst < k8s/k8s-deploy-gateway.yml | kubectl apply -f -'
+                                    } else {
+                                        APP_PORT = 8080
+                                        sh 'envsubst < k8s/k8s-deploy-service.yml | kubectl apply -f -'
+                                    }
                                 }
                             }
                         }
