@@ -3,7 +3,6 @@ pipeline {
         node {
             label 'maven'
         }
-
     }
 
     environment {
@@ -13,10 +12,11 @@ pipeline {
         // 需要处理的服务
         SERVICE_HANDLE_LIST = ""
         K8S_NAMESPACE = "my-project"
-        BRANCH_NAME = 'master'
+        BASE_PROJECT_URL = "small-tools-api/"
+        BRANCH_NAME = 'dev'
         IS_SKIP_BUILD = 'false'
         JAVA_OPTS = "-XX:+UseG1GC -Xms100m -Xmx100m -Dserver.port=8080"
-        SERVICE_NAMES = "test,system,demo"
+        SERVICE_NAMES = "demo,gateway"
     }
 
 //    parameters {
@@ -34,18 +34,15 @@ pipeline {
             steps {
                 container('maven') {
                     script {
+                        SERVICE_HANDLE_LIST = "${SERVICE_NAMES}".split(",")
                         sh """
                             echo "分支: ${BRANCH_NAME}"
                             echo "是否跳过构建，直接部署(tips:适用于之前已经进行过构建打包的情景)：${IS_SKIP_BUILD}"
                             echo "构建运行ID: ${BUILD_NUMBER}"
                             echo "JAVA_OPTS: ${JAVA_OPTS}"
+                            echo "待处理服务: ${SERVICE_HANDLE_LIST}"
                         """
-                        SERVICE_HANDLE_LIST = "${SERVICE_NAMES}".split(",")
-                        for (service in SERVICE_HANDLE_LIST) {
-                            println "待处理服务： ${service}"
-                        }
-
-                        echo '****************************** 镜像仓库认证 ******************************'
+                        // 镜像仓库认证
                         withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_AUTH}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME',)]) {
                             sh 'echo "$DOCKER_PASSWORD" | docker login $DOCKER_REGISTRY -u "$DOCKER_USERNAME" --password-stdin'
                         }
@@ -70,8 +67,11 @@ pipeline {
                 container('maven') {
                     script {
                         if ("${IS_SKIP_BUILD}" != "true") {
-                            sh 'mvn clean package -Dmaven.test.skip=true'
-                            sh 'ls -al'
+                            sh """
+                                cd ${BASE_PROJECT_URL}
+                                mvn clean package -Dmaven.test.skip=true
+                                ls -al
+                            """
                         }
                     }
                 }
@@ -85,34 +85,34 @@ pipeline {
                     script {
                         if ("${IS_SKIP_BUILD}" != "true") {
                             for (service in SERVICE_HANDLE_LIST) {
-                                stage("build&push ${service}") {
-                                    def jar_dir_prefix = "small-tools-api/"
-                                    println "****** 处理服务：${service}"
+                                stage("*** build&push ${service}") {
+                                    def jar_dir_prefix = ""
+                                    echo "****** 处理服务：${service}"
                                     switch ("${service}".trim()) {
                                         case "gateway":
-                                            jar_dir_prefix = "${jar_dir_prefix}" + "${service}".trim()
+                                            jar_dir_prefix = "${BASE_PROJECT_URL}/" + "${service}".trim()
                                             break
                                         case "mall-mini":
                                         case "mall-web":
-                                            jar_dir_prefix = "service/" + "${service}".trim().split("-")[0] + "/${service}".trim()
+                                            jar_dir_prefix = "${BASE_PROJECT_URL}/" + "service/" + "${service}".trim().split("-")[0] + "/${service}".trim()
                                             break
                                         case "demo":
                                         case "pay":
                                         case "system":
                                         case "tool":
                                         case "ums":
-                                            jar_dir_prefix = "service/" + "${service}".trim()
+                                            jar_dir_prefix = "${BASE_PROJECT_URL}/service/" + "${service}".trim()
                                             break
                                     }
                                     def APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/" + "${service}".trim()
                                     sh """
                                     pwd
-                                    rm -rf docker/*.jar
-                                    cp ${jar_dir_prefix}/target/*.jar docker
-                                    cd small-tools-api/docker
+                                    rm -rf ${BASE_PROJECT_URL}/docker/*.jar
+                                    cp ${jar_dir_prefix}/target/*.jar ${BASE_PROJECT_URL}/docker
+                                    cd ${BASE_PROJECT_URL}/docker
                                     ls
                                     echo "app镜像: ${APP_DOCKER_IMAGE}"
-                                    docker build -f Dockerfile  -t ${APP_DOCKER_IMAGE} . --no-cache
+                                    docker build -f Dockerfile --build-arg APP_NAME="${service}" --build-arg APP_PORT="8080" -t ${APP_DOCKER_IMAGE} . --no-cache
                                     docker push ${APP_DOCKER_IMAGE}
                                     echo 镜像推送成功：${APP_DOCKER_IMAGE}
                                 """
@@ -131,16 +131,18 @@ pipeline {
                 container('maven') {
                     script {
                         for (service in SERVICE_HANDLE_LIST) {
-                            stage("deploy ${service}") {
+                            stage("*** deploy ${service}") {
                                 println "****** 部署服务：${service}"
-                                APP_NAME = "${service}"
+                                // 自定义全局变量 => 整个流水线使用
+                                env.APP_NAME = "${service}"
+                                env.APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/" + "${service}".trim()
                                 withCredentials([kubeconfigFile(credentialsId: 'kubeconfig-auth', variable: 'KUBECONFIG')]) {
                                     if ("${service}".trim() == "gateway") {
-                                        APP_PORT = 1218
-                                        sh 'envsubst < k8s/k8s-deploy-gateway.yml | kubectl apply -f -'
+                                        env.APP_PORT = 1218
+                                        sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy-gateway.yml | kubectl apply -f -'
                                     } else {
-                                        APP_PORT = 8080
-                                        sh 'envsubst < k8s/k8s-deploy-service.yml | kubectl apply -f -'
+                                        env.APP_PORT = 8080
+                                        sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy-service.yml | kubectl apply -f -'
                                     }
                                 }
                             }

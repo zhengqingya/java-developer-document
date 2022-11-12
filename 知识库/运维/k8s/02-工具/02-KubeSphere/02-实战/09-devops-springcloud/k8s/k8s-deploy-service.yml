@@ -60,7 +60,7 @@ spec:
             failureThreshold: 3
             httpGet:
               scheme: HTTP
-              port: $PORT
+              port: ${APP_PORT}
               path: /nacos/health
       dnsPolicy: ClusterFirst
       restartPolicy: Always # Pod重启策略
