@@ -183,32 +183,32 @@ kubectl get sc
 
 下一步创建即可
 
-![img_10.png](images/ikubesphere-deploy-mysql-11.png)
+![img_10.png](images/kubesphere-deploy-mysql-11.png)
 
-![img_13.png](images/ikubesphere-deploy-mysql-12.png)
+![img_13.png](images/kubesphere-deploy-mysql-12.png)
 
 ### 4、创建服务 - 配置外网访问
 
 > 默认只能内部访问
 
-![img_12.png](images/ikubesphere-deploy-mysql-13.png)
+![img_12.png](images/kubesphere-deploy-mysql-13.png)
 
 ```shell
 mysql -uroot -proot -h mysql-qhft.my-project
 ```
 
-![img_11.png](images/ikubesphere-deploy-mysql-14.png)
+![img_11.png](images/kubesphere-deploy-mysql-14.png)
 
 现在来创建一个外部可访问的服务 `服务` -> `创建` -> `自定义服务` -> `指定工作负载`
 
-![img_14.png](images/ikubesphere-deploy-mysql-15.png)
+![img_14.png](images/kubesphere-deploy-mysql-15.png)
 
-![img_15.png](images/ikubesphere-deploy-mysql-16.png)
+![img_15.png](images/kubesphere-deploy-mysql-16.png)
 
 创建完成
 
-![img_16.png](images/ikubesphere-deploy-mysql-17.png)
+![img_16.png](images/kubesphere-deploy-mysql-17.png)
 
 然后可以测试通过集群任意节点的`30749`端口去连接访问了
 
-![img_17.png](images/ikubesphere-deploy-mysql-18.png)
+![img_17.png](images/kubesphere-deploy-mysql-18.png)
