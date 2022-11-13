@@ -13,10 +13,11 @@ pipeline {
         SERVICE_HANDLE_LIST = ""
         K8S_NAMESPACE = "my-project"
         BASE_PROJECT_URL = "small-tools-api/"
-        BRANCH_NAME = 'dev'
-        IS_SKIP_BUILD = 'false'
-        JAVA_OPTS = "-XX:+UseG1GC -Xms100m -Xmx100m -Dserver.port=8080"
-        SERVICE_NAMES = "demo,gateway"
+        // TODO KubeSphere中配置流水线构建参数 => 动态传参进来
+        // BRANCH_NAME = 'dev'
+        // IS_SKIP_BUILD = 'false'
+        // JAVA_OPTS = "-XX:+UseG1GC -Xms100m -Xmx100m -Dserver.port=8080"
+        // SERVICE_NAMES = "demo,gateway"
     }
 
 //    parameters {
