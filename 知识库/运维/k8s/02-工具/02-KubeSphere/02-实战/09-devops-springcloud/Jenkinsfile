@@ -153,5 +153,15 @@ pipeline {
             }
         }
 
+
+//        stage('邮件通知') {
+//            agent none
+//            steps {
+//                container('base') {
+//                    mail(to: 'xxx@qq.com,xxx@qq.com', subject: '服务部署成功通知', body: "部署服务：${SERVICE_NAMES} 部署分支：${BRANCH_NAME} 运行ID：${BUILD_NUMBER}")
+//                }
+//            }
+//        }
+
     }
 }
