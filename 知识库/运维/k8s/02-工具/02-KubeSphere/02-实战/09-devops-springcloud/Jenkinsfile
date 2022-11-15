@@ -88,24 +88,25 @@ pipeline {
                             for (service in SERVICE_HANDLE_LIST) {
                                 stage("*** build&push ${service}") {
                                     def jar_dir_prefix = ""
+                                    service = "${service}".trim()
                                     echo "****** 处理服务：${service}"
-                                    switch ("${service}".trim()) {
+                                    switch ("${service}") {
                                         case "gateway":
-                                            jar_dir_prefix = "${BASE_PROJECT_URL}/" + "${service}".trim()
+                                            jar_dir_prefix = "${BASE_PROJECT_URL}/${service}"
                                             break
                                         case "mall-mini":
                                         case "mall-web":
-                                            jar_dir_prefix = "${BASE_PROJECT_URL}/" + "service/" + "${service}".trim().split("-")[0] + "/${service}".trim()
+                                            jar_dir_prefix = "${BASE_PROJECT_URL}/" + "service/" + "${service}".split("-")[0] + "/${service}"
                                             break
                                         case "demo":
                                         case "pay":
                                         case "system":
                                         case "tool":
                                         case "ums":
-                                            jar_dir_prefix = "${BASE_PROJECT_URL}/service/" + "${service}".trim()
+                                            jar_dir_prefix = "${BASE_PROJECT_URL}/service/${service}"
                                             break
                                     }
-                                    def APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/" + "${service}".trim()
+                                    def APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/${service}"
                                     sh """
                                     pwd
                                     rm -rf ${BASE_PROJECT_URL}/docker/*.jar
@@ -133,12 +134,13 @@ pipeline {
                     script {
                         for (service in SERVICE_HANDLE_LIST) {
                             stage("*** deploy ${service}") {
+                                service = "${service}".trim()
                                 println "****** 部署服务：${service}"
                                 // 自定义全局变量 => 整个流水线使用
                                 env.APP_NAME = "${service}"
-                                env.APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/" + "${service}".trim()
+                                env.APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/${service}"
                                 withCredentials([kubeconfigFile(credentialsId: 'kubeconfig-auth', variable: 'KUBECONFIG')]) {
-                                    if ("${service}".trim() == "gateway") {
+                                    if ("${service}" == "gateway") {
                                         env.APP_PORT = 1218
                                         sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy-gateway.yml | kubectl apply -f -'
                                     } else {
