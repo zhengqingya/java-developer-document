@@ -18,6 +18,8 @@ pipeline {
         // IS_SKIP_BUILD = 'false'
         // JAVA_OPTS = "-XX:+UseG1GC -Xms100m -Xmx100m -Dserver.port=8080"
         // SERVICE_NAMES = "demo,gateway"
+        APP_REPLICAS = "1"
+        MAIL_RECEIVE_USER = "xxx@qq.com,xxx@qq.com"
     }
 
 //    parameters {
@@ -26,6 +28,8 @@ pipeline {
 //        choice(name: 'IS_SKIP_BUILD', choices: ['false', 'true'], description: '是否跳过构建,直接部署')
 //        choice(name: 'IS_BUILD_ALL_SERVICE', choices: ['false', 'true'], description: '是否全部服务部署')
 //        string(name: 'JAVA_OPTS', defaultValue: '-XX:+UseG1GC -Xms100m -Xmx100m -Dserver.port=8080', description: 'java运行参数')
+//        string(name: 'APP_REPLICAS', defaultValue: '1', description: '部署副本数量')
+//        string(name: 'MAIL_RECEIVE_USER', defaultValue: 'xxx@qq.com,xxx@qq.com', description: '邮件通知接收人')
 //    }
 
     stages {
@@ -142,9 +146,13 @@ pipeline {
                                 withCredentials([kubeconfigFile(credentialsId: 'kubeconfig-auth', variable: 'KUBECONFIG')]) {
                                     if ("${service}" == "gateway") {
                                         env.APP_PORT = 1218
+                                        env.APP_SENTINEL_PORT = 8719
+                                        env.JAVA_OPTS = " -Dserver.port=${APP_PORT} -Dspring.cloud.sentinel.transport.port=${APP_SENTINEL_PORT} ${JAVA_OPTS}"
                                         sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy-gateway.yml | kubectl apply -f -'
                                     } else {
                                         env.APP_PORT = 8080
+                                        env.APP_SENTINEL_PORT = 8719
+                                        env.JAVA_OPTS = " -Dserver.port=${APP_PORT} -Dspring.cloud.sentinel.transport.port=${APP_SENTINEL_PORT} ${JAVA_OPTS}"
                                         sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy-service.yml | kubectl apply -f -'
                                     }
                                 }
@@ -160,7 +168,7 @@ pipeline {
 //            agent none
 //            steps {
 //                container('base') {
-//                    mail(to: 'xxx@qq.com,xxx@qq.com', subject: '服务部署成功通知', body: "部署服务：${SERVICE_NAMES} 部署分支：${BRANCH_NAME} 运行ID：${BUILD_NUMBER}")
+//                    mail(to: "${MAIL_RECEIVE_USER}", subject: '服务部署成功通知', body: "部署分支：${BRANCH_NAME}  \n 运行ID：${BUILD_NUMBER}  \n 部署服务：${SERVICE_NAMES} ")
 //                }
 //            }
 //        }
