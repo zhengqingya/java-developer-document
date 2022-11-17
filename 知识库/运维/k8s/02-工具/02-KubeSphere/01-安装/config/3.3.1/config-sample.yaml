@@ -5,16 +5,14 @@ metadata:
   name: sample
 spec:
   hosts:
-  - {name: node1, address: 172.16.0.2, internalAddress: 172.16.0.2, user: ubuntu, password: "Qcloud@123"}
-  - {name: node2, address: 172.16.0.3, internalAddress: 172.16.0.3, user: ubuntu, password: "Qcloud@123"}
+  - {name: master, address: 192.168.101.90, internalAddress: 192.168.101.90, user: root, password: "zhengqing"}
   roleGroups:
     etcd:
-    - node1
+    - master
     control-plane:
-    - node1
+    - master
     worker:
-    - node1
-    - node2
+    - master
   controlPlaneEndpoint:
     ## Internal loadbalancer for apiservers
     # internalLoadbalancer: haproxy
@@ -124,13 +122,13 @@ spec:
     # webhook:
     #   resources: {}
   devops:
-    enabled: false
+    enabled: true
     # resources: {}
     jenkinsMemoryLim: 8Gi
     jenkinsMemoryReq: 4Gi
     jenkinsVolumeSize: 8Gi
   events:
-    enabled: false
+    enabled: true
     # operator:
     #   resources: {}
     # exporter:
@@ -140,7 +138,7 @@ spec:
     #   replicas: 2
     #   resources: {}
   logging:
-    enabled: false
+    enabled: true
     logsidecar:
       enabled: true
       replicas: 2
@@ -186,7 +184,7 @@ spec:
       type: none
   openpitrix:
     store:
-      enabled: false
+      enabled: true
   servicemesh:
     enabled: false
     istio:

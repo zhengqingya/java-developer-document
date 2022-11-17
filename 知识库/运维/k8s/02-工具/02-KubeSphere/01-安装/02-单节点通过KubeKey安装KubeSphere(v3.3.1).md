@@ -32,6 +32,11 @@ chmod +x kk
 kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l 'app in (ks-install, ks-installer)' -o jsonpath='{.items[0].metadata.name}') -f
 ```
 
+- KubeSphere: http://IP:30880
+- Jenkins: http://IP:30180
+- Account: admin
+- Password: P@88w0rd
+
 ### 卸载
 
 ```shell

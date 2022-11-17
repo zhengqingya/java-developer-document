@@ -110,18 +110,24 @@ pipeline {
                                             jar_dir_prefix = "${BASE_PROJECT_URL}/service/${service}"
                                             break
                                     }
-                                    def APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/${service}"
+                                    def APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/${service}:${BRANCH_NAME}"
+
+                                    // 删除旧容器
+//                                    sh "docker ps -a | grep ${service} | awk '{print \$1}' | xargs -i docker stop {} | xargs -i docker rm {}"
+                                    // 删除旧镜像
+//                                    sh "docker images | grep -E ${service} | awk '{print \$3}' | uniq | xargs -I {} docker rmi --force {}"
+
                                     sh """
-                                    pwd
-                                    rm -rf ${BASE_PROJECT_URL}/docker/*.jar
-                                    cp ${jar_dir_prefix}/target/*.jar ${BASE_PROJECT_URL}/docker
-                                    cd ${BASE_PROJECT_URL}/docker
-                                    ls
-                                    echo "app镜像: ${APP_DOCKER_IMAGE}"
-                                    docker build -f Dockerfile --build-arg APP_NAME="${service}" --build-arg APP_PORT="8080" -t ${APP_DOCKER_IMAGE} . --no-cache
-                                    docker push ${APP_DOCKER_IMAGE}
-                                    echo 镜像推送成功：${APP_DOCKER_IMAGE}
-                                """
+                                        pwd
+                                        rm -rf ${BASE_PROJECT_URL}/docker/*.jar
+                                        cp ${jar_dir_prefix}/target/*.jar ${BASE_PROJECT_URL}/docker
+                                        cd ${BASE_PROJECT_URL}/docker
+                                        ls
+                                        echo "app镜像: ${APP_DOCKER_IMAGE}"
+                                        docker build -f Dockerfile --build-arg APP_NAME="${service}" --build-arg APP_PORT="8080" -t ${APP_DOCKER_IMAGE} . --no-cache
+                                        docker push ${APP_DOCKER_IMAGE}
+                                        echo 镜像推送成功：${APP_DOCKER_IMAGE}
+                                    """
                                 }
                             }
                         }
@@ -142,7 +148,7 @@ pipeline {
                                 println "****** 部署服务：${service}"
                                 // 自定义全局变量 => 整个流水线使用
                                 env.APP_NAME = "${service}"
-                                env.APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/${service}"
+                                env.APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/${service}:${BRANCH_NAME}"
                                 withCredentials([kubeconfigFile(credentialsId: 'kubeconfig-auth', variable: 'KUBECONFIG')]) {
                                     if ("${service}" == "gateway") {
                                         env.APP_PORT = 1218
