@@ -22,7 +22,7 @@ wget https://github.com/kubesphere/ks-installer/releases/download/v3.3.1/cluster
 
 `cluster-configuration.yaml`
 
-> tips: 可参考 [config-sample.yaml](config-sample.yaml) 配置，开启部分功能，也可以在后期开启
+> tips: 可参考 [config-sample.yaml](config/3.2.1/config-sample.yaml) 配置，开启部分功能，也可以在后期开启
 > 我这里先开启如下
 
 ```yml

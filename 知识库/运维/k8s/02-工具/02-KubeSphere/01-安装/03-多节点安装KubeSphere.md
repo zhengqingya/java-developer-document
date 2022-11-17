@@ -8,7 +8,8 @@
 本文将基于`CentOS Linux release 7.6.1810 (Core)` 多节点安装 `KubeSphere`
 
 
-> 可参考 [https://kubesphere.io/zh/docs/installing-on-linux/introduction/multioverview](https://kubesphere.io/zh/docs/installing-on-linux/introduction/multioverview)
+>
+可参考 [https://kubesphere.io/zh/docs/installing-on-linux/introduction/multioverview](https://kubesphere.io/zh/docs/installing-on-linux/introduction/multioverview)
 
 ### 二、环境准备
 
@@ -92,7 +93,7 @@ spec:
     port: 6443
 ```
 
-> tips: 可查看[config-sample.yaml](config-sample.yaml)配置文件开启部分功能
+> tips: 可查看[config-sample.yaml](config/3.2.1/config-sample.yaml)配置文件开启部分功能
 > 修改的地方用`# TODO`开头标注
 > 机器内存小的别全部开启！！！
 
