@@ -39,14 +39,26 @@ spec:
             limits:
               cpu: 300m
               memory: 600Mi
-          # 就绪探针
-#          readinessProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: 8080
-#            timeoutSeconds: 10
-#            failureThreshold: 30
-#            periodSeconds: 5
+          # 就绪探针 -- 如果准备就绪探针未返回200,则不会向其发送流量
+          readinessProbe:
+            initialDelaySeconds: 10 # 容器启动后要等待多少秒后存活和就绪探测器才被初始化，默认是0秒，最小值是0。
+            periodSeconds: 10 # 执行探测的时间间隔（单位是秒）。默认是10秒。最小值是1。
+            timeoutSeconds: 5 # 探测的超时后等待多少秒。默认值是1秒。最小值是1。
+            failureThreshold: 3 # 当 Pod 启动了并且探测到失败，Kubernetes 的重试次数。存活探测情况下的放弃就意味着重新启动容器。就绪探测情况下的放弃 Pod 会被打上未就绪的标签。默认值是3。最小值是1。
+            httpGet:
+              scheme: HTTP
+              port: 8080
+              path: /api/time
+          # 存活探针 -- 如果存活探针未返回200,则会重启Pod
+          livenessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+            httpGet:
+              scheme: HTTP
+              port: 8080
+              path: /api/time
 
 ---
 # 定义服务
@@ -58,11 +70,11 @@ metadata:
 spec:
   selector:
     app: springboot-app # TODO  label selector配置，将选择具有label标签的Pod作为管理
-  type: ClusterIP # 访问方式  ClusterIP/NodePort
+  type: NodePort # 访问方式  ClusterIP/NodePort
   ports:
     - name: http            # 端口名称
       port: 8080
       protocol: TCP    # 端口协议，支持TCP和UDP，默认TCP
       targetPort: 8080
-      # nodePort: 666  # TODO 当`type = NodePort`时 对外开放端口
+      nodePort: 666  # TODO 当`type = NodePort`时 对外开放端口
   sessionAffinity: None  # 是否支持session
