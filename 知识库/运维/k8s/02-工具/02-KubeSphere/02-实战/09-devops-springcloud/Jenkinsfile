@@ -154,11 +154,15 @@ pipeline {
                                         env.APP_PORT = 1218
                                         env.APP_SENTINEL_PORT = 8719
                                         env.JAVA_OPTS = " -Dserver.port=${APP_PORT} -Dspring.cloud.sentinel.transport.port=${APP_SENTINEL_PORT} ${JAVA_OPTS}"
+                                        // 先刪除旧pod -- 解决同一版本镜像更新后不重建pod问题
+                                        sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy-gateway.yml | kubectl delete -f -'
+                                        // 再创建新pod
                                         sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy-gateway.yml | kubectl apply -f -'
                                     } else {
                                         env.APP_PORT = 8080
                                         env.APP_SENTINEL_PORT = 8719
                                         env.JAVA_OPTS = " -Dserver.port=${APP_PORT} -Dspring.cloud.sentinel.transport.port=${APP_SENTINEL_PORT} ${JAVA_OPTS}"
+                                        sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy-service.yml | kubectl delete -f -'
                                         sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy-service.yml | kubectl apply -f -'
                                     }
                                 }
