@@ -1,7 +1,9 @@
 <template>
 	<view>
-		<!-- <text>helloworld</text> -->
-		<!-- <text>{{productList}}</text> -->
+``		<text>天府三街学习店 > </text>
+		<text>自取</text>
+		<text>外卖</text>
+
 		<view class="product-box">
 			<view v-for="(item,index) in productList" :key="index" @click="goToDetail(item)">
 				<view class="product-image">

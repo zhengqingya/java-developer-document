@@ -11,6 +11,8 @@
 
 ### 快捷键
 
+> VS Code
+
 ![HBuilderX.png](images/HBuilderX-keymap.png)
 
 ### 主题
