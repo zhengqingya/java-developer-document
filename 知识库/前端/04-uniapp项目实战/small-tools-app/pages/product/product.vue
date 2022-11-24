@@ -1,8 +1,30 @@
 <template>
 	<view>
-``		<text>天府三街学习店 > </text>
-		<text>自取</text>
-		<text>外卖</text>
+		<view class="header">
+			<uni-row>
+				<uni-col :span="18">
+					<view>
+						<text>天府三街测试店</text>
+						<uni-icons type="right" size="15" />
+					</view>
+					<view class="location">
+						<uni-icons type="location" size="15" />
+						<text>距离您 1km</text>
+					</view>
+				</uni-col>
+				<uni-col :span="6">
+					<view class="right">
+						<view class="takein" :class="{active: orderType == 'takein'}">
+							<text>自取</text>
+						</view>
+						<view class="takeout" :class="{active: orderType == 'takeout'}">
+							<text>外卖</text>
+						</view>
+					</view>
+				</uni-col>
+			</uni-row>
+		</view>
+
 
 		<view class="product-box">
 			<view v-for="(item,index) in productList" :key="index" @click="goToDetail(item)">
@@ -28,6 +50,7 @@
 	export default {
 		data() {
 			return {
+				orderType: 'takein',
 				productList: []
 			}
 		},
@@ -53,7 +76,41 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+	.header {
+		margin: 10px;
+
+		.location {
+			margin-top: 3px;
+			font-size: 10px;
+			color: #919293;
+		}
+
+		.right {
+			display: flex;
+
+
+			.takein,
+			.takeout {
+				width: 120rpx;
+				color: #ceac93;
+				text-align: center;
+				background-color: #f5f5f5;
+				// border-radius: 30rpx;
+			}
+
+			.takein.active {
+				background-color: $color-primary;
+				color: white;
+			}
+
+			.takeout.active {
+				background-color: $color-primary;
+				color: white;
+			}
+		}
+	}
+
 	.product-box {
 		margin: 80rpx;
 
