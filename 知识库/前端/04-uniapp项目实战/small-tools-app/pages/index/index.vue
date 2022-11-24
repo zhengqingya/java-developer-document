@@ -11,6 +11,9 @@
 
 			}
 		},
+		onLoad() {
+			console.log('666')
+		},
 		methods: {
 
 		}

@@ -1,48 +1,70 @@
 <template>
-	<view>
-		<view class="header">
-			<uni-row>
-				<uni-col :span="18">
+	<view class="app-container">
+		<uni-row class="header">
+			<uni-col :span="18">
+				<view>
+					<text>天府三街测试店</text>
+					<uni-icons type="right" size="15" />
+				</view>
+				<view class="location">
+					<uni-icons type="location" size="15" />
+					<text>距离您 1km</text>
+				</view>
+			</uni-col>
+			<uni-col :span="6">
+				<view class="right">
+					<view class="takein" :class="{active: orderType == 'takein'}">
+						<text>自取</text>
+					</view>
+					<view class="takeout" :class="{active: orderType == 'takeout'}">
+						<text>外卖</text>
+					</view>
+				</view>
+			</uni-col>
+		</uni-row>
+
+		<uni-row class="content">
+			<uni-col :span="6" class="category">
+				<scroll-view scroll-with-animation scroll-y="true">
 					<view>
-						<text>天府三街测试店</text>
-						<uni-icons type="right" size="15" />
-					</view>
-					<view class="location">
-						<uni-icons type="location" size="15" />
-						<text>距离您 1km</text>
-					</view>
-				</uni-col>
-				<uni-col :span="6">
-					<view class="right">
-						<view class="takein" :class="{active: orderType == 'takein'}">
-							<text>自取</text>
-						</view>
-						<view class="takeout" :class="{active: orderType == 'takeout'}">
-							<text>外卖</text>
+						<view class="item" v-for="(item, index) in reSpuList" :key="index"
+							@tap="chooseCategory(item.id)" :class="{'choose': item.id === chooseCategoryId}">
+							<text>{{ item.name }}</text>
 						</view>
 					</view>
-				</uni-col>
-			</uni-row>
-		</view>
+				</scroll-view>
+			</uni-col>
+			<uni-col :span="18">
+				<view class="spu">
+					<view v-for="(item, index) in reSpuList" :key="index">
+						<view class="title">
+							<text>{{ item.name }}</text>
+						</view>
+						<view class="spuList">
+							<view class="item" v-for="(item, index) in item.spuList" :key="index">
+								<uni-row>
+									<uni-col :span="8">
+										<image class="image" :src="item.coverImg" />
+									</uni-col>
+									<uni-col :span="16">
+										<view class="right">
+											<view><text>{{ item.name }}</text></view>
+											<view class="price-action">
+												<text class="price">{{ item.skuList[0].sellPrice }}</text>
+												<view class="action">
+													+
+												</view>
 
-
-		<view class="product-box">
-			<view v-for="(item,index) in productList" :key="index" @click="goToDetail(item)">
-				<view class="product-image">
-					<image :src="item.coverImg" mode="aspectFill"></image>
+											</view>
+										</view>
+									</uni-col>
+								</uni-row>
+							</view>
+						</view>
+					</view>
 				</view>
-				<text class="product-name">
-					<h4>{{ item.name }}</h4>
-				</text>
-				<view class="product-info">
-					<text> {{ item.sellPrice / 100 }}</text>
-					<text>已售 {{ item.useStock }}</text>
-				</view>
-			</view>
-		</view>
-		<view>
-			<!-- <blockquote>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut, quos.</blockquote> -->
-		</view>
+			</uni-col>
+		</uni-row>
 	</view>
 </template>
 
@@ -51,20 +73,22 @@
 		data() {
 			return {
 				orderType: 'takein',
-				productList: []
+				reSpuList: [],
+				chooseCategoryId: 0
 			}
 		},
 		onLoad() {
-			this.spuList()
+			this.init()
 		},
 		methods: {
-			async spuList() {
-				let params = {
-					name: '',
+			async init() {
+				this.reSpuList = await this.$api.category.reSpuList();
+				if (this.reSpuList) {
+					this.chooseCategoryId = this.reSpuList[0].id
 				}
-				let result = await this.$api.spu.page(params);
-				this.productList = result.records
-				// console.log(22233, this.productList)
+			},
+			chooseCategory(id) {
+				this.chooseCategoryId = id
 			},
 			//详情
 			goToDetail(item) {
@@ -77,60 +101,115 @@
 </script>
 
 <style lang="scss" scoped>
-	.header {
-		margin: 10px;
+	.app-container {
+		overflow: hidden;
+		// background-color: #aaffff;
 
-		.location {
-			margin-top: 3px;
-			font-size: 10px;
-			color: #919293;
+		.header {
+			padding: 5px 5px;
+
+			.location {
+				margin-top: 3px;
+				font-size: 10px;
+				color: #919293;
+			}
+
+			.right {
+				display: flex;
+				margin-top: 10px;
+
+				.takein,
+				.takeout {
+					text-align: center;
+					width: 120rpx;
+					color: #ceac93;
+					background-color: #f5f5f5;
+					// border-radius: 30rpx;
+				}
+
+				.takein.active {
+					background-color: $color-primary;
+					color: white;
+				}
+
+				.takeout.active {
+					background-color: $color-primary;
+					color: white;
+				}
+			}
 		}
 
-		.right {
-			display: flex;
+		.content {
+			height: 100%;
+			margin-top: 10px;
+			$chooce-font-color: #5a5b5c;
 
-
-			.takein,
-			.takeout {
-				width: 120rpx;
-				color: #ceac93;
-				text-align: center;
+			.category {
+				height: 100%;
 				background-color: #f5f5f5;
-				// border-radius: 30rpx;
-			}
-
-			.takein.active {
-				background-color: $color-primary;
-				color: white;
-			}
-
-			.takeout.active {
-				background-color: $color-primary;
-				color: white;
-			}
-		}
-	}
-
-	.product-box {
-		margin: 80rpx;
-
-		image {
-			height: 600rpx;
-			width: 600rpx;
-		}
-
-		.product-name {
-			font-size: 50rpx;
-		}
-
-		.product-info {
-			text {
+				color: #c1c1c1;
 				font-size: 30rpx;
-				padding: 0 30rpx;
+
+				.item {
+					padding: 10rpx 20rpx;
+
+					&.choose {
+						background-color: #ffffff;
+						color: $chooce-font-color;
+					}
+				}
+			}
+
+			.spu {
+				margin-left: 20rpx;
+
+				.title {
+					color: $chooce-font-color;
+					font-size: 30rpx;
+				}
+
+				.spuList {
+					.item {
+						margin-top: 3px;
+
+						.image {
+							width: 160rpx;
+							height: 160rpx;
+						}
+
+						.right {
+							height: 160rpx;
+							width: 100%;
+
+							.price {
+								float: left;
+								margin-top: 35px;
+								font-size: 30rpx;
+								font-weight: 600;
+							}
+
+							.action {
+								float: right;
+								margin-top: 35px;
+								margin-right: 20px;
+								width: 20px;
+								height: 20px;
+								background-color: $color-primary;
+								border-radius: 20rpx;
+								text-align: center;
+								line-height: 16px;
+								color: white;
+
+							}
+
+						}
+					}
+
+				}
 			}
 
 
-		}
 
+		}
 	}
 </style>
