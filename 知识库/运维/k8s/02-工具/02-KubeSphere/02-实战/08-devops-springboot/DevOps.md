@@ -7,6 +7,9 @@
 
 ![img.png](images/kubesphere-devops-01.png)
 
+> - 企业空间：`my-workspace`
+> - 项目：`my-project`
+
 ### 一、创建`DevOps项目`
 
 ![img.png](images/kubesphere-devops-09.png)
@@ -69,6 +72,8 @@ cat /root/.kube/config
 ### 四、k8s-项目配置
 
 #### 阿里云docker仓库认证 `aliyun-docker-registry-auth`
+
+`项目` -> `配置` -> `保密字典`
 
 ![img.png](images/kubesphere-devops-16.png)
 

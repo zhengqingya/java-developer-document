@@ -43,3 +43,9 @@ kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l 'app
 ./kk delete cluster
 ```
 
+---
+
+新版占用内存
+
+![img.png](images/kubesphere-new-memory.png)
+
