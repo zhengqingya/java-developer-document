@@ -1,225 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>test</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        display: flex;
-        flex-wrap: wrap;
-      }
-      body h3,
-      div {
-        margin-left: 10px;
-      }
-      div div {
-        margin-left: 10px;
-        width: 200px;
-        height: 200px;
-        background-color: coral;
-      }
-      div div span {
-        width: 50px;
-        height: 50px;
-        background-color: palegreen;
-        border: 1px solid blueviolet;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-      .div1 {
-        display: flex;
-        flex-direction: row;
-      }
-      .div2 {
-        display: flex;
-        flex-direction: column;
-      }
-      .div3 {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-      }
-      .div4 {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-      }
-      .div5 {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-      .div6 {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-      }
-      .div7 {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: center;
-      }
+        body {
+            display: flex;
+            /*flex-wrap: wrap;*/
+        }
 
-      .div8 {
-        display: flex;
-        flex-direction: row;
-      }
-      .div8 span:nth-child(2) {
-        /* span有设置高度 */
-        flex: 1;
-        background-color: royalblue;
-      }
+        body h3,
+        div {
+            margin-left: 10px;
+        }
 
-      .div9 {
-        display: flex;
-        flex-direction: row;
-      }
-      .div9 p {
-        flex: 1;
-      }
-      .div9 p:nth-child(2) {
-        /* p未设置高度 */
-        flex: 2;
-        background-color: aqua;
-      }
+        div div {
+            margin-left: 10px;
+            width: 200px;
+            height: 200px;
+            background-color: coral;
+        }
 
-      .div10 {
-        display: flex;
-        flex-direction: row;
-      }
-      .div10 span:nth-child(2) {
-        flex: 2;
-        background-color: khaki;
-        align-self: flex-end;
-      }
-      .div10 span:nth-child(3) {
-        /* 默认是0   -1比0小所以在前面 */
-        order: -1;
-      }
+        div div span {
+            width: 50px;
+            height: 50px;
+            background-color: palegreen;
+            border: 1px solid blueviolet;
+        }
+
+        .div1-1 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .div1-2 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .div2-1 {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+        .div2-2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .div3-1 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .div4-1 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .div4-2 {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+        }
+
+        .div5-1 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: center;
+        }
+
+        .div5-2 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: space-around;
+        }
+
+        .div5-3 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+
+        .div6-1 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .div6-1 span:nth-child(2) {
+            /* span有设置高度 */
+            flex: 1;
+            background-color: royalblue;
+        }
+
+        .div6-2 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .div6-2 p {
+            flex: 1;
+        }
+
+        .div6-2 p:nth-child(2) {
+            /* p未设置高度 */
+            flex: 2;
+            background-color: aqua;
+        }
+
+        .div6-3 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .div6-3 span:nth-child(2) {
+            flex: 2;
+            background-color: khaki;
+            align-self: flex-end;
+        }
+
+        .div6-3 span:nth-child(3) {
+            /* 默认是0   -1比0小所以在前面 */
+            order: -1;
+        }
+
+        .div7-1 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-content: center;
+        }
+
+        .div7-2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-  </head>
-  <body>
-    <div>
-      <h3></h3>
-      <div class="div1">
+</head>
+<body>
+<ul>
+    <li>flex-direction：主轴方向</li>
+    <li>justify-content：主轴上的子元素排列方式</li>
+    <li>flex-wrap：子元素是否换行</li>
+    <li>align-items：侧轴上的子元素排列方式（单行）</li>
+    <li>align-content：侧轴上的子元素的排列方式（多行）</li>
+    <li>flex-flow：复合属性 == 同时设置 flex-direction 和 flex-wrap</li>
+</ul>
+<div>
+    <div class="div1-1">
         <span>1</span>
         <span>2</span>
         <span>3</span>
-      </div>
     </div>
-    <div>
-      <h3></h3>
-      <div class="div2">
+    <h3></h3>
+
+    <div class="div1-2">
         <span>1</span>
         <span>2</span>
         <span>3</span>
-      </div>
     </div>
-    <div>
-      <h3></h3>
-      <div class="div3">
+    <h3></h3>
+</div>
+<div>
+    <div class="div2-1">
         <span>1</span>
         <span>2</span>
         <span>3</span>
-      </div>
     </div>
-    <div>
-      <h3></h3>
-      <div class="div4">
+    <h3></h3>
+
+    <div class="div2-2">
         <span>1</span>
         <span>2</span>
         <span>3</span>
-      </div>
     </div>
-    <div>
-      <h3></h3>
-      <div class="div5">
+    <h3></h3>
+</div>
+<div>
+    <div class="div3-1">
         <span>1</span>
         <span>2</span>
         <span>3</span>
         <span>4</span>
         <span>5</span>
-      </div>
     </div>
-    <div>
-      <h3></h3>
-      <div class="div6">
+    <h3></h3>
+</div>
+<div>
+    <div class="div4-1">
         <span>1</span>
         <span>2</span>
         <span>3</span>
-      </div>
     </div>
-    <div>
-      <h3></h3>
-      <div class="div7">
+    <h3></h3>
+
+    <div class="div4-2">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+    <h3></h3>
+</div>
+<div>
+    <div class="div5-1">
         <span>1</span>
         <span>2</span>
         <span>3</span>
         <span>4</span>
         <span>5</span>
         <span>6</span>
-      </div>
     </div>
-    <div>
-      <h3></h3>
-      <div class="div8">
+    <h3></h3>
+
+    <div class="div5-2">
         <span>1</span>
         <span>2</span>
         <span>3</span>
-      </div>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
     </div>
-    <div>
-      <h3></h3>
-      <div class="div9">
+    <h3></h3>
+
+    <div class="div5-3">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+    </div>
+    <h3></h3>
+</div>
+<div>
+    <div class="div6-1">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+    <h3></h3>
+
+    <div class="div6-2">
         <p>1</p>
         <p>2</p>
         <p>3</p>
-      </div>
     </div>
-    <div>
-      <h3></h3>
-      <div class="div10">
+    <h3></h3>
+
+    <div class="div6-3">
         <span>1</span>
         <span>2</span>
         <span>3</span>
-      </div>
     </div>
-  </body>
-  <script>
+    <h3></h3>
+</div>
+<div>
+    <div class="div7-1">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+    </div>
+    <h3></h3>
+
+    <div class="div7-2">
+        <span>1</span>
+        <span>2</span>
+    </div>
+    <h3></h3>
+</div>
+</body>
+<script>
+    // $(".div1-1 ~ h3").append('666')
     for (let i = 1; i <= 30; i++) {
-      $("div:nth-child(" + i + ") h3").append(
-        "div" +
-          i +
-          "<br />" +
-          "display: " +
-          $(".div" + i + "").css("display") +
-          "; <br />" +
-          "flex-direction: " +
-          $(".div" + i + "").css("flex-direction") +
-          "; <br />" +
-          "justify-content: " +
-          $(".div" + i + "").css("justify-content") +
-          "; <br />" +
-          "flex-wrap: " +
-          $(".div" + i + "").css("flex-wrap") +
-          "; <br />" +
-          "align-items: " +
-          $(".div" + i + "").css("align-items") +
-          "; <br />" +
-          "align-content: " +
-          $(".div" + i + "").css("align-content") +
-          "; <br />" +
-          "flex-flow: " +
-          $(".div" + i + "").css("flex-flow") +
-          "; <br />"
-      );
+        for (let j = 1; j <= 30; j++) {
+            let code = i + "-" + j
+            // .div1-1相邻的第1个h3
+            $(".div" + code + " + h3").append(
+                "div" + code + "<br />"
+                // + "display: " + $(".div" + code + "").css("display") + "; <br />"
+                + "flex-direction: " + $(".div" + code + "").css("flex-direction") + "; <br />"
+                + "justify-content: " + $(".div" + code + "").css("justify-content") + "; <br />"
+                + "flex-wrap: " + $(".div" + code + "").css("flex-wrap") + "; <br />"
+                + "align-items: " + $(".div" + code + "").css("align-items") + "; <br />"
+                + "align-content: " + $(".div" + code + "").css("align-content") + "; <br />"
+                // + "flex-flow: " + $(".div" + code + "").css("flex-flow") + "; <br />"
+            );
+        }
     }
-  </script>
+</script>
 </html>
