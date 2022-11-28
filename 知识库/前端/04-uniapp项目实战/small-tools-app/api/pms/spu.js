@@ -10,6 +10,12 @@ export default {
 			params: params,
 		})
 	},
+	detail(id) {
+		return request({
+			url: BASE_API + '/' + id,
+			method: 'get'
+		})
+	},
 	add(data) {
 		return request({
 			url: BASE_API,

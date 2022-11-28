@@ -32,25 +32,27 @@
 			<scroll-view class="spu" scroll-with-animation scroll-y :scroll-top="cateScrollTop"
 				@scroll="handleSpuScroll">
 				<view id="ads"></view>
-				<view :id="`cate-${item.id}`" class="list" v-for="(item, index) in reSpuList" :key="index">
-					<view class="title">
-						<text>{{ item.name }}</text>
-					</view>
-					<view>
-						<view class="good" v-for="(good, index) in item.spuList" :key="index">
-							<view class="left">
-								<image class="image" :src="good.coverImg" />
-							</view>
-							<view class="right">
-								<text class="name">{{ good.name }}</text>
-								<view class="price-action">
-									<text class="price">￥{{ good.skuList[0].sellPrice }}</text>
-									<view class="action">
-										<button class="btn property_btn" @tap="showGoodDetailModal(item, good)">
-											选规格
-										</button>
-										<view class="dot">
-											1
+				<view class="list">
+					<view :id="`cate-${item.id}`" v-for="(item, index) in reSpuList" :key="index">
+						<view class="title">
+							<text>{{ item.name }}</text>
+						</view>
+						<view>
+							<view class="good" v-for="(good, index) in item.spuList" :key="index">
+								<view class="left">
+									<image class="image" :src="good.coverImg" />
+								</view>
+								<view class="right">
+									<text class="name">{{ good.name }}</text>
+									<view class="price-action">
+										<text class="price">￥{{ good.skuList[0].sellPrice }}</text>
+										<view class="action">
+											<button class="btn property_btn" @tap="showSpuDetailModal(item, good)">
+												选规格
+											</button>
+											<view class="dot">
+												1
+											</view>
 										</view>
 									</view>
 								</view>
@@ -59,6 +61,74 @@
 					</view>
 				</view>
 			</scroll-view>
+		</view>
+
+		<!-- 购物车 -->
+		<view class="cart" v-if="cart.length == 0">
+			<uni-badge :text="22" absolute="rightTop" type="warning">
+				<uni-icons class="icon" type="cart" size="22" />
+			</uni-badge>
+			<view class="price">￥10</view>
+			<view class="pay">付款</view>
+		</view>
+
+
+		<view>
+			<!--  商品详情  -->
+			<modal :show="goodDetailModalVisible" class="good-detail-modal" color="#5A5B5C" width="90%" custom
+				padding="0rpx" radius="12rpx">
+				<view class="cover">
+					<image :src="good.coverImg" class="image"></image>
+					<view class="close">
+						<uni-icons type="closeempty" @tap="closeSpuDetailModal" />
+					</view>
+				</view>
+				<scroll-view class="detail" scroll-y>
+					<view class="wrapper">
+						<view class="basic">
+							<view class="name">{{ good.name }}</view>
+						</view>
+						<view class="properties">
+							<view class="property" v-for="(item, index) in good.attrList" :key="index">
+								<view class="title">
+									<text class="name">{{ item.attrKeyName }}</text>
+									<view class="desc" v-if="item.attrKeyName">({{ item.attrKeyName }})</view>
+								</view>
+								<view class="values">
+									<view class="value" :class="{'default': value.is_default}"
+										v-for="(value, key) in item.attrValueList" :key="key"
+										@tap="changePropertyDefault(index, key)">
+										{{ value.attrValueName }}
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+				<view class="action">
+					<view class="left">
+						<view class="price">￥{{ good.sellPrice }}</view>
+						<view class="props">
+							{{ currentAttrDesc }}
+						</view>
+					</view>
+					<view class="btn-group">
+						<button type="default" plain class="btn" size="mini" hover-class="none"
+							@tap="handlePropertyReduce">
+							<view>-</view>
+						</button>
+						<view class="number">{{ good.number }}</view>
+						<button type="primary" class="btn btn-right" size="min" hover-class="none"
+							@tap="handlePropertyAdd">
+							+
+						</button>
+					</view>
+				</view>
+				<view class="add-to-cart-btn" @tap="handleAddToCartInModal">
+					<view>加入购物车</view>
+				</view>
+			</modal>
+
 		</view>
 
 
@@ -72,8 +142,13 @@
 				orderType: 'takein',
 				reSpuList: [],
 				currentCategoryId: 0,
+				good: {},
+				category: {},
 				cateScrollTop: 0,
-				sizeCalcState: false
+				sizeCalcState: false,
+				goodDetailModalVisible: false,
+				currentAttrDesc: "",
+				cart: [],
 			}
 		},
 		onLoad() {
@@ -131,6 +206,45 @@
 					}).exec()
 				})
 				this.sizeCalcState = true
+			},
+			// 商品详情
+			async showSpuDetailModal(item, good) {
+				this.good = await this.$api.spu.detail(good.id);
+				// this.good = JSON.parse(JSON.stringify({
+				// 	...good,
+				// 	number: 1
+				// }))
+				this.good.number = 1
+				// console.log(this.good)
+				this.category = JSON.parse(JSON.stringify(item))
+				this.goodDetailModalVisible = true
+			},
+			closeSpuDetailModal() {
+				this.goodDetailModalVisible = false
+			},
+			changePropertyDefault(index, key) {
+				this.good.attrList[index].attrValueList.forEach(value => this.$set(value, 'is_default', 0))
+				this.good.attrList[index].attrValueList[key].is_default = 1
+				this.good.number = 1
+				this.getGoodSelectedProps()
+			},
+			getGoodSelectedProps() {
+				let attrDescList = []
+				this.good.attrList.forEach(attr => {
+					attr.attrValueList.forEach(value => {
+						if (value.is_default) {
+							attrDescList.push(value.attrValueName)
+						}
+					})
+				})
+				this.currentAttrDesc = attrDescList.join('，')
+			},
+			handlePropertyAdd() {
+				this.good.number += 1
+			},
+			handlePropertyReduce() {
+				if (this.good.number === 1) return
+				this.good.number -= 1
 			},
 			//详情
 			goToDetail(item) {
@@ -229,6 +343,8 @@
 				padding: 20rpx;
 
 				.list {
+					padding-bottom: 60rpx;
+
 					.title {
 						color: $chooce-font-color;
 						font-size: 30rpx;
@@ -316,9 +432,222 @@
 
 				}
 			}
-
-
-
 		}
+
+
+		.good-detail-modal {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+
+			.cover {
+				height: 220rpx;
+				padding: 30rpx 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+
+				.image {
+					width: 200rpx;
+					height: 200rpx;
+				}
+
+				.close {
+					position: absolute;
+					right: 10rpx;
+					top: 10rpx;
+				}
+			}
+
+			.detail {
+				min-height: 1vh;
+				max-height: calc(90vh - 320rpx - 80rpx - 120rpx);
+
+				.wrapper {
+					width: 100%;
+					height: 100%;
+					overflow: hidden;
+
+					.basic {
+						padding: 0 20rpx 30rpx;
+						display: flex;
+						flex-direction: column;
+
+						.name {
+							font-size: 28rpx;
+							color: #5A5B5C;
+							margin-bottom: 10rpx;
+						}
+					}
+
+					.properties {
+						width: 100%;
+						border-top: 2rpx solid #F5F5F5;
+						padding: 10rpx 30rpx 0;
+						display: flex;
+						flex-direction: column;
+
+						.property {
+							width: 100%;
+							display: flex;
+							flex-direction: column;
+							margin-bottom: 30rpx;
+							padding-bottom: -16rpx;
+
+							.title {
+								width: 100%;
+								display: flex;
+								justify-content: flex-start;
+								align-items: center;
+								margin-bottom: 20rpx;
+
+								.name {
+									font-size: 26rpx;
+									color: #5A5B5C;
+									margin-right: 20rpx;
+								}
+
+								.desc {
+									flex: 1;
+									font-size: 28rpx;
+									color: $color-primary;
+									overflow: hidden;
+									text-overflow: ellipsis;
+									white-space: nowrap;
+								}
+							}
+
+							.values {
+								width: 100%;
+								display: flex;
+								flex-wrap: wrap;
+
+								.value {
+									border-radius: 8rpx;
+									background-color: #F5F5F5;
+									padding: 16rpx 30rpx;
+									font-size: 26rpx;
+									color: #919293;
+									margin-right: 16rpx;
+									margin-bottom: 16rpx;
+
+									&.default {
+										background-color: $color-primary;
+										color: white;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.action {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				background-color: #F5F5F5;
+				height: 120rpx;
+				padding: 0 26rpx;
+
+				.left {
+					flex: 1;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					margin-right: 20rpx;
+					overflow: hidden;
+
+					.price {
+						font-size: 28rpx;
+						color: #5A5B5C;
+					}
+
+					.props {
+						color: #919293;
+						font-size: 24rpx;
+						width: 100%;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+				}
+
+				.btn-group {
+					display: flex;
+					align-items: center;
+					justify-content: space-around;
+
+					.number {
+						font-size: 28rpx;
+						width: 44rpx;
+						height: 44rpx;
+						line-height: 44rpx;
+						text-align: center;
+					}
+
+					.btn {
+						padding: 0;
+						font-size: 28rpx;
+						width: 44rpx;
+						height: 44rpx;
+						line-height: 44rpx;
+						border-radius: 100%;
+
+						&.btn-right {
+							background-color: $color-primary;
+						}
+					}
+				}
+			}
+
+			.add-to-cart-btn {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: $color-primary;
+				color: white;
+				font-size: 28rpx;
+				height: 80rpx;
+				border-radius: 0 0 12rpx 12rpx;
+			}
+		}
+
+		.cart {
+			position: absolute;
+			height: 90rpx;
+			left: 30rpx;
+			right: 30rpx;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			bottom: 10rpx;
+			box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.2);
+			background-color: #FFFFFF;
+			border-radius: 45rpx;
+
+			.icon {
+				margin-left: 50rpx;
+			}
+
+			.price {
+				flex: 1;
+				margin-left: 20rpx;
+			}
+
+			.pay {
+				height: 90rpx;
+				width: 150rpx;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: white;
+				border-radius: 0 50rpx 50rpx 0;
+				background-color: $color-primary;
+			}
+		}
+
 	}
 </style>
