@@ -25,4 +25,11 @@
 		width: 100%;
 		height: 100%;
 	}
+
+	button {
+
+		&[type='primary'] {
+			background-color: $color-primary !important;
+		}
+	}
 </style>

@@ -29,15 +29,24 @@ $uni-text-color-inverse:#fff;//反色
 $uni-text-color-grey:#999;//辅助灰色，如加载更多的提示信息
 $uni-text-color-placeholder: #808080;
 $uni-text-color-disable:#c0c0c0;
+$text-color-base: #5A5B5C; //基本色
+$text-color-assist: #919293; //辅助色
+$text-color-black: #3B3C3E; //黑
+$text-color-grey: #878889; //灰
+$text-color-white: #ffffff; //白
 
 /* 背景颜色 */
 $uni-bg-color:#ffffff;
 $uni-bg-color-grey:#f8f8f8;
 $uni-bg-color-hover:#f1f1f1;//点击状态颜色
 $uni-bg-color-mask:rgba(0, 0, 0, 0.4);//遮罩颜色
+$bg-color: #F1F8FA;
+$bg-color-grey: #F5F5F5;
+$bg-color-primary: #E8EACF;
 
 /* 边框颜色 */
 $uni-border-color:#c8c7cc;
+$border-color:#e2e2e2;
 
 /* 尺寸变量 */
 
@@ -45,6 +54,9 @@ $uni-border-color:#c8c7cc;
 $uni-font-size-sm:12px;
 $uni-font-size-base:14px;
 $uni-font-size-lg:16;
+$font-size-sm:24rpx;
+$font-size-base:28rpx;
+$font-size-lg:32rpx;
 
 /* 图片尺寸 */
 $uni-img-size-sm:20px;
