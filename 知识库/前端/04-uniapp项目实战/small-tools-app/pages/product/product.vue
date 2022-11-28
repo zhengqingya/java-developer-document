@@ -23,16 +23,16 @@
 
 		<view class="content">
 			<scroll-view class="category" scroll-with-animation scroll-y="true">
-				<view class="item" v-for="(item, index) in reSpuList" :key="index" @tap="chooseCategory(item.id)"
-					:class="{'choose': item.id === chooseCategoryId}">
+				<view class="item" v-for="(item, index) in reSpuList" :key="index" @tap="hanleCategoryTap(item.id)"
+					:class="{'choose': item.id === currentCategoryId}">
 					<text>{{ item.name }}</text>
 				</view>
 			</scroll-view>
 
 			<scroll-view class="spu" scroll-with-animation scroll-y :scroll-top="cateScrollTop"
-				@scroll="handleGoodsScroll">
-				<view id="ads">11</view>
-				<view class="list" v-for="(item, index) in reSpuList" :key="index">
+				@scroll="handleSpuScroll">
+				<view id="ads"></view>
+				<view :id="`cate-${item.id}`" class="list" v-for="(item, index) in reSpuList" :key="index">
 					<view class="title">
 						<text>{{ item.name }}</text>
 					</view>
@@ -71,7 +71,7 @@
 			return {
 				orderType: 'takein',
 				reSpuList: [],
-				chooseCategoryId: 0,
+				currentCategoryId: 0,
 				cateScrollTop: 0,
 				sizeCalcState: false
 			}
@@ -83,22 +83,35 @@
 			async init() {
 				this.reSpuList = await this.$api.category.reSpuList();
 				if (this.reSpuList) {
-					this.chooseCategoryId = this.reSpuList[0].id
+					this.currentCategoryId = this.reSpuList[0].id
 				}
 			},
-			chooseCategory(id) {
-				this.chooseCategoryId = id
-			},
-			handleMenuTap(id) {
+			// 点击左侧分类时，动态滑动右侧数据到关联分类位置
+			hanleCategoryTap(id) {
 				if (!this.sizeCalcState) {
 					this.calcSize()
 				}
-
-				this.currentCateId = id
+				this.currentCategoryId = id
 				this.$nextTick(() => this.cateScrollTop = this.reSpuList.find(item => item.id == id).top)
 			},
+			// 右侧商品滚动时触发
+			handleSpuScroll({
+				detail
+			}) {
+				if (!this.sizeCalcState) {
+					this.calcSize()
+				}
+				const {
+					scrollTop
+				} = detail
+				let tabs = this.reSpuList.filter(item => item.top <= scrollTop).reverse()
+				if (tabs.length > 0) {
+					this.currentCategoryId = tabs[0].id
+				}
+			},
 			calcSize() {
-				let h = 10
+				// 高度
+				let h = 0
 
 				let view = uni.createSelectorQuery().select('#ads')
 				view.fields({
@@ -107,7 +120,7 @@
 					h += Math.floor(data.height)
 				}).exec()
 
-				this.goods.forEach(item => {
+				this.reSpuList.forEach(item => {
 					let view = uni.createSelectorQuery().select(`#cate-${item.id}`)
 					view.fields({
 						size: true
