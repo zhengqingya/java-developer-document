@@ -33,7 +33,7 @@
 				@scroll="handleSpuScroll">
 				<view id="ads"></view>
 				<view class="list">
-					<view :id="`cate-${item.id}`" v-for="(item, index) in reSpuList" :key="index">
+					<view class="spu-box" :id="`cate-${item.id}`" v-for="(item, index) in reSpuList" :key="index">
 						<view class="title">
 							<text>{{ item.name }}</text>
 						</view>
@@ -390,91 +390,96 @@
 				.list {
 					padding-bottom: 60rpx;
 
-					.title {
-						color: $chooce-font-color;
-						font-size: 30rpx;
-					}
-
-					.good {
-						display: flex;
-						align-items: center;
-						margin-top: 3px;
-
-						.left {
-							.image {
-								width: 160rpx;
-								height: 160rpx;
-								border-radius: 10rpx;
-							}
+					.spu-box {
+						.title {
+							color: $chooce-font-color;
+							font-size: 30rpx;
 						}
 
-						.right {
-							flex: 1;
-							height: 160rpx;
-							overflow: hidden;
+						.good {
 							display: flex;
-							flex-direction: column;
-							align-items: flex-start;
-							justify-content: space-between;
-							padding: 0 15rpx;
-							// background-color: #aaffff;
+							align-items: center;
+							margin-top: 3px;
 
-							.name {
-								font-size: 28rpx;
-								margin-bottom: 10rpx;
+							.left {
+								.image {
+									width: 160rpx;
+									height: 160rpx;
+									border-radius: 10rpx;
+								}
 							}
 
-							.price-action {
-								width: 100%;
+							.right {
+								flex: 1;
+								height: 160rpx;
+								overflow: hidden;
 								display: flex;
+								flex-direction: column;
+								align-items: flex-start;
 								justify-content: space-between;
-								align-items: center;
+								padding: 0 15rpx;
+								// background-color: #aaffff;
 
-								.price {
-									font-size: 26rpx;
-									font-weight: 600;
+								.name {
+									font-size: 28rpx;
+									margin-bottom: 10rpx;
 								}
 
-								.action {
+								.price-action {
+									width: 100%;
 									display: flex;
 									justify-content: space-between;
 									align-items: center;
-									position: relative;
 
-									.btn {
-										padding: 0 20rpx;
-										box-sizing: border-box;
-										font-size: 28rpx;
-										height: 44rpx;
-										line-height: 44rpx;
-										background-color: $color-primary;
-										color: white;
+									.price {
 										font-size: 26rpx;
-
-										&.property_btn {
-											border-radius: 24rpx;
-										}
+										font-weight: 600;
 									}
 
-									.dot {
-										position: absolute;
-										background-color: #ffffff;
-										border: 1px solid $color-primary;
-										color: $color-primary;
-										font-size: 28rpx;
-										width: 36rpx;
-										height: 36rpx;
-										line-height: 36rpx;
-										text-align: center;
-										border-radius: 100%;
-										right: -12rpx;
-										top: -10rpx;
+									.action {
+										display: flex;
+										justify-content: space-between;
+										align-items: center;
+										position: relative;
+
+										.btn {
+											padding: 0 20rpx;
+											box-sizing: border-box;
+											font-size: 28rpx;
+											height: 44rpx;
+											line-height: 44rpx;
+											background-color: $color-primary;
+											color: white;
+											font-size: 26rpx;
+
+											&.property_btn {
+												border-radius: 24rpx;
+											}
+										}
+
+										.dot {
+											position: absolute;
+											background-color: #ffffff;
+											border: 1px solid $color-primary;
+											color: $color-primary;
+											font-size: 28rpx;
+											width: 36rpx;
+											height: 36rpx;
+											line-height: 36rpx;
+											text-align: center;
+											border-radius: 100%;
+											right: -12rpx;
+											top: -10rpx;
+										}
 									}
 								}
 							}
 						}
-					}
 
+						&:nth-last-child(1) {
+							margin-bottom: 100rpx;
+						}
+					}
 				}
 			}
 		}
@@ -662,10 +667,10 @@
 
 		.cart {
 			position: absolute;
+			z-index: 9999; // 层叠顺序
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
-			z-index: 9999;
 			height: 90rpx;
 			left: 30rpx;
 			right: 30rpx;
@@ -696,9 +701,6 @@
 		}
 
 		.cart-popup {
-			// height: 100rpx;
-			background-color: red;
-
 			.top {
 				background-color: $bg-color-primary;
 				color: $color-primary;
@@ -714,18 +716,19 @@
 				min-height: 1vh;
 				max-height: 60vh;
 
+
 				.wrapper {
 					height: 100%;
 					display: flex;
 					flex-direction: column;
 					padding: 0 30rpx;
-					margin-bottom: 156rpx;
+					margin-bottom: 200rpx;
 
 					.item {
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
-						padding: 30rpx 0;
+						padding: 15rpx 0;
 						position: relative;
 
 						&::after {
