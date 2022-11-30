@@ -38,16 +38,16 @@
 							<text>{{ item.name }}</text>
 						</view>
 						<view>
-							<view class="good" v-for="(good, index) in item.spuList" :key="index">
+							<view class="spu-item" v-for="(spuItem, index) in item.spuList" :key="index">
 								<view class="left">
-									<image class="image" :src="good.coverImg" />
+									<image class="image" :src="spuItem.coverImg" />
 								</view>
 								<view class="right">
-									<text class="name">{{ good.name }}</text>
+									<text class="name">{{ spuItem.name }}</text>
 									<view class="price-action">
-										<text class="price">￥{{ good.skuList[0].sellPrice }}</text>
+										<text class="price">￥{{ spuItem.skuList[0].sellPrice }}</text>
 										<view class="action">
-											<button class="btn property_btn" @tap="showSpuDetailModal(item, good)">
+											<button class="btn property_btn" @tap="showSpuDetailModal(item, spuItem)">
 												选规格
 											</button>
 											<view class="dot">
@@ -77,29 +77,29 @@
 
 		<view>
 			<!--  商品详情  -->
-			<modal :show="goodDetailModalVisible" class="good-detail-modal" color="#5A5B5C" width="90%" custom
-				padding="0rpx" radius="12rpx">
+			<modal :show="spuDetailShow" class="spu-detail" color="#5A5B5C" width="90%" custom padding="0rpx"
+				radius="12rpx">
 				<view class="cover">
-					<image :src="good.coverImg" class="image"></image>
+					<image :src="spu.coverImg" class="image"></image>
 					<view class="close">
-						<uni-icons type="closeempty" @tap="closeSpuDetailModal" />
+						<uni-icons type="closeempty" @tap="spuDetailShow = false" />
 					</view>
 				</view>
 				<scroll-view class="detail" scroll-y>
 					<view class="wrapper">
 						<view class="basic">
-							<view class="name">{{ good.name }}</view>
+							<view class="name">{{ spu.name }}</view>
 						</view>
 						<view class="properties">
-							<view class="property" v-for="(item, index) in good.attrList" :key="index">
+							<view class="property" v-for="(item, index) in spu.attrList" :key="index">
 								<view class="title">
 									<text class="name">{{ item.attrKeyName }}</text>
 									<view class="desc" v-if="item.attrKeyName">({{ item.attrKeyName }})</view>
 								</view>
 								<view class="values">
-									<view class="value" :class="{'default': value.is_default}"
+									<view class="value" :class="{'default': value.isChoose}"
 										v-for="(value, key) in item.attrValueList" :key="key"
-										@tap="changePropertyDefault(index, key)">
+										@tap="chooseSku(index, key)">
 										{{ value.attrValueName }}
 									</view>
 								</view>
@@ -109,9 +109,9 @@
 				</scroll-view>
 				<view class="action">
 					<view class="left">
-						<view class="price">￥{{ good.sellPrice }}</view>
+						<view class="price">￥{{ spu.sellPrice }}</view>
 						<view class="props">
-							{{ currentAttrDesc }}
+							{{ calSkuAttr() }}
 						</view>
 					</view>
 					<view class="btn-group">
@@ -119,15 +119,15 @@
 							@tap="handlePropertyReduce">
 							<view>-</view>
 						</button>
-						<view class="number">{{ good.number }}</view>
+						<view class="number">{{ spu.num }}</view>
 						<button type="primary" class="btn btn-right" size="min" hover-class="none"
 							@tap="handlePropertyAdd">
 							+
 						</button>
 					</view>
 				</view>
-				<view class="add-to-cart-btn" @tap="handleAddToCartInModal">
-					<view>加入购物车</view>
+				<view class="add-to-cart-btn" @tap="addCart">
+					加入购物车
 				</view>
 			</modal>
 
@@ -178,12 +178,11 @@
 				orderType: 'takein',
 				reSpuList: [],
 				currentCategoryId: 0,
-				good: {},
+				spu: {},
 				category: {},
 				cateScrollTop: 0,
 				sizeCalcState: false,
-				goodDetailModalVisible: false,
-				currentAttrDesc: "",
+				spuDetailShow: false,
 				cart: [],
 				cartPopupVisible: false,
 			}
@@ -244,44 +243,73 @@
 				})
 				this.sizeCalcState = true
 			},
-			// 商品详情
-			async showSpuDetailModal(item, good) {
-				this.good = await this.$api.spu.detail(good.id);
-				// this.good = JSON.parse(JSON.stringify({
-				// 	...good,
-				// 	number: 1
-				// }))
-				this.good.number = 1
-				// console.log(this.good)
-				this.category = JSON.parse(JSON.stringify(item))
-				this.goodDetailModalVisible = true
+			// 选规格-商品详情
+			async showSpuDetailModal(item, spu) {
+				this.spu = await this.$api.spu.detail(spu.id);
+				this.spu.num = 1
+				this.category = item
+				this.spuDetailShow = true
 			},
-			closeSpuDetailModal() {
-				this.goodDetailModalVisible = false
+			// 选sku
+			chooseSku(index, key) {
+				this.spu.attrList[index].attrValueList.forEach(value => this.$set(value, 'isChoose', 0))
+				this.spu.attrList[index].attrValueList[key].isChoose = 1
+				this.spu.num = 1
+				this.calSkuAttr()
 			},
-			changePropertyDefault(index, key) {
-				this.good.attrList[index].attrValueList.forEach(value => this.$set(value, 'is_default', 0))
-				this.good.attrList[index].attrValueList[key].is_default = 1
-				this.good.number = 1
-				this.getGoodSelectedProps()
-			},
-			getGoodSelectedProps() {
+			calSkuAttr() {
 				let attrDescList = []
-				this.good.attrList.forEach(attr => {
+				if (this.spu.attrList) {
+					this.spu.attrList.forEach(attr => {
+						attr.attrValueList.forEach(value => {
+							if (value.isChoose) {
+								attrDescList.push(value.attrValueName)
+							}
+						})
+					})
+				}
+				return attrDescList.join('，')
+			},
+			// 加入购物车
+			addCart() {
+				// 确认sku-id
+				let specList = []
+				let skuId = null;
+				this.spu.attrList.forEach(attr => {
 					attr.attrValueList.forEach(value => {
-						if (value.is_default) {
-							attrDescList.push(value.attrValueName)
+						if (value.isChoose) {
+							// 这里是选择的sku
+							specList.push({
+								"attrKeyId": attr.attrKeyId,
+								"attrKeyName": attr.attrKeyName,
+								"attrValueId": value.attrValueId,
+								"attrValueName": value.attrValueName
+							})
 						}
 					})
 				})
-				this.currentAttrDesc = attrDescList.join('，')
+				if (specList.length == 0) {
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: '请选择sku！'
+					});
+				}
+				this.spu.skuList.forEach(sku => {
+					let skuReSpecList = sku.specList
+					if (JSON.stringify(skuReSpecList) == JSON.stringify(specList)) {
+						skuId = sku.id
+					}
+				})
+				// 请求后端开始加入购物车数据
+
 			},
 			handlePropertyAdd() {
-				this.good.number += 1
+				this.spu.num += 1
 			},
 			handlePropertyReduce() {
-				if (this.good.number === 1) return
-				this.good.number -= 1
+				if (this.spu.num === 1) return
+				this.spu.num -= 1
 			},
 			openCartPopup() {
 				this.cartPopupVisible = !this.cartPopupVisible
@@ -292,11 +320,11 @@
 				}
 			},
 			//详情
-			goToDetail(item) {
-				uni.navigateTo({
-					url: `/pages/product/product?id=${item.id}`
-				});
-			},
+			// goToDetail(item) {
+			// 	uni.navigateTo({
+			// 		url: `/pages/product/product?id=${item.id}`
+			// 	});
+			// },
 
 		}
 	}
@@ -396,7 +424,7 @@
 							font-size: 30rpx;
 						}
 
-						.good {
+						.spu-item {
 							display: flex;
 							align-items: center;
 							margin-top: 3px;
@@ -485,7 +513,7 @@
 		}
 
 
-		.good-detail-modal {
+		.spu-detail {
 			width: 100%;
 			height: 100%;
 			display: flex;
@@ -599,7 +627,7 @@
 				align-items: center;
 				justify-content: space-between;
 				background-color: #F5F5F5;
-				height: 120rpx;
+				height: 100rpx;
 				padding: 0 26rpx;
 
 				.left {

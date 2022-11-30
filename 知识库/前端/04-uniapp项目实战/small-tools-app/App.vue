@@ -27,9 +27,13 @@
 	}
 
 	button {
-
 		&[type='primary'] {
 			background-color: $color-primary !important;
 		}
+	}
+
+	uni-toast {
+		// 解决被popup组件遮盖问题
+		z-index: 999999999 !important;
 	}
 </style>
