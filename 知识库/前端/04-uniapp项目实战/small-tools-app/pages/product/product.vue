@@ -72,7 +72,9 @@
 				</uni-badge>
 			</view>
 			<view class="price">￥{{cartList.reduce((total, item) => total += (item.num*item.price), 0)}}</view>
-			<view class="pay">付款</view>
+			<navigator :url="'/pages/product/pay'">
+				<view class="pay">付款</view>
+			</navigator>
 		</view>
 
 
@@ -361,17 +363,12 @@
 					skuId: item.skuId,
 					num: num
 				});
-				if (item.num === 0) {
+				if (this.cartList.filter(e => e.num > 0).length === 0) {
+					// 如果所有sku都被处理完了，则关闭弹出框
 					this.$refs.cartPopupVisible.close()
+					this.cartList = []
 				}
 			},
-			//详情
-			// goToDetail(item) {
-			// 	uni.navigateTo({
-			// 		url: `/pages/product/product?id=${item.id}`
-			// 	});
-			// },
-
 		}
 	}
 </script>

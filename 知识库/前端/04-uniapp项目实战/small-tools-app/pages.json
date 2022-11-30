@@ -12,7 +12,12 @@
 				"navigationBarTitleText": "点餐",
 				"enablePullDownRefresh": false
 			}
-
+		}, {
+			"path": "pages/product/pay",
+			"style": {
+				"navigationBarTitleText": "创建订单",
+				"enablePullDownRefresh": false
+			}
 		}, {
 			"path": "pages/cart/cart",
 			"style": {
