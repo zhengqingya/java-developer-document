@@ -29,7 +29,7 @@
 				</view>
 			</scroll-view>
 
-			<scroll-view class="spu" scroll-with-animation scroll-y :scroll-top="cateScrollTop"
+			<scroll-view class="spu" scroll-with-animation scroll-y :scroll-top="categoryScrollTop"
 				@scroll="handleSpuScroll">
 				<view id="ads"></view>
 				<view class="list">
@@ -64,13 +64,14 @@
 		</view>
 
 		<!-- 购物车 -->
-		<view class="cart" v-if="cart.length == 0">
+		<view class="cart" v-show="cartList.length > 0">
 			<view @tap="openCartPopup">
-				<uni-badge :text="22" absolute="rightTop" type="warning">
+				<uni-badge :text="cartList.reduce((total, item) => total += item.num, 0)" absolute="rightTop"
+					type="warning">
 					<uni-icons class="icon" type="cart" size="22" />
 				</uni-badge>
 			</view>
-			<view class="price">￥10</view>
+			<view class="price">￥{{cartList.reduce((total, item) => total += (item.num*item.price), 0)}}</view>
 			<view class="pay">付款</view>
 		</view>
 
@@ -111,17 +112,16 @@
 					<view class="left">
 						<view class="price">￥{{ spu.sellPrice }}</view>
 						<view class="props">
-							{{ calSkuAttr() }}
+							{{ calSkuSpecDesc() }}
 						</view>
 					</view>
 					<view class="btn-group">
-						<button type="default" plain class="btn" size="mini" hover-class="none"
-							@tap="handlePropertyReduce">
+						<button type="default" plain class="btn" size="mini" hover-class="none" @tap="updateSkuNum(-1)">
 							<view>-</view>
 						</button>
 						<view class="number">{{ spu.num }}</view>
 						<button type="primary" class="btn btn-right" size="min" hover-class="none"
-							@tap="handlePropertyAdd">
+							@tap="updateSkuNum(+1)">
 							+
 						</button>
 					</view>
@@ -136,26 +136,26 @@
 				<view class="cart-popup">
 					<view>
 						<view class="top">
-							<text @tap="handleCartClear">清空</text>
+							<text @tap="clearCart">清空</text>
 						</view>
 						<scroll-view class="cart-list" scroll-y>
 							<view class="wrapper">
-								<view class="item" v-for="(item, index) in 10" :key="index">
+								<view class="item" v-for="(item, index) in cartList" :key="index">
 									<view class="left">
-										<view class="name">11</view>
-										<view class="props">222</view>
+										<view class="name">{{item.name}}</view>
+										<view class="props">{{item.specDesc}}</view>
 									</view>
 									<view class="center">
-										<text>￥111</text>
+										<text>￥{{item.price}}</text>
 									</view>
 									<view class="right">
 										<button type="default" plain size="mini" class="btn" hover-class="none"
-											@tap="handleCartItemReduce(index)">
+											@tap="updateCartItemNum(item,-1)">
 											<view>-</view>
 										</button>
-										<view class="number">1</view>
+										<view class="number">{{item.num}}</view>
 										<button type="primary" class="btn" size="min" hover-class="none"
-											@tap="handleCartItemAdd(index)">
+											@tap="updateCartItemNum(item,+1)">
 											+
 										</button>
 									</view>
@@ -175,16 +175,16 @@
 	export default {
 		data() {
 			return {
-				orderType: 'takein',
-				reSpuList: [],
-				currentCategoryId: 0,
-				spu: {},
-				category: {},
-				cateScrollTop: 0,
-				sizeCalcState: false,
-				spuDetailShow: false,
-				cart: [],
-				cartPopupVisible: false,
+				orderType: 'takein', // 堂食：takein  外卖：takeout
+				reSpuList: [], // 分类关联的商品列表数据
+				currentCategoryId: 0, // 当前分类id
+				spu: {}, // 当前选择的商品
+				category: {}, // 当前选择的分类
+				categoryScrollTop: 0, // 竖向滚动条位置
+				spuDetailShow: false, // 商品选规格时的详情框是否显示
+				cartList: [], // 购物车数据
+				cartPopupVisible: false, // 购物车弹出层
+				// isShowCart: false, // 是否显示购物车
 			}
 		},
 		onLoad() {
@@ -196,22 +196,19 @@
 				if (this.reSpuList) {
 					this.currentCategoryId = this.reSpuList[0].id
 				}
+				this.getCartList()
 			},
 			// 点击左侧分类时，动态滑动右侧数据到关联分类位置
 			hanleCategoryTap(id) {
-				if (!this.sizeCalcState) {
-					this.calcSize()
-				}
+				this.calcSize()
 				this.currentCategoryId = id
-				this.$nextTick(() => this.cateScrollTop = this.reSpuList.find(item => item.id == id).top)
+				this.$nextTick(() => this.categoryScrollTop = this.reSpuList.find(item => item.id == id).top)
 			},
 			// 右侧商品滚动时触发
 			handleSpuScroll({
 				detail
 			}) {
-				if (!this.sizeCalcState) {
-					this.calcSize()
-				}
+				this.calcSize()
 				const {
 					scrollTop
 				} = detail
@@ -241,7 +238,6 @@
 						item.bottom = h
 					}).exec()
 				})
-				this.sizeCalcState = true
 			},
 			// 选规格-商品详情
 			async showSpuDetailModal(item, spu) {
@@ -254,10 +250,9 @@
 			chooseSku(index, key) {
 				this.spu.attrList[index].attrValueList.forEach(value => this.$set(value, 'isChoose', 0))
 				this.spu.attrList[index].attrValueList[key].isChoose = 1
-				this.spu.num = 1
-				this.calSkuAttr()
+				this.calSkuSpecDesc()
 			},
-			calSkuAttr() {
+			calSkuSpecDesc() {
 				let attrDescList = []
 				if (this.spu.attrList) {
 					this.spu.attrList.forEach(attr => {
@@ -268,13 +263,14 @@
 						})
 					})
 				}
-				return attrDescList.join('，')
+				return attrDescList.join(',')
 			},
 			// 加入购物车
 			addCart() {
 				// 确认sku-id
 				let specList = []
 				let skuId = null;
+				let skuPrice = null;
 				this.spu.attrList.forEach(attr => {
 					attr.attrValueList.forEach(value => {
 						if (value.isChoose) {
@@ -288,34 +284,84 @@
 						}
 					})
 				})
-				if (specList.length == 0) {
+				this.spu.skuList.forEach(sku => {
+					let skuReSpecList = sku.specList
+					if (JSON.stringify(skuReSpecList) == JSON.stringify(specList)) {
+						skuId = sku.id
+						skuPrice = sku.sellPrice
+					}
+				})
+				if (skuId == null) {
 					uni.showToast({
 						icon: 'none',
 						duration: 1000,
 						title: '请选择sku！'
 					});
+					return
 				}
-				this.spu.skuList.forEach(sku => {
-					let skuReSpecList = sku.specList
-					if (JSON.stringify(skuReSpecList) == JSON.stringify(specList)) {
-						skuId = sku.id
-					}
-				})
 				// 请求后端开始加入购物车数据
-
+				this.$api.cart.add({
+					spuId: this.spu.id,
+					skuId: skuId,
+					num: this.spu.num
+				});
+				this.cartList.push({
+					spuId: this.spu.id,
+					skuId: skuId,
+					name: this.spu.name,
+					num: this.spu.num,
+					specDesc: this.calSkuSpecDesc(),
+					price: skuPrice
+				})
+				this.spuDetailShow = false
 			},
-			handlePropertyAdd() {
-				this.spu.num += 1
+			updateSkuNum(num) {
+				if (this.spu.num + num === 0) {
+					return
+				}
+				this.spu.num += num
+				this.num = this.spu.num
 			},
-			handlePropertyReduce() {
-				if (this.spu.num === 1) return
-				this.spu.num -= 1
-			},
-			openCartPopup() {
+			// 打开购物车列表框
+			async openCartPopup() {
 				this.cartPopupVisible = !this.cartPopupVisible
 				if (this.cartPopupVisible) {
+					await this.getCartList()
 					this.$refs.cartPopupVisible.open()
 				} else {
+					this.$refs.cartPopupVisible.close()
+				}
+			},
+			// 购物车数据
+			async getCartList() {
+				this.cartList = await this.$api.cart.list();
+			},
+			// 清空购物车
+			clearCart() {
+				let skuIdList = []
+				if (this.cartList.length > 0) {
+					this.cartList.forEach(item => {
+						skuIdList.push(item.skuId)
+					})
+					this.$api.cart.delete({
+						skuIdList: skuIdList
+					});
+				}
+				this.cartList = []
+				this.$refs.cartPopupVisible.close()
+			},
+			// 更新购物车商品数据
+			updateCartItemNum(item, num) {
+				if (item.num + num < 0) {
+					return
+				}
+				item.num += num
+				this.$api.cart.add({
+					spuId: item.spuId,
+					skuId: item.skuId,
+					num: num
+				});
+				if (item.num === 0) {
 					this.$refs.cartPopupVisible.close()
 				}
 			},
