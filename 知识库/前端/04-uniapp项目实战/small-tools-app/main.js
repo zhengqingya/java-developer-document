@@ -16,12 +16,17 @@ import {
 } from 'vue'
 import api from '@/api/index.js'
 
+import uviewPlus from '@/uni_modules/uview-plus'
+
+
 export function createApp() {
 	const app = createSSRApp(App)
-	
+
 	// 配置全局api
 	app.config.globalProperties.$api = api
-	
+
+	app.use(uviewPlus)
+
 	return {
 		app
 	}

@@ -39,7 +39,7 @@
 		<view class="remark-box">
 			<uni-list-item title="备注">
 				<template v-slot:footer>
-					<input class="right-input" placeholder="无..." :value="orderRemark" />
+					<input class="right-input" placeholder="无..." v-model="orderRemark" />
 				</template>
 			</uni-list-item>
 		</view>
@@ -62,8 +62,8 @@
 	export default {
 		data() {
 			return {
-				orderRemark: '',
 				cartList: [], // 购物车数据
+				orderRemark: '',
 			};
 		},
 		onLoad() {
@@ -90,10 +90,12 @@
 					payPrice: sumPrice,
 					orderRemark: this.orderRemark
 				});
-				uni.navigateTo({
-					url: '/pages/product/pay?orderNo=' + orderNo
-				});
-
+				// 2秒后跳转到订单详情页面
+				setInterval(() => {
+					uni.navigateTo({
+						url: '/pages/order/detail?orderNo=' + orderNo
+					});
+				}, 1000);
 			},
 		}
 	}
