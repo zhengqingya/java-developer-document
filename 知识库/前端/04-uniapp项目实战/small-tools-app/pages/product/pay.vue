@@ -2,21 +2,58 @@
 	<view class="app-container">
 		<view class="base-box">
 			<uni-list>
-				<uni-list-item title="店铺" rightText="天府三街测试店"></uni-list-item>
-				<uni-list-item title="配送方式" rightText="堂食"></uni-list-item>
+				<uni-list-item title="店铺" rightText="天府三街测试店" />
+				<uni-list-item title="配送方式" rightText="堂食" />
 				<uni-list-item title="联系电话">
 					<template v-slot:footer>
-						<input class="right-input" placeholder="请填写联系电话" />
+						<input class="right-input" placeholder="请填写联系电话" value="151866666666" />
 					</template>
 				</uni-list-item>
 				<uni-list-item title="取餐时间" rightText="立即"></uni-list-item>
 			</uni-list>
 		</view>
 		<view class="product-box">
-
+			<uni-list>
+				<uni-list-item title="商品明细" />
+				<uni-list-item>
+					<template v-slot:footer>
+						<view class="cart-list">
+							<view class="item" v-for="(item, index) in cartList" :key="index">
+								<image :src="item.coverImg" class="image" />
+								<view class="left">
+									<view class="name">{{item.name}}</view>
+									<view class="spec-desc">{{item.specDesc}}</view>
+								</view>
+								<view class="center">
+									<text>￥{{item.price}}</text>
+								</view>
+								<view class="right">
+									<view class="num">x{{item.num}}</view>
+								</view>
+							</view>
+						</view>
+					</template>
+				</uni-list-item>
+			</uni-list>
+		</view>
+		<view class="remark-box">
+			<uni-list-item title="备注">
+				<template v-slot:footer>
+					<input class="right-input" placeholder="加热..." value="" />
+				</template>
+			</uni-list-item>
 		</view>
 		<view class="pay-box">
-
+			<uni-list-item>
+				<template v-slot:header>
+					<view>
+						合计￥{{cartList.reduce((total, item) => total += item.num*item.price, 0)}}
+					</view>
+				</template>
+				<template v-slot:footer>
+					<button type="warn" class="right-input" @tap="pay()">创建订单</button>
+				</template>
+			</uni-list-item>
 		</view>
 	</view>
 </template>
@@ -25,17 +62,30 @@
 	export default {
 		data() {
 			return {
-
+				cartList: [], // 购物车数据
 			};
+		},
+		onLoad() {
+			this.init()
+		},
+		methods: {
+			// 购物车数据
+			async init() {
+				this.cartList = await this.$api.cart.list();
+			},
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
 	.app-container {
-		.base-box {
+		background-color: $bg-color;
+
+		.base-box,
+		.product-box,
+		.pay-box,
+		.remark-box {
 			padding: 10rpx 10rpx;
-			background-color: $bg-color;
 
 			.right-input {
 				width: 180rpx;
@@ -44,11 +94,67 @@
 		}
 
 		.product-box {
-			background-color: $bg-color;
+
+			.cart-list {
+				width: 100%;
+
+				.item {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 5rpx 0;
+					position: relative;
+					// border: 1rpx solid gainsboro;
+
+					.image {
+						width: 60rpx;
+						height: 60rpx;
+						margin-right: 10rpx;
+					}
+
+					.left {
+						flex: 1;
+						display: flex;
+						flex-direction: column;
+
+						.name {
+							font-size: $font-size-sm;
+							color: $text-color-base;
+						}
+
+						.spec-desc {
+							color: $text-color-assist;
+							font-size: $font-size-sm;
+						}
+					}
+
+					.center {
+						margin-right: 120rpx;
+						font-size: $font-size-base;
+					}
+
+					.right {
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+
+						.num {
+							font-size: $font-size-sm;
+							width: 46rpx;
+							height: 46rpx;
+							text-align: center;
+							line-height: 46rpx;
+						}
+					}
+				}
+
+			}
 		}
 
-		.product-box {
-			background-color: $bg-color;
+		.pay-box {
+			position: absolute;
+			width: 100%;
+			bottom: 10rpx;
 		}
 
 	}

@@ -118,14 +118,11 @@
 						</view>
 					</view>
 					<view class="right">
-						<button type="default" plain class="btn" size="mini" hover-class="none" @tap="updateSkuNum(-1)">
-							<view>-</view>
-						</button>
+						<button type="default" plain class="btn" size="mini" hover-class="none"
+							@tap="updateSkuNum(-1)">-</button>
 						<view class="number">{{ spu.num }}</view>
 						<button type="primary" class="btn btn-right" size="min" hover-class="none"
-							@tap="updateSkuNum(+1)">
-							+
-						</button>
+							@tap="updateSkuNum(+1)">+</button>
 					</view>
 				</view>
 				<view class="add-cart" @tap="addCart">
@@ -143,6 +140,7 @@
 						<scroll-view class="cart-list" scroll-y>
 							<view class="wrapper">
 								<view class="item" v-for="(item, index) in cartList" :key="index">
+									<image :src="item.coverImg" class="image" />
 									<view class="left">
 										<view class="name">{{item.name}}</view>
 										<view class="spec-desc">{{item.specDesc}}</view>
@@ -152,14 +150,10 @@
 									</view>
 									<view class="right">
 										<button type="default" plain size="mini" class="btn" hover-class="none"
-											@tap="updateCartItemNum(item,-1)">
-											<view>-</view>
-										</button>
+											@tap="updateCartItemNum(item,-1)">-</button>
 										<view class="num">{{item.num}}</view>
 										<button type="primary" class="btn" size="min" hover-class="none"
-											@tap="updateCartItemNum(item,+1)">
-											+
-										</button>
+											@tap="updateCartItemNum(item,+1)">+</button>
 									</view>
 								</view>
 							</view>
@@ -771,7 +765,6 @@
 			.cart-list {
 				background-color: #FFFFFF;
 				width: 100%;
-				overflow: hidden;
 				min-height: 1vh;
 				max-height: 60vh;
 
@@ -800,6 +793,12 @@
 							transform: scaleY(.6);
 						}
 
+						.image {
+							width: 60rpx;
+							height: 60rpx;
+							margin-right: 10rpx;
+						}
+
 						.left {
 							flex: 1;
 							display: flex;
@@ -814,10 +813,10 @@
 
 							.spec-desc {
 								color: $text-color-assist;
-								font-size: 24rpx;
+								font-size: $font-size-sm;
 								overflow: hidden;
-								text-overflow: ellipsis;
-								white-space: nowrap;
+								text-overflow: ellipsis; // 多行文本下，用省略号… 隐藏超出范围的文本
+								white-space: nowrap; // 不换行
 							}
 						}
 
