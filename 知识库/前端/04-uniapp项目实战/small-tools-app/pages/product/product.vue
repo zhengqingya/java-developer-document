@@ -47,11 +47,11 @@
 									<view class="price-action">
 										<text class="price">￥{{ spuItem.skuList[0].sellPrice }}</text>
 										<view class="action">
-											<button class="btn property_btn" @tap="showSpuDetailModal(item, spuItem)">
+											<button class="choose-attr" @tap="showSpuDetailModal(item, spuItem)">
 												选规格
 											</button>
-											<view class="dot">
-												1
+											<view class="num" v-if="getSkuNum(spuItem) > 0">
+												{{ getSkuNum(spuItem) }}
 											</view>
 										</view>
 									</view>
@@ -93,8 +93,8 @@
 						<view class="basic">
 							<view class="name">{{ spu.name }}</view>
 						</view>
-						<view class="properties">
-							<view class="property" v-for="(item, index) in spu.attrList" :key="index">
+						<view class="attrList">
+							<view class="attr" v-for="(item, index) in spu.attrList" :key="index">
 								<view class="title">
 									<text class="name">{{ item.attrKeyName }}</text>
 									<view class="desc" v-if="item.attrKeyName">({{ item.attrKeyName }})</view>
@@ -113,11 +113,11 @@
 				<view class="action">
 					<view class="left">
 						<view class="price">￥{{ spu.sellPrice }}</view>
-						<view class="props">
+						<view class="spec-desc">
 							{{ calSkuSpecDesc() }}
 						</view>
 					</view>
-					<view class="btn-group">
+					<view class="right">
 						<button type="default" plain class="btn" size="mini" hover-class="none" @tap="updateSkuNum(-1)">
 							<view>-</view>
 						</button>
@@ -128,7 +128,7 @@
 						</button>
 					</view>
 				</view>
-				<view class="add-to-cart-btn" @tap="addCart">
+				<view class="add-cart" @tap="addCart">
 					加入购物车
 				</view>
 			</modal>
@@ -145,7 +145,7 @@
 								<view class="item" v-for="(item, index) in cartList" :key="index">
 									<view class="left">
 										<view class="name">{{item.name}}</view>
-										<view class="props">{{item.specDesc}}</view>
+										<view class="spec-desc">{{item.specDesc}}</view>
 									</view>
 									<view class="center">
 										<text>￥{{item.price}}</text>
@@ -155,7 +155,7 @@
 											@tap="updateCartItemNum(item,-1)">
 											<view>-</view>
 										</button>
-										<view class="number">{{item.num}}</view>
+										<view class="num">{{item.num}}</view>
 										<button type="primary" class="btn" size="min" hover-class="none"
 											@tap="updateCartItemNum(item,+1)">
 											+
@@ -168,8 +168,6 @@
 				</view>
 			</uni-popup>
 		</view>
-
-
 	</view>
 </template>
 
@@ -181,12 +179,10 @@
 				reSpuList: [], // 分类关联的商品列表数据
 				currentCategoryId: 0, // 当前分类id
 				spu: {}, // 当前选择的商品
-				category: {}, // 当前选择的分类
 				categoryScrollTop: 0, // 竖向滚动条位置
 				spuDetailShow: false, // 商品选规格时的详情框是否显示
 				cartList: [], // 购物车数据
 				cartPopupVisible: false, // 购物车弹出层
-				// isShowCart: false, // 是否显示购物车
 			}
 		},
 		onLoad() {
@@ -241,11 +237,14 @@
 					}).exec()
 				})
 			},
+			// 商品在购物车中的数量
+			getSkuNum(spuItem) {
+				return this.cartList.filter(e => e.spuId === spuItem.id).reduce((total, item) => total += item.num, 0)
+			},
 			// 选规格-商品详情
 			async showSpuDetailModal(item, spu) {
 				this.spu = await this.$api.spu.detail(spu.id);
 				this.spu.num = 1
-				this.category = item
 				this.spuDetailShow = true
 			},
 			// 选sku
@@ -513,22 +512,17 @@
 										align-items: center;
 										position: relative;
 
-										.btn {
+										.choose-attr {
 											padding: 0 20rpx;
-											box-sizing: border-box;
-											font-size: 28rpx;
 											height: 44rpx;
 											line-height: 44rpx;
 											background-color: $color-primary;
 											color: white;
-											font-size: 26rpx;
-
-											&.property_btn {
-												border-radius: 24rpx;
-											}
+											font-size: $font-size-sm;
+											border-radius: 24rpx;
 										}
 
-										.dot {
+										.num {
 											position: absolute;
 											background-color: #ffffff;
 											border: 1px solid $color-primary;
@@ -592,25 +586,20 @@
 					overflow: hidden;
 
 					.basic {
-						padding: 0 20rpx 30rpx;
-						display: flex;
-						flex-direction: column;
-
-						.name {
-							font-size: 28rpx;
-							color: #5A5B5C;
-							margin-bottom: 10rpx;
-						}
+						padding: 10rpx 30rpx;
+						font-size: $font-size-base;
+						color: #5A5B5C;
+						margin-bottom: 10rpx;
 					}
 
-					.properties {
+					.attrList {
 						width: 100%;
 						border-top: 2rpx solid #F5F5F5;
 						padding: 10rpx 30rpx 0;
 						display: flex;
 						flex-direction: column;
 
-						.property {
+						.attr {
 							width: 100%;
 							display: flex;
 							flex-direction: column;
@@ -625,14 +614,14 @@
 								margin-bottom: 20rpx;
 
 								.name {
-									font-size: 26rpx;
+									font-size: $font-size-base;
 									color: #5A5B5C;
 									margin-right: 20rpx;
 								}
 
 								.desc {
 									flex: 1;
-									font-size: 28rpx;
+									font-size: $font-size-base;
 									color: $color-primary;
 									overflow: hidden;
 									text-overflow: ellipsis;
@@ -649,7 +638,7 @@
 									border-radius: 8rpx;
 									background-color: #F5F5F5;
 									padding: 16rpx 30rpx;
-									font-size: 26rpx;
+									font-size: $font-size-base;
 									color: #919293;
 									margin-right: 16rpx;
 									margin-bottom: 16rpx;
@@ -686,7 +675,7 @@
 						color: #5A5B5C;
 					}
 
-					.props {
+					.spec-desc {
 						color: #919293;
 						font-size: 24rpx;
 						width: 100%;
@@ -696,7 +685,7 @@
 					}
 				}
 
-				.btn-group {
+				.right {
 					display: flex;
 					align-items: center;
 					justify-content: space-around;
@@ -724,14 +713,13 @@
 				}
 			}
 
-			.add-to-cart-btn {
-				display: flex;
-				justify-content: center;
-				align-items: center;
+			.add-cart {
 				background-color: $color-primary;
 				color: white;
-				font-size: 28rpx;
 				height: 80rpx;
+				text-align: center;
+				line-height: 80rpx;
+				font-size: $font-size-base;
 				border-radius: 0 0 12rpx 12rpx;
 			}
 		}
@@ -787,7 +775,6 @@
 				min-height: 1vh;
 				max-height: 60vh;
 
-
 				.wrapper {
 					height: 100%;
 					display: flex;
@@ -825,7 +812,7 @@
 								color: $text-color-base;
 							}
 
-							.props {
+							.spec-desc {
 								color: $text-color-assist;
 								font-size: 24rpx;
 								overflow: hidden;
@@ -853,7 +840,7 @@
 								line-height: 46rpx;
 							}
 
-							.number {
+							.num {
 								font-size: $font-size-base;
 								width: 46rpx;
 								height: 46rpx;
