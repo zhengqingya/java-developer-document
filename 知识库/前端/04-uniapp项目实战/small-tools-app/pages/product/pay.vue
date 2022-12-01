@@ -39,7 +39,7 @@
 		<view class="remark-box">
 			<uni-list-item title="备注">
 				<template v-slot:footer>
-					<input class="right-input" placeholder="加热..." value="" />
+					<input class="right-input" placeholder="无..." :value="orderRemark" />
 				</template>
 			</uni-list-item>
 		</view>
@@ -47,11 +47,11 @@
 			<uni-list-item>
 				<template v-slot:header>
 					<view>
-						合计￥{{cartList.reduce((total, item) => total += item.num*item.price, 0)}}
+						合计￥{{ cartList.reduce((total, item) => total += item.num * item.price, 0) }}
 					</view>
 				</template>
 				<template v-slot:footer>
-					<button type="warn" class="right-input" @tap="pay()">创建订单</button>
+					<button type="warn" class="right-input" @tap="createOrder()">创建订单</button>
 				</template>
 			</uni-list-item>
 		</view>
@@ -62,6 +62,7 @@
 	export default {
 		data() {
 			return {
+				orderRemark: '',
 				cartList: [], // 购物车数据
 			};
 		},
@@ -69,9 +70,30 @@
 			this.init()
 		},
 		methods: {
-			// 购物车数据
 			async init() {
+				// 购物车数据
 				this.cartList = await this.$api.cart.list();
+			},
+			// 创建订单
+			async createOrder() {
+				let skuList = JSON.parse(JSON.stringify(this.cartList))
+				let sumPrice = this.cartList.reduce((total, item) => total += item.num * item.price, 0)
+				let {
+					orderNo
+				} = await this.$api.order.create({
+					wxOpenid: "666",
+					skuList: skuList,
+					freight: Math.max.apply(Math, this.cartList.map(function(item) {
+						return item.freight << 0
+					})),
+					totalPrice: sumPrice,
+					payPrice: sumPrice,
+					orderRemark: this.orderRemark
+				});
+				uni.navigateTo({
+					url: '/pages/product/pay?orderNo=' + orderNo
+				});
+
 			},
 		}
 	}
