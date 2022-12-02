@@ -1,5 +1,4 @@
 <template>
-	<view>11111111111111111111 </view>
 	<view class="app-container">
 		<view>
 			<view class="order-status-box" v-if="orderObj">
@@ -7,8 +6,8 @@
 				<view v-if="orderObj.orderStatus===1">
 					<view class="un-pay">
 						<view>剩余支付时间：</view>
-						<!-- <u-count-down :time="new Date(orderObj.unPayEndTime).getTime()-new Date().getTime()" format="mm:ss"
-						@finish="cancelOrder()" /> -->
+						<u-count-down :time="new Date(orderObj.unPayEndTime).getTime()-new Date().getTime()"
+							format="mm:ss" @finish="cancelOrder()" />
 					</view>
 					<view class="action">
 						<button class="btn" @tap="cancelOrder()">取消订单</button>
@@ -47,7 +46,6 @@
 				<uni-list-item title="配送方式" rightText="堂食" />
 				<uni-list-item title="总金额" :rightText="orderObj.totalPrice/100" />
 				<uni-list-item title="支付金额" :rightText="orderObj.payPrice/100" />
-				<!-- <uni-list-item title="取餐时间" :rightText="orderObj.orderRemark" /> -->
 				<uni-list-item title="备注" :rightText="orderObj.orderRemark" />
 			</view>
 		</view>
@@ -74,7 +72,6 @@
 		onLoad(params) {
 			this.orderNo = params.orderNo
 			this.orderDetail()
-			console.log(1111)
 		},
 		methods: {
 			// 订单详情
