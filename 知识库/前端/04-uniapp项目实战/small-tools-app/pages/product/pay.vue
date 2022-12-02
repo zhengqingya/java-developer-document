@@ -90,7 +90,7 @@
 					payPrice: sumPrice,
 					orderRemark: this.orderRemark
 				});
-				// 2秒后跳转到订单详情页面
+				// 1秒后跳转到订单详情页面
 				setInterval(() => {
 					uni.navigateTo({
 						url: '/pages/order/detail?orderNo=' + orderNo

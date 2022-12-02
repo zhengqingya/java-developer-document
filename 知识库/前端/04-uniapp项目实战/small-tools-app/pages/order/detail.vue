@@ -1,15 +1,17 @@
 <template>
-	<view class="app-container">
-		<view class="order-status-box" v-if="orderObj">
+	<view class="app-container" v-if="orderObj">
+		<view class="order-status-box">
 			<view class="status">{{orderObj.orderStatusName}}</view>
-			<view class="un-pay">
-				<view>剩余支付时间：</view>
-				<u-count-down :time="new Date(orderObj.unPayEndTime).getTime()-new Date().getTime()" format="mm:ss"
-					@finish="cancelOrder()" />
-			</view>
-			<view class="action">
-				<button class="btn" @tap="cancelOrder()">取消订单</button>
-				<button class="btn" type="primary" @tap="createOrder()">立即支付</button>
+			<view v-if="orderObj.orderStatus===1">
+				<view class="un-pay">
+					<view>剩余支付时间：</view>
+					<u-count-down :time="new Date(orderObj.unPayEndTime).getTime()-new Date().getTime()" format="mm:ss"
+						@finish="cancelOrder()" />
+				</view>
+				<view class="action">
+					<button class="btn" @tap="cancelOrder()">取消订单</button>
+					<button class="btn" type="primary" @tap="createOrder()">立即支付</button>
+				</view>
 			</view>
 		</view>
 		<view class="product-box">
@@ -47,7 +49,6 @@
 			<uni-list-item title="备注" :rightText="orderObj.orderRemark" />
 		</view>
 
-
 	</view>
 </template>
 
@@ -59,12 +60,23 @@
 				orderObj: null, // 订单详情
 			};
 		},
+		onBackPress(event) {
+			console.log(111)
+			if (event.from === 'navigateBack') {
+				return false
+			}
+
+			uni.switchTap({
+				url: '/pages/order/order'
+			})
+			return true;
+		},
 		onLoad() {
-			this.init()
+			this.orderDetail()
 		},
 		methods: {
-			async init() {
-				// 订单详情
+			// 订单详情
+			async orderDetail() {
 				this.orderObj = await this.$api.order.detail(this.orderNo);
 			},
 			// 取消订单
@@ -72,6 +84,9 @@
 				this.$api.order.cancel({
 					orderNo: this.orderNo
 				})
+				setInterval(() => {
+					this.orderDetail()
+				}, 500);
 			}
 		}
 	}
@@ -90,11 +105,13 @@
 		}
 
 		.order-status-box {
+			min-height: 80rpx;
+
 			.status {
 				font-size: 34rpx;
 				font-weight: bold;
 				text-align: center;
-				padding-top: 50rpx;
+				margin-top: 10rpx;
 			}
 
 			.un-pay {
