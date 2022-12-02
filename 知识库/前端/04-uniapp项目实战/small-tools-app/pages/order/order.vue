@@ -25,7 +25,7 @@
 							<image :src="spu.coverImg" />
 							<view class="right">
 								<view class="name">{{spu.name}}</view>
-								<view class="price">￥{{spu.price}}</view>
+								<view class="price">￥{{spu.price/100}}</view>
 								<view class="num">x{{spu.num}}</view>
 							</view>
 						</view>
@@ -34,7 +34,7 @@
 				</view>
 				<view class="spu-bottom">
 					<view class="time">下单时间：{{orderItem.payTime}}</view>
-					<view class="sum-price">实付：￥{{orderItem.payPrice}}</view>
+					<view class="sum-price">实付：￥{{orderItem.payPrice/100}}</view>
 				</view>
 			</view>
 		</scroll-view>
@@ -50,24 +50,26 @@
 			};
 		},
 		onLoad() {
-			this.orderPage()
+			this.orderPage(1)
 		},
 		methods: {
 			clickTab(e) {
 				switch (e.currentIndex) {
 					case 0:
 						// 今日订单
+						this.orderPage(1)
 						break;
 					case 1:
 						// 历史订单
+						this.orderPage(2)
 						break;
 					default:
 						break;
 				}
 			},
-			async orderPage() {
+			async orderPage(dataType) {
 				let result = await this.$api.order.page({
-
+					dataType: dataType
 				});
 				this.orderList = result.records
 			},

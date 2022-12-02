@@ -45,7 +45,7 @@
 								<view class="right">
 									<text class="name">{{ spuItem.name }}</text>
 									<view class="price-action">
-										<text class="price">￥{{ spuItem.skuList[0].sellPrice }}</text>
+										<text class="price">￥{{ spuItem.skuList[0].sellPrice/100 }}</text>
 										<view class="action">
 											<button class="choose-attr" @tap="showSpuDetailModal(item, spuItem)">
 												选规格
@@ -71,7 +71,7 @@
 					<uni-icons class="icon" type="cart" size="22" />
 				</uni-badge>
 			</view>
-			<view class="price">￥{{cartList.reduce((total, item) => total += (item.num*item.price), 0)}}</view>
+			<view class="price">￥{{cartList.reduce((total, item) => total += (item.num*item.price), 0)/100}}</view>
 			<navigator :url="'/pages/product/pay'">
 				<view class="pay">付款</view>
 			</navigator>
@@ -112,7 +112,7 @@
 				</scroll-view>
 				<view class="action">
 					<view class="left">
-						<view class="price">￥{{ spu.sellPrice }}</view>
+						<view class="price">￥{{ spu.sellPrice/100 }}</view>
 						<view class="spec-desc">
 							{{ calSkuSpecDesc() }}
 						</view>
@@ -146,7 +146,7 @@
 										<view class="spec-desc">{{item.specDesc}}</view>
 									</view>
 									<view class="center">
-										<text>￥{{item.price}}</text>
+										<text>￥{{item.price/100}}</text>
 									</view>
 									<view class="right">
 										<button type="default" plain size="mini" class="btn" hover-class="none"

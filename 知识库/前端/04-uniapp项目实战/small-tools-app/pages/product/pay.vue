@@ -25,7 +25,7 @@
 									<view class="spec-desc">{{item.specDesc}}</view>
 								</view>
 								<view class="center">
-									<text>￥{{item.price}}</text>
+									<text>￥{{item.price/100}}</text>
 								</view>
 								<view class="right">
 									<view class="num">x{{item.num}}</view>
@@ -47,7 +47,7 @@
 			<uni-list-item>
 				<template v-slot:header>
 					<view>
-						合计￥{{ cartList.reduce((total, item) => total += item.num * item.price, 0) }}
+						合计￥{{ cartList.reduce((total, item) => total += item.num * item.price, 0)/100 }}
 					</view>
 				</template>
 				<template v-slot:footer>
