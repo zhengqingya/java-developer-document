@@ -1,4 +1,5 @@
-const BASE_URL = "http://127.0.0.1:10020"
+// const BASE_URL = "http://127.0.0.1:10020"
+const BASE_URL = "http://127.0.0.1:10010"
 
 const request = ({
 	url, // 请求url
@@ -9,9 +10,10 @@ const request = ({
 }) => {
 	return new Promise((resolve, reject) => {
 		if (!headers) {
+			const token = uni.getStorageSync('token')
 			headers = {
 				'Content-Type': 'application/json;charset=utf-8',
-				'Authorization': "---",
+				'Authorization': token,
 				'TENANT_ID': 1
 			}
 		}
