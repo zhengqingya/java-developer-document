@@ -8,8 +8,8 @@
 				<u-empty mode="order" marginTop="100rpx" />
 			</view>
 			<view v-else class="order" v-for="(orderItem, index) in orderList" :key="index">
-				<u-count-down v-if="orderItem.orderStatus===1"
-					:time="new Date(orderItem.unPayEndTime).getTime()-new Date().getTime()" format="mm:ss" />
+				<u-count-down v-if="orderItem.orderStatus===1" :time="getUnPayTime(orderItem.unPayEndTime)"
+					format="mm:ss" />
 				<view class="title">
 					<view class="left">
 						<view>天府三街测试店</view>
@@ -33,7 +33,7 @@
 					</view>
 				</view>
 				<view class="spu-bottom">
-					<view class="time">下单时间：{{orderItem.payTime}}</view>
+					<view class="time">下单时间：{{orderItem.createTime}}</view>
 					<view class="sum-price">实付：￥{{orderItem.payPrice/100}}</view>
 				</view>
 			</view>
@@ -73,7 +73,10 @@
 				});
 				this.orderList = result.records
 			},
-
+			getUnPayTime(unPayEndTime) {
+				let time = new Date(unPayEndTime).getTime() - new Date().getTime()
+				return time
+			}
 		}
 	}
 </script>

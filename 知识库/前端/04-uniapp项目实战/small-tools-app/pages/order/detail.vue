@@ -83,9 +83,24 @@
 				this.$api.order.cancel({
 					orderNo: this.orderNo
 				})
-				setInterval(() => {
-					this.orderDetail()
-				}, 500);
+				// 倒计时
+				setTimeout(() => {
+					let that = this
+					uni.showModal({
+						title: '提示',
+						content: '订单已取消',
+						showCancel: false,
+						success: function(res) {
+							console.log(res)
+							if (res.confirm) {
+								that.orderDetail()
+							}
+						}
+					});
+				}, 1500);
+				// uni.switchTab({
+				// 	url: '/pages/order/order'
+				// })
 			}
 		}
 	}
