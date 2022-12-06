@@ -9,9 +9,17 @@ npm -v
 
 # npm 升级
 npm install -g npm
+# 指定版本
+# npm -g install npm@8.5.4
+
+# node升级
+# 安装n模块
+npm install -g n
+# 升级到最新稳定版
+n stable
 ```
 
-### 卸载
+#### 卸载
 
 ```
 # 控制面板卸载 node.js
@@ -26,6 +34,8 @@ npm install -g npm
 ```shell
 # 设置淘宝`NPM`镜像
 npm install -g cnpm --registry=https://registry.npm.taobao.org
+# 指定版本
+# npm install cnpm@7.1.0 -g --registry=https://registry.npm.taobao.org
 # 查看
 cnpm config get registry
 # 测试
