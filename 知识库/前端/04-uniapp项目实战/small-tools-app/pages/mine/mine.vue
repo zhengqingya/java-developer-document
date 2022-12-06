@@ -35,10 +35,8 @@
 			init() {
 				// 获取用户数据
 				this.$store.dispatch("user/getUserInfo", 1);
-				console.log(this.$store.getters['user/getUserInfo'].nickname)
-				// console.log(this.$store.state.user.nickname)
-				// this.$store.commit('test/setUsername', 'zhengqingya...')
-				// console.log(this.$store.getters['user/getUsername'])
+				console.log(this.$store.state.user)
+				// this.$store.dispatch("user/logout");
 			}
 		}
 	}

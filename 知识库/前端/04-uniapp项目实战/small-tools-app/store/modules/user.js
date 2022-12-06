@@ -4,7 +4,6 @@ const store = {
 	namespaced: true,
 	// 存放数据
 	state: {
-		// username: 'zhengqingya',
 		id: null,
 		nickname: 'zhengqingya',
 		avatarUrl: ''
@@ -16,10 +15,12 @@ const store = {
 	},
 	// 同步变更数据
 	mutations: {
-		SET_USER_INFO: (state, userInfo) => {
-			state = JSON.parse(JSON.stringify(userInfo))
-			// alert(state.nickname)
-		},
+		setUserInfo(state, userInfo) {
+			// 只能一个一个设置值...
+			state.id = userInfo.id
+			state.nickname = userInfo.nickname
+			state.avatarUrl = userInfo.avatarUrl
+		}
 	},
 	// 和后台交互获取数据
 	actions: {
@@ -44,8 +45,7 @@ const store = {
 			let userInfo = await api.user.getUserInfo({
 				userId: userId
 			})
-			commit('SET_USER_INFO', userInfo)
-			// console.log(getUserInfo())
+			commit('setUserInfo', userInfo)
 		},
 		// 退出登录
 		logout({
@@ -53,7 +53,7 @@ const store = {
 			state
 		}) {
 			api.user.logout({
-				userId: state.userId
+				id: state.id
 			})
 			uni.removeStorage({
 				key: 'userInfo'
@@ -61,7 +61,7 @@ const store = {
 			uni.removeStorage({
 				key: 'token'
 			})
-			commit('SET_USER_INFO', {})
+			commit('setUserInfo', {})
 		}
 	}
 }

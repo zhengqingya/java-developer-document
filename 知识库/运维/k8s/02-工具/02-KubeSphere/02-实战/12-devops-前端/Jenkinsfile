@@ -1,0 +1,219 @@
+pipeline {
+    agent {
+        kubernetes {
+            inheritFrom 'nodejs base'
+            containerTemplate {
+                name 'nodejs'
+                image 'node:12.18.3'
+            }
+        }
+    }
+
+    environment {
+        DOCKER_REGISTRY_AUTH = "aliyun-docker-registry-auth"
+        DOCKER_REGISTRY = 'registry.cn-hangzhou.aliyuncs.com/zhengqingya'
+        PROJECT_GIT_URL = 'https://gitee.com/zhengqingya/small-tools.git'
+        SERVICE = 'small-tools-web'
+        K8S_NAMESPACE = "my-project"
+        BASE_PROJECT_URL = "small-tools-web/"
+        // TODO KubeSphere中配置流水线构建参数 => 动态传参进来
+//        BRANCH_NAME = 'local'
+//        IS_SKIP_BUILD = 'false'
+//        APP_REPLICAS = "1"
+//        MAIL_RECEIVE_USER = "xxx,xxx"
+    }
+
+    parameters {
+        string(name: 'BRANCH_NAME', defaultValue: 'local', description: 'git分支名')
+        choice(name: 'IS_SKIP_BUILD', choices: ['false', 'true'], description: '是否跳过构建,直接部署')
+        string(name: 'APP_REPLICAS', defaultValue: '1', description: '部署副本数量')
+        string(name: 'MAIL_RECEIVE_USER', defaultValue: 'xxx@qq.com,xxx@qq.com', description: '邮件通知接收人')
+    }
+
+    stages {
+
+        stage('初始化准备') {
+            agent none
+            steps {
+                container('base') {
+                    script {
+                        sh """
+                            echo "分支: ${BRANCH_NAME}"
+                            echo "是否跳过构建，直接部署(tips:适用于之前已经进行过构建打包的情景)：${IS_SKIP_BUILD}"
+                            echo "构建运行ID: ${BUILD_NUMBER}"
+                        """
+                        // 镜像仓库认证
+                        withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_AUTH}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME',)]) {
+                            sh 'echo "$DOCKER_PASSWORD" | docker login $DOCKER_REGISTRY -u "$DOCKER_USERNAME" --password-stdin'
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('拉取代码') {
+            agent none
+            steps {
+                container('base') {
+                    git(credentialsId: 'gitee-auth', url: "${PROJECT_GIT_URL}", branch: "${BRANCH_NAME}", changelog: true, poll: false)
+                    sh 'ls -al'
+                }
+            }
+        }
+
+        stage('项目构建') {
+            agent none
+            steps {
+                container('nodejs') {
+                    script {
+                        if ("${IS_SKIP_BUILD}" != "true") {
+                            sh """
+                                cd ${BASE_PROJECT_URL}
+                                ls
+                                npm -g install npm@8.5.4
+                                node -v
+                                npm -v
+                                npm install cnpm@7.1.0 -g --registry=https://registry.npm.taobao.org
+                                cnpm -v
+                                cnpm install
+                                cnpm run build
+                                ls -al
+                            """
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('docker镜像-构建&推送') {
+            agent none
+            steps {
+                container('base') {
+                    script {
+                        if ("${IS_SKIP_BUILD}" != "true") {
+                            def APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/${SERVICE}:${BRANCH_NAME}"
+                            sh """
+                                pwd
+                                rm -rf ${BASE_PROJECT_URL}/docker/*
+                                mkdir -p ${BASE_PROJECT_URL}/docker
+                                cp -r ${BASE_PROJECT_URL}/dist ${BASE_PROJECT_URL}/docker
+                                cd ${BASE_PROJECT_URL}/docker
+                                echo "app镜像: ${APP_DOCKER_IMAGE}"
+
+cat>> Dockerfile <<EOF
+FROM nginx:1.21.1
+MAINTAINER zhengqingya
+COPY dist/  /usr/share/nginx/html/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+EOF
+                                
+                                ls -al
+                                docker build -f Dockerfile -t ${APP_DOCKER_IMAGE} . --no-cache
+                                docker push ${APP_DOCKER_IMAGE}
+                                echo 镜像推送成功：${APP_DOCKER_IMAGE}
+                            """
+                        }
+                    }
+                }
+            }
+        }
+
+
+        stage('发布到k8s') {
+            agent none
+            steps {
+                container('base') {
+                    script {
+                        // 自定义全局变量 => 整个流水线使用
+                        env.APP_NAME = "${SERVICE}"
+                        env.APP_DOCKER_IMAGE = "${DOCKER_REGISTRY}/${SERVICE}:${BRANCH_NAME}"
+                        env.APP_PORT = "80"
+
+                        sh """
+                            rm -rf ${BASE_PROJECT_URL}/k8s/*
+                            mkdir -p ${BASE_PROJECT_URL}/k8s   
+           
+cat>> ${BASE_PROJECT_URL}/k8s/k8s-deploy.yml <<EOF
+---
+# 定义工作负载
+apiVersion: apps/v1
+kind: Deployment  # 无状态部署
+metadata:
+  name: ${APP_NAME}
+  namespace: ${K8S_NAMESPACE}   # 命名空间
+  labels:
+    app: ${APP_NAME}
+spec:
+  replicas: ${APP_REPLICAS} # 副本数量
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: ${APP_NAME}
+  template:
+    metadata:
+      labels:
+        app: ${APP_NAME}
+    spec:
+      imagePullSecrets:
+        - name: ${DOCKER_REGISTRY_AUTH}  # 提前在项目下配置访问仓库的账号密码
+      containers:
+        - name: ${APP_NAME}
+          image: ${APP_DOCKER_IMAGE} # 镜像地址
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: ${APP_PORT}
+              protocol: TCP
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always # Pod重启策略
+      terminationGracePeriodSeconds: 30
+---
+# 定义服务
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${APP_NAME}
+  namespace: ${K8S_NAMESPACE}
+spec:
+  selector:
+    app: ${APP_NAME} # label selector配置，将选择具有label标签的Pod作为管理
+  type: NodePort
+  ports:
+    - name: http            # 端口名称
+      port: ${APP_PORT}
+      protocol: TCP    # 端口协议，支持TCP和UDP，默认TCP
+      targetPort: ${APP_PORT}
+      nodePort: ${APP_PORT}  # 当`type = NodePort`时 对外开放端口  TODO 为了兼容测试环境
+  sessionAffinity: None  # 是否支持session
+EOF
+"""
+
+                        // 部署
+                        withCredentials([kubeconfigFile(credentialsId: 'kubeconfig-auth', variable: 'KUBECONFIG')]) {
+                            sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy.yml | kubectl apply -f -'
+                            sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy.yml | kubectl delete -f -'
+                            sh 'envsubst < ${BASE_PROJECT_URL}/k8s/k8s-deploy.yml | kubectl apply -f -'
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('邮件通知') {
+            agent none
+            steps {
+                container('base') {
+                    mail(to: "${MAIL_RECEIVE_USER}", subject: '服务部署成功通知', body: "部署分支：${BRANCH_NAME}  \n 运行ID：${BUILD_NUMBER}  \n 部署服务：${SERVICE} ")
+                }
+            }
+        }
+
+    }
+}
