@@ -2,7 +2,7 @@
 	<view class="app-container">
 		<view class="user-box">
 			<image src="https://img2.baidu.com/it/u=2027087424,1608351807&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" />
-			<view class="name">{{nickname}}</view>
+			<view class="name">{{$store.state.user.nickname}}</view>
 		</view>
 		<view class="service-box">
 			<view class="item">
@@ -25,18 +25,19 @@
 	export default {
 		data() {
 			return {
-				nickname: this.$store.state.user.nickname
+				// nickname: this.$store.state.user.nickname
 			}
 		},
 		onLoad() {
 			this.init()
 		},
 		methods: {
-			init() {
+			async init() {
 				// 获取用户数据
-				this.$store.dispatch("user/getUserInfo", 1);
-				console.log(this.$store.state.user)
-				// this.$store.dispatch("user/logout");
+				await this.$store.dispatch("user/getUserInfo", 1);
+				// console.log(this.$store.state.user)
+				// // this.$store.dispatch("user/logout");
+				// this.nickname = this.$store.state.user.nickname
 			}
 		}
 	}

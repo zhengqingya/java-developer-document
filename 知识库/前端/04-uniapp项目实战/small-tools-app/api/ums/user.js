@@ -3,11 +3,11 @@ import request from '@/utils/request'
 const BASE_API = '/mini/api/ums/user'
 
 export default {
-	login(params) {
+	login(data) {
 		return request({
-			url: BASE_API + '/login',
-			method: 'get',
-			params: params
+			url: BASE_API + '/wxLogin',
+			method: 'post',
+			data
 		})
 	},
 	getUserInfo(params) {

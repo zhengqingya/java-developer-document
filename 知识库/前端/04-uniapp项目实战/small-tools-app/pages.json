@@ -52,13 +52,12 @@
 		"selectedColor": "#97AF13",
 		"backgroundColor": "#fff",
 		"borderStyle": "black",
-		"list": [
-			/* {
-						"pagePath": "pages/index/index",
-						"text": "首页",
-						"iconPath": "static/images/tabBar/index.png",
-						"selectedIconPath": "static/images/tabBar/index_selected.png"
-					}, */
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/images/tabBar/index.png",
+				"selectedIconPath": "static/images/tabBar/index_selected.png"
+			},
 			{
 				"pagePath": "pages/product/product",
 				"text": "点餐",
