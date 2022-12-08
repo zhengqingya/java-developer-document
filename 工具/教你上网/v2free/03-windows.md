@@ -1,6 +1,6 @@
 # windows
 
-下载 V2rayN 并拷贝订阅链接
+下载 `V2rayN` 并拷贝`订阅链接`
 ![img.png](images/v2free-01.png)
 
 订阅设置
@@ -18,4 +18,4 @@
 开启使用
 ![img.png](images/v2free-06.png)
 
-finish...
+然后即可访问了...
