@@ -15,7 +15,7 @@
 选中一个延迟小的节点，然后回车
 ![img.png](images/v2free-05.png)
 
-系统代理->自动配置系统代理
+开启使用
 ![img.png](images/v2free-06.png)
 
 然后访问google即可...
