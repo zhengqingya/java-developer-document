@@ -1,7 +1,11 @@
 # Chat GPT
 
 https://chat.openai.com
-国内免费体验： https://gpt.chatapi.art
+
+国内免费体验：
+
+- https://gpt.chatapi.art
+- https://chat.bygpt.com
 
 ###### 注册
 
