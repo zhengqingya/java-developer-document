@@ -60,3 +60,7 @@ https://github.com/vincelwt/chatgpt-mac
 - `ChatGPT WeChat Bot` https://github.com/AutumnWhj/ChatGPT-wechat-bot
 
 基于 wechaty 来建立微信与 ChatGPT 的桥梁，让你快速通过微信聊天窗口，发起与 ChatGPT 的对话。
+
+#### Mac
+
+https://github.com/vincelwt/chatgpt-mac
