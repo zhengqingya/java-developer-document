@@ -37,3 +37,6 @@ Map<String, UserInfoVO> selectMap();
   }
 }
 ```
+
+> tips: 返回类型无法对应`UserInfoVO`，慎用...
+> ![img.png](images/result-map.png)
