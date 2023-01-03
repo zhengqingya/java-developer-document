@@ -1,11 +1,12 @@
 ﻿### 一、前言
 
 持续集成管理平台不只是CI服务器，是一系列软件开发管理工具的组合。
-源码版本管理：svn、git
-项目构建工具：Maven、Ant
-代码质量管理：Sonar（Checkstyle、PMD、FindBugs……）
-持续集成引擎：Hudson、Jenkins、Apache Continuum
-应用持续部署：操作系统、JDK、Tomcat、JBoss…
+
+- 源码版本管理：svn、git
+- 项目构建工具：Maven、Ant
+- 代码质量管理：Sonar（Checkstyle、PMD、FindBugs……）
+- 持续集成引擎：Hudson、Jenkins、Apache Continuum
+- 应用持续部署：操作系统、JDK、Tomcat、JBoss…
 
 **注**：实现持续集成过程中还要用到其他各种工具、各种插件...
 
@@ -51,10 +52,10 @@ SonarQube是一种自动代码审查工具，用于检测代码中的错误，�
 
 修改在conf目录下 **sonar.properties** 配置文件 【其它的一些配置根据自己情况去除注释修改即可~】
 
-```java
+```
 sonar.jdbc.username=root
-        sonar.jdbc.password=root
-        sonar.jdbc.url=jdbc:mysql://localhost:3306/sonarqube?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&useSSL=false
+sonar.jdbc.password=root
+sonar.jdbc.url=jdbc:mysql://localhost:3306/sonarqube?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&useSSL=false
 ```
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709123718506.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
@@ -123,5 +124,5 @@ mvn clean install sonar:sonar
 
 ### 三、自动化构建、测试、部署 -> Jenkins
 
-这里请手动转下一篇博客文章...
+这里请手动转下一篇文章...
 

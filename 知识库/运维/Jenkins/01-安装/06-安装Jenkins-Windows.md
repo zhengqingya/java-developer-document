@@ -24,7 +24,7 @@ Jenkins 支持各种运行方式，可通过系统包、Docker 或者通过一�
 
 直接将war包丢在tomcat中的webapps目录下
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709202500981.png)
-然后进入bin目录下双击 **startup.bat** 启动即可
+然后进入bin目录下双击 `startup.bat` 启动即可
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019070920262321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
 访问 http://localhost:8080/jenkin 【注：这里8080是我的tomcat默认端口哦】
 这里根据提示去找自己的密码填上即可~
@@ -91,7 +91,7 @@ http://localhost:8080/jenkins/pluginManager/available
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190710180419690.png)
 
-#### ④Publish Over SSH / SSH plugin
+##### ④Publish Over SSH / SSH plugin
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190710180716577.png)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190710181025155.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
@@ -113,7 +113,7 @@ http://localhost:8080/jenkins/newJob
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190711110709983.png)
 ④配置项目运行命令
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190711113608264.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
-> **温馨小提示**：maven执行后所打的jar包或者war包一般情况下是放在C:\Users\xxx\.jenkins\workspace目录下 【xx：你的电脑用户名】
+> `温馨小提示`：maven执行后所打的jar包或者war包一般情况下是放在C:\Users\xxx\.jenkins\workspace目录下 【xx：你的电脑用户名】
 > 小编因为是云桌面，所以在D盘下去了
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190711115022346.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
 
@@ -145,8 +145,11 @@ http://localhost:8080/jenkins/newJob
 
 ### 六、问题解决
 
+#### 插件问题
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190710171606813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
-如果在刚开始进来安装插件失败导致如上错误可以在 **Manage Jenkins** -> **Manage Plugins** -> **Advanced** -> **高级** -> **升级站点** 中修改站点为http形式
+如果在刚开始进来安装插件失败导致如上错误可以在 `Manage Jenkins` -> `Manage Plugins` -> `Advanced` -> `高级` -> `升级站点`
+中修改站点为http形式
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190710171026645.png)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190710171049469.png)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019071017115638.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
@@ -155,6 +158,34 @@ http://localhost:8080/jenkins/newJob
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190710170915940.png)
 最后再手动去安装Jenkins需要的插件即可...
 
-### 七、集成sonar
+#### Windows下以war包形式安装Jenkins控制台出现中文乱码解决方式
 
-这里需要的朋友可手动去小编主页Jenkins目录下查看下一篇文章...
+如下图，我在Windows下以war包形式放在tomcat上运行Jenkins后，控制台输出信息出现中文乱码...
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190711134934394.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+
+##### 解决
+
+###### 1、全局设置新增参数
+
+http://localhost:8080/jenkins/configure
+进入全局设置找到全局属性新增键值对 LANG < - > zh_CN.UTF-8 ，保存
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190711134306234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+
+###### 2、修改tomcat安装目录下的server.xml配置文件
+
+修改 `URIEncoding="utf-8"` 为 `useBodyEncodingForURI="true"`
+
+
+> 如果没有 `URIEncoding="utf-8"` ， 直接添加 `useBodyEncodingForURI="true"` 即可
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190711141552311.png)
+
+###### 3、配置计算机环境变量
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190711141357207.png)
+
+###### 4、重启Jenkins
+
+重启之后，进入控制台查看输出信息，如下图，成功解决中文乱码！
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190711142808529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+

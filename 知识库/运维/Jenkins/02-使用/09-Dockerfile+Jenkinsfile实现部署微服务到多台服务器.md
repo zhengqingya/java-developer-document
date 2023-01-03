@@ -108,7 +108,8 @@ CMD echo "****** Start... " & \
 
 #### 2、Jenkinsfile
 
-> 流水线语法可参考：[https://www.jenkins.io/zh/doc/book/pipeline/syntax](https://www.jenkins.io/zh/doc/book/pipeline/syntax)
+>
+流水线语法可参考：[https://www.jenkins.io/zh/doc/book/pipeline/syntax](https://www.jenkins.io/zh/doc/book/pipeline/syntax)
 
 ```
 // ==================== ↓↓↓↓↓↓ docker ↓↓↓↓↓↓ ====================
@@ -158,7 +159,7 @@ node {
 
     stage('初始化准备') {
         echo '****************************** 初始化准备 ******************************'
-        // 网卡值设置 [注:正常liunx取eth0的内网ip，局域网取enp5s0的内网ip]
+        // 网卡值设置 [注:正常linux取eth0的内网ip，局域网取enp5s0的内网ip]
         ETH_VALUE = sh(script: "( [[ \"${JAVA_OPTS}\" = *'-Dspring.cloud.nacos.discovery.ip'* ]] && echo enp5s0 || echo eth0 )", returnStdout: true).trim()
         CURRENT_TIME = sh(script: "echo `date +\"%Y-%m-%d %H:%M:%S\"`", returnStdout: true).trim()
         script {

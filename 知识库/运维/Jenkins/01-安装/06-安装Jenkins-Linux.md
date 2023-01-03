@@ -1,4 +1,4 @@
-# 安装 Jenkins
+# Linux 安装 Jenkins
 
 > https://www.jenkins.io/zh/download
 
