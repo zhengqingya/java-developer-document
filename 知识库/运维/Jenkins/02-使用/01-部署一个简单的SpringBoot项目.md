@@ -38,3 +38,23 @@ nohup java -jar demo-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
 ![img.png](images/jenkins-springboot-demo-06.png)
 
 ![img.png](images/jenkins-springboot-demo-07.png)
+
+### 问题
+
+如果重复构建部署会出现如下端口占用问题
+
+```
+Caused by: java.net.BindException: 地址已在使用
+```
+
+因此需要我们在部署之前停掉旧服务
+
+将`Post Steps`中shell运行命令修改为如下：
+
+```shell
+cd target
+# 先停掉旧服务
+ps -ef | grep demo-0.0.1-SNAPSHOT.jar | grep -v grep | awk '{print "kill -15 "$2}' | sh
+# 再运行新服务
+nohup java -jar demo-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
+```
