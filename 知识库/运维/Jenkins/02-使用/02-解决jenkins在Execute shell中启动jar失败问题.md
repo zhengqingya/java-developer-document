@@ -4,6 +4,8 @@
 
 本文基于`Jenkins 2.289.2`环境
 
+> 经尝试新版`Jenkins 2.346.1`没有这个问题 
+
 ### 二、问题
 
 jenkins在`Execute shell`中执行如下命令启动jar失败
