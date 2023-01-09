@@ -7,19 +7,19 @@ yum -y install java-1.8.0-openjdk*
 
 ### 配置环境变量
 
-```shell
-vim /etc/profile
-```
-
 在文件最后加入以下内容：
 
 ```shell
+cat>> /etc/profile <<EOF
+
 ############################## ↓↓↓↓↓↓ set java environment ↓↓↓↓↓↓ #############################
 JAVA_HOME=/usr/lib/jvm/java
 CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/jre/lib/rt.jar
 PATH=$PATH:$JAVA_HOME/bin
 export JAVA_HOME CLASSPATH PATH
 ###############################################################################################
+
+EOF
 ```
 
 使配置生效
