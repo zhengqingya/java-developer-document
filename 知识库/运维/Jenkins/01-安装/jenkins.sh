@@ -11,7 +11,7 @@
 
 
 # 在执行过程中若遇到使用了未定义的变量或命令返回值为非零，将直接报错退出
-set -eu
+# set -eu
 
 # 检查参数个数
 if [ "${#}" -lt 1 ]; then
@@ -47,6 +47,8 @@ function init() {
     install_jdk
     install_maven
     install_nodejs
+    # 使配置生效
+    source /etc/profile
 }
 
 function install_git() {
@@ -67,13 +69,13 @@ function install_jdk() {
     if [ "$?" -eq 1 ]; then
     	echo "安装jdk..."
     	yum -y install java-1.8.0-openjdk*
-      # 配置环境变量
+      # 配置环境变量 -- 注意$前加上\ 避免shell中获取其变量值追加到配置文件中
 cat>> /etc/profile <<EOF
 
 ############################## ↓↓↓↓↓↓ set java environment ↓↓↓↓↓↓ #############################
 JAVA_HOME=/usr/lib/jvm/java
-CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/jre/lib/rt.jar
-PATH=$PATH:$JAVA_HOME/bin
+CLASSPATH=.:\$JAVA_HOME/lib/dt.jar:\$JAVA_HOME/lib/tools.jar:\$JAVA_HOME/jre/lib/rt.jar
+PATH=\$PATH:\$JAVA_HOME/bin
 export JAVA_HOME CLASSPATH PATH
 ###############################################################################################
 
@@ -95,14 +97,14 @@ function install_maven() {
       # 解压
       tar -zxvf apache-maven-3.6.3-bin.tar.gz
       # 修改配置文件
-      isExist=$(cat settings.xml | grep "<localRepository>/home/soft/maven/repository</localRepository>")
+      isExist=$(cat /home/soft/maven/apache-maven-3.6.3/conf/settings.xml | grep "<localRepository>/home/soft/maven/repository</localRepository>")
       if [[ "$isExist" == "" ]]
       then
           # 不包含
           # 在第55行插入
           sed -i '55i <localRepository>/home/soft/maven/repository</localRepository>' /home/soft/maven/apache-maven-3.6.3/conf/settings.xml
-          # 在第159行插入
-          sed -i '159i \
+          # 在第160行插入
+          sed -i '160i \
               <!-- 国内中央仓库的配置-阿里云中央仓库 --> \
               <mirror> \
                   <id>nexus-aliyun</id> \
@@ -117,7 +119,7 @@ cat>> /etc/profile <<EOF
 
 ############################## ↓↓↓↓↓↓ set maven environment ↓↓↓↓↓↓ #############################
 MAVEN_HOME=/home/soft/maven/apache-maven-3.6.3
-PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
+PATH=\$PATH:\$JAVA_HOME/bin:\$MAVEN_HOME/bin
 export MAVEN_HOME PATH
 ################################################################################################
 
@@ -143,13 +145,11 @@ cat>> /etc/profile <<EOF
 
 ############################## ↓↓↓↓↓↓ set nodejs environment ↓↓↓↓↓↓ #############################
 NODEJS_HOME=/home/soft/node-v12.18.3-linux-x64
-PATH=$PATH:$NODEJS_HOME/bin
+PATH=\$PATH:\$NODEJS_HOME/bin
 export NODEJS_HOME PATH
 #################################################################################################
 
 EOF
-      # 设置淘宝`NPM`镜像
-      npm install -g cnpm --registry=https://registry.npm.taobao.org
       # 使配置生效
       source /etc/profile
       # 将npm软连接到`/usr/bin`目录下 => 解决`sudo: npm：找不到命令`问题
@@ -157,6 +157,8 @@ EOF
       sudo ln -s /home/soft/node-v12.18.3-linux-x64/bin/npm /usr/bin/npm
       sudo ln -s /home/soft/node-v12.18.3-linux-x64/bin/cnpm /usr/bin/cnpm
       sudo ln -s /home/soft/node-v12.18.3-linux-x64/bin/npx /usr/lib/npx
+      # 设置淘宝`NPM`镜像
+      npm install -g cnpm --registry=https://registry.npm.taobao.org
     fi
 }
 
