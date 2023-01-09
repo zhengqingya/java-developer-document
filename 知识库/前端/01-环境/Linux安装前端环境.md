@@ -4,7 +4,7 @@
 
 > https://nodejs.org/zh-cn/download/
 
-```shell script
+```shell
 cd /home/soft
 
 # 下载`node-v12.18.3-linux-x64.tar.xz` : https://nodejs.org/en/download/
@@ -44,6 +44,8 @@ yarn config set registry https://registry.npm.taobao.org -g
 yarn config set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass -g
 ```
 
+#### 其它
+
 ```shell
 # 查看软链接
 ls -il
@@ -65,4 +67,41 @@ rm -rf /usr/lib/npx
 
 # nodejs 清空 npm 缓存
 npm cache clean -f
+```
+
+#### 问题
+
+> tips: 解决方案 未测试...
+> 建议不要轻易改这个，感觉有坑...
+
+![img.png](images/nodejs-problem-GLIBCXX.png)
+
+安装的nodejs版本太高，解决: 降版本
+
+```shell
+node: /lib64/libm.so.6: version `GLIBC_2.27' not found (required by node)
+node: /lib64/libc.so.6: version `GLIBC_2.25' not found (required by node)
+node: /lib64/libc.so.6: version `GLIBC_2.28' not found (required by node)
+node: /lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by node)
+node: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.20' not found (required by node)
+node: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by node)
+```
+
+解决
+
+```shell
+# 查看系统内安装的glibc版本
+strings /lib64/libc.so.6 |grep GLIBC_
+```
+
+```shell
+wget http://ftp.gnu.org/gnu/glibc/glibc-2.27.tar.gz
+tar xf glibc-2.27.tar.gz 
+cd glibc-2.27/
+mkdir build 
+cd build/
+../configure --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin
+make 
+make install
+ldd --version
 ```
