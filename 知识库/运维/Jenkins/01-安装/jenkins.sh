@@ -190,9 +190,8 @@ function start(){
   echo "当前路径:`pwd`"
   # 赋予可读可写可执行权限
   chmod 777 ${APP_JAR}
-  app_run="nohup java -jar ${APP_JAR} ${JAVA_OPTS} >> ${APP_LOG_HOME}/${APP_NAME}.log 2>&1 &"
-  echo "启动命令: ${app_run}"
-  ${app_run}
+  echo "启动命令: nohup java -jar ${APP_JAR} ${JAVA_OPTS} >> ${APP_LOG_HOME}/${APP_NAME}.log 2>&1 &"
+  nohup java -jar ${APP_JAR} ${JAVA_OPTS} >> ${APP_LOG_HOME}/${APP_NAME}.log 2>&1 &
   if [ "$?" -eq 0 ]; then
     echo "[${APP_NAME}] start success"
   else
