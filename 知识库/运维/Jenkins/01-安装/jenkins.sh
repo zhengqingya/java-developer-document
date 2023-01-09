@@ -43,18 +43,25 @@ echo "本次操作选择：[${APP_OPT}]"
 
 # 初始化环境
 function init() {
+    install_git
+    install_jdk
+    install_maven
+    install_nodejs
+}
+
+function install_git() {
+  echo "*******************************************************************************"
+  echo "            ↓↓↓↓↓↓ [检查环境：git] ↓↓↓↓↓↓         "
+  which git
+  # $?: 指上一次命令执行的状态 成功：0 失败：1
+  if [ "$?" -eq 1 ]; then
+    echo "安装git..."
+    yum install -y git
+  fi
+}
+
+function install_jdk() {
     echo "*******************************************************************************"
-
-    echo "            ↓↓↓↓↓↓ [检查环境：git] ↓↓↓↓↓↓         "
-    which git
-    # $?: 指上一次命令执行的状态 成功：0 失败：1
-    if [ "$?" -eq 1 ]; then
-    	echo "安装git..."
-      yum install -y git
-    fi
-
-    echo "*******************************************************************************"
-
     echo "            ↓↓↓↓↓↓ [检查环境：java] ↓↓↓↓↓↓         "
     which java
     if [ "$?" -eq 1 ]; then
@@ -74,9 +81,10 @@ EOF
       # 使配置生效
       . /etc/profile
     fi
+}
 
+function install_maven() {
     echo "*******************************************************************************"
-
     echo "            ↓↓↓↓↓↓ [检查环境：maven] ↓↓↓↓↓↓         "
     which mvn
     if [ "$?" -eq 1 ]; then
@@ -117,9 +125,10 @@ EOF
       # 使配置生效
       source /etc/profile
     fi
+}
 
+function install_nodejs() {
     echo "*******************************************************************************"
-
     echo "            ↓↓↓↓↓↓ [检查环境：NodeJS] ↓↓↓↓↓↓         "
     which npm
     if [ "$?" -eq 1 ]; then
@@ -149,8 +158,6 @@ EOF
       sudo ln -s /home/soft/node-v12.18.3-linux-x64/bin/cnpm /usr/bin/cnpm
       sudo ln -s /home/soft/node-v12.18.3-linux-x64/bin/npx /usr/lib/npx
     fi
-
-    echo "*******************************************************************************"
 }
 
 # 停止
