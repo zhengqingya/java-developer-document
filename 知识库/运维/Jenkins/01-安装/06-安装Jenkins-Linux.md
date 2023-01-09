@@ -39,7 +39,7 @@ sh jenkins.sh start/stop/restart
 # 关闭jenkins
 http://ip:10000/jenkins/exit 
 
-# 重启jenkies
+# 重启jenkins
 http://ip:10000/jenkins/restart 
 
 # 重新加载配置信息
