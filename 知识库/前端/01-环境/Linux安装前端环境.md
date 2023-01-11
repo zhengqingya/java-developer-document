@@ -71,7 +71,8 @@ npm cache clean -f
 
 #### 问题
 
-> tips: 建议不要轻易改这个，感觉有坑... 一般正常服务器也不会出现这个问题，我这里是由于局域网的虚拟机出现此问题
+> tips: 建议不要轻易改这个，感觉有坑... 一般正常服务器也不会出现这个问题，我这里是由于局域网的虚拟机出现此问题；
+> 建议操作前存个快照。
 
 ![img.png](images/nodejs-problem-GLIBCXX.png)
 
@@ -91,6 +92,8 @@ strings /lib64/libc.so.6 |grep GLIBC_
 
 解决
 
+> tips：可能需要半个小时时间吧...
+
 ```shell
 cd /root
 # 编译安装
@@ -100,7 +103,7 @@ cd glibc-2.28/ && mkdir build  && cd build
 ../configure --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin
 
 
-# tips: 如果没报错可不用处理...
+# tips: 如果没报错可不用处理这里的步骤...
 # ***********************************************************************
 # 这一步提示如下错误
 # configure: error: 
@@ -160,9 +163,26 @@ ar -x libstdc++6_8.3.0-6_amd64.deb
 tar -xvf data.tar.xz
 cp usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25 /usr/lib64/
 find / -name "libstdc++*"
+# 删除低版本库的软连接
 rm -rf /usr/lib64/libstdc++.so.6
 ll /usr/lib64/libstd*
 ln -s /usr/lib64/libstdc++.so.6.0.25 /usr/lib64/libstdc++.so.6
+
+
+# 检验
+node -v
+npm -v
 ```
 
-![img.png](images/GLIBC_2.27-not-found-problem.png)
+![img.png](images/GLIBC_2.27-not-found-problem-01.png)
+
+##### 解决中文乱码问题
+
+![img.png](images/GLIBC_2.27-not-found-problem-02.png)
+
+```shell
+# 解决中文乱码问题
+cd /root/glibc-2.28/build && make localedata/install-locales
+```
+
+![img_1.png](images/GLIBC_2.27-not-found-problem-03.png)
