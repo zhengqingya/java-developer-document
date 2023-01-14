@@ -52,6 +52,8 @@ Caused by: java.net.BindException: 地址已在使用
 将`Post Steps`中shell运行命令修改为如下：
 
 ```shell
+# 解决jenkins默认自动终止shell产生的进程问题
+BUILD_ID=dontKillMe
 cd target
 # 先停掉旧服务
 ps -ef | grep demo-0.0.1-SNAPSHOT.jar | grep -v grep | awk '{print "kill -15 "$2}' | sh
