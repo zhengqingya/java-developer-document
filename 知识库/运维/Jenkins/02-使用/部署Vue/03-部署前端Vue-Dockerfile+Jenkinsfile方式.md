@@ -118,28 +118,35 @@ pipeline {
 
         stage('vue环境准备') {
             steps {
-                echo '****************************** vue start... ******************************'
-                sh 'cnpm install && cnpm run build:$APP_PROFILE'
-                sh 'cp -r dist Docker/'
+                sh """
+                # 下载依赖 & 构建dist
+                cnpm install && cnpm run build:${APP_PROFILE}
+                # 拷贝dist到Docker目录下
+                cp -r dist Docker/
+                """
             }
         }
 
         stage('构建Docker镜像') {
             steps {
-                echo '****************************** delete container and image... ******************************'
-                sh 'docker ps -a | grep $APP_NAME | awk \'{print $1}\' | xargs -i docker stop {} | xargs -i docker rm {}'
-                sh 'docker images | grep $APP_NAME | grep dev | awk \'{print $3}\' | xargs -i docker rmi {}'
-
-                echo '****************************** build image... ******************************'
-                // -f:指定Dockerfile文件路径
-                sh 'cd Docker && docker build -f Dockerfile -t $APP_IMAGE . --no-cache'
+                sh """
+                    # 删除旧容器
+                    docker ps -a | grep ${APP_NAME} | awk '{print \$1}' | xargs -i docker stop {} | xargs -i docker rm {}
+                    # 删除旧镜像
+                    docker images | grep ${APP_NAME} | awk '{print \$3}' | xargs -i docker rmi {}
+                    # 进入Docker目录
+                    cd Docker
+                    # 构建镜像
+                    docker build -f Dockerfile -t ${APP_IMAGE} . --no-cache
+                """
             }
         }
 
         stage('运行容器') {
             steps {
-                echo '****************************** docker run start... ******************************'
-                sh 'docker run -d -p $APP_PORT:80 --restart=always --name $APP_NAME $APP_IMAGE'
+                sh """
+                    docker run -d -p ${APP_PORT}:80 --restart=always --name ${APP_NAME} ${APP_IMAGE}
+                """
             }
         }
 
@@ -165,6 +172,8 @@ pipeline {
 ```
 Jenkinsfile
 ```
+
+保存配置
 
 #### 3、`Build Now` 构建 & 访问
 
