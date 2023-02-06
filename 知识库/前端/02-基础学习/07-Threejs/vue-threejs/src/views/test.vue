@@ -1,5 +1,4 @@
 <template>
-  <h1>STL三维模型</h1>
   <div id="stlDom" ref="stlDom" />
 </template>
 
@@ -138,5 +137,10 @@ export default {
 * {
   margin: 0;
   padding: 0;
+}
+#stlDom {
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 </style>
