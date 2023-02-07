@@ -1,4 +1,4 @@
-# tail使用说明
+# tail - windows上查看日志 - 使用说明
 
 ### 将`tail.exe`放在`C:\Windows\System32`目录下即可使用
 
