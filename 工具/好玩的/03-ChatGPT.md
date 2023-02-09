@@ -20,6 +20,7 @@ https://chat.openai.com
 
 - 注册openAI账号 https://openai.com/api
 - 体验效果 https://chat.openai.com/chat
+- API keys https://platform.openai.com/account/api-keys
 
 ### VSCode插件
 
@@ -64,3 +65,13 @@ https://github.com/vincelwt/chatgpt-mac
 #### Mac
 
 https://github.com/vincelwt/chatgpt-mac
+
+#### 🔮 ChatGPT Desktop Application (Mac, Windows and Linux)
+
+https://github.com/lencx/ChatGPT
+
+#### Java
+
+- https://github.com/swordintent/chatgpt-web-api
+
+
