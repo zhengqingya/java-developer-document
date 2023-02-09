@@ -72,6 +72,6 @@ https://github.com/lencx/ChatGPT
 
 #### Java
 
-- https://github.com/swordintent/chatgpt-web-api
+- https://github.com/swordintent/chatgpt-web-api  ( 2023-02-09 测试了，不行 )
 
 
