@@ -1,15 +1,15 @@
 # 动态读取`nacos`远程中的`logback-spring.xml`日志配置
 
-### 1、远程nacos上添加如下配置
+### 一、远程nacos上添加如下配置
 
-#### common.yml
+#### 1、common.yml
 
 ```yml
 logging:
   config: http://${spring.cloud.nacos.config.server-addr}/nacos/v1/cs/configs?group=COMMON&tenant=${spring.cloud.nacos.config.namespace}&username=${spring.cloud.nacos.username}&password=${spring.cloud.nacos.password}&dataId=logback-spring.xml
 ```
 
-#### logback-spring.xml
+#### 2、logback-spring.xml
 
 写自己的配置即可
 
@@ -17,7 +17,7 @@ logging:
 
 ```
 
-### 2、本地配置 `bootstrap.yaml`
+### 二、本地配置 `bootstrap.yaml`
 
 主要是去加载远程的配置
 
