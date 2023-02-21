@@ -42,6 +42,8 @@ ex: 将 `mysql-connector-java-8.0.25.jar` 放到 `plugins/jdbc/lib/` 目录下
 - https://seatunnel.apache.org/docs/2.3.0/connector-v2/source/Jdbc
 - https://seatunnel.apache.org/docs/2.3.0/connector-v2/sink/Jdbc
 
+> `demo`库下的`t_test`表数据同步到`demo-bak`库中
+
 ```
 env { 
   execution.parallelism = 1
