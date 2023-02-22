@@ -36,13 +36,14 @@ ex: 将 `mysql-connector-java-8.0.30.jar` 放到 `plugins/jdbc/lib/` 目录下
 
 ```
 env {
-  execution.parallelism = 1
-  job.mode = "BATCH"
+  execution.parallelism = 1 
+  job.mode = "STREAMING"
+  execution.checkpoint.interval = 5000 
 }
 
 source {
   MySQL-CDC {
-    result_table_name = "fake"
+#    result_table_name = "fake"
     parallelism = 1
     server-id = 3306
     hostname = "127.0.0.1"
@@ -52,6 +53,27 @@ source {
     database-name = "demo"
     table-name = "t_test"
     base-url = "jdbc:mysql://localhost:3306"
+    
+    startup.mode = "initial"
+    incremental.parallelism = 1
+    snapshot.fetch.size = 1
+    server-time-zone = "Asia/Shanghai"
+	    
+    # https://debezium.io/documentation/reference/1.6/connectors/mysql.html#mysql-connector-properties
+    debezium {
+        snapshot.mode = "never"
+        decimal.handling.mode = "double"
+	    connector.class = "io.debezium.connector.mysql.MySqlConnector"
+	    database.hostname = "127.0.0.1"
+	    database.port = "3306"
+	    database.user = "root"
+	    database.password = "root"
+ 	    database.server.id = "3306"
+        database.server.name = "3306" 
+        database.include.list = "demo"
+        table.include.list = "t_test"
+        include.schema.changes = "true" 
+    }
   }
 }
 
@@ -59,13 +81,14 @@ transform {
 }
 
 sink {
+#	Console {}
   jdbc {
     url = "jdbc:mysql://127.0.0.1:3306/demo-bak?useSSL=false&serverTimezone=Asia/Shanghai"
     driver = "com.mysql.cj.jdbc.Driver"
     user = "root"
     password = "root"
     table = "t_test"
-  }
+  } 
 
 }
 ```
@@ -103,3 +126,9 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 # 关闭SSL验证
 skip_ssl
 ```
+
+---
+
+tips: 目前此版本为失败版...
+
+未报错，但数据也未同步，未知那里有问题...
