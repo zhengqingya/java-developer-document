@@ -98,3 +98,8 @@ export version="2.3.0"
 wget "https://archive.apache.org/dist/incubator/seatunnel/${version}/apache-seatunnel-incubating-${version}-bin.tar.gz"
 tar -xzvf "apache-seatunnel-incubating-${version}-bin.tar.gz"
 ```
+
+2023-02-22 第二天到公司经测试发现是`config/plugin_config`配置问题，
+要使用`--connectors-v2--`，不能使用`--seatunnel-connectors--`
+
+安装插件后`connectors/seatunnel`目录下会存在对应的jar。
