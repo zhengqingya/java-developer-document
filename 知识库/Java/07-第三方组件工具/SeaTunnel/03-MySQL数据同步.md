@@ -16,7 +16,6 @@ tar -xzvf "apache-seatunnel-incubating-${version}-bin.tar.gz"
 
 ```
 --connectors-v2--
-connector-cdc-mysql
 connector-jdbc
 --end--
 ```
@@ -33,9 +32,9 @@ sh bin/install-plugin.sh
 
 > https://mvnrepository.com/artifact/mysql/mysql-connector-java
 
-ex: 将 `mysql-connector-java-8.0.25.jar` 放到 `plugins/jdbc/lib/` 目录下
+ex: 将 `mysql-connector-java-8.0.30.jar` 放到 `plugins/jdbc/lib/` 目录下
 
-#### 3、新增配置文件 `config/seatunnel.mysql.conf.template`
+#### 3、新增配置文件 [`config/seatunnel-mysql.conf`](config/seatunnel-mysql.conf)
 
 连接器配置见
 
@@ -79,14 +78,15 @@ sink {
 ### 三、运行
 
 ```shell
-sh ./bin/seatunnel.sh --config ./config/seatunnel.mysql.conf.template -e local
+sh ./bin/seatunnel.sh --config ./config/seatunnel-mysql.conf -e local
 ```
 
 ---
 
 ### 问题
 
-报错：`Plugin PluginIdentifier{engineType='seatunnel', pluginType='source', pluginName='Jdbc'} not found`
+#### 1、报错：`Plugin PluginIdentifier{engineType='seatunnel', pluginType='source', pluginName='Jdbc'} not found`
+
 ![img.png](images/jdbc-not-found.png)
 
 之前在Linux上是通过链接直接下载的资源`https://dlcdn.apache.org/incubator/seatunnel/2.3.0/apache-seatunnel-incubating-2.3.0-bin.tar.gz`
@@ -102,4 +102,16 @@ tar -xzvf "apache-seatunnel-incubating-${version}-bin.tar.gz"
 2023-02-22 第二天到公司经测试发现是`config/plugin_config`配置问题，
 要使用`--connectors-v2--`，不能使用`--seatunnel-connectors--`
 
-安装插件后`connectors/seatunnel`目录下会存在对应的jar。
+安装插件后`connectors/seatunnel`目录下会存在对应的jar包。
+
+#### 2、报错：`ErrorCode:[API-01], ErrorDescription:[Configuration item validate failed] - PluginName: jdbc, PluginType: source, Message: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure`
+
+修改jdbc url连接参数
+
+ex: `url = "jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&serverTimezone=Asia/Shanghai"`
+
+在mac上同样的环境没出现此问题，但在Linux上就会出现...
+
+---
+
+> 错误快速参考手册 https://seatunnel.apache.org/docs/2.3.0/connector-v2/Error-Quick-Reference-Manual
