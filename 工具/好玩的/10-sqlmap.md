@@ -16,6 +16,12 @@
 
 ### sql注入 - MySQL
 
+#### 1、分析出存在sql注入安全的接口
+
+idea插件`Java Mybatis SQL Scanner`或`MOMO Code Sec Inspector` -> 扫描 Mybatis SQL XML 文件，分析出不规范或者潜在风险的SQL。
+
+#### 2、sqlmap获取数据
+
 ```shell
 # 直连数据库 -- 知道账号密码的情况下
 python sqlmap.py -d "mysql://root:root@127.0.0.1:3306/demo" -f --banner --users
