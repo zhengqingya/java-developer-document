@@ -26,7 +26,7 @@ idea插件`Java Mybatis SQL Scanner`或`MOMO Code Sec Inspector` -> 扫描 Mybat
 # 直连数据库 -- 知道账号密码的情况下
 python sqlmap.py -d "mysql://root:root@127.0.0.1:3306/demo" -f --banner --users
 
-# 未知账号密码的情况下，可以用本地api接口地址来测试 (含有sql注入的接口  sql注入示例: WHERE id=1 and 1=1 )
+# 未知账号密码的情况下，可以用本地api接口地址来测试 (含有sql注入的接口  sql注入示例: WHERE id=1 and 1=1 )    ex: python sqlmap.py -u "http://127.0.0.1:888/api/test/sql?username=1" --batch --banner
 # 判断是否存在注入
 python sqlmap.py -u "http://url地址" --batch --banner
 # 获取当前用户下的所有数据库
