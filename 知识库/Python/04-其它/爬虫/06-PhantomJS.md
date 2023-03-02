@@ -1,4 +1,0 @@
-# PhantomJS
-
-https://phantomjs.org
-

@@ -10,7 +10,7 @@ https://www.selenium.dev
 1. 查看谷歌浏览器版本 `右上角三个点` -> `帮助` -> `关于 Google Chrome`
 2. 根据自己的浏览器版本(版本前面的数值即可)下载对应驱动 https://chromedriver.chromium.org/downloads
    ( 我这里使用的版本 https://chromedriver.storage.googleapis.com/index.html?path=109.0.5414.74/ )
-3. `pip install selenium`
+3. `pip install selenium==4.8.2`
 
 ### 入门示例 `test.py`
 
