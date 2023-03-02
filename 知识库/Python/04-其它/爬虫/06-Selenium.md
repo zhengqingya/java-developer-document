@@ -14,7 +14,7 @@ https://www.selenium.dev
 
 ### 入门示例 `test.py`
 
-打开百度搜索zhengqingya，下一页，滑动到底部，来回切换上一页，退出。
+打开百度搜索python，下一页，滑动到底部，来回切换上一页，退出。
 
 ```
 from selenium import webdriver
@@ -34,8 +34,8 @@ browser = webdriver.Chrome(service=path, options=option)
 # 访问
 browser.get("https://www.baidu.com")
 
-# 搜索框中输入zhengqingya
-browser.find_element(By.ID, "kw").send_keys("zhengqingya")
+# 搜索框中输入python
+browser.find_element(By.ID, "kw").send_keys("python")
 # 点击搜素按钮
 browser.find_element(By.ID, "su").click()
 

@@ -24,8 +24,8 @@ browser = webdriver.PhantomJS("./phantomjs.exe")
 # 访问
 browser.get("https://www.baidu.com")
 
-# 搜索框中输入zhengqingya
-browser.find_element_by_id("kw").send_keys("zhengqingya")
+# 搜索框中输入python
+browser.find_element_by_id("kw").send_keys("python")
 # 点击搜素按钮
 browser.find_element_by_id("su").click()
 
