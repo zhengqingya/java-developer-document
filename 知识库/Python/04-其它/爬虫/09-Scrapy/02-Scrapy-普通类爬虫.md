@@ -1,17 +1,6 @@
-# Scrapy
+# 基于Scrapy框架实现一个简单的爬虫
 
-- https://github.com/scrapy/scrapy
-- https://scrapy.org
-
-一种用于 Python 的快速高级网络爬虫和抓取框架。
-
-### 一、安装
-
-```shell
-pip install scrapy==2.8.0
-```
-
-### 二、基于Scrapy框架实现一个简单的爬虫
+普通爬虫类 `scrapy.Spider` -- 适用于采集多个页面数据
 
 #### 1、创建项目
 
@@ -21,17 +10,17 @@ scrapy startproject 项目名
 scrapy startproject scrapy_baidu
 ```
 
-#### 2、`项目名\spiders` 目录下创建一个爬虫文件
+#### 2、`项目名\spiders` 目录下创建一个爬虫
 
 ```shell
-scrapy genspider 文件名 网站地址
+scrapy genspider 爬虫名 网站地址
 # eg:
 scrapy genspider baidu https://www.baidu.com
 ```
 
-注释`settings.py`配置文件中的`ROBOTSTXT_OBEY = True`
+#### 3、注释`settings.py`配置文件中的`ROBOTSTXT_OBEY = True`
 
-`baidu.py`
+#### 4、编写 `baidu.py`
 
 ```
 import scrapy
@@ -49,7 +38,7 @@ class BaiduSpider(scrapy.Spider):
             fp.write(response.text)
 ```
 
-#### 3、运行
+#### 5、运行爬虫
 
 ```shell
 # 查看文件夹下的爬虫
@@ -63,3 +52,4 @@ scrapy crawl baidu
 
 项目结构
 ![img.png](images/scrapy-baidu.png)
+
