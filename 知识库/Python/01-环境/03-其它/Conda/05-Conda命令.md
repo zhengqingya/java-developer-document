@@ -8,7 +8,7 @@ conda env list
 conda create -n my_env_name
 
 # 进入某一个环境
-activate my_env_name
+conda activate my_env_name
 
 # 查看环境中的包
 conda list

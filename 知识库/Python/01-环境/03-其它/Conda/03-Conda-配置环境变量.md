@@ -2,6 +2,8 @@
 
 > `此电脑` -> `属性` -> `高级系统设置` -> `环境变量` -> `系统环境变量`
 
+> tips: 如果是`Miniconda`安装方式，配置`miniconda3`路径
+
 ```
 # 编辑PATH环境变量，新增
 D:\zhengqingya\soft\soft-dev\Python\anaconda3
