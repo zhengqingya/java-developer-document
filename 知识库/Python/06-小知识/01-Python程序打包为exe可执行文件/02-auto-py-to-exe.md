@@ -29,6 +29,8 @@ auto-py-to-exe
 
 ![img.png](images/auto-py-to-exe-02.png)
 
+`.ico`图标在线转换工具： http://www.ico8.net
+
 ---
 
 ### 打包`计算器`
