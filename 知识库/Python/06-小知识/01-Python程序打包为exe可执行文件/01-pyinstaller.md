@@ -1,6 +1,6 @@
-# Python程序打包为exe可执行文件
+# Python程序打包为exe可执行文件 - `pyinstaller`
 
-### 测试程序
+### 一、测试程序
 
 `app.py`
 
@@ -13,22 +13,30 @@ print("\n结果：", question)
 time.sleep(5)
 ```
 
-### 打包
+### 二、安装
 
 ```shell
-# 安装
 pip install pyinstaller
+```
 
-# 编译可执行文件
+### 三、打包
+
+```shell
+# 编译可执行文件 -- 多文件（生成的dist文件夹下，有一个文件夹里面有很多文件）
+pyinstaller -D app.py
+
+# 编译可执行文件 -- 单文件（生成的dist文件夹下，只有一个可执行的exe文件）
 pyinstaller -F app.py
 
 # -F：指定打包后只生成一个exe格式的文件
-# -w：不显示windows cmd窗口 （GUI程序的话可以加上这个参数）
+# -w：隐藏控制台窗口 （GUI程序的话可以加上这个参数）
 # -i：指定应用程序图标
 # -n：程序名
 # pyinstaller -F -w -i favicon.ico -n 第一个应用程序 app.py
 pyinstaller -F -i favicon.ico -n 第一个应用程序 app.py
 ```
+
+---
 
 报错：
 

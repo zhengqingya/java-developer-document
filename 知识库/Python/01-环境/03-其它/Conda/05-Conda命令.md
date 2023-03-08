@@ -13,6 +13,11 @@ conda activate my_env_name
 # 查看环境中的包
 conda list
 
+# 搜索包
+conda search pandas
+# 查看某个范围内的版本包 -- eg: # 搜索版本处于1.0.0及1.1之间的pandas
+conda search "pandas [version='>=1.0.0,<1.1']"
+
 # 安装包 
 conda install xxx
 
