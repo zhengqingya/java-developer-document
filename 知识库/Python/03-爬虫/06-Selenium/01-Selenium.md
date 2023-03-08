@@ -5,16 +5,40 @@ https://www.selenium.dev
 直接运行在浏览器中，就像真正的用户在操作一样。
 自动化测试工具。
 
-### 安装
+### 一、安装
 
 1. 查看谷歌浏览器版本 `右上角三个点` -> `帮助` -> `关于 Google Chrome`
 2. 根据自己的浏览器版本(版本前面的数值即可)下载对应驱动 https://chromedriver.chromium.org/downloads
    ( 我这里使用的版本 https://chromedriver.storage.googleapis.com/index.html?path=109.0.5414.74/ )
-3. `pip install selenium==4.8.2`
+3. 解压`chromedriver_win32.zip`，将`chromedriver.exe`
+   放到python安装目录下`D:\zhengqingya\soft\soft-dev\Python\Python310\chromedriver.exe`
+   或放在程序指定的位置
 
-### 入门示例 `test.py`
+#### 配置环境变量
+
+> `此电脑` -> `属性` -> `高级系统设置` -> `环境变量`
+
+```
+# 编辑Path环境变量，新增
+D:\zhengqingya\soft\soft-dev\Python\Python310\chromedriver.exe
+```
+
+```shell
+# 验证
+chromedriver --version
+# ChromeDriver 109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172})
+```
+
+```shell
+# 安装selenium
+pip install selenium==4.8.2
+```
+
+### 二、入门示例 `test.py`
 
 打开百度搜索python，下一页，滑动到底部，来回切换上一页，退出。
+
+> 将`chromedriver.exe`放在程序当前目录下
 
 ```
 from selenium import webdriver
