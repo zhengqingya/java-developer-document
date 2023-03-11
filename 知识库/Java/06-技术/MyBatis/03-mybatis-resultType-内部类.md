@@ -6,12 +6,15 @@
 
 ```
 <select id="selectDeliveryInfo" resultType="com.xx.OrderPageVO$OrderDeliveryVO">
-    SELECT operator_name
+    SELECT 
+        operator_name,
+        operator_phone
     FROM xx
 </select>
 ```
 
 ```java
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -40,3 +43,17 @@ public class OrderPageVO {
 
 }
 ```
+
+如果返回结果想要映射到结果中的某一个对象中，如下：
+
+```
+<select id="selectDeliveryInfo" resultType="com.xx.OrderPageVO">
+    SELECT 
+        order_no,
+        operator_name `delivery.operatorName`,
+        operator_phone `delivery.operatorPhone`
+    FROM xx
+</select>
+```
+
+如果在`resultMap`中则为`<result column="operator_name" property="delivery.operatorName"/>`
