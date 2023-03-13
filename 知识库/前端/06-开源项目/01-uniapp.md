@@ -1,3 +1,5 @@
+### 奶茶类
+
 ###### 奶茶店商城小程序
 
 > 项目未完结 vue2
@@ -15,6 +17,12 @@
 
 ![app.png](images/app-02.png)
 
+###### 扫码点餐，外卖系统，含优惠券、会员打折、支付、积分、小票打印机打单等功能
+
+https://ext.dcloud.net.cn/plugin?id=10200
+
+### 商城类
+
 ###### mix-mall 电商项目模版
 
 - https://ext.dcloud.net.cn/plugin?id=200
@@ -22,3 +30,9 @@
 ###### 商城模板(更新一部分nvue页和subNvue导航栏)
 
 - https://ext.dcloud.net.cn/plugin?id=267
+
+### 脚手架
+
+###### uni-app Vue3 Vite TypeScript 基础框架
+
+https://gitee.com/h_mo/uniapp-vue3-vite-ts-template
