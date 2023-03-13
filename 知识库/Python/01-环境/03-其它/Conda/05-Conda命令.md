@@ -35,3 +35,10 @@ conda  create  --name  new_env_name  --clone  old_env_name
 # 删除虚拟环境
 conda remove -n my_env_name --all
 ```
+
+---
+
+tips: 虚拟环境中安装的软件包在
+
+- windows：`D:\zhengqingya\soft\soft-dev\Python\anaconda3\envs\虚拟环境\Lib\site-packages`
+- linux：`/root/anaconda3/envs/虚拟环境/lib/python3.8/site-packages`
