@@ -41,6 +41,12 @@ https://github.com/gragland/chatgpt-chrome-extension
 
 在任意页面文本框中点击右键，即可弹出「Ask ChatGPT」的选项。
 
+#### All-in-one chatbot client
+
+https://github.com/chathub-dev/chathub
+
+![img.png](images/chathub-dev.png)
+
 ### 其它
 
 #### 逆向工程
