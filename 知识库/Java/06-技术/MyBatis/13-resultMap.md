@@ -94,9 +94,13 @@ public class MallListSpecTypeHandler extends DbJsonTypeHandler {
 保存数据时，list会转为json存入数据库中。
 
 ```
-@ApiModelProperty("商品规格属性")
-@TableField(typeHandler = MallListSpecTypeHandler.class)
-private List<PmsSkuSpecBO> specList;
+@TableName(value = "pms_sku", autoResultMap = true)
+public class PmsSku extends Model<PmsSku> {
+
+    @TableField(typeHandler = MallListSpecTypeHandler.class)
+    private List<PmsSkuSpecBO> specList;
+    
+}
 ```
 
 ---

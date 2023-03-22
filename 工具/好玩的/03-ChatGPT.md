@@ -47,6 +47,13 @@ https://github.com/chathub-dev/chathub
 
 ![img.png](images/chathub-dev.png)
 
+#### chatGPTBox
+
+将 ChatGPT 深度集成到您的浏览器中，您需要的一切都在这里。
+
+- https://github.com/josStorer/chatGPTBox
+- https://chrome.google.com/webstore/detail/chatgptbox/eobbhoofkanlmddnplfhnmkfbnlhpbbo
+
 ### 其它
 
 #### 逆向工程
