@@ -6,7 +6,7 @@
 2. Grafana：Go语言开发的开源数据可视化工具，可以做数据监控和数据统计，带有告警功能。
 3. Micrometer：收集Java性能数据
 
-[运维(12) Prometheus+Grafana 搭建监控系统监控Liunx主机](https://zhengqing.blog.csdn.net/article/details/120464947)
+[运维(12) Prometheus+Grafana 搭建监控系统监控Linux主机](https://zhengqing.blog.csdn.net/article/details/120464947)
 
 ### 二、SpringBoot集成Micrometer
 
@@ -65,7 +65,7 @@ public class MetricsConfig {
 ```
 # 准备
 git clone https://gitee.com/zhengqingya/docker-compose.git
-cd docker-compose/Liunx
+cd docker-compose/Linux
 
 # `docker-compose-prometheus.yml` 需修改grafana中配置的mysql连接信息
 # `prometheus.yml` 自行配置

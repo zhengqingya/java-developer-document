@@ -5,7 +5,7 @@
 ```
 # 环境准备
 git clone https://gitee.com/zhengqingya/docker-compose.git
-cd docker-compose/Liunx
+cd docker-compose/Linux
 # 注：
 # 	1. `docker-compose-prometheus.yml` 需修改grafana中配置的mysql连接信息
 # 	2. `prometheus.yml` 自行配置
@@ -55,7 +55,7 @@ docker-compose -f docker-compose-prometheus.yml -p prometheus up -d
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/9fefcd88de294af79b0533c71aaf4f98.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bbb6b8cc1af94cc0a51d5e6e5f49eed3.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)  
-查看liunx监控信息如下  
+查看Linux监控信息如下  
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/4acd571bad0540a4b2f5e83848c61aa6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 ---
