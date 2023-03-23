@@ -4,7 +4,7 @@
 # @description jenkins运行脚本
 # @params $? => 代表上一个命令执行后的退出状态: 0->成功,1->失败
 #         $1 => 脚本第一个参数-操作类型(init|start|stop|restart)
-# @example => sh jenkins.sh start
+# @example => sh jenkins.sh init & source /etc/profile
 # @author zhengqingya
 # @date 2021/7/17 3:59 下午
 ####################################

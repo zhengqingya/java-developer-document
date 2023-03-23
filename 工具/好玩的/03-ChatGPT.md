@@ -87,4 +87,9 @@ https://github.com/lencx/ChatGPT
 
 - https://github.com/swordintent/chatgpt-web-api  ( 2023-02-09 测试了，不行 )
 
+#### Cursor
 
+Cursor 是一个 AI 源代码编辑器
+
+- https://github.com/getcursor/cursor
+- https://www.cursor.so
