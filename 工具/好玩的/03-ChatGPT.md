@@ -93,3 +93,9 @@ Cursor 是一个 AI 源代码编辑器
 
 - https://github.com/getcursor/cursor
 - https://www.cursor.so
+
+#### 莓用AI
+
+国内chatgpt
+
+http://ai.usesless.com/scene
