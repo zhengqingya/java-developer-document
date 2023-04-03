@@ -1,5 +1,7 @@
 # 对象数组操作
 
+含es6
+
 ```
 let skuList = [{"spuId":1,"skuId":"2","num":1,"price":6},{"spuId":3,"skuId":"4","num":2,"price":10}]
 ```
@@ -7,6 +9,7 @@ let skuList = [{"spuId":1,"skuId":"2","num":1,"price":6},{"spuId":3,"skuId":"4",
 ### 求和
 
 ```
+// 0为初始值
 let sumSku = this.skuList.reduce((total, item) => total += item.num, 0)
 ```
 
@@ -31,4 +34,63 @@ let maxValue = Math.max.apply(Math, this.skuList.map(function(item) {
 let minValue = Math.min.apply(Math, this.skuList.map(function(item) {
     return item.price << 0
 }));
+```
+
+### 是否包含
+
+```
+const list = ['java', 'python', 'go']
+console.log(list.includes('java')); // true
+```
+
+### 合并
+
+```
+const list = ['java', 'go']
+console.log(list.concat(['python', 'java'])); // ['java', 'go', 'python', 'java']
+```
+
+### 扩展运算符...
+
+```
+const x = ['e','f','h']
+const y = [...x] 
+console.log(y); // ['e','f','h']
+```
+
+### 分组
+
+```
+const list = [{"id":1,"name":"zhengqingya","sex":"男"},{"id":2,"name":"admin","sex":"女"},{"id":3,"name":"test","sex":"男"}]
+
+// 数组
+function getGroupArray(list, attr) {
+    const map = new Map()
+    list.forEach((item, index, arr) => {
+      if (!map.has(item[attr])) {
+        map.set(
+          item[attr],
+          arr.filter((a) => a[attr] == item[attr]),
+        )
+      }
+    })
+    return Array.from(map).map((item) => [...item[1]])
+}
+
+// 对象
+function getGroupObject(list, attr) {
+    const map = new Map()
+    list.forEach((item, index, arr) => {
+      if (!map.has(item[attr])) {
+        map.set(
+          item[attr],
+          arr.filter((a) => a[attr] == item[attr]),
+        )
+      }
+    })
+    return Object.fromEntries(Array.from(map).map((item) => [item[0], item[1]]))
+}
+
+console.log('分组-数组', getGroupArray(list, 'sex')) // [[{"id":1,"name":"zhengqingya","sex":"男"},{"id":3,"name":"test","sex":"男"}],[{"id":2,"name":"admin","sex":"女"}]]
+console.log('分组-对象', getGroupObject(list, 'sex')) // {"男":[{"id":1,"name":"zhengqingya","sex":"男"},{"id":3,"name":"test","sex":"男"}],"女":[{"id":2,"name":"admin","sex":"女"}]}
 ```
