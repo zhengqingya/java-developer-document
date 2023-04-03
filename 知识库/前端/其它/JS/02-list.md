@@ -52,10 +52,25 @@ console.log(list.concat(['python', 'java'])); // ['java', 'go', 'python', 'java'
 
 ### 扩展运算符...
 
+用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中
+
 ```
-const x = ['e','f','h']
-const y = [...x] 
+let x = ['e','f','h']
+let y = [...x]
 console.log(y); // ['e','f','h']
+y[0] = 'aa'
+console.log(x); // ['e','f','h']
+console.log(y); // ['aa','f','h']
+
+
+const a = {"id":1,"name":"zq"}
+const b = {...a}
+b.name = 'test'
+console.log(a); // {"id":1,"name":"zq"}
+console.log(b); // {"id":1,"name":"test"}
+
+b.age = 18
+console.log(b); // {"id":1,"name":"test","age":18}
 ```
 
 ### 分组
