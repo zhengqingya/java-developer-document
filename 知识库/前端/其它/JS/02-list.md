@@ -94,3 +94,10 @@ function getGroupObject(list, attr) {
 console.log('分组-数组', getGroupArray(list, 'sex')) // [[{"id":1,"name":"zhengqingya","sex":"男"},{"id":3,"name":"test","sex":"男"}],[{"id":2,"name":"admin","sex":"女"}]]
 console.log('分组-对象', getGroupObject(list, 'sex')) // {"男":[{"id":1,"name":"zhengqingya","sex":"男"},{"id":3,"name":"test","sex":"男"}],"女":[{"id":2,"name":"admin","sex":"女"}]}
 ```
+
+### 去重
+
+```
+let array = Array.from(new Set([1, 1, 1, 2, 3, 2, 4])); 
+console.log(array); // => [1, 2, 3, 4]
+```
