@@ -43,7 +43,7 @@ public class SysRoleRePermListVO {
 
 ```
 <resultMap id="listRoleRePerm" type="com.zhengqing.system.model.vo.SysRoleRePermListVO">
-    <result property="name" column="name" jdbcType="VARCHAR"/>
+    <result property="name" column="name"/>
     <collection property="codeList" ofType="String" javaType="list">
         <result column="code"/>
     </collection>
