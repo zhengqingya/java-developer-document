@@ -46,8 +46,31 @@ console.log(list.includes('java')); // true
 ### 合并
 
 ```
-const list = ['java', 'go']
+let list = ['java', 'go']
 console.log(list.concat(['python', 'java'])); // ['java', 'go', 'python', 'java']
+
+// 或
+list.push(...['python', 'java'])
+console.log(list); // ['java', 'go', 'python', 'java']
+
+// 或
+list = [...list, ...['python', 'java']]
+```
+
+### 去重
+
+```
+// 数组去重
+let array = Array.from(new Set([1, 1, 1, 2, 3, 2, 4])); 
+console.log(array); // => [1, 2, 3, 4]
+
+// 数组对象去重
+const list = [{"name":"test"},{"name":"test"}]
+const unique = (arrs) => {
+    const res = new Map()
+    return arrs.filter((arr) => !res.has(arr.name) && res.set(arr.name, 1))
+}
+console.log('去重后:', unique(list))
 ```
 
 ### 扩展运算符...
@@ -110,9 +133,3 @@ console.log('分组-数组', getGroupArray(list, 'sex')) // [[{"id":1,"name":"zh
 console.log('分组-对象', getGroupObject(list, 'sex')) // {"男":[{"id":1,"name":"zhengqingya","sex":"男"},{"id":3,"name":"test","sex":"男"}],"女":[{"id":2,"name":"admin","sex":"女"}]}
 ```
 
-### 去重
-
-```
-let array = Array.from(new Set([1, 1, 1, 2, 3, 2, 4])); 
-console.log(array); // => [1, 2, 3, 4]
-```
