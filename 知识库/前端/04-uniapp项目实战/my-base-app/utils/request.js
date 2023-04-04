@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:888"
+import config from '@/config.js'
 
 const request = ({
 	url, // 请求url
@@ -17,7 +17,7 @@ const request = ({
 			}
 		}
 		uni.request({
-			url: BASE_URL + url,
+			url: config.API_BASE_URL + url,
 			data: method === 'get' ? params : data,
 			method: method,
 			header: headers,
