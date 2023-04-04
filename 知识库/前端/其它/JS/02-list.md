@@ -73,6 +73,15 @@ const unique = (arrs) => {
 console.log('去重后:', unique(list))
 ```
 
+### 移除指定元素
+
+```
+let list = [{"id":1,"name":"admin"},{"id":2,"name":"test"}]
+// 移除id为1的元素
+list.splice(list.findIndex((item) => item.id === 1), 1)
+console.log(list) // [{"id":2,"name":"test"}]
+```
+
 ### 扩展运算符...
 
 用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中
