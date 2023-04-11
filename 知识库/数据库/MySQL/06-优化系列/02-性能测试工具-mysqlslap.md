@@ -27,6 +27,17 @@ mysqlslap运行在三个阶段：
 
 # 并发100个连接测试
 mysqlslap --no-defaults -hlocalhost -uroot -proot -P3306 -a -c 100
+# 运行结果：
+#         Average number of seconds to run all queries: 0.596 seconds   -- 运行所有语句的平均秒数
+#         Minimum number of seconds to run all queries: 0.596 seconds   -- 运行所有语句的最小秒数
+#         Maximum number of seconds to run all queries: 0.596 seconds   -- 运行所有语句的最大秒数
+#         Number of clients running queries: 100                        -- 客户端数量
+#         Average number of queries per client: 0                       -- 每个客户端运行查询的平均数
+
+
+# 测试的过程需要生成测试表，插入测试数据，我们可以添加 --only-print 来打印实际的测试过程（可以看到整个测试完成后会自动删除测试库，不会在数据库中留下痕迹）
+mysqlslap --no-defaults -hlocalhost -uroot -proot -P3306 -a -c 100 --only-print
+
 
 # 执行一次测试，分别100和200个并发，执行5000次总查询
 mysqlslap --no-defaults -hlocalhost -uroot -proot -P3306 -a --concurrency=100,200 --number-of-queries 5000 --iterations=5
@@ -38,7 +49,6 @@ mysqlslap --no-defaults -hlocalhost -uroot -proot -P3306 --concurrency=100 --ite
 # 并发100 次数10
 mysqlslap --no-defaults -hlocalhost -uroot -proot -P3306 -a -c 100 -i 10
 ```
-
 
 ```shell
 # 查看数据库最大连接数
