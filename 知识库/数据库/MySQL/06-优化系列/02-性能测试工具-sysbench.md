@@ -175,16 +175,16 @@ sysbench fileio --threads=16 --file-total-size=1G --file-test-mode=rndrw cleanup
 
 # 1、准备数据（prepare） -- tips: 先在数据库中创建test测试库
 CREATE DATABASE test;
-sysbench /usr/share/sysbench/oltp_common.lua --mysql-host=172.16.16.88 --mysql-port=3306  --mysql-user=root --mysql-password=root  --mysql-db=test --tables=4 --table-size=1000  --threads=128  prepare
+sysbench /usr/share/sysbench/oltp_common.lua --mysql-host=localhost --mysql-port=3306  --mysql-user=root --mysql-password=root  --mysql-db=test --tables=4 --table-size=1000  --threads=128  prepare
 
 # 2、开始压力测试（run）
 # --report-interval=3 每3秒输出一次测试进度报告
 # --time=60 测试时长1分钟
 # --percentile=99 表示设定采样比例，默认是 95%，即丢弃1%的长请求，在剩余的99%里取最大值
-sysbench /usr/share/sysbench/oltp_read_write.lua --mysql-host=172.16.16.88 --mysql-port=3306  --mysql-user=root --mysql-password=root  --mysql-db=test  --tables=4  --threads=128 --report-interval=3  --time=60 --percentile=99 run
+sysbench /usr/share/sysbench/oltp_read_write.lua --mysql-host=localhost --mysql-port=3306  --mysql-user=root --mysql-password=root  --mysql-db=test  --tables=4  --threads=128 --report-interval=3  --time=60 --percentile=99 run
 
 # 3、清理测试时产生的数据（cleanup）
-sysbench /usr/share/sysbench/oltp_read_write.lua --mysql-host=172.16.16.88 --mysql-port=3306  --mysql-user=root --mysql-password=root  --mysql-db=test --tables=4 cleanup
+sysbench /usr/share/sysbench/oltp_read_write.lua --mysql-host=localhost --mysql-port=3306  --mysql-user=root --mysql-password=root  --mysql-db=test --tables=4 cleanup
 ```
 
 压测日志
