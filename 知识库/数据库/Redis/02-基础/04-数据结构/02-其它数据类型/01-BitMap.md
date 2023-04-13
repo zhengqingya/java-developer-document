@@ -21,4 +21,4 @@ getbit zq 8
 bitcount zq
 ```
 
-![redis-BitMap.png](../01-基本数据类型/images/redis-BitMap.png)
+![redis-BitMap.png](images/redis-BitMap.png)
