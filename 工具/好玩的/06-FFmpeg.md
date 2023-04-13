@@ -6,7 +6,7 @@ https://ffmpeg.org
 
 https://github.com/BtbN/FFmpeg-Builds/releases
 
-![img.png](../images/ffmpeg-dir.png)
+![img.png](images/ffmpeg-dir.png)
 
 ### 配置环境变量
 

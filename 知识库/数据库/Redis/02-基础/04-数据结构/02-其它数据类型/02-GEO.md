@@ -23,4 +23,4 @@ geosearch geo_chengdu fromlonlat 104.07515 30.55260 byradius 2 km withdist
 geohash geo_chengdu "天府三街" "天府五街"
 ```
 
-![redis-geo.png](../../images/redis-geo.png)
+![redis-geo.png](../01-基本数据类型/images/redis-geo.png)

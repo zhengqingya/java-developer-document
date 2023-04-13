@@ -25,11 +25,10 @@ show profiles;
 ```
 
 | Query_ID | Duration   | Query                |
-| -------- | ---------- | -------------------- |
+|----------|------------|----------------------|
 | 1        | 0.00067425 | SHOW STATUS          |
 | 2        | 0.000144   | SELECT * from t_demo |
 | 3        | 0.000625   | SHOW STATUS          |
-
 
 ```shell
 # 查看最近一条
@@ -55,4 +54,4 @@ show profile all for query 2;
 - `SOURCE` 显示源代码中函数的名称，以及函数所在文件的名称和行号
 - `SWAPS` 显示交换计数
 
-![show profile.png](../images/show-profile.png)
+![show profile.png](images/show-profile.png)
