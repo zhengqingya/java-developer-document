@@ -1,0 +1,4 @@
+# 读写分离-Gaea中间件
+
+https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&mid=2650126388&idx=2&sn=d5e4ae86bc4fd2818ac5f30f8e7c460d&chksm=f36ba515c41c2c03de660b6f1b53abf41791621eb2c6b40b50b02a5b950495e3dbd889d91125&mpshare=1&scene=1&srcid=&sharer_sharetime=1582162650089&sharer_shareid=936076bf8d5bee83e89fd7e769b5c6db&key=d6442b0c53190ce2ab82fdac568e089b6f3249d21c244fd4b32c6858dd5d809072180d2da3a94bd7d758a5ef87e9703942aae33e66848e7056f9763d55531f719252c35e34abadf24ea5cb9368c38772&ascene=1&uin=MTg4MzA0MzMxNA%3D%3D&devicetype=Windows+7&version=62070158&lang=zh_CN&exportkey=AS%2Bxr6H5%2B83KMc7qNUgUrLA%3D&pass_ticket=z48jcWuYFwgYSdUAmAJt0cDA80oo272uZTTW3YNPJ8nj1WhovoGfUxL0JbKGc9Ed
+
