@@ -1,8 +1,8 @@
-# redo undo 回滚段
+# redo、undo、回滚段
 
 > [https://mp.weixin.qq.com/s/fmzaIobOihKKZ7kyZQInTg](https://mp.weixin.qq.com/s/fmzaIobOihKKZ7kyZQInTg)
 
-### redo
+### redo日志
 
 数据库事务提交后，必须将更新后的数据刷到磁盘上，以保证ACID特性。 磁盘随机写性能较低，如果每次都刷盘，会极大影响数据库的吞吐量。
 
@@ -14,16 +14,13 @@
 
 一句话，`redo日志`用于保障，`已提交事务的ACID特性`。
 
-### undo
+### undo日志
 
 数据库事务未提交时，会将事务修改数据的镜像（即修改前的旧版本）存放到undo日志里，当事务回滚时，或者数据库奔溃时，可以利用undo日志，即旧版本数据，撤销未提交事务对数据库产生的影响。
 
 画外音：更细节的，
-
 对于insert操作，undo日志记录新数据的PK(ROW_ID)，回滚时直接删除；
-
 对于delete/update操作，undo日志记录旧数据row，回滚时直接恢复；
-
 他们分别存放在不同的buffer里。
 
 一句话，`undo日志`用于保障，`未提交事务不会对数据库的ACID特性`产生影响。
@@ -34,7 +31,7 @@
 
 undo日志和回滚段和InnoDB的MVCC密切相关，这里举个例子展开说明一下。
 
-栗子： t(id PK, name);
+eg： t(id PK, name);
 
 数据为：
 
