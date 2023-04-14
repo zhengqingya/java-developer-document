@@ -193,7 +193,7 @@ sysbench /usr/share/sysbench/oltp_read_write.lua --mysql-host=localhost --mysql-
 sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
 
 Running the test with following options:
-Number of threads: 128 # 并发数
+Number of threads: 128 # 测试过程中用到的线程数目
 Report intermediate results every 3 second(s) # 每3秒钟输出一次测试报告结果
 Initializing random number generator from current time
 
@@ -202,12 +202,13 @@ Initializing worker threads...
 
 Threads started!
 
-# thds 线程数
-# tps 每秒传输的事务处理个数，即服务器每秒处理的事务数
-# qps 一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，即每秒的响应请求数，也即是最大吞吐能力
-# r/w/o:每秒读、每秒写、其余
-# lat 99%以上的响应时长统
-# err 错误数
+# thds 并发线程数
+# tps 每秒事务数
+# qps 每秒响应请求操作数，也即是最大吞吐能力
+# r/w/o:每秒读、每秒写、其它操作
+# lat 是延迟，(ms,99%) 是 99% 的查询时间小于或等于该值，单位毫秒
+# err/s 每秒错误数
+# reconn/s 每秒重试次数
 [ 3s ] thds: 128 tps: 108.86 qps: 4585.04 (r/w/o: 3617.30/598.89/368.85) lat (ms,99%): 2632.28 err/s: 108.86 reconn/s: 0.00
 [ 6s ] thds: 128 tps: 126.69 qps: 4707.23 (r/w/o: 3644.03/676.80/386.41) lat (ms,99%): 3911.79 err/s: 133.03 reconn/s: 0.00
 ...
@@ -219,22 +220,22 @@ SQL statistics:
         other:                           23635  # 其他操作总数(SELECT、INSERT、UPDATE、DELETE之外的操作，例如COMMIT等)
         total:                           285854 # 全部总数
     transactions:                        7891   (130.45 per sec.)   # 总事务数(每秒事务数)
-    queries:                             285854 (4725.56 per sec.)  # 查询总数
-    ignored errors:                      7853   (129.82 per sec.)   # 忽略错误数
-    reconnects:                          0      (0.00 per sec.)     # 重新连接数 
+    queries:                             285854 (4725.56 per sec.)  # 总操作数(每秒操作数)
+    ignored errors:                      7853   (129.82 per sec.)   # 总忽略错误数(每秒忽略错误次数)
+    reconnects:                          0      (0.00 per sec.)     # 总重试次数(每秒重试次数)
 
 General statistics:
-    total time:                          60.4888s
-    total number of events:              7891
+    total time:                          60.4888s # 总耗时
+    total number of events:              7891     # 总事务数（默认参数下，一个event即一个事务）
 
-Latency (ms):  # 等待时间
+Latency (ms):  # 平均延迟   （越低越好）
          min:                                   33.08 # 最小耗时
          avg:                                  978.12 # 平均耗时
          max:                                 7385.98 # 最长耗时
-         99th percentile:                     3773.42 # 超过99%平均耗时
-         sum:                              7718377.79 # 总时间
+         99th percentile:                     3773.42 # 超过99%执行耗时时间
+         sum:                              7718377.79 # 总耗时
 
 Threads fairness: # 并发统计
-    events (avg/stddev):           61.6484/6.18 # 总处理事件数/标准偏差
-    execution time (avg/stddev):   60.2998/0.14 # 平均处理事件时间/标准偏差
+    events (avg/stddev):           61.6484/6.18 # 平均每个线程执行事件数/标准偏差  （stddev 是标准差，值越小，代表结果越稳定）
+    execution time (avg/stddev):   60.2998/0.14 # 平均每个线程执行时间/标准偏差
 ```
