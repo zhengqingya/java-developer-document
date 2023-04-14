@@ -6,7 +6,7 @@ https://github.com/akopytov/sysbench
 
 ### 一、安装
 
-> Linux
+#### Linux
 
 ```shell
 curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.rpm.sh | sudo bash
@@ -14,6 +14,13 @@ sudo yum -y install sysbench
 sysbench --version
 
 # 默认脚本路径  /usr/share/sysbench
+```
+
+#### Mac
+
+```shell
+# Add --with-postgresql if you need PostgreSQL support
+brew install sysbench
 ```
 
 ### 二、使用
