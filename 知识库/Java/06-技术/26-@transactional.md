@@ -23,6 +23,16 @@
 如果需要支持回滚Exception异常请用`@Transactional(rollbackFor = Exception.class)`
 如果是增删改的时候建议大家都使用`@Transactional(rollbackFor = Exception.class)`
 
+```
+@Transactional
+public void test_transaction() throws Exception {
+    this.userMapper.insert(xxx); // 无法回滚
+    if (1 == 1) {
+        throw new Exception("报错了...");
+    }
+}
+```
+
 ### 失效场景
 
 1. try catch捕获了异常(没有在catch里面手动抛出异常)
