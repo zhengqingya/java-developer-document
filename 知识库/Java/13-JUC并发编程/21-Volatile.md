@@ -115,3 +115,4 @@ Volatile则可以避免指令重排
 
 ![img.png](images/Volatile.png)
 
+Volatile 是可以保持 可见性。不能保证原子性，由于内存屏障，可以保证避免指令重排的现象产生！
