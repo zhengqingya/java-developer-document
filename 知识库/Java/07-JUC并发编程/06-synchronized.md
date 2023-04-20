@@ -65,7 +65,7 @@ public class TestSynchronizedBlock {
 //            Integer num = 1; // 线程安全
 //            Integer num = 129; // 超过128 对象地址不一致 => 线程不安全
 //            synchronized (num) {
-            synchronized (this) { // this 当前调用的对象 ticket => 安全
+            synchronized (this) { // this 当前调用的对象 ticket => 安全     如果上面ticket对象放在for循环中，则不安全
                 if (number > 0) {
                     System.out.println(Thread.currentThread().getName() + "购买了第" + (number--) + "张票,剩余票数为" + number);
                 } else {
