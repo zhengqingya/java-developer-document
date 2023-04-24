@@ -3,6 +3,11 @@
 ### 一、编写程序测试OOM
 
 ```java
+import cn.hutool.core.util.RandomUtil;
+import com.google.common.collect.Lists;
+
+import java.util.List;
+
 public class TestOom {
 
     public static void main(String[] args) {
