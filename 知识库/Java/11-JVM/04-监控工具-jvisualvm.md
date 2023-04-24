@@ -1,7 +1,3 @@
-# jconsole
-
-JMX的可视化管理工具
-
 # jvisualvm
 
 多合一故障管理工具
@@ -21,6 +17,5 @@ JMX的可视化管理工具
 然后在 可用插件中勾选`Visual GC`安装 -> 重启`jvisualvm`
 
 ![img.png](image/jvisualvm_visual_gc_install.png)
-
 
 ![jvisualvm_visual_gc.png](image/jvisualvm_visual_gc.png)
