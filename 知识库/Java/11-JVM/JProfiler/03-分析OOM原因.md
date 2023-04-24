@@ -69,6 +69,10 @@ Disconnected from the target VM, address: '127.0.0.1:60094', transport: 'socket'
 在`显示更多`中可查看问题根源
 ![img_3.png](images/jprofiler-oom-analyse-04.png)
 
+也可以点击`在图表中显示`
+![img.png](images/jprofiler-oom-analyse-06.png)
+![img.png](images/jprofiler-oom-analyse-07.png)
+
 #### 方式2、通过`具体线程`分析
 
 在OOM日志处，找到相关线程，然后在`JProfiler`中的`线程转储`中查看具体错误
