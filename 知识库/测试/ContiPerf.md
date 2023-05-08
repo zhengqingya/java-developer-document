@@ -95,3 +95,74 @@ public class ContiPerfTest {
 | 90%               | TP90响应时间 |
 | Max latency       | 最长响应时间   |
 
+### 三、其它：也可以在测试完后控制台直接输出tps结果方便查看
+
+```
+<!-- WebMagic：爬虫 -->
+<dependency>
+    <groupId>us.codecraft</groupId>
+    <artifactId>webmagic-core</artifactId>
+    <version>0.7.3</version>
+    <exclusions>
+        <exclusion>
+            <artifactId>slf4j-reload4j</artifactId>
+            <groupId>org.slf4j</groupId>
+        </exclusion>
+    </exclusions>
+</dependency>
+<dependency>
+    <groupId>us.codecraft</groupId>
+    <artifactId>webmagic-extension</artifactId>
+    <version>0.7.3</version>
+</dependency>
+```
+
+```java
+package com.zhengqing.demo.daily.contiperf;
+
+import ch.qos.logback.classic.Level;
+import cn.hutool.core.io.FileUtil;
+import com.zhengqing.demo.util.HttpUtil;
+import com.zhengqing.demo.util.LogLevelUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.junit.ContiPerfRule;
+import org.junit.AfterClass;
+import org.junit.Rule;
+import org.junit.Test;
+import us.codecraft.webmagic.selector.Html;
+
+@Slf4j
+public class SeckillTest {
+
+    @Rule
+    public ContiPerfRule i = new ContiPerfRule();
+
+    @Test
+    @PerfTest(invocations = 2000, threads = 1000
+//            , duration = 1000 * 5  // 持续?秒
+    )
+    public void test() throws Exception {
+        LogLevelUtil.update("com.zhengqing.demo", Level.ERROR);
+        String url = "http://127.0.0.1:888/api/test/seckill/01";
+        HttpUtil.getUrl(url);
+    }
+
+
+    @AfterClass
+    public static void afterClass() {
+//        ReportContext reportContext = new ContiPerfRule().getContext();
+//        reportContext.getReportModules().add(new ConsoleReportModule());
+//        System.out.println(reportContext.getReportFolder().toString());
+        getTps();
+    }
+
+    public static void getTps() {
+        String contiperfReport = FileUtil.readString("D:\\zhengqingya\\code\\demo-everyday\\target\\contiperf-report\\index.html", "UTF-8");
+        Html html = new Html(contiperfReport);
+        String tps = html.xpath("/html/body/center/table[2]/tbody/tr/td[2]/table/tbody/tr[7]/td[1]").toString();
+        System.err.println("tps:   " + tps);
+    }
+
+}
+```
