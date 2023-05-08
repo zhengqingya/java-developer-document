@@ -108,6 +108,10 @@ public class ContiPerfTest {
             <artifactId>slf4j-reload4j</artifactId>
             <groupId>org.slf4j</groupId>
         </exclusion>
+        <exclusion>
+            <artifactId>slf4j-log4j12</artifactId>
+            <groupId>org.slf4j</groupId>
+        </exclusion>
     </exclusions>
 </dependency>
 <dependency>
