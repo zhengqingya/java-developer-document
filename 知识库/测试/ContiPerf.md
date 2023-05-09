@@ -125,6 +125,7 @@ public class ContiPerfTest {
 package com.zhengqing.demo.daily.contiperf;
 
 import ch.qos.logback.classic.Level;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import com.zhengqing.demo.util.HttpUtil;
 import com.zhengqing.demo.util.LogLevelUtil;
@@ -132,6 +133,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import us.codecraft.webmagic.selector.Html;
@@ -141,9 +143,10 @@ public class SeckillTest {
 
     @Rule
     public ContiPerfRule i = new ContiPerfRule();
+    static long START_TIME;
 
     @Test
-    @PerfTest(invocations = 2000, threads = 1000
+    @PerfTest(invocations = 2000, threads = 2000
 //            , duration = 1000 * 5  // 持续?秒
     )
     public void test() throws Exception {
@@ -152,9 +155,16 @@ public class SeckillTest {
         HttpUtil.getUrl(url);
     }
 
+    @BeforeClass
+    public static void beforeClass() {
+        System.out.println("开始时间： " + DateUtil.now());
+        START_TIME = System.currentTimeMillis();
+    }
 
     @AfterClass
     public static void afterClass() {
+        System.out.println("结束时间： " + DateUtil.now());
+        System.out.println(String.format("耗时为: %s毫秒", (System.currentTimeMillis() - START_TIME)));
 //        ReportContext reportContext = new ContiPerfRule().getContext();
 //        reportContext.getReportModules().add(new ConsoleReportModule());
 //        System.out.println(reportContext.getReportFolder().toString());
