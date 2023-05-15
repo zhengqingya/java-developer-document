@@ -1,5 +1,7 @@
 # EXPLAIN 解析
 
+https://dev.mysql.com/doc/refman/5.7/en/explain-output.html
+
 > 用于进行慢查询sql分析与优化。
 
 ### Explain语法：
