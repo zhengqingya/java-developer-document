@@ -1,5 +1,7 @@
 # SpringBoot可以同时处理多少请求
 
+SpringBoot默认的内嵌容器是Tomcat，即看Tomcat可以处理多少请求
+
 默认配置
 
 ```yml
