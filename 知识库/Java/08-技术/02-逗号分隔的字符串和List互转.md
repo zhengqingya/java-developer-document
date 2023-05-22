@@ -38,3 +38,18 @@ System.out.println(str3); // a,b,c
 String str4 = String.join(",", list);
 System.out.println(str4); // a,b,c
 ```
+
+#### 将List对象转换为逗号分隔的字符串
+
+```
+String names = this.list.stream().map(User::getName).collect(Collectors.joining(",")); // a,b,c
+```
+
+或
+
+```
+StringJoiner sj = new StringJoiner(",", "[", "]");
+this.list.forEach(item -> sj.add(item.getName()));
+System.out.println(sj); // [a,b,c]
+```
+
