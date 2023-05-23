@@ -9,3 +9,7 @@
 ### Other Tools
 
 [mysql、redis、mq等可通过`docker-compose`直接安装，点击进入查看详情](https://gitee.com/zhengqingya/docker-compose)
+
+---
+
+> 每天学习一点点，慢慢日积月累，你总会成为你喜欢的样子，加油。
