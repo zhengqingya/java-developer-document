@@ -107,6 +107,8 @@ console.log(b); // {"id":1,"name":"test","age":18}
 
 ### 分组
 
+根据某个属性将数组分组
+
 ```
 const list = [{"id":1,"name":"zhengqingya","sex":"男"},{"id":2,"name":"admin","sex":"女"},{"id":3,"name":"test","sex":"男"}]
 
@@ -124,6 +126,20 @@ function getGroupArray(list, attr) {
     return Array.from(map).map((item) => [...item[1]])
 }
 
+// 数组对象
+function getGroupArrayObj(list, attr) {
+    const map = new Map()
+    list.forEach((item, index, arr) => {
+      if (!map.has(item[attr])) {
+        map.set(
+          item[attr],
+          arr.filter((a) => a[attr] == item[attr]),
+        )
+      }
+    })
+    return Array.from(map).map((item) => [item[0], item[1]])
+}
+
 // 对象
 function getGroupObject(list, attr) {
     const map = new Map()
@@ -139,6 +155,7 @@ function getGroupObject(list, attr) {
 }
 
 console.log('分组-数组', getGroupArray(list, 'sex')) // [[{"id":1,"name":"zhengqingya","sex":"男"},{"id":3,"name":"test","sex":"男"}],[{"id":2,"name":"admin","sex":"女"}]]
+console.log('分组-数组对象', getGroupArrayObj(list, 'sex')) // [["男",[{"id":1,"name":"zhengqingya","sex":"男"},{"id":3,"name":"test","sex":"男"}]],["女",[{"id":2,"name":"admin","sex":"女"}]]]
 console.log('分组-对象', getGroupObject(list, 'sex')) // {"男":[{"id":1,"name":"zhengqingya","sex":"男"},{"id":3,"name":"test","sex":"男"}],"女":[{"id":2,"name":"admin","sex":"女"}]}
 ```
 

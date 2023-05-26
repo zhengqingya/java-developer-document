@@ -29,3 +29,36 @@ skuCombinationList.forEach((specList) => {
 })
 console.log(newSkuList) // [{"颜色":"蓝色","尺寸":"L"},{"颜色":"红色","尺寸":"XL"}]
 ```
+
+### 根据sku获取规格属性list
+
+```
+function getGroupArrayObj(list, attr) {
+    const map = new Map()
+    list.forEach((item, index, arr) => {
+        if (!map.has(item[attr])) {
+            map.set(
+                item[attr],
+                arr.filter((a) => a[attr] == item[attr]),
+            )
+        }
+    })
+    const unique = (arrs) => {
+        const res = new Map()
+        return arrs.filter((arr) => !res.has(arr.attrValueName) && res.set(arr.attrValueName, 1))
+    }
+    return Array.from(map).map((item) => {
+        let attrValueList = unique(item[1])
+        return {
+            attrKeyId: attrValueList[0].attrKeyId,
+            attrKeyName: item[0],
+            attrValueList: attrValueList
+        }
+    })
+}
+
+// 计算sku中包含的属性值
+let specList = [{"attrKeyId":"1","attrKeyName":"尺寸","attrValueId":"11","attrValueName":"X"},{"attrKeyId":"2","attrKeyName":"颜色","attrValueId":"21","attrValueName":"蓝色"},{"attrKeyId":"1","attrKeyName":"尺寸","attrValueId":"12","attrValueName":"X"},{"attrKeyId":"2","attrKeyName":"颜色","attrValueId":"22","attrValueName":"红色"}]
+let attrList = getGroupArrayObj(specList, 'attrKeyName')
+console.log(attrList) // [{"attrKeyId":"1","attrKeyName":"尺寸","attrValueList":[{"attrKeyId":"1","attrKeyName":"尺寸","attrValueId":"11","attrValueName":"X"}]},{"attrKeyId":"2","attrKeyName":"颜色","attrValueList":[{"attrKeyId":"2","attrKeyName":"颜色","attrValueId":"21","attrValueName":"蓝色"},{"attrKeyId":"2","attrKeyName":"颜色","attrValueId":"22","attrValueName":"红色"}]}]
+```
