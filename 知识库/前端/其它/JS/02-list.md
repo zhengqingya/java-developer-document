@@ -20,6 +20,12 @@ let sumSku = this.skuList.reduce((total, item) => total += item.num, 0)
 this.skuList = this.skuList.filter(e => e.num > 0)
 ```
 
+### 获取对象数组中某一属性所组成的list
+
+```
+list = this.skuList.map(item => item.spuId)
+```
+
 ### 最大值
 
 ```
