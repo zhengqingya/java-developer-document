@@ -1,4 +1,4 @@
-### 奶茶类
+### 餐饮类
 
 ###### 奶茶店商城小程序
 
@@ -20,6 +20,10 @@
 ###### 扫码点餐，外卖系统，含优惠券、会员打折、支付、积分、小票打印机打单等功能
 
 https://ext.dcloud.net.cn/plugin?id=10200
+
+###### uniapp仿美团买菜
+
+https://gitee.com/yang-jiahui-220/meituan_mall
 
 ### 商城类
 
