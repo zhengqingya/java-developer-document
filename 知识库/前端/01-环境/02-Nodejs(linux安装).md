@@ -1,6 +1,6 @@
-# 前端环境
+# Node.js
 
-### Node.js
+> tips: 可使用nvm安装nodejs，方便进行版本管理...
 
 > https://nodejs.org/zh-cn/download/
 
@@ -68,6 +68,8 @@ rm -rf /usr/lib/npx
 # nodejs 清空 npm 缓存
 npm cache clean -f
 ```
+
+---
 
 #### 问题
 
