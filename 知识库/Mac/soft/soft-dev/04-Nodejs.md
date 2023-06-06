@@ -1,4 +1,4 @@
-###### Node.js
+# Node.js
 
 > [https://nodejs.org/en](https://nodejs.org/en)
 
@@ -20,4 +20,10 @@ cnpm -v
 
 # 查看node安装路径
 where node
+```
+
+### 卸载
+
+```shell
+sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
 ```
