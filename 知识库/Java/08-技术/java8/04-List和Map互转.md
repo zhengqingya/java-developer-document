@@ -23,6 +23,12 @@ for (SysDictVO item : list) {
 }
 ```
 
+或
+
+```
+Map<String, List<SysDictVO>> map = list.stream().collect(Collectors.groupingBy(SysDictVO::getCode, Collectors.mapping(t -> t, Collectors.toList())))
+```
+
 ### Map转List
 
 ```
