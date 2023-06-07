@@ -18,8 +18,21 @@ wget https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.3.tar.gz
 mkdir /root/.nvm
 tar -zxvf v0.39.3.tar.gz --strip-components 1  -C /root/.nvm
 
-# 激活 Node Version Manager (NVM) 的 Shell 脚本
+# 激活 Node Version Manager (NVM) 的 Shell 脚本  -- [ 临时，重开shell之后就会失效 ]
 source ~/.nvm/nvm.sh
+
+# 写入配置 -- [ 永久 ]
+cat>> /etc/profile <<EOF
+
+############################## ↓↓↓↓↓↓ set nvm environment ↓↓↓↓↓↓ #############################
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+################################################################################################
+
+EOF
+
+# 使配置生效
+source /etc/profile
 
 # 验证
 nvm -v
