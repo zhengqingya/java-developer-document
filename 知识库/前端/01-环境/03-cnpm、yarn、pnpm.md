@@ -3,7 +3,7 @@
 ```shell
 # 设置淘宝`NPM`镜像
 npm install -g cnpm --registry=https://registry.npm.taobao.org
-# 指定版本 -- 在部分项目环境下只能使用低版本cnpm 不然会报错 “Error: Cannot find module 'fs/promises'”
+# 指定版本 -- 在部分项目环境下只能使用低版本cnpm 不然会报错 “Error: Cannot find module 'fs/promises'” （ 低版本的node也只能安装低版本cnpm eg: 14.21.3 ）
 # npm install cnpm@7.1.0 -g --registry=https://registry.npm.taobao.org
 # 查看
 cnpm config get registry
