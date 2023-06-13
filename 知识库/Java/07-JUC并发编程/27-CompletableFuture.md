@@ -394,3 +394,82 @@ public class TestCompletableFuture6_threadPool {
 }
 ```
 
+#### 5、对计算速度选用 applyToEither
+
+```java
+package com.zhengqing.demo.daily.juc.completablefuture;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
+public class TestCompletableFuture7_applyToEither {
+
+    public static void main(String[] args) {
+        CompletableFuture<String> cfA = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("任务A：" + Thread.currentThread().getName());
+            return "A";
+        });
+        CompletableFuture<String> cfB = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("任务B：" + Thread.currentThread().getName());
+            return "B";
+        });
+
+        CompletableFuture<String> cfResult = cfA.applyToEither(cfB, result -> {
+            return result;
+        });
+
+        System.out.println(cfResult.join() + " 块"); // B 块
+    }
+
+}
+```
+
+#### 6、对计算结果合并
+
+```java
+package com.zhengqing.demo.daily.juc.completablefuture;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
+public class TestCompletableFuture8_thenCombine {
+
+    public static void main(String[] args) {
+        CompletableFuture<String> cfA = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("任务A：" + Thread.currentThread().getName());
+            return "A";
+        });
+        CompletableFuture<String> cfB = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("任务B：" + Thread.currentThread().getName());
+            return "B";
+        });
+
+        CompletableFuture<String> cfResult = cfA.thenCombine(cfB, (a, b) -> {
+            return a + b;
+        });
+
+        System.out.println("合并结果：" + cfResult.join());
+    }
+
+}
+```
