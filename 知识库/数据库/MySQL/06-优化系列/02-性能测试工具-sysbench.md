@@ -12,6 +12,7 @@ https://github.com/akopytov/sysbench
 curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.rpm.sh | sudo bash
 sudo yum -y install sysbench
 sysbench --version
+# sysbench 1.0.20
 
 # 默认脚本路径  /usr/share/sysbench
 ```
