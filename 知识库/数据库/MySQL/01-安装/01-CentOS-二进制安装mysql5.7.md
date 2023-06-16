@@ -92,6 +92,7 @@ cd /usr/local/mysql
 mkdir mysql-files
 chown mysql:mysql mysql-files
 chmod 750 mysql-files
+chown -R mysql:mysql  /usr/local/mysql
 
 # 初始化数据目录，包含了 MySQL 数据库初始表。
 bin/mysqld --defaults-file=/etc/my.cnf --initialize --user=mysql
@@ -131,13 +132,19 @@ source /etc/profile
 /usr/local/mysql/support-files/mysql.server start
 ```
 
-看到 Starting MySQL. SUCCESS! 即可登录测试了。
+看到 `Starting MySQL. SUCCESS!` 即可登录测试了。
 
 ### 测试
 
 ```shell
 # 使用随机密码登录，含特殊字符最好加''包裹
 mysql -uroot -p'fIavwiDUW3.i'
+# 如果报错：
+# mysql: error while loading shared libraries: libncurses.so.5: cannot open shared object file: No such file or directory
+# 执行
+# yum install libncurses* -y
+
+
 
 # 修改密码
 set password=password('root');
@@ -147,6 +154,7 @@ exit
 
 # 查看版本
 mysql -uroot -proot -e "select version();"
+# 5.7.26-log
 
 # 登录
 mysql -uroot -proot
@@ -167,7 +175,7 @@ flush privileges;
 
 ### 开机自启
 
-> 也在 /etc/rc.d/init.d 写个 autoStart.sh 脚本用来管理需要自启的程序
+> 也可以在 /etc/rc.d/init.d 写个 autoStart.sh 脚本用来管理需要自启的程序
 
 ```shell
 # 复制启动脚本到资源目录下加入系统服务
