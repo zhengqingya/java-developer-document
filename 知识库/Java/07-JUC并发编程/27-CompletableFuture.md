@@ -15,6 +15,9 @@ CompletableFuture 主要有以下几个功能：
 总的来说，CompletableFuture 是 Java 并发编程中的优秀实践，为我们提供了一整套优良的 API 操作。
 它能够让我们以更加自然、清晰的方式表达异步编程，避免了手写线程池和 Future 代码的繁琐操作，使得多线程编程更加简单、易用、高效。
 
+> 学习资源：
+> - https://mp.weixin.qq.com/s/QvStRoJNEhOz_4qR5H8iIA
+
 ### 一、初识
 
 ```java
