@@ -1,8 +1,14 @@
 # 线程通信
 
+Object obj = new Object();
+
 - `wait()` 当前线程进入阻塞状态，直到其它线程通知，与sleep不同，会释放锁
 - `notify()` 唤醒一个被wait处于等待状态的线程。如果有多个线程被wait，就唤醒优先级高的那个。
 - `notifyAll()` 唤醒同一对象上所有被wait的线程，优先级高的线程优先调度
+
+> tips:
+>   1. synchronized 内使用
+>   2. 先 `wait()` 再 `notify()`，否则锁死
 
 ```java
 package com.zhengqing.demo.daily.thread;

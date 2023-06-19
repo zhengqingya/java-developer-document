@@ -19,6 +19,10 @@ open "/Users/zhengqingya/Library/Application Support/JetBrains/IntelliJIdea2021.
 
 申请开源开发许可证 -> https://www.jetbrains.com/shop/eform/opensource
 
+eg:
+![img.png](images/ide-opensource-01.png)
+![img_1.png](images/ide-opensource-02.png)
+
 ---
 
 ### Mac 卸载 idea
