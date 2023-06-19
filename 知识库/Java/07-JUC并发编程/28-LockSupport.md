@@ -1,5 +1,10 @@
 # LockSupport
 
+LockSupport是用来创建锁和其他同步类的基本线程阻塞原语；
+LockSupport类使用了一种名为Permit(许可)的概念来做到阻塞和唤醒线程的功能,每个线程都有一个许可(permit)
+,permit只有两个值1和零,默认是零；
+可以把许可看成是一种(0,1)信号量(Semaphore),但与Semaphore不同的是,许可的累加上限是1。
+
 ### 等待唤醒机制
 
 #### eg1: Object类
@@ -22,12 +27,12 @@ Condition condition = new ReentrantLock().newCondition();
 
 > tips:
 >   1. 和 `wait`、`notify` 一样需要放在锁内，否则会抛出异常`java.lang.IllegalMonitorStateException`
->   2. 先 `wait()` 再 `signal()`
+>   2. 先 `wait()` 再 `signal()`，否则锁死
 
-### LockSupport类
+### LockSupport类使用
 
-- `park` 阻塞等待，eg: 进入停车场没有许可证
-- `unpark()` 唤醒，eg: 放发许可证，允许进入停车场
+- `park()` 阻塞等待，eg: 进入停车场没有许可证
+- `unpark(thread)` 唤醒，eg: 放发许可证，允许进入停车场
 
 1. 不需要在锁块内
 2. `park` 和 `unpark` 先后顺序不影响

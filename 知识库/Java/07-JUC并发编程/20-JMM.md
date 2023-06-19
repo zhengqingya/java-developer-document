@@ -63,19 +63,29 @@ import java.util.concurrent.TimeUnit;
 
 public class TestJMM {
     private static boolean flag = true;
+    // 加入volatile可以保证程序的可见性
+//  private static volatile boolean flag = true;
 
     public static void main(String[] args) throws Exception {
         new Thread(() -> {
             while (flag) {
 
             }
-        }).start();
+        }, "t1").start();
 
         System.out.println("停顿!");
         TimeUnit.SECONDS.sleep(1);
         flag = false;
         System.out.println("修改完毕!");
-        //这里直接循环卡死!
+        // 这里直接循环卡死!
     }
 }
 ```
+
+问题可能：
+
+- 主线程修改flag值之后没有将其刷新到主内存，所以t1线程看不到；
+- 主线程将flag值刷新到了主内存，但是t1一直读取的是自己工作内存中的flag值，没有去主内存中更新获取最新的flag值。
+
+解决： 见[Volatile](./21-Volatile.md)
+

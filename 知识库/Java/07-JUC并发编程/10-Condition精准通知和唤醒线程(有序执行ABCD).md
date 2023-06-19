@@ -7,7 +7,7 @@ Condition condition = new ReentrantLock().newCondition();
 
 > tips:
 >   1. 和 `wait`、`notify` 一样需要放在锁内，否则会抛出异常`java.lang.IllegalMonitorStateException`
->   2. 先 `wait()` 再 `signal()`
+>   2. 先 `wait()` 再 `signal()`，否则锁死
 
 可以定义多个监视器进行精准通知
 
