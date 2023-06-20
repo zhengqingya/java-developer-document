@@ -1,6 +1,18 @@
 # CAS
 
+> UnSafe类+CAS思想（自旋锁）
+
 ### 什么是 CAS
+
+CAS的全称为Compare-And-Swap ,它是一条CPU并发原语,比较工作内存值(预期值)和主物理内存的共享值是否相同,
+相同则执行规定操作，否则继续比较直到主内存和工作内存的值一致为止。
+这个过程是原子的。
+
+CAS并发原语提现在Java语言中就是sun.misc包下的UnSaffe类中的各个方法.调用UnSafe类中的CAS方法,JVM会帮我实现 CAS汇编指令.
+这是一种完全依赖于硬件功能,通过它实现了原子操作,再次强调,由于CAS是一种系统原语,原语属于操作系统用于范畴,是由若干条指令组成,用于完成某个功能的一个过程,
+并且原语的执行必须是连续的,在执行过程中不允许中断,也即是说CAS是一条原子指令,不会造成所谓的数据不一致的问题
+
+> AtomicInteger类主要利用CAS(compare and swap)+volatile和native方法来保证原子操作，从而避免synchronized的高开销，执行效率大为提升。
 
 ```java
 import java.util.concurrent.atomic.AtomicInteger;
@@ -20,6 +32,8 @@ public class TestCAS {
     }
 }
 ```
+
+![img.png](images/cas-do-while.png)
 
 CAS ： 比较当前工作内存中的值和主内存中的值，如果这个值是期望的，那么则执行操作！如果不是就一直循环！
 
