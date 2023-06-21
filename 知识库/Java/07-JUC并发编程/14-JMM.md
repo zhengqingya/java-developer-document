@@ -87,5 +87,5 @@ public class TestJMM {
 - 主线程修改flag值之后没有将其刷新到主内存，所以t1线程看不到；
 - 主线程将flag值刷新到了主内存，但是t1一直读取的是自己工作内存中的flag值，没有去主内存中更新获取最新的flag值。
 
-解决： 见[Volatile](./21-Volatile.md)
+解决： 见[Volatile](./15-Volatile.md)
 

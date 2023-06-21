@@ -8,7 +8,8 @@ CompletableFuture 主要有以下几个功能：
 1. 异步任务执行：CompletableFuture 可以以非阻塞方式执行一个异步任务，并在完成后返回计算结果。
 2. 线程串联、并联：CompletableFuture 提供了一系列链式方法，如 thenApply()、thenAccept()、thenRun()、thenCombine()
    、thenCompose()、thenApplyAsync() 等，用于绑定前后两个异步操作之间的关系，实现流式调用和连接，使得代码可读性和可维护性更高。
-3. 异常处理：CompletableFuture 提供了 whenComplete()、exceptionally() 和 handle() 等方法，用于接收异步任务在执行过程中产生的异常，进行异常处理或者恢复操作。
+3. 异常处理(异步回调)：CompletableFuture 提供了 whenComplete()、exceptionally() 和 handle() 等方法，
+   用于接收异步任务在执行过程中产生的异常，进行异常处理或者恢复操作。
 4. 阻塞等待：CompletableFuture 还提供了 get() 方法，用于获取异步任务执行的结果。在等待完成时可以指定超时时间，还可以使用
    join() 方法等待任务执行完成。
 

@@ -2,6 +2,8 @@
 
 ### CountDownLatch
 
+减法计数器
+
 ```java
 package com.zhengqing.demo.daily.juc;
 

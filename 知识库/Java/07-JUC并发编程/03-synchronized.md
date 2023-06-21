@@ -2,20 +2,18 @@
 
 > https://www.bilibili.com/video/BV18Z4y1P7N4
 
-### 锁的是什么?
+### 一、锁的是什么?
 
-> 可见 [8锁现象](./11-8锁现象)
+> 可见 [8锁现象案例demo](./synchronized-8锁现象)
 
-锁方法
+1. 锁方法
+    - 非静态方法 =》 对象锁
+    - 静态方法 =》 类锁
+2. 锁代码块: 锁传入的对象
 
-- 非静态方法 =》 对象锁
-- 静态方法 =》 类锁
+> tips: 对象锁 和 类锁 互不影响
 
-锁代码块: 锁传入的对象
-
---- 
-
-### Demo
+### 二、Demo
 
 ```
 package com.zhengqing.demo.daily.juc;
@@ -79,9 +77,9 @@ public class TestSynchronizedBlock {
 }
 ```
 
-### 从字节码角度分析synchronized实现
+### 三、从字节码角度分析synchronized实现
 
-#### synchronized 同步代码块
+#### 1、synchronized 同步代码块
 
 ```java
 package com.zhengqing.demo.daily.juc.lock;
@@ -160,7 +158,7 @@ public class com.zhengqing.demo.daily.juc.lock.A {
 
 synchronized 同步代码块 使用 `monitorenter` `monitorexit` 指令
 
-#### synchronized 普通同步方法
+#### 2、synchronized 普通同步方法
 
 ```java
 package com.zhengqing.demo.daily.juc.lock;
@@ -264,7 +262,7 @@ SourceFile: "B.java"
 调用指令将会检查方法的 ACC_SYNCHRONIZED 访问标志是否被设置。
 如果设置了，执行线程会将先持有monitor然后再执行方法，最后在方法完成(无论是正常完成还是非正常完成)时释放 minotor
 
-#### synchronized 静态同步方法
+#### 3、synchronized 静态同步方法
 
 ```java
 package com.zhengqing.demo.daily.juc.lock;
@@ -384,7 +382,7 @@ SourceFile: "C.java"
 
 ACC_STATIC、ACC_SYNCHRONIZED 访问标志区分该方法是否静态同步方法，决定是否类锁
 
-### 反编译 synchronized 锁的是什么？
+### 四、反编译 synchronized 锁的是什么？
 
 在HotSpot虚拟机中，monitor采用ObjectMonitor实现。
 每一个对象天生都带着一个对象监视器，每一个被锁住的对象都会和Monitor关联起来。
