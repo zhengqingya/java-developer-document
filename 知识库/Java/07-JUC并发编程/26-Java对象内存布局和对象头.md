@@ -56,7 +56,7 @@ java对象的对象头由两部分构成:
 
 虚拟机要求对象起始地址必须是8字节的整数倍。填充数据不是必须存在的，仅仅是为了字节对齐，这部分内存按8字节补充对齐。
 
-#### 6、代码证明
+#### 6、new Object 占多少字节？
 
 引入JOL依赖
 
@@ -70,7 +70,29 @@ java对象的对象头由两部分构成:
 </dependency>
 ```
 
-Java代码证明
+测试代码
+
+```
+public static void main(String[] args) {
+    System.out.println(ClassLayout.parseInstance(new Object()).toPrintable());
+}
+```
+
+日志
+
+```shell
+java.lang.Object object internals:
+OFF  SZ   TYPE DESCRIPTION               VALUE
+  0   8        (object header: mark)     0x0000000000000001 (non-biasable; age: 0)
+  8   4        (object header: class)    0x200001e5
+ 12   4        (object alignment gap)    
+Instance size: 16 bytes
+Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
+```
+
+如果Object是个空对象,那么new Object 就是占16个字节
+
+如果不为空
 
 ```
 static class MyObject {
@@ -82,6 +104,21 @@ static class MyObject {
 public static void main(String[] args) {
     System.out.println(ClassLayout.parseInstance(new MyObject()).toPrintable());
 }
+```
+
+日志
+
+```shell
+com.zhengqing.demo.daily.juc.TestJol$MyObject object internals:
+OFF  SZ   TYPE DESCRIPTION               VALUE
+  0   8        (object header: mark)     0x0000000000000001 (non-biasable; age: 0)
+  8   4        (object header: class)    0x2000c043
+ 12   4    int MyObject.i                89
+ 16   8   long MyObject.a                889
+ 24   2   char MyObject.b                b
+ 26   6        (object alignment gap)    
+Instance size: 32 bytes
+Space losses: 0 bytes internal + 6 bytes external = 6 bytes total
 ```
 
 ### 三、压缩指针介绍
