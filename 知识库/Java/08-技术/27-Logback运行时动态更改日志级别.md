@@ -87,3 +87,13 @@ public class LogTest {
 
 }
 ```
+
+### 其它
+
+也可以使用下面的方式
+
+```
+LoggingSystem system = LoggingSystem.get(LoggingSystem.class.getClassLoader());
+system.setLogLevel(packageName, logLevel);
+// eg: LoggingSystem.get(LoggingSystem.class.getClassLoader()).setLogLevel("com.zhengqing.demo", LogLevel.WARN);
+```
