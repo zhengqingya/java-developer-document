@@ -1,8 +1,4 @@
-﻿### 一、前言
-
-本文将在mac上简单安装和配置jmeter`^_^`
-
-### 二、安装
+﻿### 一、安装
 
 #### 1、JDK8
 
@@ -32,7 +28,7 @@ java -version
 #### 2、JMeter
 
 下载 [https://jmeter.apache.org/download_jmeter.cgi](https://jmeter.apache.org/download_jmeter.cgi)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/64c4d5bfedb24dedb789b5d66c906dfa.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![jmeter-download](images/jmeter-download.png)
 
 运行
 
@@ -41,9 +37,9 @@ cd apache-jmeter-5.4.3/bin
 sh jmeter
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2c60e5a0e4054e27832be48728642847.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![jmeter-sh](images/jmeter-sh.png)
 
-### 三、配置环境变量快捷启动jmeter
+### 二、配置环境变量快捷启动jmeter
 
 ```shell
 # 配置环境变量
@@ -51,7 +47,7 @@ open ~/.bash_profile
 
 
 ############################## ↓↓↓↓↓↓ set jmeter environment ↓↓↓↓↓↓ #############################
-JMETER_HOME=/Users/zhengqingya/IT_zhengqing/soft/soft-dev/apache-jmeter-5.4.3
+JMETER_HOME=/zhengqingya/soft/soft-dev/apache-jmeter-5.4.3
 CLASSPATH=.:$JMETER_HOME/lib/ext/ApacheJMeter_core.jar:$JMETER_HOME/lib/jorphan.jar
 PATH=$PATH:$JMETER_HOME/bin
 export JMETER_HOME CLASSPATH PATH
@@ -65,8 +61,5 @@ source ~/.bash_profile
 jmeter
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/fc8ddd6c225e4b5e80f97f318dfffcba.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-
-
-
+![jmeter-sh-2](images/jmeter-sh-2.png)
 

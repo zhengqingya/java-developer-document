@@ -24,7 +24,7 @@
 
 > tips: 阿里云盘分享目前存在bug，分享的部分文件可能无权限查看和下载
 
-![soft](images/java-soft.png)
+![soft](images/soft-dev.png)
 
 ### Other Tools
 
