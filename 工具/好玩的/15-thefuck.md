@@ -20,8 +20,6 @@ Reading package lists... Done
 
 ### Linux安装使用
 
-> tips: 亲测不是那么好用...
-
 ```shell
 # 安装
 pip3 install thefuck
