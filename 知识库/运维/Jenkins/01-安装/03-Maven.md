@@ -27,10 +27,10 @@ yum install -y maven
 # --------------------------- 法二失败 -------------------------------
 
 # 法三：【成功】
-# 下载`apache-maven-3.6.3-bin.tar.gz` : http://maven.apache.org/download.cgi
-wget https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+# 下载`apache-maven-3.8.8-bin.tar.gz` : http://maven.apache.org/download.cgi
+wget https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz
 # 解压
-tar -zxvf apache-maven-3.6.3-bin.tar.gz
+tar -zxvf apache-maven-3.8.8-bin.tar.gz
 ```
 
 ###### 配置环境变量
@@ -41,7 +41,7 @@ vi /etc/profile
 
 ```shell
 ############################## ↓↓↓↓↓↓ set maven environment ↓↓↓↓↓↓ #############################
-MAVEN_HOME=/home/soft/maven/apache-maven-3.6.3
+MAVEN_HOME=/home/soft/maven/apache-maven-3.8.8
 PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
 export MAVEN_HOME PATH
 ################################################################################################
@@ -62,7 +62,7 @@ mvn -v
 ### Maven配置
 
 ```shell
-vim /home/soft/maven/apache-maven-3.6.3/conf/settings.xml
+vim /home/soft/maven/apache-maven-3.8.8/conf/settings.xml
 ```
 
 ###### 1、配置本地仓库位置

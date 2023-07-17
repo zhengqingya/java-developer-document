@@ -1,16 +1,16 @@
 ### Maven
 
 ```shell
-# 下载`apache-maven-3.6.3-bin.tar.gz` : http://maven.apache.org/download.cgi
-wget https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+# 下载`apache-maven-3.8.8-bin.tar.gz` : http://maven.apache.org/download.cgi
+wget https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz
 # 解压
-x apache-maven-3.6.3-bin.tar.gz
+x apache-maven-3.8.8-bin.tar.gz
 
 # 配置环境变量
 open ~/.bash_profile
 
 ############################## ↓↓↓↓↓↓ set maven environment ↓↓↓↓↓↓ #############################
-MAVEN_HOME=/zhengqingya/soft/soft-dev/Maven/apache-maven-3.6.3
+MAVEN_HOME=/zhengqingya/soft/soft-dev/Maven/apache-maven-3.8.8
 PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
 export MAVEN_HOME PATH
 ################################################################################################

@@ -12,7 +12,7 @@
 
 ### Maven
 
-`maven` -> `/home/soft/maven/apache-maven-3.6.3`
+`maven` -> `/home/soft/maven/apache-maven-3.8.8`
 
 ### NodeJS
 

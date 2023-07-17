@@ -93,16 +93,16 @@ function install_maven() {
     	echo "安装maven..."
     	mkdir -p /home/soft/maven/repository
       cd /home/soft/maven
-    	wget https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+    	wget https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz
       # 解压
-      tar -zxvf apache-maven-3.6.3-bin.tar.gz
+      tar -zxvf apache-maven-3.8.8-bin.tar.gz
       # 修改配置文件
-      isExist=$(cat /home/soft/maven/apache-maven-3.6.3/conf/settings.xml | grep "<localRepository>/home/soft/maven/repository</localRepository>")
+      isExist=$(cat /home/soft/maven/apache-maven-3.8.8/conf/settings.xml | grep "<localRepository>/home/soft/maven/repository</localRepository>")
       if [[ "$isExist" == "" ]]
       then
           # 不包含
           # 在第55行插入
-          sed -i '55i <localRepository>/home/soft/maven/repository</localRepository>' /home/soft/maven/apache-maven-3.6.3/conf/settings.xml
+          sed -i '55i <localRepository>/home/soft/maven/repository</localRepository>' /home/soft/maven/apache-maven-3.8.8/conf/settings.xml
           # 在第160行插入
           sed -i '160i \
               <!-- 国内中央仓库的配置-阿里云中央仓库 --> \
@@ -112,13 +112,13 @@ function install_maven() {
                   <name>Nexus aliyun</name> \
                   <url>http://maven.aliyun.com/nexus/content/groups/public</url> \
               </mirror> \
-          ' /home/soft/maven/apache-maven-3.6.3/conf/settings.xml
+          ' /home/soft/maven/apache-maven-3.8.8/conf/settings.xml
       fi
       # 配置环境变量
 cat>> /etc/profile <<EOF
 
 ############################## ↓↓↓↓↓↓ set maven environment ↓↓↓↓↓↓ #############################
-MAVEN_HOME=/home/soft/maven/apache-maven-3.6.3
+MAVEN_HOME=/home/soft/maven/apache-maven-3.8.8
 PATH=\$PATH:\$JAVA_HOME/bin:\$MAVEN_HOME/bin
 export MAVEN_HOME PATH
 ################################################################################################
