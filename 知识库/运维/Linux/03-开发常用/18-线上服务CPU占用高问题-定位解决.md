@@ -2,6 +2,28 @@
 
 实战：定位异常线程及具体代码行
 
+准备环境进行测试
+
+```shell
+cat> ./TestCpu.java <<EOF
+public class TestCpu {
+    public static void main(String[] args) {
+        cpu();
+    }
+    private static void cpu() {
+        while (true) {
+            System.out.println("666");
+        }
+    }
+}
+EOF
+
+javac TestCpu.java
+java TestCpu
+```
+
+诊断cpu过高原因
+
 ### 一、传统方式
 
 ```shell

@@ -1,8 +1,15 @@
-# jvisualvm
+# jvisualvm 图形化工具
 
-多合一故障管理工具
+### 一、基础使用
 
-### 安装`Visual GC` -- 查看GC回收所需要的插件
+`win + r` -> `jvisualvm`
+
+选择进程查看
+![](./images/02-jvisualvm-1689753357270.png)
+![](./images/02-jvisualvm-1689753401251.png)
+![](./images/02-jvisualvm-1689753415011.png)
+
+### 二、安装`Visual GC` -- 查看GC回收所需要的插件
 
 > jdk 1.8.0_291
 
