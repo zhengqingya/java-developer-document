@@ -1,20 +1,10 @@
-> 笔记来源：[尚硅谷 JVM 全套教程，百万播放，全网巅峰（宋红康详解 java 虚拟机）](https://www.bilibili.com/video/BV1PJ411n7xZ "尚硅谷JVM全套教程，百万播放，全网巅峰（宋红康详解java虚拟机）")
->
-> 同步更新：https://gitee.com/vectorx/NOTE_JVM
->
-> https://codechina.csdn.net/qq_35925558/NOTE_JVM
->
-> https://github.com/uxiahnan/NOTE_JVM
+# JVM 运行时参数
 
-[toc]
+### 一、JVM 参数选项
 
-# 4. JVM 运行时参数
+官网地址：https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html
 
-## 4.1. JVM 参数选项
-
-官网地址：[https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html)
-
-### 4.1.1. 类型一：标准参数选项
+#### 1、类型一：标准参数选项
 
 ```shell
 > java -help
@@ -74,10 +64,11 @@
 
 Hotspot JVM 有两种模式，分别是 server 和 client，分别通过-server 和-client 模式设置
 
-- 32 位系统上，默认使用 Client 类型的 JVM。要想使用 Server 模式，机器配置至少有 2 个以上的 CPU 和 2G 以上的物理内存。client 模式适用于对内存要求较小的桌面应用程序，默认使用 Serial 串行垃圾收集器
+- 32 位系统上，默认使用 Client 类型的 JVM。要想使用 Server 模式，机器配置至少有 2 个以上的 CPU 和 2G 以上的物理内存。
+  client 模式适用于对内存要求较小的桌面应用程序，默认使用 Serial 串行垃圾收集器
 - 64 位系统上，只支持 server 模式的 JVM，适用于需要大内存的应用程序，默认使用并行垃圾收集器
 
-官网地址：[https://docs.oracle.com/javase/8/docs/technotes/guides/vm/server-class.html](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/server-class.html)
+官网地址：https://docs.oracle.com/javase/8/docs/technotes/guides/vm/server-class.html
 
 如何知道系统默认使用的是那种模式呢？
 
@@ -85,39 +76,42 @@ Hotspot JVM 有两种模式，分别是 server 和 client，分别通过-server 
 
 ```shell
 > java -version
-java version "1.8.0_201"
-Java(TM) SE Runtime Environment (build 1.8.0_201-b09)
-Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)
+java version "1.8.0_291"
+Java(TM) SE Runtime Environment (build 1.8.0_291-b10)
+Java HotSpot(TM) 64-Bit Server VM (build 25.291-b10, mixed mode)
 ```
 
-### 4.1.2. 类型二：-X 参数选项
+#### 2、类型二：-X 参数选项
 
 ```shell
 > java -X
-    -Xmixed           混合模式执行 (默认)
+    -Xmixed           混合模式执行（默认）
     -Xint             仅解释模式执行
     -Xbootclasspath:<用 ; 分隔的目录和 zip/jar 文件>
-                      设置搜索路径以引导类和资源
+                      设置引导类和资源的搜索路径
     -Xbootclasspath/a:<用 ; 分隔的目录和 zip/jar 文件>
                       附加在引导类路径末尾
     -Xbootclasspath/p:<用 ; 分隔的目录和 zip/jar 文件>
                       置于引导类路径之前
     -Xdiag            显示附加诊断消息
-    -Xnoclassgc       禁用类垃圾收集
+    -Xnoclassgc        禁用类垃圾收集
     -Xincgc           启用增量垃圾收集
-    -Xloggc:<file>    将 GC 状态记录在文件中 (带时间戳)
+    -Xloggc:<file>    将 GC 状态记录在文件中（带时间戳）
     -Xbatch           禁用后台编译
     -Xms<size>        设置初始 Java 堆大小
     -Xmx<size>        设置最大 Java 堆大小
     -Xss<size>        设置 Java 线程堆栈大小
-    -Xprof            输出 cpu 配置文件数据
-    -Xfuture          启用最严格的检查, 预期将来的默认值
-    -Xrs              减少 Java/VM 对操作系统信号的使用 (请参阅文档)
+    -Xprof            输出 cpu 分析数据
+    -Xfuture          启用最严格的检查，预计会成为将来的默认值
+    -Xrs              减少 Java/VM 对操作系统信号的使用（请参阅文档）
     -Xcheck:jni       对 JNI 函数执行其他检查
     -Xshare:off       不尝试使用共享类数据
-    -Xshare:auto      在可能的情况下使用共享类数据 (默认)
-    -Xshare:on        要求使用共享类数据, 否则将失败。
+    -Xshare:auto      在可能的情况下使用共享类数据（默认）
+    -Xshare:on        要求使用共享类数据，否则将失败。
     -XshowSettings    显示所有设置并继续
+    -XshowSettings:system
+                      （仅限 Linux）显示系统或容器
+                      配置并继续
     -XshowSettings:all
                       显示所有设置并继续
     -XshowSettings:vm 显示所有与 vm 相关的设置并继续
@@ -126,40 +120,45 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)
     -XshowSettings:locale
                       显示所有与区域设置相关的设置并继续
 
--X 选项是非标准选项, 如有更改, 恕不另行通知。
+-X 选项是非标准选项。如有更改，恕不另行通知。
 ```
 
 如何知道 JVM 默认使用的是混合模式呢？
 
-同样地，通过 java -version 命令：可以看到 mixed mode 字样，代表当前系统使用的是混合模式
+同样地，通过 `java -version` 命令：可以看到 mixed mode 字样，代表当前系统使用的是混合模式
+![](./images/04-JVM运行时参数-1689931378688.png)
 
-### 4.1.3. 类型三：-XX 参数选项
+#### 3、类型三：-XX 参数选项
 
-**Boolean 类型格式**
+Boolean 类型格式
 
 ```shell
 -XX:+<option>  启用option属性
 -XX:-<option>  禁用option属性
 ```
 
-**非 Boolean 类型格式**
+非 Boolean 类型格式
 
 ```shell
 -XX:<option>=<number>  设置option数值，可以带单位如k/K/m/M/g/G
 -XX:<option>=<string>  设置option字符值
 ```
 
-## 4.2. 添加 JVM 参数选项
+### 二、添加 JVM 参数选项
 
-eclipse 和 idea 中配置不必多说，在 Run Configurations 中 VM Options 中配置即可，大同小异
+#### IDEA
 
-**运行 jar 包**
+在 `Run Configurations` 中 `VM Options` 中配置即可
+
+![](./images/04-JVM运行时参数-1689931508356.png)
+
+#### 运行 jar 包
 
 ```shell
 java -Xms100m -Xmx100m -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -jar demo.jar
 ```
 
-**Tomcat 运行 war 包**
+#### Tomcat 运行 war 包
 
 ```shell
 # linux下catalina.sh添加
@@ -168,7 +167,7 @@ JAVA_OPTS="-Xms512M -Xmx1024M"
 set "JAVA_OPTS=-Xms512M -Xmx1024M"
 ```
 
-**程序运行中**
+#### 程序运行中
 
 ```shell
 # 设置Boolean类型参数
@@ -177,9 +176,9 @@ jinfo -flag [+|-]<name> <pid>
 jinfo -flag <name>=<value> <pid>
 ```
 
-## 4.3. 常用的 JVM 参数选项
+### 三、常用的 JVM 参数选项
 
-### 4.3.1. 打印设置的 XX 选项及值
+#### 1、打印设置的 XX 选项及值
 
 ```shell
 -XX:+PrintCommandLineFlags 程序运行时JVM默认设置或用户手动设置的XX选项
@@ -188,7 +187,7 @@ jinfo -flag <name>=<value> <pid>
 -XX:+PrintVMOptions 打印JVM的参数
 ```
 
-### 4.3.2. 堆、栈、方法区等内存大小设置
+#### 2、堆、栈、方法区等内存大小设置
 
 ```shell
 # 栈
@@ -216,7 +215,7 @@ jinfo -flag <name>=<value> <pid>
 -XX:MaxDirectMemorySize 指定DirectMemory容量，默认等于Java堆最大值
 ```
 
-### 4.3.3. OutOfMemory 相关的选项
+#### 3、OutOfMemory 相关的选项
 
 ```shell
 -XX:+HeapDumpOnOutMemoryError 内存出现OOM时生成Heap转储文件，两者互斥
@@ -225,7 +224,7 @@ jinfo -flag <name>=<value> <pid>
 -XX:OnOutOfMemoryError=<path> 指定可行性程序或脚本的路径，当发生OOM时执行脚本
 ```
 
-### 4.3.4. 垃圾收集器相关选项
+#### 4、垃圾收集器相关选项
 
 首先需了解垃圾收集器之间的搭配使用关系
 
@@ -233,7 +232,7 @@ jinfo -flag <name>=<value> <pid>
 - 绿色虚线表示在 jdk14 时被 Deprecate
 - 绿色虚框表示在 jdk9 时被 Deprecate，jdk14 时被删除
 
-![image-20210506182458663](https://img-blog.csdnimg.cn/img_convert/46dec5b346fcc5b147491481787ea8ec.png)
+![](./images/04-JVM运行时参数-1689931639902.png)
 
 ```shell
 # Serial回收器
@@ -244,13 +243,7 @@ jinfo -flag <name>=<value> <pid>
 	一般地，最好与CPU数量相等，以避免过多的线程数影响垃圾收集性能。
 ```
 
-$$
-ParallelGCThreads =
-\begin{cases}
-CPU\_Count & \text (CPU\_Count <= 8) \\
-3 + (5 * CPU＿Count / 8) & \text (CPU\_Count > 8)
-\end{cases}
-$$
+![](./images/04-JVM运行时参数-1689931667993.png)
 
 ```shell
 # Parallel回收器
@@ -323,7 +316,7 @@ $$
 - 没有最好的收集器，更没有万能的收集器
 - 调优永远是针对特定场景、特定需求，不存在一劳永逸的收集器
 
-### 4.3.5. GC 日志相关选项
+#### 5、GC 日志相关选项
 
 ```shell
 -XX:+PrintGC <==> -verbose:gc  打印简要日志信息
@@ -334,7 +327,7 @@ $$
 -Xloggc:<file> 输出GC导指定路径下的文件中
 ```
 
-![image-20210506195156935](https://img-blog.csdnimg.cn/img_convert/9f323dd9b55235ed0a33e6a0af8adbca.png)
+![](./images/04-JVM运行时参数-1689931701772.png)
 
 ```shell
 -XX:+TraceClassLoading  监控类的加载
@@ -347,7 +340,7 @@ $$
 -XX:GCLogFileSize=1M  设置GC日志文件的大小
 ```
 
-### 4.3.6. 其他参数
+#### 6、其他参数
 
 ```shell
 -XX:+DisableExplicitGC  禁用hotspot执行System.gc()，默认禁用
@@ -360,12 +353,20 @@ $$
 -XX:TLABSize  设置TLAB大小
 ```
 
-## 4.4. 通过 Java 代码获取 JVM 参数
+### 四、通过 Java 代码获取 JVM 参数
 
-Java 提供了 java.lang.management 包用于监视和管理 Java 虚拟机和 Java 运行时中的其他组件，它允许本地或远程监控和管理运行的 Java 虚拟机。其中 ManagementFactory 类较为常用，另外 Runtime 类可获取内存、CPU 核数等相关的数据。通过使用这些 api，可以监控应用服务器的堆内存使用情况，设置一些阈值进行报警等处理。
+Java 提供了 java.lang.management 包用于监视和管理 Java 虚拟机和 Java 运行时中的其他组件，它允许本地或远程监控和管理运行的Java虚拟机。
+其中 ManagementFactory 类较为常用，另外 Runtime 类可获取内存、CPU 核数等相关的数据。
+通过使用这些api，可以监控应用服务器的堆内存使用情况，设置一些阈值进行报警等处理。
 
 ```java
-public class MemoryMonitor {
+package com.zhengqing.demo.daily.jvm.gc;
+
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
+import java.lang.management.MemoryUsage;
+
+public class TestJvmMemoryMonitor {
     public static void main(String[] args) {
         MemoryMXBean memorymbean = ManagementFactory.getMemoryMXBean();
         MemoryUsage usage = memorymbean.getHeapMemoryUsage();
@@ -380,7 +381,22 @@ public class MemoryMonitor {
         System.out.println("当前堆内存大小totalMemory " + (int) Runtime.getRuntime().totalMemory() / 1024 / 1024 + "m");// 当前堆内存大小
         System.out.println("空闲堆内存大小freeMemory " + (int) Runtime.getRuntime().freeMemory() / 1024 / 1024 + "m");// 空闲堆内存大小
         System.out.println("最大可用总堆内存maxMemory " + Runtime.getRuntime().maxMemory() / 1024 / 1024 + "m");// 最大可用总堆内存大小
-
     }
 }
+```
+
+日志
+
+```shell
+INIT HEAP: 100m
+MAX HEAP: 100m
+USE HEAP: 3m
+
+Full Information:
+Heap Memory Usage: init = 104857600(102400K) used = 3145728(3072K) committed = 104857600(102400K) max = 104857600(102400K)
+Non-Heap Memory Usage: init = 2555904(2496K) used = 6493520(6341K) committed = 8454144(8256K) max = -1(-1K)
+=======================通过java来获取相关系统状态============================ 
+当前堆内存大小totalMemory 100m
+空闲堆内存大小freeMemory 96m
+最大可用总堆内存maxMemory 100m
 ```

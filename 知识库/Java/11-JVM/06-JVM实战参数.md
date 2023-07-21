@@ -9,4 +9,5 @@
 -XX:+PrintGCDetails \  # 打印gc日志信息以进行性能调整和优化。
 -XX:+PrintGCDateStamps \  # gc时间
 -Xloggc:gc.log \  # 输出gc日志 eg:这里是输出到项目根路径下的`gc.log`文件中
+-verbose:gc \  # 控制台打印gc日志 和 -Xloggc 互斥，即输出到日志文件中就不会在控制台中打印，此参数一般用于本地测试使用
 ```
