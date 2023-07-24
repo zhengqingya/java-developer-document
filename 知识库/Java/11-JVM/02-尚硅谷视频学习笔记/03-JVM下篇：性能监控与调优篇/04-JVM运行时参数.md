@@ -227,7 +227,7 @@ jinfo -flag <name>=<value> <pid>
 #### 3、OutOfMemory 相关的选项
 
 ```shell
--XX:+HeapDumpOnOutMemoryError 内存出现OOM时生成Heap转储文件，两者互斥
+-XX:+HeapDumpOnOutOfMemoryError 内存出现OOM时生成Heap转储文件，两者互斥
 -XX:+HeapDumpBeforeFullGC 出现FullGC时生成Heap转储文件，两者互斥
 -XX:HeapDumpPath=<path> 指定heap转储文件的存储路径，默认当前目录
 -XX:OnOutOfMemoryError=<path> 指定可行性程序或脚本的路径，当发生OOM时执行脚本

@@ -55,6 +55,7 @@ public class TestJvm {
 
 > 这里为了方便看见效果，设置了堆内存120m，即jvm参数为：`-Xmx120M -Xms120M`
 
+使用`jvisualvm`工具查看
 ![](./images/06-JVM实战参数-1690177684414.png)
 
 默认情况下：
@@ -69,6 +70,8 @@ public class TestJvm {
 #### 显式配置
 
 jvm参数：`-Xmx120M -Xms120M -XX:+UseAdaptiveSizePolicy -XX:SurvivorRatio=8 -XX:NewRatio=2`
+
+> tips: 建议使用默认配置，开启`-XX:+UseAdaptiveSizePolicy`自适应内存调整策略，不设置`-XX:SurvivorRatio=8`，让它自己调整内存大小
 
 - `-Xmx120M`：指定 JVM 堆的最大内存大小为 120MB。这表示 JVM 运行时可以使用的堆内存上限。
 - `-Xms120M`：指定 JVM 堆的初始内存大小为 120MB。这表示 JVM 在启动时分配给堆的初始内存量。
