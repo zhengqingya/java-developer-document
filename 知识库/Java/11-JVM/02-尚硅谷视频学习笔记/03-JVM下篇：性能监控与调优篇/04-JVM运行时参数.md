@@ -170,7 +170,7 @@ set "JAVA_OPTS=-Xms512M -Xmx1024M"
 #### 程序运行中
 
 ```shell
-# 查看运行中可以动态修改的参数，注意：并不是所有参数都能在运行中修改
+# 查看运行中可以动态修改的参数，注意：并不是所有参数都能在运行中动态修改
 java -XX:+PrintFlagsFinal -version | grep manageable
 
 # 查看参数默认值
