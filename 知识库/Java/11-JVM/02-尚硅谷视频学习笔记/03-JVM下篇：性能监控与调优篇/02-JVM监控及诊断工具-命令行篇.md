@@ -260,6 +260,12 @@ jinfo(Configuration Info for Java)：查看虚拟机配置参数信息，也可�
 | -flags           | 输出全部的参数                                     |
 | -sysprops        | 输出系统属性                                      |
 
+查看运行中可以动态修改的参数，注意：并不是所有参数都能在运行中动态修改
+
+```shell
+java -XX:+PrintFlagsFinal -version | grep manageable
+```
+
 命令示例：
 
 ```shell
