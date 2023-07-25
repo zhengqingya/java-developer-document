@@ -372,13 +372,13 @@ jmap（JVM Memory Map）：作用一方面是获取 dump 文件（堆转储快�
 Java 堆各区域的使用情况、堆中对象的统计信息、类加载信息等。开发人员可以在控制台中输入命令“jmap -help”查阅 jmap
 工具的具体使用方式和一些标准选项配置。
 
-官方帮助文档：[https://docs.oracle.com/en/java/javase/11/tools/jmap.html](https://docs.oracle.com/en/java/javase/11/tools/jmap.html)
+官方帮助文档：https://docs.oracle.com/en/java/javase/11/tools/jmap.html
 
 基本使用语法为：
 
-- jmap [option] <pid>
-- jmap [option] <executable <core>
-- jmap [option] [server_id@] <remote server IP or hostname>
+- `jmap [option] <pid>`
+- `jmap [option] <executable <core>`
+- `jmap [option] [server_id@] <remote server IP or hostname>`
 
 | 选项             | 作用                                                                 |
 |:---------------|:-------------------------------------------------------------------|
@@ -393,27 +393,27 @@ Java 堆各区域的使用情况、堆中对象的统计信息、类加载信息
 说明：这些参数和 linux 下输入显示的命令多少会有不同，包括也受 jdk 版本的影响。
 
 ```shell
-> jmap -dump:format=b,file=<filename.hprof> <pid>> jmap -dump:live,format=b,file=<filename.hprof> <pid>
+jmap -dump:format=b,file=<filename.hprof> <pid>> jmap -dump:live,format=b,file=<filename.hprof> <pid>
 ```
 
-由于 jmap 将访问堆中的所有对象，为了保证在此过程中不被应用线程干扰，jmap 需要借助安全点机制，让所有线程停留在不改变堆中数据的状态。也就是说，由
-jmap 导出的堆快照必定是安全点位置的。这可能导致基于该堆快照的分析结果存在偏差。
+由于 jmap 将访问堆中的所有对象，为了保证在此过程中不被应用线程干扰，jmap 需要借助安全点机制，让所有线程停留在不改变堆中数据的状态。
+也就是说，由 jmap 导出的堆快照必定是安全点位置的。这可能导致基于该堆快照的分析结果存在偏差。
 
 举个例子，假设在编译生成的机器码中，某些对象的生命周期在两个安全点之间，那么:live 选项将无法探知到这些对象。
 
-另外，如果某个线程长时间无法跑到安全点，jmap 将一直等下去。与前面讲的 jstat 则不同，垃圾回收器会主动将 jstat
-所需要的摘要数据保存至固定位置之中，而 jstat 只需直接读取即可。
+另外，如果某个线程长时间无法跑到安全点，jmap 将一直等下去。
+与前面讲的 jstat 则不同，垃圾回收器会主动将 jstat 所需要的摘要数据保存至固定位置之中，而 jstat 只需直接读取即可。
 
 ### 六、jhat：JDK 自带堆分析工具
 
-jhat(JVM Heap Analysis Tool)：Sun JDK 提供的 jhat 命令与 jmap 命令搭配使用，用于分析 jmap 生成的 heap dump 文件（堆转储快照）。jhat
-内置了一个微型的 HTTP/HTML 服务器，生成 dump 文件的分析结果后，用户可以在浏览器中查看分析结果（分析虚拟机转储快照信息）。
+jhat(JVM Heap Analysis Tool)：Sun JDK 提供的 jhat 命令与 jmap 命令搭配使用，用于分析 jmap 生成的 heap dump 文件（堆转储快照）。
+jhat 内置了一个微型的 HTTP/HTML 服务器，生成 dump 文件的分析结果后，用户可以在浏览器中查看分析结果（分析虚拟机转储快照信息）。
 
-使用了 jhat 命令，就启动了一个 http 服务，端口是 7000，即 http://localhost:7000/，就可以在浏览器里分析。
+使用了 jhat 命令，就启动了一个 http 服务，端口是 7000，即 http://localhost:7000 ，就可以在浏览器里分析。
 
 说明：jhat 命令在 JDK9、JDK10 中已经被删除，官方建议用 VisualVM 代替。
 
-基本适用语法：jhat <option> <dumpfile>
+基本适用语法：`jhat <option> <dumpfile>`
 
 | option 参数              | 作用                               |
 |:-----------------------|:---------------------------------|
@@ -433,7 +433,7 @@ jstack（JVM Stack Trace）：用于生成虚拟机指定进程当前时刻的�
 生成线程快照的作用：可用于定位线程出现长时间停顿的原因，如线程间死锁、死循环、请求外部资源导致的长时间等待等问题。这些都是导致线程长时间停顿的常见原因。当线程出现停顿时，就可以用
 jstack 显示各个线程调用的堆栈情况。
 
-官方帮助文档：[https://docs.oracle.com/en/java/javase/11/tools/jstack.html](https://docs.oracle.com/en/java/javase/11/tools/jstack.html)
+官方帮助文档：https://docs.oracle.com/en/java/javase/11/tools/jstack.html
 
 在 thread dump 中，要留意下面几种状态
 
@@ -446,6 +446,10 @@ jstack 显示各个线程调用的堆栈情况。
 - 对象等待中，Object.wait() 或 TIMED＿WAITING
 - 停止，Parked
 
+```shell
+jstack [options] pid
+```
+
 | option 参数 | 作用                       |
 |:----------|:-------------------------|
 | -F        | 当正常输出的请求不被响应时，强制输出线程堆栈   |
@@ -454,20 +458,21 @@ jstack 显示各个线程调用的堆栈情况。
 
 ### 八、jcmd：多功能命令行
 
-在 JDK 1.7 以后，新增了一个命令行工具 jcmd。它是一个多功能的工具，可以用来实现前面除了 jstat 之外所有命令的功能。比如：用它来导出堆、内存使用、查看
-Java 进程、导出线程信息、执行 GC、JVM 运行时间等。
+在 JDK 1.7 以后，新增了一个命令行工具 jcmd。它是一个多功能的工具，可以用来实现前面除了 jstat 之外所有命令的功能。
+比如：用它来导出堆、内存使用、查看 Java 进程、导出线程信息、执行 GC、JVM 运行时间等。
 
-官方帮助文档：[https://docs.oracle.com/en/java/javase/11/tools/jcmd.html](https://docs.oracle.com/en/java/javase/11/tools/jcmd.html)
+官方帮助文档：https://docs.oracle.com/en/java/javase/11/tools/jcmd.html
 
 jcmd 拥有 jmap 的大部分功能，并且在 Oracle 的官方网站上也推荐使用 jcmd 命令代 jmap 命令
 
-**jcmd -l：**列出所有的 JVM 进程
+```shell
+# 列出所有的 JVM 进程
+jcmd -l
+# 针对指定的进程，列出支持的所有具体命令
+jcmd 进程号 help
+```
 
-**jcmd 进程号 help：**针对指定的进程，列出支持的所有具体命令
-
-![image-20210504213044819](https://img-blog.csdnimg.cn/img_convert/f3507ac3e24d40625f6c3d54c25c743b.png)
-
-**jcmd 进程号 具体命令：**显示指定进程的指令命令的数据
+`jcmd 进程号 具体命令`：显示指定进程的指令命令的数据
 
 - Thread.print 可以替换 jstack 指令
 - GC.class_histogram 可以替换 jmap 中的-histo 操作
@@ -479,10 +484,9 @@ jcmd 拥有 jmap 的大部分功能，并且在 Oracle 的官方网站上也推�
 
 ### 九、jstatd：远程主机信息收集
 
-之前的指令只涉及到监控本机的 Java 应用程序，而在这些工具中，一些监控工具也支持对远程计算机的监控（如
-jps、jstat）。为了启用远程监控，则需要配合使用 jstatd 工具。命令 jstatd 是一个 RMI
-服务端程序，它的作用相当于代理服务器，建立本地计算机与远程监控工具的通信。jstatd 服务器将本机的 Java 应用程序信息传递到远程计算机。
+之前的指令只涉及到监控本机的 Java 应用程序，而在这些工具中，一些监控工具也支持对远程计算机的监控（如 jps、jstat）。
+为了启用远程监控，则需要配合使用 jstatd 工具。
+命令 jstatd 是一个 RMI 服务端程序，它的作用相当于代理服务器，建立本地计算机与远程监控工具的通信。
+jstatd 服务器将本机的 Java 应用程序信息传递到远程计算机。
 
-![image-20210504213301077](https://img-blog.csdnimg.cn/img_convert/2225de448c4af005aa0f72e84bba5e57.png)
-
-<hr/>
+![](./images/02-JVM监控及诊断工具-命令行篇-1690250275549.png)

@@ -3,14 +3,27 @@
 1. https://visualvm.github.io/index.html
 2. https://visualvm.github.io/pluginscenters.html
 
+Visual VM 是一个功能强大的多合一故障诊断和性能监控的可视化工具。
+它集成了多个 JDK 命令行工具，使用 Visual VM 可用于显示虚拟机进程及进程的配置和环境信息（jps，jinfo），
+监视应用程序的 CPU、GC、堆、方法区及线程的信息（jstat、jstack）等，甚至代替 JConsole。
+在 JDK 6 Update 7 以后，Visual VM 便作为 JDK 的一部分发布（VisualVM 在 JDK/bin 目录下）即：它完全免费。
+
+**主要功能：**
+
+- 1.生成/读取堆内存/线程快照
+- 2.查看 JVM 参数和系统属性
+- 3.查看运行中的虚拟机进程
+- 4.程序资源的实时监控
+- 5.JMX 代理连接、远程环境监控、CPU 分析和内存分析
+
 ### 一、基础使用
 
 `win + r` -> `jvisualvm`
 
 选择进程查看
-![](./images/02-jvisualvm-1689753357270.png)
-![](./images/02-jvisualvm-1689753401251.png)
-![](./images/02-jvisualvm-1689753415011.png)
+![](./images/03-jvisualvm-1689753357270.png)
+![](./images/03-jvisualvm-1689753401251.png)
+![](./images/03-jvisualvm-1689753415011.png)
 
 ### 二、安装`Visual GC`插件 -- 可以查看GC回收
 
@@ -18,17 +31,17 @@
 
 根据jdk版本选择对应插件地址 http://visualvm.github.io/pluginscenters.html
 
-![img.png](images/jvisualvm_plugin_url_choose.png)
+![img.png](images/03-jvisualvm_plugin_url_choose.png)
 
 工具 -> 插件 -> 设置 -> 添加相应插件URL(ex: https://visualvm.github.io/uc/8u131/updates.xml.gz)
 
-![img.png](images/jvisualvm_set_plugin_url.png)
+![img.png](images/03-jvisualvm_set_plugin_url.png)
 
 然后在 可用插件中勾选`Visual GC`安装 -> 重启`jvisualvm`
 
-![img.png](images/jvisualvm_visual_gc_install.png)
+![img.png](images/03-jvisualvm_visual_gc_install.png)
 
-![jvisualvm_visual_gc.png](images/jvisualvm_visual_gc.png)
+![jvisualvm_visual_gc.png](images/03-jvisualvm_visual_gc.png)
 
 ### 三、使用jvisualvm的jstatd方式远程监控Java程序
 

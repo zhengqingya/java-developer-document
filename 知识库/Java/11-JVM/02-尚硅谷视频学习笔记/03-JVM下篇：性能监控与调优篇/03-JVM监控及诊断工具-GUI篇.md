@@ -4,65 +4,31 @@
 
 使用上一章命令行工具或组合能帮您获取目标 Java 应用性能相关的基础信息，但它们存在下列局限：
 
-- 1．无法获取方法级别的分析数据，如方法间的调用关系、各方法的调用次数和调用时间等（这对定位应用性能瓶颈至关重要）。
-- 2．要求用户登录到目标 Java 应用所在的宿主机上，使用起来不是很方便。
-- 3．分析数据通过终端输出，结果展示不够直观。
+1. 无法获取方法级别的分析数据，如方法间的调用关系、各方法的调用次数和调用时间等（这对定位应用性能瓶颈至关重要）。
+2. 要求用户登录到目标 Java 应用所在的宿主机上，使用起来不是很方便。
+3. 分析数据通过终端输出，结果展示不够直观。
 
-为此，JDK 提供了一些内存泄漏的分析工具，如 jconsole，jvisualvm
-等，用于辅助开发人员定位问题，但是这些工具很多时候并不足以满足快速定位的需求。所以这里我们介绍的工具相对多一些、丰富一些。
+为此，JDK 提供了一些内存泄漏的分析工具，如 jconsole，jvisualvm 等，用于辅助开发人员定位问题，但是这些工具很多时候并不足以满足快速定位的需求。
+所以这里我们介绍的工具相对多一些、丰富一些。
 
-**JDK 自带的工具**
+#### JDK 自带的工具
 
-- jconsole：JDK 自带的可视化监控工具。查看 Java 应用程序的运行概况、监控堆信息、永久区（或元空间）使用情况、类加载情况等
+- `jconsole`：JDK 自带的可视化监控工具。查看 Java 应用程序的运行概况、监控堆信息、永久区（或元空间）使用情况、类加载情况等
+- `Visual VM`：Visual VM 是一个工具，它提供了一个可视界面，用于查看 Java 虚拟机上运行的基于 Java 技术的应用程序的详细信息。
+- `JMC`：Java Mission Control，内置 Java Flight Recorder。能够以极低的性能开销收集 Java 虚拟机的性能数据。
 
-- Visual VM：Visual VM 是一个工具，它提供了一个可视界面，用于查看 Java 虚拟机上运行的基于 Java 技术的应用程序的详细信息。
+#### 第三方工具
 
-- JMC：Java Mission Control，内置 Java Flight Recorder。能够以极低的性能开销收集 Java 虚拟机的性能数据。
-
-**第三方工具**
-
-- MAT：MAT（Memory Analyzer Tool）是基于 Eclipse 的内存分析工具，是一个快速、功能丰富的 Java heap 分析工具，它可以帮助我们查找内存泄漏和减少内存消耗
-
-- JProfiler：商业软件，需要付费。功能强大。
+- `MAT`：MAT（Memory Analyzer Tool）是基于 Eclipse 的内存分析工具，是一个快速、功能丰富的 Java heap 分析工具，它可以帮助我们查找内存泄漏和减少内存消耗
+- `JProfiler`：商业软件，需要付费。功能强大。
 
 ### 二、JConsole
 
-jconsole：从 Java5 开始，在 JDK 中自带的 java 监控和管理控制台。用于对 JVM 中内存、线程和类等的监控，是一个基于 JMX（java
-management extensions）的 GUI 性能监控工具。
-
-官方地址：[https://docs.oracle.com/javase/7/docs/technotes/guides/management/jconsole.html](https://docs.oracle.com/javase/7/docs/technotes/guides/management/jconsole.html)
-
-![image-20210505141631635](https://img-blog.csdnimg.cn/img_convert/2a3da9e0684da25f3603859309a31002.png)
-
-![image-20210505141726143](https://img-blog.csdnimg.cn/img_convert/01d1c91e8a41137321af9334a383eeda.png)
-
-![image-20210505141924211](https://img-blog.csdnimg.cn/img_convert/fd74276fd1dd7e4542994d1da5768bff.png)
-
-![image-20210505141950000](https://img-blog.csdnimg.cn/img_convert/c590dbcfb21edbf73f9b7a4d4e342cb7.png)
-
-![image-20210505142050157](https://img-blog.csdnimg.cn/img_convert/0394d3dec7f075f88d1321565e4b0c40.png)
+见 [jconsole](../../03-监控工具/02-jconsole.md)
 
 ### 三、Visual VM
 
-Visual VM 是一个功能强大的多合一故障诊断和性能监控的可视化工具。它集成了多个 JDK 命令行工具，使用 Visual VM
-可用于显示虚拟机进程及进程的配置和环境信息（jps，jinfo），监视应用程序的 CPU、GC、堆、方法区及线程的信息（jstat、jstack）等，甚至代替
-JConsole。在 JDK 6 Update 7 以后，Visual VM 便作为 JDK 的一部分发布（VisualVM 在 JDK／bin 目录下）即：它完全免费。
-
-**主要功能：**
-
-- 1.生成/读取堆内存/线程快照
-- 2.查看 JVM 参数和系统属性
-- 3.查看运行中的虚拟机进程
-- 4.程序资源的实时监控
-- 5.JMX 代理连接、远程环境监控、CPU 分析和内存分析
-
-官方地址：[https://visualvm.github.io/index.html](https://visualvm.github.io/index.html)
-
-![image-20210505143844282](https://img-blog.csdnimg.cn/img_convert/5778843e25883aed6ee8591e7f57465a.png)
-
-![image-20210505144716064](https://img-blog.csdnimg.cn/img_convert/750e766290dd3ce1c31bece436870f96.png)
-
-![image-20210505144805307](https://img-blog.csdnimg.cn/img_convert/43a8b0745532825ab4a262a953aa5ffd.png)
+见 [jvisualvm](../../03-监控工具/03-jvisualvm.md)
 
 ### 四、Eclipse MAT
 
