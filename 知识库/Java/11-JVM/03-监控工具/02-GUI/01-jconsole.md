@@ -10,10 +10,10 @@ jconsole：从 Java5 开始，在 JDK 中自带的 java 监控和管理控制台
 `win + r` -> `jconsole`
 
 选择进程
-![](./images/02-jconsole-1689752726982.png)
+![](images/01-jconsole-1689752726982.png)
 查看
-![](./images/02-jconsole-1689752785023.png)
-![](./images/02-jconsole-1689752796871.png)
-![](./images/02-jconsole-1689752808534.png)
-![](./images/02-jconsole-1689752839636.png)
-![](./images/02-jconsole-1689752853116.png)
+![](images/01-jconsole-1689752785023.png)
+![](images/01-jconsole-1689752796871.png)
+![](images/01-jconsole-1689752808534.png)
+![](images/01-jconsole-1689752839636.png)
+![](images/01-jconsole-1689752853116.png)

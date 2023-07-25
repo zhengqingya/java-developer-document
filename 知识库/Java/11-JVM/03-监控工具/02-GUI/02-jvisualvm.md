@@ -21,9 +21,9 @@ Visual VM 是一个功能强大的多合一故障诊断和性能监控的可视�
 `win + r` -> `jvisualvm`
 
 选择进程查看
-![](./images/03-jvisualvm-1689753357270.png)
-![](./images/03-jvisualvm-1689753401251.png)
-![](./images/03-jvisualvm-1689753415011.png)
+![](images/02-jvisualvm-1689753357270.png)
+![](images/02-jvisualvm-1689753401251.png)
+![](images/02-jvisualvm-1689753415011.png)
 
 ### 二、安装`Visual GC`插件 -- 可以查看GC回收
 
@@ -31,17 +31,17 @@ Visual VM 是一个功能强大的多合一故障诊断和性能监控的可视�
 
 根据jdk版本选择对应插件地址 http://visualvm.github.io/pluginscenters.html
 
-![img.png](images/03-jvisualvm_plugin_url_choose.png)
+![img.png](images/02-jvisualvm_plugin_url_choose.png)
 
 工具 -> 插件 -> 设置 -> 添加相应插件URL(ex: https://visualvm.github.io/uc/8u131/updates.xml.gz)
 
-![img.png](images/03-jvisualvm_set_plugin_url.png)
+![img.png](images/02-jvisualvm_set_plugin_url.png)
 
 然后在 可用插件中勾选`Visual GC`安装 -> 重启`jvisualvm`
 
-![img.png](images/03-jvisualvm_visual_gc_install.png)
+![img.png](images/02-jvisualvm_visual_gc_install.png)
 
-![jvisualvm_visual_gc.png](images/03-jvisualvm_visual_gc.png)
+![jvisualvm_visual_gc.png](images/02-jvisualvm_visual_gc.png)
 
 ### 三、使用jvisualvm的jstatd方式远程监控Java程序
 
