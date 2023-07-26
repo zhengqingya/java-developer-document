@@ -1,15 +1,14 @@
 ### JDK 安装
 
-1. [点击下载JDK8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
-2. [点击查看安装教程](https://zhengqing.blog.csdn.net/article/details/81361749)
-3. [点击查看环境变量配置](https://zhengqing.blog.csdn.net/article/details/80492944)
+点击下载JDK8 https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+
+eg: `jdk-8u291-windows-x64.exe`
 
 双击安装即可，很简单
 
 可根据自己的需要修改jdk/jre安装目录
 
 ![jdk.png](images/jdk.png)
-
 ![jre.png](images/jre.png)
 
 ### JDK - 配置环境变量
