@@ -66,4 +66,4 @@ sh show-busy-java-threads -p pid
 
 ### 三、Arthas
 
-见 [Arthas定位cpu过高问题](../../../Java/09-中间件工具/02-Arthas/doc/11-cpu过高.md)
+见 [Arthas定位cpu过高问题](../../../Java/11-JVM/03-监控工具/02-GUI/05-Arthas/doc/11-cpu过高.md)
