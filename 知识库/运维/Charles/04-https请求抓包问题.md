@@ -13,27 +13,27 @@
 > Failure: Client closed the connection before a request was made. Possibly the SSL certificate was rejected.
 > Notes: You may need to configure your browser or application to trust the Charles Root Certificate. See SSL Proxying in the Help menu.
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/32c0db1114a84a0fa0a7ff1aff3b8741.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-https请求抓包问题-20230728105947342.png)
 
 ##### 安装证书 `Help` -> `SSL Proxying` -> `Install Charles Root Certificate`
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/249580577a35494c93fb2c4dc0fe3795.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/89b4379b07f141079a7262c4d541864b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-https请求抓包问题-20230728105947367.png)
+![](./images/04-https请求抓包问题-20230728105947473.png)
 
 > tips: 这里的证书一定要是被信任的！
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8fc24e8d2c3e4e09bf70558665bcf547.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-https请求抓包问题-20230728105947512.png)
 
 ##### 信任证书操作
 
 如果此证书不被信任的话，可双击证书进行操作。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3822f7e01f6a40138c39b5a61bd9fa94.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-https请求抓包问题-20230728105947562.png)
 信任证书之后，重启一下Charles吧`^_^`
 
 
 ### 三、https抓包问题 -- iPhone手机
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bb3b6cb8384b493b9b34a4524bd25285.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-https请求抓包问题-20230728105947590.png)
 
 
 > tips: 之前解决此问题是通过在手机浏览器中访问 [http://chls.pro/ssl](http://chls.pro/ssl) 下载ssl证书，然后安装信任即可；
@@ -42,15 +42,15 @@
 
 ##### 保存证书 `Help` -> `SSL Proxying` -> `Save Charles Root Certificate ...`
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e70ef206f8b94ed28d1f3e82144fc7fe.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-https请求抓包问题-20230728105947613.png)
 先保存到电脑的某一个位置，然后将此证书文件上传到其它三方平台，提供给iPhone手机在浏览器中对链接地址进行下载安装；
 
 > 为什么不支持通过微信发送此文件安装呢？ 
 > 因为iPhone手机无法直接安装此文件，只能通过第三方链接在浏览器中进行安装操作！
 > ex: 使用七牛云
-> ![在这里插入图片描述](https://img-blog.csdnimg.cn/a402d97517a643aeb3db43ea3c0720d5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+> ![](./images/04-https请求抓包问题-20230728105947681.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7f9d666612fb47fe88a12edf0f63cc01.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-https请求抓包问题-20230728105947704.png)
 之后就可以正常抓包了 `^_^`
 
 

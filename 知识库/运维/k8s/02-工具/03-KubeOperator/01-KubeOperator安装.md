@@ -18,7 +18,7 @@ mkdir -p /home/soft/kubeoperator
 cd /home/soft/kubeoperator
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ecafa301a4cc4481a2c8ef640a9619e3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-KubeOperator安装-20230728105834078.png)
 
 端口要求：防火墙必须放通 SSH（默认22）、80、8081-8083端口
 
@@ -70,8 +70,8 @@ cd kubeoperator-release-v3.14.0
 koctl status
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2f0a00770d0a4aa0bf3f75ffe73a6987.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/68e757aec7124a2c8257afa70bfdc2a6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-KubeOperator安装-20230728105834629.png)
+![](./images/01-KubeOperator安装-20230728105834668.png)
 
 #### 4、登录访问
 
@@ -79,8 +79,8 @@ koctl status
 > 用户名:  admin  
 > 初始密码:  kubeoperator@admin123
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c1f21c581bbb4ad3b75d36615775d0c8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/798dee5f786547169e9563eb7b94bd4b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-KubeOperator安装-20230728105834726.png)
+![](./images/01-KubeOperator安装-20230728105834770.png)
 
 ### 三、升级 KubeOperator
 
@@ -117,7 +117,7 @@ cd /opt/kubeoperator
 koctl uninstall
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/aa8fc2d9c63648af9c121432a4db25d9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-KubeOperator安装-20230728105834802.png)
 
 ---
 
