@@ -4,7 +4,7 @@
 
 项目中新增Docker文件夹
 
-![img.png](images/vue-Dockerfile-01.png)
+![](images/vue-Dockerfile-01.png)
 
 #### 1、Dockerfile
 
@@ -160,11 +160,11 @@ pipeline {
 
 选择`Pipeline`
 
-![img.png](images/vue-Dockerfile+Jenkinsfile-01.png)
+![](images/vue-Dockerfile+Jenkinsfile-01.png)
 
 #### 2、流水线
 
-![img_1.png](images/vue-Dockerfile+Jenkinsfile-02.png)
+![](images/vue-Dockerfile+Jenkinsfile-02.png)
 
 
 脚本路径：

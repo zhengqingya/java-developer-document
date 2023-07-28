@@ -30,11 +30,11 @@ CMD ["sh", "-c", "echo \"****** 运行命令：java -jar ${JAVA_OPTS} /home/app.
 
 #### 1、新建任务
 
-![img.png](images/springboot-Dockerfile-01.png)
+![](images/springboot-Dockerfile-01.png)
 
 #### 2、源码管理 -> Git -> 填写项目地址与拉取认证信息
 
-![img_1.png](images/springboot-Dockerfile-02.png)
+![](images/springboot-Dockerfile-02.png)
 
 #### 3、构建
 

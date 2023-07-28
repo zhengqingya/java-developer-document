@@ -44,9 +44,9 @@ SonarQube是一种自动代码审查工具，用于检测代码中的错误，�
 下载完后直接解压即可~
 
 进入bin目录下选择自己相应的环境双击 **StartSonar.bat** 启动运行测试
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709122922365.png)
+![](./images/01-SonarQube-入门安装使用-20230728144729705.png)
 启动成功后，可访问 http://localhost:9000  【sonarqube 默认启动端口为：9000】
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709123045965.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/01-SonarQube-入门安装使用-20230728144729727.png)
 
 #### 2、SonarQube配置
 
@@ -58,25 +58,25 @@ sonar.jdbc.password=root
 sonar.jdbc.url=jdbc:mysql://localhost:3306/sonarqube?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&useSSL=false
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709123718506.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/01-SonarQube-入门安装使用-20230728144729751.png)
 > 注：如果需要指定jdk版本运动启动，可如下配置 **wrapper.conf** 文件：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709114209940.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/01-SonarQube-入门安装使用-20230728144729776.png)
 
 然后再进入bin目录下选择自己相应的环境双击 **StartSonar.bat** 启动运行
 
 1. 如果出现启动不了，就再重新试一次，因为我这里也是第2次才启动成功~
 2. 如果启动失败没有界面，可进入 **logs** 目录下查看相应错误信息并解决
-   ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709152715229.png)
+   ![](./images/01-SonarQube-入门安装使用-20230728144729795.png)
 
 #### 3、安装汉化插件
 
 点击右上角 **Log in** 登录 【默认用户名和密码都是admin】
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709151521143.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/01-SonarQube-入门安装使用-20230728144729834.png)
 选择 **Administration -> Marketplace -> Plugins** 中搜索 **Chinese pack** ，然后Install
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709152317767.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/01-SonarQube-入门安装使用-20230728144729873.png)
 最后重启即可！
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709152826829.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709153210505.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/01-SonarQube-入门安装使用-20230728144729913.png)
+![](./images/01-SonarQube-入门安装使用-20230728144729950.png)
 
 #### 4、安装checkstyle、findbugs、pmd插件
 
@@ -107,7 +107,7 @@ sonar.jdbc.url=jdbc:mysql://localhost:3306/sonarqube?useUnicode=true&characterEn
 </profile>
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709155034287.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/01-SonarQube-入门安装使用-20230728144729990.png)
 
 ##### ② 使用
 
@@ -118,9 +118,9 @@ mvn clean install sonar:sonar
 ```
 
 等待 **BUILD SUCCESS**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709160456372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/01-SonarQube-入门安装使用-20230728144730029.png)
 然后我们就可以访问 http://localhost:9000/projects 在项目中查看数据信息了~ 如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190709161147597.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/01-SonarQube-入门安装使用-20230728144730064.png)
 
 ### 三、自动化构建、测试、部署 -> Jenkins
 

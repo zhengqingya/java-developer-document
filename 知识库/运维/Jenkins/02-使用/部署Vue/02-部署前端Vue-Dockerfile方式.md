@@ -4,7 +4,7 @@
 
 项目中新增Docker文件夹
 
-![img.png](images/vue-Dockerfile-01.png)
+![](images/vue-Dockerfile-01.png)
 
 #### 1、Dockerfile
 
@@ -104,11 +104,11 @@ http {
 
 #### 1、新建任务
 
-![img_1.png](images/vue-Dockerfile-02.png)
+![](images/vue-Dockerfile-02.png)
 
 #### 2、填写项目Git代码地址
 
-![img_2.png](images/vue-Dockerfile-03.png)
+![](images/vue-Dockerfile-03.png)
 
 #### 3、构建shell脚本
 

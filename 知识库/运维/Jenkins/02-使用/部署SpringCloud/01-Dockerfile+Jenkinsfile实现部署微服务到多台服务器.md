@@ -22,34 +22,34 @@
 #### 1、远程服务器配置
 
 `Manage Jenkins` -> `Configure System`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ce33dd00e1c942d68009f9006b7f70a3.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730562.png)
 `Publish over SSH`配置
 
 > 温馨小提示：多台服务器则配置多个...
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/641243769ccb4df28620895cda3128e7.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730586.png)
 
 #### 2、全局凭证配置
 
 > 注：后面Jenkinsfile中需要使用到这里配置的全局凭证
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/102c840149ee452f9eeae05178fde429.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/941964e3ab9e4f62a5b918cae32f5cca.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730610.png)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730632.png)
 
 ###### ① git全局凭证配置
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/732b3623d2b74851ae67989451028b68.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730656.png)
 
 ###### ② docker镜像仓库全局凭证配置
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d82135c4435c4f2286e6b775f9a08d17.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730676.png)
 
 配置完后如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b2b5024dd64547118db42cd71b903b0a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730697.png)
 
 ### 四、项目配置
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/71dbc5dadcee4e4ba8331526e12cb273.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730720.png)
 
 #### 1、Dockerfile
 
@@ -297,33 +297,33 @@ node {
 
 ### 五、jenkins新建任务
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/360cd3b6ee734fa7bfbe30f30cea0ba2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730749.png)
 参数化配置
 `GIT_BRANCH`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7e1ef6cb47f3489d9fcde5b8a78b9950.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730774.png)
 `PROJECT_SERVICE_NAME`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8f0d1a463f0749d78f670fd209d5f699.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730797.png)
 `PUBLISH_SSH_SERVER`
 
 > 注：value值为之前在`Manage Jenkins` -> `Configure System`中配置的`SSH Server` Name值
-> ![在这里插入图片描述](https://img-blog.csdnimg.cn/f6e1333bb7364c32b65bc87b5cc71895.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+> ![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730818.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e0a1acb4b4fb4a4bb2c603e086934f42.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730841.png)
 `JAVA_OPTS`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/605e6773e05c411384a8275011c28170.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730860.png)
 流水线
-![在这里插入图片描述](https://img-blog.csdnimg.cn/221a3f44322b48c8a957a0191a9677eb.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730880.png)
 配置完成后应用保存
 
 ### 六、构建测试
 
 > 温馨小提示：第1次构建的时候会出现如下情况，是因为未拉取远程git仓库获取分支信息，第2次就好了...
-> ![在这里插入图片描述](https://img-blog.csdnimg.cn/4ae027257c734f69b41d9cbb2b99a6c9.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+> ![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730905.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b4c409b1f2184dd9a720441dbed19c88.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730933.png)
 
 构建成功如下
-![在这里插入图片描述](https://img-blog.csdnimg.cn/363ea5f00f974b618127840cc3144bb5.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/01-Dockerfile+Jenkinsfile实现部署微服务到多台服务器-20230728144730957.png)
 
 一个简单的部署方案完成 `^_^`
 

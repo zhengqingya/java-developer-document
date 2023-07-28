@@ -10,15 +10,15 @@ nginx部署可参考 https://gitee.com/zhengqingya/docker-compose
 
 #### 1、新建任务
 
-![img.png](images/jenkins-deploy-vue-simple-01.png)
+![](images/jenkins-deploy-vue-simple-01.png)
 
 #### 2、源码管理 -> 拉取代码
 
-![img_1.png](images/jenkins-deploy-vue-simple-02.png)
+![](images/jenkins-deploy-vue-simple-02.png)
 
 #### 3、构建 -> 打包部署
 
-![img_2.png](images/jenkins-deploy-vue-simple-03.png)
+![](images/jenkins-deploy-vue-simple-03.png)
 
 ```shell
 # 在执行过程中若遇到使用了未定义的变量或命令返回值为非零，将直接报错退出
@@ -41,5 +41,5 @@ cp -r dist/* /home/soft/docker-compose/nginx-666/nginx/html/
 
 #### 5、Build Now
 
-![img_3.png](images/jenkins-deploy-vue-simple-04.png)
+![](images/jenkins-deploy-vue-simple-04.png)
 
