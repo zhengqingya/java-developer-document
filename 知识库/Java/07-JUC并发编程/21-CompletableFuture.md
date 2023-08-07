@@ -1,7 +1,7 @@
 # CompletableFuture
 
 CompletableFuture 是 Java 8 引入的一种用于异步编程和多线程操作的工具类。
-其主要作用是简化了异步编程的复杂度，提供了易用、直观的 API 操作。
+其主要作用是简化了异步编程的复杂度，让异步编程更加便利&代码更加优雅，提供了易用、直观的 API 操作。
 
 CompletableFuture 主要有以下几个功能：
 
@@ -18,6 +18,7 @@ CompletableFuture 主要有以下几个功能：
 
 > 学习资源：
 > - https://mp.weixin.qq.com/s/QvStRoJNEhOz_4qR5H8iIA
+> - https://mp.weixin.qq.com/s/FrU0ITYZiPTHVqNGPXsr9g
 
 ### 一、初识
 
@@ -169,9 +170,39 @@ public class TestCompletableFuture2_demo {
 }
 ```
 
-### 三、常用方法
+### 三、常用方法 ☆☆☆
 
-#### 1、获取结果
+#### 1、CompletableFuture创建方式
+
+##### 1）常用的4种创建方式
+
+- `supplyAsync`：执行任务，支持返回值。
+- `runAsync`：执行任务，没有返回值。
+
+```
+// 使用默认内置线程池ForkJoinPool.commonPool()，根据supplier构建执行任务  
+public static <U> CompletableFuture<U> supplyAsync(Supplier<U> supplier)  
+// 自定义线程，根据supplier构建执行任务  
+public static <U> CompletableFuture<U> supplyAsync(Supplier<U> supplier, Executor executor)  
+
+// 使用默认内置线程池ForkJoinPool.commonPool()，根据runnable构建执行任务  
+public static CompletableFuture<Void> runAsync(Runnable runnable)   
+// 自定义线程，根据runnable构建执行任务  
+public static CompletableFuture<Void> runAsync(Runnable runnable,  Executor executor)  
+```
+
+##### 2）结果获取的4种方式
+
+```
+public T get()  
+public T get(long timeout, TimeUnit unit)  
+public T getNow(T valueIfAbsent)  
+public T join()  
+```
+
+- `get()和get(long timeout, TimeUnit unit)` => 在Future中就已经提供了，后者提供超时处理，如果在指定时间内未获取结果将抛出超时异常
+- `getNow` => 立即获取结果不阻塞，结果计算已完成将返回结果或计算过程中的异常，如果未计算完成将返回设定的valueIfAbsent值
+- `join` => 方法里不会抛出异常
 
 ```java
 package com.zhengqing.demo.daily.juc.completablefuture;
@@ -205,7 +236,154 @@ public class TestCompletableFuture3_get {
 }
 ```
 
-#### 2、对计算结果进行处理
+#### 2、异步回调方法
+
+##### 1）thenRun/thenRunAsync
+
+做完第一个任务后，再做第二个任务,第二个任务也没有返回值
+
+thenRun 和thenRunAsync有什么区别呢？
+
+如果你执行第一个任务的时候，传入了一个自定义线程池：
+
+- 调用thenRun方法执行第二个任务时，则第二个任务和第一个任务是共用同一个线程池。
+- 调用thenRunAsync执行第二个任务时，则第一个任务使用的是你自己传入的线程池，第二个任务使用的是ForkJoin线程池。
+
+> tips: 后面介绍的thenAccept和thenAcceptAsync，thenApply和thenApplyAsync等，它们之间的区别也是这个。
+
+##### 2）thenAccept/thenAcceptAsync
+
+第一个任务执行完成后，执行第二个回调方法任务，会将该任务的执行结果，作为入参，传递到回调方法中，但是回调方法是没有返回值的。
+
+##### 3）thenApply/thenApplyAsync
+
+表示第一个任务执行完成后，执行第二个回调方法任务，会将该任务的执行结果，作为入参，传递到回调方法中，并且回调方法是有返回值的。
+
+```java
+package com.zhengqing.demo.daily.juc.completablefuture;
+
+import org.junit.Test;
+
+import java.util.concurrent.CompletableFuture;
+
+public class TestCompletableFuture5_thenRun_thenAccept_thenApply {
+
+    @Test
+    public void test01() throws Exception {
+        System.out.println(
+                CompletableFuture.supplyAsync(() -> {
+                            System.out.println("执行业务...");
+                            return 1;
+                        }).thenRun(() -> {
+                            System.out.println("thenRun...");
+                        })
+                        .join() // null
+        );
+    }
+
+    @Test
+    public void test02() throws Exception {
+        System.out.println(
+                CompletableFuture.supplyAsync(() -> {
+                            System.out.println("执行业务...");
+                            return 1;
+                        }).thenAccept(result -> {
+                            System.out.println(result); // 1
+                        })
+                        .join() // null
+        );
+    }
+
+    @Test
+    public void test03() throws Exception {
+        System.out.println(
+                CompletableFuture.supplyAsync(() -> {
+                            System.out.println("执行业务...");
+                            return 1;
+                        }).thenApply(result -> {
+                            System.out.println("thenApply...");
+                            return result + " xxx";
+                        })
+                        .join() // 1 xxx
+        );
+    }
+
+}
+```
+
+#### 3、异常回调 whenComplete & exceptionally
+
+当CompletableFuture的任务不论是正常完成还是出现异常它都会调用 whenComplete 这回调函数。
+
+- 正常完成：whenComplete返回结果和上级任务一致，异常为null；
+- 出现异常：whenComplete返回结果为null，异常为上级任务的异常；
+
+即调用get()时，正常完成时就获取到结果，出现异常时就会抛出异常，需要你处理该异常。
+
+当出现异常时，如果有exceptionally，会捕获该异常。
+
+```java
+package com.zhengqing.demo.daily.juc.completablefuture;
+
+import org.junit.Test;
+
+import java.util.concurrent.CompletableFuture;
+
+public class TestCompletableFuture9_whenComplete_exceptionally {
+
+    @Test
+    public void test_whenComplete() throws Exception {
+        CompletableFuture<Double> future = CompletableFuture.supplyAsync(() -> {
+            if (Math.random() < 0.5) {
+                throw new RuntimeException("出错了");
+            }
+            System.out.println("正常结束");
+            return 0.11;
+        }).whenComplete((aDouble, throwable) -> {
+            if (aDouble == null) {
+                System.out.println("whenComplete aDouble is null");
+            } else {
+                System.out.println("whenComplete aDouble is " + aDouble);
+            }
+            if (throwable == null) {
+                System.out.println("whenComplete throwable is null");
+            } else {
+                System.out.println("whenComplete throwable is " + throwable.getMessage());
+            }
+        });
+        System.out.println("最终返回的结果 = " + future.get());
+    }
+
+    @Test
+    public void test_whenComplete_exceptionally() throws Exception {
+        CompletableFuture<Double> future = CompletableFuture.supplyAsync(() -> {
+            if (Math.random() < 0.5) {
+                throw new RuntimeException("出错了");
+            }
+            System.out.println("正常结束");
+            return 0.11;
+        }).whenComplete((aDouble, throwable) -> {
+            if (aDouble == null) {
+                System.out.println("whenComplete aDouble is null");
+            } else {
+                System.out.println("whenComplete aDouble is " + aDouble);
+            }
+            if (throwable == null) {
+                System.out.println("whenComplete throwable is null");
+            } else {
+                System.out.println("whenComplete throwable is " + throwable.getMessage());
+            }
+        }).exceptionally((throwable) -> {
+            System.out.println("exceptionally中异常：" + throwable.getMessage());
+            return 0.0;
+        });
+        System.out.println("最终返回的结果 = " + future.get());
+    }
+
+}
+```
+
+#### 4、对计算结果进行处理
 
 ##### thenApply：如果有异常会中断任务 & 拿不到计算结果
 
@@ -291,7 +469,7 @@ public class TestCompletableFuture4_handle {
 - exceptionally ==> try/catch
 - whenComplete & handle ==> try/finally
 
-#### 3、对计算结果进行消费
+#### 5、对计算结果进行消费
 
 ##### thenAccept、thenRun、thenApply
 
@@ -299,59 +477,7 @@ public class TestCompletableFuture4_handle {
 2. thenAccept：任务A执行完执行B & B需要A的结果 & 无返回值
 3. thenApply： 任务A执行完执行B & B需要A的结果 & 带有返回值
 
-```java
-package com.zhengqing.demo.daily.juc.completablefuture;
-
-import org.junit.Test;
-
-import java.util.concurrent.CompletableFuture;
-
-public class TestCompletableFuture5_thenRun_thenAccept_thenApply {
-
-    @Test
-    public void test01() throws Exception {
-        System.out.println(
-                CompletableFuture.supplyAsync(() -> {
-                            System.out.println("执行业务...");
-                            return 1;
-                        }).thenRun(() -> {
-                            System.out.println("thenRun...");
-                        })
-                        .join() // null
-        );
-    }
-
-    @Test
-    public void test02() throws Exception {
-        System.out.println(
-                CompletableFuture.supplyAsync(() -> {
-                            System.out.println("执行业务...");
-                            return 1;
-                        }).thenAccept(result -> {
-                            System.out.println(result); // 1
-                        })
-                        .join() // null
-        );
-    }
-
-    @Test
-    public void test03() throws Exception {
-        System.out.println(
-                CompletableFuture.supplyAsync(() -> {
-                            System.out.println("执行业务...");
-                            return 1;
-                        }).thenApply(result -> {
-                            System.out.println("thenApply...");
-                            return result + " xxx";
-                        })
-                        .join() // 1 xxx
-        );
-    }
-
-}
-```
-
-#### 4、线程池运行选择
+#### 6、线程池运行选择
 
 1. 如果没有传入自定义线程池，使用默认线程池 ForkJoinPool.commonPool()
 2. 传入自定义线程池
@@ -398,47 +524,17 @@ public class TestCompletableFuture6_threadPool {
 }
 ```
 
-#### 5、对计算速度选用 applyToEither
+#### 7、多任务组合回调
 
-```java
-package com.zhengqing.demo.daily.juc.completablefuture;
+##### 1）AND组合关系 -- 对计算结果合并 thenCombine
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
+thenCombine / thenAcceptBoth / runAfterBoth 都表示：「当任务一和任务二都完成再执行任务三」。
 
-public class TestCompletableFuture7_applyToEither {
+区别在于：
 
-    public static void main(String[] args) {
-        CompletableFuture<String> cfA = CompletableFuture.supplyAsync(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(2);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            System.out.println("任务A：" + Thread.currentThread().getName());
-            return "A";
-        });
-        CompletableFuture<String> cfB = CompletableFuture.supplyAsync(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            System.out.println("任务B：" + Thread.currentThread().getName());
-            return "B";
-        });
-
-        CompletableFuture<String> cfResult = cfA.applyToEither(cfB, result -> {
-            return result;
-        });
-
-        System.out.println(cfResult.join() + " 块"); // B 块
-    }
-
-}
-```
-
-#### 6、对计算结果合并
+- `runAfterBoth`：不会把执行结果当做方法入参，且没有返回值
+- `thenAcceptBoth`: 会将两个任务的执行结果作为方法入参，传递到指定方法中，且无返回值
+- `thenCombine`：会将两个任务的执行结果作为方法入参，传递到指定方法中，且有返回值
 
 ```java
 package com.zhengqing.demo.daily.juc.completablefuture;
@@ -477,3 +573,131 @@ public class TestCompletableFuture8_thenCombine {
 
 }
 ```
+
+##### 2）OR组合关系 -- 对计算速度选用 applyToEither
+
+applyToEither / acceptEither / runAfterEither 都表示：「两个任务，只要有一个任务完成，就执行任务三」。
+
+区别在于：
+
+- `runAfterEither`：不会把执行结果当做方法入参，且没有返回值
+- `acceptEither`: 会将已经执行完成的任务，作为方法入参，传递到指定方法中，且无返回值
+- `applyToEither`：会将已经执行完成的任务，作为方法入参，传递到指定方法中，且有返回值
+
+```java
+package com.zhengqing.demo.daily.juc.completablefuture;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
+public class TestCompletableFuture7_applyToEither {
+
+    public static void main(String[] args) {
+        CompletableFuture<String> cfA = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("任务A：" + Thread.currentThread().getName());
+            return "A";
+        });
+        CompletableFuture<String> cfB = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("任务B：" + Thread.currentThread().getName());
+            return "B";
+        });
+
+        CompletableFuture<String> cfResult = cfA.applyToEither(cfB, result -> {
+            return result;
+        });
+
+        System.out.println(cfResult.join() + " 快"); // B 快
+    }
+
+}
+```
+
+##### 3）多任务组合
+
+- allOf：等待所有任务完成
+- anyOf：只要有一个任务完成
+
+```java
+package com.zhengqing.demo.daily.juc.completablefuture;
+
+import cn.hutool.core.thread.ThreadUtil;
+import org.junit.Test;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class TestCompletableFuture10_allOf_anyOf {
+
+    @Test
+    public void test_allOf() throws Exception {
+        //创建线程池
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        //开启异步任务1
+        CompletableFuture<Integer> task = CompletableFuture.supplyAsync(() -> {
+            System.out.println("异步任务1，当前线程是：" + Thread.currentThread().getId());
+            int result = 1 + 1;
+            System.out.println("异步任务1结束");
+            return result;
+        }, executorService);
+
+        //开启异步任务2
+        CompletableFuture<Integer> task2 = CompletableFuture.supplyAsync(() -> {
+            System.out.println("异步任务2，当前线程是：" + Thread.currentThread().getId());
+            int result = 1 + 2;
+            ThreadUtil.sleep(3000);
+            System.out.println("异步任务2结束");
+            return result;
+        }, executorService);
+
+        //开启异步任务3
+        CompletableFuture<Integer> task3 = CompletableFuture.supplyAsync(() -> {
+            System.out.println("异步任务3，当前线程是：" + Thread.currentThread().getId());
+            int result = 1 + 3;
+            ThreadUtil.sleep(4000);
+            System.out.println("异步任务3结束");
+            return result;
+        }, executorService);
+
+        //任务组合
+        CompletableFuture<Void> allOf = CompletableFuture.allOf(task, task2, task3);
+
+        //等待所有任务完成
+        allOf.get();
+        //获取任务的返回结果
+        System.out.println("task结果为：" + task.get());
+        System.out.println("task2结果为：" + task2.get());
+        System.out.println("task3结果为：" + task3.get());
+    }
+
+    @Test
+    public void test_anyOf() throws Exception {
+        //创建线程池
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+        // 开启异步任务 1 2 3
+        CompletableFuture<String> task = CompletableFuture.supplyAsync(() -> "异步任务1", executorService);
+        CompletableFuture<String> task2 = CompletableFuture.supplyAsync(() -> "异步任务2", executorService);
+        CompletableFuture<String> task3 = CompletableFuture.supplyAsync(() -> "异步任务3", executorService);
+
+        // 任务组合
+        CompletableFuture<Object> anyOf = CompletableFuture.anyOf(task, task2, task3);
+        // 只要有一个有任务完成
+        Object o = anyOf.get();
+        System.out.println("完成的任务的结果：" + o);
+    }
+
+}
+```
+
+
