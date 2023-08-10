@@ -30,3 +30,18 @@
 ### 保存时自动格式化
 
 ![HBuilderX.png](images/HBuilderX-save-auto-format.png)
+
+### 自定义代码块
+
+`工具` -> `代码块设置` -> `javascript代码块`
+
+```
+{
+    "console.log": {
+        "prefix": "clg",
+        "body": ["console.log($1);"],
+        "triggerAssist": false,
+        "description": "日志"
+    }
+}
+```
