@@ -1,17 +1,11 @@
 <template>
-  <HelloWorld ref="helloRef" />
-  <button @click="handleClick">click</button>
-  <br />
-  <button @click="$refs.helloRef.changeData()">调用子组件方法</button>
+  <h3>父组件:{{ data }}</h3>
+  <HelloWorld ref="helloRef" v-model="data" />
 </template>
 
 <script setup>
-const { proxy } = getCurrentInstance();
 import HelloWorld from "./components/HelloWorld.vue";
-
-function handleClick() {
-  proxy.$refs.helloRef.changeData();
-}
+const data = ref(0);
 </script>
 
 <style scoped></style>

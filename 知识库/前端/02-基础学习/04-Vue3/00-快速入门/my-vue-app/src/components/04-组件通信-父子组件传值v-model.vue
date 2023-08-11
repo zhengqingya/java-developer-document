@@ -1,5 +1,5 @@
 <template>
-  <h3>子组件:{{ modelValue }}</h3>
+  <h3>子组件count:{{ modelValue }}</h3>
   <button @click="changeData">click</button>
 </template>
 
