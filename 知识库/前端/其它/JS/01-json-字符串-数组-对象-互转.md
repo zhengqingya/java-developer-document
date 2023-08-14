@@ -33,3 +33,14 @@ let str = '1,2,3,4';
 let arr = str.split(',');
 console.log(arr)
 ```
+
+### 将对象数组中的某属性值转换成逗号分隔的字符串
+
+```
+let list=[
+    {id: "1",  name: "java"},
+    {id: "2",  name: "go"}
+];
+let str = list.map((obj)=>{return obj.name}).join(",");
+console.log(str) // java,go
+```
