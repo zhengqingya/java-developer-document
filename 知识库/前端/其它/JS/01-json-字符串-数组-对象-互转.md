@@ -41,6 +41,7 @@ let list=[
     {id: "1",  name: "java"},
     {id: "2",  name: "go"}
 ];
-let str = list.map((obj)=>{return obj.name}).join(",");
+// let str = list.map((obj) => {return obj.name}).join(",");
+let str = list.map((obj) => obj.name).join(",");
 console.log(str) // java,go
 ```
