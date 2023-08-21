@@ -1,14 +1,22 @@
+# 响应式API
+
+> https://cn.vuejs.org/api/reactivity-core.html
+
+```
 <template>
   <h3>{{ count }}</h3>
   <h3>{{ data }}</h3>
   <hr />
   <h3>{{ getStr }}</h3>
-  <h3>{{ getStr }}</h3>
+  <h3>{{ getStr2 }}</h3>
+  <input type="text" v-model="getStr2" />
+  <hr />
+  <h3>{{ name }}</h3>
   <button @click="changeData">修改</button>
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch, watchEffect } from "vue";
+import { ref, reactive, computed, watch, watchEffect, toRefs } from "vue";
 
 // ref：定义基本数据类型的响应式数据
 const count = ref(0);
@@ -20,11 +28,29 @@ const data = reactive({
   girlfriends: [{ name: "小张" }],
 });
 
+// toRefs：解构响应式，没有的话，无法修改name值，修改的时候使用 name.value 修改
+const { name } = toRefs(
+  reactive({
+    name: "小郑",
+  })
+);
+
 // computed：计算属性
 const str = ref("hello");
 const getStr = computed(() => {
   console.log("计算属性执行了...");
   return str.value;
+});
+// 如果要修改计算属性值，上面的方式会报错 Write operation failed: computed value is readonly
+// 使用下面的方式
+const getStr2 = computed({
+  get() {
+    console.log("计算属性执行了...");
+    return str.value;
+  },
+  set(val) {
+    str.value = val;
+  },
 });
 
 // watch：监听器
@@ -32,8 +58,13 @@ watch(
   count, // ref
   // data, // reactive
   // () => data.age, // reactive 对象中的某一个属性值
+  // [count, data], // 监听多个数据
   (newValue, oldValue) => {
     console.log("监听器执行了... ", newValue, oldValue);
+  },
+  {
+    immediate: true, // 初始化执行一次
+    // deep: true, // 深度监听
   }
 );
 
@@ -49,8 +80,11 @@ function changeData() {
   data.girlfriends = [{ name: "小甜" }, { name: "小李" }];
   data.girlfriends.push({ name: "哈基米" });
 
+  name.value = "小郑变了";
+
   str.value += "1";
 }
 </script>
 
 <style scoped></style>
+```

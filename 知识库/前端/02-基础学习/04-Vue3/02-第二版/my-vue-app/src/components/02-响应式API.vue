@@ -53,8 +53,13 @@ watch(
   count, // ref
   // data, // reactive
   // () => data.age, // reactive 对象中的某一个属性值
+  // [count, data], // 监听多个数据
   (newValue, oldValue) => {
     console.log("监听器执行了... ", newValue, oldValue);
+  },
+  {
+    immediate: true, // 初始化执行一次
+    // deep: true, // 深度监听
   }
 );
 
