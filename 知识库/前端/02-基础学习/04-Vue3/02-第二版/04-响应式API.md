@@ -59,6 +59,7 @@ watch(
   // data, // reactive
   // () => data.age, // reactive 对象中的某一个属性值
   // [count, data], // 监听多个数据
+  // () => props.list, // 监听defineProps中的数据
   (newValue, oldValue) => {
     console.log("监听器执行了... ", newValue, oldValue);
   },
