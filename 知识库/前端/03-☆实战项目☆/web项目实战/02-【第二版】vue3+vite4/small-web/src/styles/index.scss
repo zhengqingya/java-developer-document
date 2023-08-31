@@ -1,0 +1,16 @@
+@import './variable.scss';
+@import './theme.scss';
+
+// 清除默认的边距和内边距
+*{
+  margin: 0;
+  padding: 0;
+}
+
+
+#app,html,body {
+  height: 100%; // 页面满屏
+  box-sizing: border-box; // padding和border的值就不会在影响元素的宽高，相当于把padding和border的值都算在content里
+  overflow: hidden;
+}
+
