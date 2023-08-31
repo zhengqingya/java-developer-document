@@ -1,0 +1,44 @@
+{
+  "name": "smallboot-web",
+  "private": true,
+  "version": "1.0.1",
+  "scripts": {
+    "dev": "vite --mode dev",
+    "prod": "vite --mode prod",
+    "build:prod": "vue-tsc --noEmit && vite build --mode prod",
+    "preview": "vite preview --port 8080 --mode prod",
+    "lint": "eslint --ext .js --ext .ts --ext .vue src",
+    "lint-fix": "eslint --ext .js --ext .ts --ext .vue src --fix",
+    "prettier": "prettier --write ."
+  },
+  "dependencies": {
+    "@chenfengyuan/vue-qrcode": "^2.0.0",
+    "@element-plus/icons-vue": "^2.0.6",
+    "@vueuse/core": "^10.1.2",
+    "axios": "^0.27.2",
+    "element-plus": "^2.2.9",
+    "nprogress": "^0.2.0",
+    "path-browserify": "^1.0.1",
+    "path-to-regexp": "^6.2.1",
+    "pinia": "^2.0.16",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.5",
+    "@types/nprogress": "^0.2.0",
+    "@types/path-browserify": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "@vitejs/plugin-vue": "^3.0.0",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.2.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.53.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.0",
+    "vue-tsc": "^0.38.4"
+  }
+}
