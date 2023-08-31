@@ -1,0 +1,20 @@
+@import 'uview-plus/theme.scss';
+@import '@/variable.scss';
+
+view {
+    // 盒子模型：外边距（margin）+ border（边框） + 内边距（padding）+ content（内容）
+    box-sizing: border-box; // padding和border的值就不会在影响元素的宽高，相当于把padding和border的值都算在content里
+}
+
+// 向上滑出动画
+.animation-slide-up {
+    @keyframes slideUp {
+        0% {
+            transform: translate(0, 100%);
+        }
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+    animation: slideUp 0.3s ease-in-out forwards;
+}

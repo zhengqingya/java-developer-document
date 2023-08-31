@@ -1,0 +1,117 @@
+{
+    "pages": [
+        //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+        {
+            "path": "pages/index/index",
+            "style": {
+                "navigationBarTitleText": "首页"
+            }
+        },
+        {
+            "path": "pages/product/index",
+            "style": {
+                "navigationBarTitleText": "点餐",
+                "enablePullDownRefresh": false
+            }
+        },
+        {
+            "path": "pages/order/index",
+            "style": {
+                "navigationBarTitleText": "订单列表",
+                "enablePullDownRefresh": false
+            }
+        },
+        {
+            "path": "pages/order/detail",
+            "style": {
+                "navigationBarTitleText": "订单详情",
+                "enablePullDownRefresh": false,
+                "navigationStyle": "custom" // 自定义头部
+            }
+        },
+        {
+            "path": "pages/mine/index",
+            "style": {
+                "navigationBarTitleText": "个人中心",
+                "enablePullDownRefresh": false
+            }
+        },
+        {
+            "path": "pages/mine/user",
+            "style": {
+                "navigationBarTitleText": "个人信息",
+                "enablePullDownRefresh": false
+            }
+        }
+    ],
+    // 分包配置 https://uniapp.dcloud.net.cn/collocation/pages.html#subpackages
+    "subPackages": [
+        {
+            "root": "subPackages/test",
+            "pages": [
+                {
+                    "path": "demo",
+                    "style": {
+                        "navigationBarTitleText": "测试分包",
+                        "enablePullDownRefresh": false
+                    }
+                }
+            ]
+        }
+    ],
+    // 分包预载配置 https://uniapp.dcloud.net.cn/collocation/pages.html#preloadrule
+    "preloadRule": {
+        // 在进入小程序某个页面时，由框架自动预下载可能需要的分包，提升进入后续分包页面时的启动速度
+        "pages/index/index": {
+            "network": "all", // 在指定网络下预下载，可选值为：all（不限网络）、wifi（仅wifi下预下载）
+            "packages": ["subPackages/test"] // 进入页面后预下载分包的 root 或 name。__APP__ 表示主包。
+        }
+    },
+    "easycom": {
+        // 注意一定要放在custom里，否则无效，https://ask.dcloud.net.cn/question/131175
+        "custom": {
+            "^u--(.*)": "uview-plus/components/u-$1/u-$1.vue",
+            "^up-(.*)": "uview-plus/components/u-$1/u-$1.vue",
+            "^u-([^-].*)": "uview-plus/components/u-$1/u-$1.vue"
+        }
+    },
+    "globalStyle": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "uni-app",
+        "navigationBarBackgroundColor": "#00aaff",
+        "backgroundColor": "#F8F8F8"
+    },
+    "tabBar": {
+        "color": "#7A7E83",
+        "selectedColor": "#00aaff",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "custom": true, // 自定义底部菜单
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "static/images/tabBar/index.png",
+                "selectedIconPath": "static/images/tabBar/index_selected.png"
+            },
+            {
+                "pagePath": "pages/product/index",
+                "text": "点餐",
+                "iconPath": "static/images/tabBar/product.png",
+                "selectedIconPath": "static/images/tabBar/product_selected.png"
+            },
+            {
+                "pagePath": "pages/order/index",
+                "text": "订单",
+                "iconPath": "static/images/tabBar/order.png",
+                "selectedIconPath": "static/images/tabBar/order_selected.png"
+            },
+            {
+                "pagePath": "pages/mine/index",
+                "text": "我的",
+                "iconPath": "static/images/tabBar/mine.png",
+                "selectedIconPath": "static/images/tabBar/mine_selected.png"
+            }
+        ]
+    }
+}
