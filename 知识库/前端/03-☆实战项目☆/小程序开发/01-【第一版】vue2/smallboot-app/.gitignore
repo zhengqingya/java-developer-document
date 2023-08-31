@@ -1,0 +1,7 @@
+.idea
+node_modules
+unpackage
+dist
+.vite
+
+package-lock.json
