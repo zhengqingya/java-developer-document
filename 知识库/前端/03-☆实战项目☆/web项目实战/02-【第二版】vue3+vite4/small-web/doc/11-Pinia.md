@@ -119,11 +119,20 @@ window.sessionStorage.clear();
 > https://pinia.vuejs.org/zh/core-concepts/state.html#resetting-the-state
 
 ```
+import store from '@/store';
+
 // 退出登录
 function logout() {
   isLogin.value = false;
-  // 清空pinia存储的数据
+  // 清空当前store在pinia中持久化存储的数据
   this.$reset();
+  
+  // 其它store
+  store.settings.useSettingsStore().$reset();
+  
+  // 最终真正清空storage数据
+  window.localStorage.clear();
+  window.sessionStorage.clear();
 }
 ```
 

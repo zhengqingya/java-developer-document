@@ -46,5 +46,13 @@ export default defineConfig(({ mode }) => {
         },
       ],
     },
+    // 引入scss全局变量
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "@/styles/variable.scss";@import "@/styles/theme.scss";`,
+        },
+      },
+    },
   };
 });

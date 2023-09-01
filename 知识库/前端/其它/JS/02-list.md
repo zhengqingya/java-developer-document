@@ -86,6 +86,10 @@ let list = [{"id":1,"name":"admin"},{"id":2,"name":"test"}]
 // 移除id为1的元素
 list.splice(list.findIndex((item) => item.id === 1), 1)
 console.log(list) // [{"id":2,"name":"test"}]
+
+// 移除指定元素
+let item = {"id":1,"name":"admin"}
+list.splice(list.indexOf(item), 1);
 ```
 
 ### 扩展运算符...

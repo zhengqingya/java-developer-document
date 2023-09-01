@@ -94,3 +94,10 @@ function handleClick() {
 }
 </script>
 ```
+
+### 三、注意事项
+
+$ref 在以下情况无法直接使用
+
+- store pinia
+- watch 监听器
