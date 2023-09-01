@@ -1,8 +1,6 @@
-@[TOC](文章目录)
-
 ### 一、前言
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/dd47362a8fbd47d4809f5faad0add12c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/NPS安装配置使用-20230901102202497.png)
 [https://github.com/ehang-io/nps](https://github.com/ehang-io/nps)
 
 ### 二、CentOS7.6上启动服务端
@@ -28,17 +26,17 @@ tail -fn 100 /var/log/nps.log
 
 访问 `ip:8080`
 默认账号密码 `admin/123`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/57dbfee5b04d49f0b59cc8b59d1305ff.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a72f4ed984404f80b08a40d9a4709025.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/NPS安装配置使用-20230901102203262.png)
+![](./images/NPS安装配置使用-20230901102203406.png)
 
 #### 新增客户端
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a8265a1db49647549adbee571c615ecd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/NPS安装配置使用-20230901102203612.png)
 
 #### 新增TCP隧道
 
 访问 `8100` 端口可代理到本地 `127.0.0.1:20040`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b7cc9b7f667840eaa9ee1e2ca1c0ef1d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/NPS安装配置使用-20230901102203693.png)
 
 ### 三、Windows上启动客户端
 
@@ -49,20 +47,20 @@ tail -fn 100 /var/log/nps.log
 npc.exe -server=www.zhengqingya.com:8024 -vkey=test123 -type=tcp
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8788521f9a714e1380075691229c77e5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/NPS安装配置使用-20230901102203770.png)
 客户端启动成功后，可在服务端中查看是否在线
-![在这里插入图片描述](https://img-blog.csdnimg.cn/adc953841ec145c083a0ea27e03fb685.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/NPS安装配置使用-20230901102203930.png)
 
 ### 四、访问测试
 
 访问 `8100` 端口可代理到本地 `127.0.0.1:20040`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1c6b2ac73b5f4bc385224c7680493cb3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/NPS安装配置使用-20230901102204229.png)
 
 ### 五、SSH连接局域网Linux服务器
 
 #### 1、修改 `TCP隧道` -> `目标 (IP:端口)` -> `127.0.0.1:22`
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9fc7898a6f114de79b9bea7aa844248e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/NPS安装配置使用-20230901102204331.png)
 
 #### 2、局域网Linux服务器启动客户端
 
@@ -79,12 +77,12 @@ chmod +x npc
 sudo ./npc -server=www.zhengqingya.com:8024 -vkey=test123 -type=tcp
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/cf186b1e9c614a7bb5fd12342478f9f9.png)
+![](./images/NPS安装配置使用-20230901102204456.png)
 
 #### 3、SSH 连接
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8dd5527a7e724fdaa3cca8deecd4deea.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/49baa074b4724e7e9fe12f340a0260b3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/NPS安装配置使用-20230901102204543.png)
+![](./images/NPS安装配置使用-20230901102204629.png)
 
 ### 六、docker-compose部署NPS
 
