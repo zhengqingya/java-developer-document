@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isShow" class="">
+  <div v-if="isShow" class="">
     <div class="box border-radius-5">
       <!-- <p>{{ $route.path }}</p> -->
       <span class="m-l-10">请选择公众号：</span>
@@ -13,10 +13,12 @@
 <script setup>
 import { localStorage } from '@/utils/storage';
 const { proxy } = getCurrentInstance();
+let { isLogin } = toRefs(proxy.$store.user.useUserStore());
 let appId = $ref(localStorage.get('appId'));
 let list = $ref([]);
 
-onMounted(() => {
+// 注册一个回调函数，在组件因为响应式状态变更而更新其 DOM 树之后调用。
+onUpdated(() => {
   init();
 });
 
@@ -25,6 +27,9 @@ const isShow = computed(() => {
 });
 
 async function init() {
+  if (!isLogin.value) {
+    return;
+  }
   let res = await proxy.$api.wx_mp_account.list();
   list = res.data;
   if (list.length == 0) {

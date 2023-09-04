@@ -1,5 +1,5 @@
 <template>
-  <el-menu v-if="proxy.$store.settings.useSettingsStore().isShowMenu" router :default-active="$route.meta.fullPath" :collapse="false" :unique-opened="false" @select="handleSelect">
+  <el-menu router :default-active="$route.meta.fullPath" :collapse="false" :unique-opened="false" @select="handleSelect">
     <el-scrollbar>
       <sidebar-item :router-list="routerList" />
     </el-scrollbar>

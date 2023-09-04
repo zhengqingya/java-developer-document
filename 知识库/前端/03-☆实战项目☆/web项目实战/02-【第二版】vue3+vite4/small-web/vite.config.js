@@ -50,7 +50,8 @@ export default defineConfig(({ mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "@/styles/variable.scss";@import "@/styles/theme.scss";`,
+          // tips: index.scss在main.js中加载过的无需再次配置 &  下面配置开启后在启动项目第一次访问时会有点慢...
+          // additionalData: `@import "@/styles/variable.scss";@import "@/styles/theme.scss";`,
         },
       },
     },

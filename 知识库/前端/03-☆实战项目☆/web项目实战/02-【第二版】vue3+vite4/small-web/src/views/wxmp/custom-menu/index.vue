@@ -162,6 +162,8 @@ function save() {
   background-size: 100% auto;
   padding: 590px 25px 88px;
   position: relative;
+  min-width: 306px;
+
   .content {
     position: relative;
     display: inline-block;

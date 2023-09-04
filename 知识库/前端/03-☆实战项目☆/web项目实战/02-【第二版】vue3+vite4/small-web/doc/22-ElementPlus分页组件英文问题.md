@@ -6,6 +6,8 @@
 
 ### 二、解决
 
+> https://element-plus.org/zh-CN/guide/i18n.html
+
 ![](./images/22-ElementPlus分页组件英文问题-1693126758630.png)
 
 ```

@@ -1,25 +1,23 @@
 <template>
   <base-wraper>
-    <el-row :gutter="1">
-      <el-col :span="11">
-        <base-card title="个人信息">
-          <template #append>
-            <el-button type="warning" @click="updateUser">修改</el-button>
-          </template>
-          <base-cell label-width="80px">
-            <base-cell-item label="头像">
-              <el-image :src="userObj.avatarUrl" style="width: 100px; height: 100px" />
-            </base-cell-item>
-            <base-cell-item label="账号">{{ userObj.username }}</base-cell-item>
-            <base-cell-item label="名称">{{ userObj.nickname }}</base-cell-item>
-            <base-cell-item label="性别">{{ $filters.sexName(userObj.sex) }}</base-cell-item>
-            <base-cell-item label="手机号码">{{ userObj.phone }}</base-cell-item>
-            <base-cell-item label="邮箱">{{ userObj.email }}</base-cell-item>
-            <base-cell-item label="创建时间">{{ userObj.createTime }}</base-cell-item>
-          </base-cell>
-        </base-card>
-      </el-col>
-      <!-- <el-col :span="11">
+    <base-card title="个人信息" class="w-400">
+      <template #append>
+        <el-button type="warning" @click="updateUser">修改</el-button>
+      </template>
+      <base-cell label-width="80px">
+        <base-cell-item label="头像">
+          <el-image :src="userObj.avatarUrl" style="width: 100px; height: 100px" />
+        </base-cell-item>
+        <base-cell-item label="账号">{{ userObj.username }}</base-cell-item>
+        <base-cell-item label="名称">{{ userObj.nickname }}</base-cell-item>
+        <base-cell-item label="性别">{{ $filters.sexName(userObj.sex) }}</base-cell-item>
+        <base-cell-item label="手机号码">{{ userObj.phone }}</base-cell-item>
+        <base-cell-item label="邮箱">{{ userObj.email }}</base-cell-item>
+        <base-cell-item label="创建时间">{{ userObj.createTime }}</base-cell-item>
+      </base-cell>
+    </base-card>
+
+    <!-- <el-col :span="11">
         <base-card title="第三方帐号绑定">
           <base-table-p ref="baseTableRef" api="sys_oauth.getOauthDataList" :params="tableOauthDataListQuery" :index-code="true" :is-page="false">
             <el-table-column label="绑定帐号信息" align="center">
@@ -43,7 +41,6 @@
           </base-table-p>
         </base-card>
       </el-col> -->
-    </el-row>
 
     <base-dialog v-model="dialogVisible" title="修改个人信息" width="50%">
       <el-form :model="form" label-width="80px">

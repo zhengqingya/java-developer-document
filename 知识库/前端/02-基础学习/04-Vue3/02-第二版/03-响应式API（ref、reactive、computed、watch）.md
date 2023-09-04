@@ -65,7 +65,7 @@ watch(
   },
   {
     immediate: true, // 初始化执行一次
-    // deep: true, // 深度监听
+    // deep: true, // 深度监听 -- eg: 监听数组里面的数据变更
   }
 );
 

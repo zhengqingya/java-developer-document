@@ -8,7 +8,7 @@ cnpm install sass --save-dev
 
 ### 二、scss使用循环实现动态样式
 
-见 [variable.scss](../src/styles/variable.scss)
+见 [src/styles](../src/styles)
 
 ```
 // 循环实现动态样式

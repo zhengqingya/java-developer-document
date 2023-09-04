@@ -1,0 +1,79 @@
+// flex布局 ********************************************
+.flex {
+    display: flex;
+}
+// 内容居中 = flex-center-center
+.content-center {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap; // 子元素换行
+}
+// .flex-1{flex:1}
+@for $i from 1 through 6 {
+    .flex-#{$i} {
+        flex: #{$i};
+    }
+}
+// 设置主轴方向 x y
+$direction: (
+    // 从左到右（默认值）
+    'r': row,
+    // 从右到左
+    'rr': row-reverse,
+    // 从上到下
+    'c': column,
+    // 从下到上
+    'cr': column-reverse
+);
+// 主轴上子元素排列方式
+$justify: (
+    // 从头部开始，如果主轴是x轴，则从左到右（默认值）
+    'start': flex-start,
+    // 在主轴居中对齐(如果主轴是 x 轴则水平居中)
+    'center': center,
+    // 从尾部开始排列
+    'end': flex-end,
+    // 先两边贴边，再平分剩余空间☆☆☆
+    'between': space-between,
+    // 平分剩余空间
+    'around': space-around
+);
+// 侧轴上子元素排列方式
+$align: (
+    // 从上到下
+    'start': flex-start,
+    // 挤在一起居中(垂直居中)
+    'center': center,
+    // 从下到上
+    'end': flex-end,
+    // 拉伸(默认值)
+    'stretch': stretch
+);
+
+@each $alignKey, $alignVal in $align {
+    @each $justifyKey, $justifyVal in $justify {
+        @each $directionKey, $directionVal in $direction {
+            // flex-start-center
+            .flex-#{$justifyKey}-#{$alignKey} {
+                display: flex;
+                justify-content: #{$justifyVal};
+                align-items: #{$alignVal};
+            }
+            // flex-r-start-center
+            .flex-#{$directionKey}-#{$justifyKey}-#{$alignKey} {
+                display: flex;
+                flex-direction: #{$directionVal};
+                justify-content: #{$justifyVal};
+                align-items: #{$alignVal};
+            }
+        }
+    }
+}
