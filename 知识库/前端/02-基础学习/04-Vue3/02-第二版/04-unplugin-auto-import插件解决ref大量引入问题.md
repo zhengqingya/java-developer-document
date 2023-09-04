@@ -1,4 +1,4 @@
-# 语法糖插件
+# unplugin-auto-import插件解决ref大量引入问题
 
 解决 `import { ref , reactive ..... } from 'vue'` 大量引入的问题
 
