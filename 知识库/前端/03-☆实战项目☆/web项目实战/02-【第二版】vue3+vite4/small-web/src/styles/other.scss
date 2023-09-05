@@ -8,17 +8,17 @@
 // ********************************************
 // 文字超出？行溢出隐藏...  text-overflow-1
 @for $i from 1 through 10 {
-    .text-overflow-#{$i} {
-        display: -webkit-box; /* 使用旧版WebKit内核布局盒模型 */
-        -webkit-line-clamp: #{$i}; /* 限制文本显示的行数为2行 */
-        -webkit-box-orient: vertical; /* 设置盒模型布局方向为垂直 */
-        overflow: hidden; /* 超出部分隐藏 */
-        text-overflow: ellipsis; /* 使用省略号表示被截断的部分 */
-        &:hover{
-          white-space: normal; /* 显示全部 */
-          overflow: visible; /* 取消超出隐藏 */
-        }
-    }
+  .text-overflow-#{$i} {
+      display: -webkit-box; /* 使用旧版WebKit内核布局盒模型 */
+      -webkit-line-clamp: #{$i}; /* 限制文本显示的行数为2行 */
+      -webkit-box-orient: vertical; /* 设置盒模型布局方向为垂直 */
+      overflow: hidden; /* 超出部分隐藏 */
+      text-overflow: ellipsis; /* 使用省略号表示被截断的部分 */
+      &:hover{
+        white-space: normal; /* 显示全部 */
+        overflow: visible; /* 取消超出隐藏 */
+      }
+  }
 }
 
 .overflow-x-scroll {
@@ -34,72 +34,53 @@
   overflow-x: hidden;
 }
 
-
-
 // 字体 ********************************************
-.font-bold {
-    font-weight: bold;
-}
+.font-bold { font-weight: bold; }
 
-$font-size: (
-    'sm': 12px,
-    'base': 16px,
-    'lg': 20px,
-);
-@each $sizeKey, $size in $font-size {
-    .font-size-#{$sizeKey} {
-        font-size: $size !important;
-    }
+@each $key, $val in ('sm': 12px, 'base': 16px, 'lg': 20px,) {
+  // font-size-base
+  .font-size-#{$key} {
+      font-size: $val !important;
+  }
 }
 @for $i from 10 through 100 {
-    .font-size-#{$i} {
-        font-size: #{$i}px !important;
-    }
+  .font-size-#{$i} {
+      font-size: #{$i}px !important;
+  }
 }
 
 
 // 边框颜色 ********************************************
 // 类名  .border-b
 $orientation: (
-    t: top,
-    b: bottom,
-    l: left,
-    r: right,
+  t: top, b: bottom, l: left, r: right,
 );
 @each $orientationKey, $orientationVal in $orientation {
-    .border-#{$orientationKey} {
-        border-#{$orientationVal}: 1px solid #e4e4ee;
-    }
+  .border-#{$orientationKey} {
+      border-#{$orientationVal}: 1px solid #e4e4ee;
+  }
 }
 
 // *******************************************************
 // 外边框圆角
 @for $i from 1 through 50 {
-    // border-radius-5
-    .border-radius-#{$i} {
-        border-radius: #{$i}px;
-    }
+  // border-radius-5
+  .border-radius-#{$i} {
+      border-radius: #{$i}px;
+  }
 }
 
-.w100 {
-    width: 100%;
-}
-.h100 {
-    height: 100%;
-}
+.w100 { width: 100%; }
+.h100 { height: 100%; }
 
+// 宽高
 @for $i from 0 through 1000 {
-    // w-20
-    .w-#{$i} {
-        width: 1px * $i;
+  @each $key, $val in w width, h height, max-height max-height, line-height line-height {
+    // w-20 || max-height-500 || line-height-100
+    .#{$key}-#{$i} {
+      #{$val}: 1px * $i;
     }
-    .h-#{$i} {
-        height: 1px * $i;
-    }
-    // max-height-500
-    .max-height-#{$i} {
-        max-height: 1px * $i;
-    }
+  }
 }
 
 // 图片大小
@@ -113,10 +94,16 @@ $orientation: (
 
 
 .position-relative {
-    position: relative; // 父：相
+  position: relative; // 父：相
 }
 .position-absolute {
-    position: absolute; // 子：绝
+  position: absolute; // 子：绝
 }
 
 
+// 元素显示模式 eg: display-inline-block
+@each $val in block, inline, inline-block {
+  .display-#{$val} {
+    display: #{$val};
+  }
+}
