@@ -75,16 +75,6 @@
   "h5": {
     "devServer": {
       "port": 5100
-      // "https": false,
-      // 跨域请求（无效配置）
-      // "proxy": {
-      //     "/mini": {
-      //         "target": "http://127.0.0.1:888/",
-      //         "changeOrigin": true,
-      //         "secure": false,
-      //         "pathRewrite": { "^/mini": "" }
-      //     }
-      // }
     }
   }
 }

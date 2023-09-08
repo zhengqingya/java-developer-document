@@ -1,5 +1,5 @@
 <template>
-  <base-wraper :active="3">
+  <base-wraper activeTabName="mine">
     <view v-if="isLogin" class="h100">
       <view class="flex-center-center bg-color-white p-30">
         <view>
@@ -25,9 +25,9 @@
         <u-cell icon="car" title="地址管理" isLink @click="tips"></u-cell>
       </u-cell-group>
 
-      <u-cell-group>
+      <!-- <u-cell-group>
         <u-cell icon="setting" title="设置" isLink></u-cell>
-      </u-cell-group>
+      </u-cell-group> -->
 
       <view class="m-t-20">
         <up-button type="error" @tap="logout">退出登录</up-button>

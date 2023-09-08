@@ -1,0 +1,23 @@
+@import './color.scss';
+@import './flex.scss';
+@import './margin-padding.scss';
+@import './other.scss';
+@import './theme.scss';
+
+// * {
+//   // 盒子模型：外边距（margin）+ border（边框） + 内边距（padding）+ content（内容）
+//   box-sizing: border-box; // 设置之后padding和border的值就不会影响盒子大小(元素的宽高)，相当于把padding和border的值都算在content里
+// }
+
+// 向上滑出动画
+.animation-slide-up {
+  @keyframes slideUp {
+    0% {
+      transform: translate(0, 100%);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  animation: slideUp 0.3s ease-in-out forwards;
+}

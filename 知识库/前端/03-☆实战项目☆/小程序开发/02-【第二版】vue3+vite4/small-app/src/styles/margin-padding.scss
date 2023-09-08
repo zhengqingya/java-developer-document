@@ -1,0 +1,42 @@
+// 内外边距 ********************************************
+// 类型
+$spacing-types: (
+  m: margin,
+  p: padding,
+);
+// 位置
+$spacing-directions: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right,
+);
+$spacing-base-size: 1rpx; // 基数
+// 循环出 margin 与 padding 的各类值
+@each $typeKey, $type in $spacing-types {
+  @for $i from 1 through 30 {
+    // 如果能够被 2 整除，将应用以下样式
+    @if ($i % 2 == 0) {
+      // m-10{margin:10rpx} || p-30{padding:30rpx}
+      .#{$typeKey}-#{$i} {
+        #{$type}: $i * $spacing-base-size !important;
+      }
+      // m-x-10{marfin-left:10rpx;marfin-right:10rpx} || p-x-30{padding-left:30rpx;padding-right:30rpx;}
+      .#{$typeKey}-x-#{$i} {
+        #{$type}-left: $i * $spacing-base-size;
+        #{$type}-right: $i * $spacing-base-size;
+      }
+      // m-y-10{marfin-top:10rpx;marfin-bottom:10rpx} || p-y-30{padding-top:30rpx;padding-bottom:30rpx;}
+      .#{$typeKey}-y-#{$i} {
+        #{$type}-top: $i * $spacing-base-size;
+        #{$type}-bottom: $i * $spacing-base-size;
+      }
+      // m-t-10{margin-top: 10rpx} || m-l-10{margin-left:10rpx} || p-r-10{padding-right:10rpx} || p-b-10{paddding-bottom:10rpx}
+      @each $directionsKey, $directions in $spacing-directions {
+        .#{$typeKey}-#{$directionsKey}-#{$i} {
+          #{$type}-#{$directions}: $i * $spacing-base-size !important;
+        }
+      }
+    }
+  }
+}

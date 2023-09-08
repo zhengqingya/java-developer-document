@@ -1,95 +1,95 @@
 <template>
-  <u-navbar
-    @leftClick="back"
-    bgColor="#00aaff"
-    border
-    placeholder
-    :title="isCreateOrder ? '创建订单' : '订单详情'"
-    titleStyle="font-weight: bold" />
-  <view class="h100 w100 p-x-30" v-if="orderObj">
-    <scroll-view class="h100" scroll-y>
-      <view v-if="!isCreateOrder" class="h-200 flex-c-center-center">
-        <view class="font-size-lg font-bold text-color-primary">
-          {{ orderObj.orderStatusName }}
-        </view>
-        <u-count-down
-          v-if="orderObj.orderStatus === 1 && new Date(orderObj.unPayEndTime) >= new Date()"
-          class="m-t-20"
-          :time="new Date(orderObj.unPayEndTime).getTime() - new Date().getTime()"
-          format="mm:ss"
-          @finish="cancelOrder()" />
-      </view>
+  <view class="h100">
+    <u-navbar
+      height="44px"
+      @leftClick="back"
+      bgColor="#00aaff"
+      border
+      placeholder
+      :title="isCreateOrder ? '创建订单' : '订单详情'"
+      titleStyle="font-weight: bold" />
 
-      <view class="spu-list flex-column">
-        <view
-          class="item flex-between-center p-y-10"
-          v-for="(item, index) in orderObj.spuList"
-          :key="index">
-          <image :src="item.coverImg" class="img-sm" />
-          <view class="flex-column flex-1 m-l-10">
-            <view class="font-size-base text-overflow-1">
-              {{ item.name }}
+    <scroll-view class="app" v-if="orderObj" scroll-y>
+      <view class="p-x-20">
+        <view v-if="!isCreateOrder" class="h-200 flex-c-center-center">
+          <view class="font-size-lg font-bold text-color-primary">
+            {{ orderObj.orderStatusName }}
+          </view>
+          <u-count-down
+            v-if="orderObj.orderStatus === 1 && new Date(orderObj.unPayEndTime) >= new Date()"
+            class="m-t-20"
+            :time="new Date(orderObj.unPayEndTime).getTime() - new Date().getTime()"
+            format="mm:ss"
+            @finish="cancelOrder()" />
+        </view>
+
+        <view class="spu-list flex-column">
+          <view
+            class="item flex-between-center p-y-10"
+            v-for="(item, index) in orderObj.spuList"
+            :key="index">
+            <image :src="item.coverImg" class="img-sm" />
+            <view class="flex-column flex-1 m-l-10">
+              <view class="font-size-base text-overflow-1">
+                {{ item.name }}
+              </view>
+              <view class="font-size-sm text-color-grey m-t-10 text-overflow-1">
+                {{ item.specDesc }}
+              </view>
             </view>
-            <view class="font-size-sm text-color-grey m-t-10 text-overflow-1">
-              {{ item.specDesc }}
+            <view class="font-size-base m-r-30">￥{{ item.price / 100 }}</view>
+            <view class="font-size-base text-color-grey">x{{ item.num }}</view>
+          </view>
+        </view>
+
+        <view class="base-box">
+          <view v-if="!isCreateOrder">
+            <view class="item-list">
+              <text class="title">订单号</text>
+              <view class="value">{{ orderObj.orderNo }}</view>
+            </view>
+            <view class="item-list">
+              <text class="title">下单时间</text>
+              <view class="value">{{ orderObj.createTime }}</view>
             </view>
           </view>
-          <view class="font-size-base m-r-30">￥{{ item.price / 100 }}</view>
-          <view class="font-size-base text-color-grey">x{{ item.num }}</view>
-        </view>
-      </view>
-
-      <view class="base-box">
-        <view v-if="!isCreateOrder">
           <view class="item-list">
-            <text class="title">订单号</text>
-            <view class="value">{{ orderObj.orderNo }}</view>
+            <text class="title">取餐时间</text>
+            <view class="value">立即</view>
           </view>
           <view class="item-list">
-            <text class="title">下单时间</text>
-            <view class="value">{{ orderObj.createTime }}</view>
+            <text class="title">配送方式</text>
+            <view class="value">堂食</view>
+          </view>
+          <view class="item-list">
+            <text class="title">总金额</text>
+            <view class="value">￥{{ orderObj.totalPrice / 100 }}</view>
+          </view>
+          <view class="item-list">
+            <text class="title">支付金额</text>
+            <view class="value" style="color: red">￥{{ orderObj.payPrice / 100 }}</view>
+          </view>
+          <view class="tips m-b-20">
+            <view class="title">备注</view>
+            <view class="value">
+              <textarea
+                class="textarea"
+                :disabled="!isCreateOrder"
+                placeholder="请输入备注信息..."
+                maxlength="100"
+                v-model="orderObj.orderRemark" />
+            </view>
           </view>
         </view>
-        <view class="item-list">
-          <text class="title">取餐时间</text>
-          <view class="value">立即</view>
-        </view>
-        <view class="item-list">
-          <text class="title">配送方式</text>
-          <view class="value">堂食</view>
-        </view>
-        <view class="item-list">
-          <text class="title">总金额</text>
-          <view class="value">￥{{ orderObj.totalPrice / 100 }}</view>
-        </view>
-        <view class="item-list">
-          <text class="title">支付金额</text>
-          <view class="value" style="color: red">￥{{ orderObj.payPrice / 100 }}</view>
-        </view>
-        <view class="tips">
-          <view class="title">备注</view>
-          <view class="value">
-            <textarea
-              class="textarea"
-              :disabled="!isCreateOrder"
-              placeholder="请输入备注信息..."
-              maxlength="100"
-              v-model="orderObj.orderRemark" />
-          </view>
-        </view>
-      </view>
 
-      <view class="action">
-        <up-button
-          v-if="isCreateOrder"
-          class="w-200 m-t-20 h-80"
-          type="error"
-          @click="createOrder()">
-          创建订单
-        </up-button>
-        <view class="flex-center-start m-t-20" v-if="orderObj.orderStatus === 1">
-          <up-button @tap="cancelOrder(true)">取消订单</up-button>
-          <up-button class="m-l-10" type="primary" @tap="payOrder()">支付（仅测试）</up-button>
+        <view class="action">
+          <up-button v-if="isCreateOrder" class="w-200 h-80" type="error" @click="createOrder()">
+            创建订单
+          </up-button>
+          <view class="flex-center-start" v-if="orderObj.orderStatus === 1">
+            <up-button @tap="cancelOrder(true)">取消订单</up-button>
+            <up-button class="m-l-10" type="primary" @tap="payOrder()">支付（仅测试）</up-button>
+          </view>
         </view>
       </view>
     </scroll-view>
@@ -221,6 +221,9 @@ async function payOrder() {
 </script>
 
 <style lang="scss" scoped>
+.app {
+  height: calc(100vh - 44px);
+}
 ::v-deep .u-count-down {
   .u-count-down__text {
     color: red;

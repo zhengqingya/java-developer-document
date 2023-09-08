@@ -15,3 +15,5 @@ cnpm i pinia@2.0.36
 ```
 cnpm run dev:mp-weixin
 ```
+
+可在 `HBuilder X` 中直接运行

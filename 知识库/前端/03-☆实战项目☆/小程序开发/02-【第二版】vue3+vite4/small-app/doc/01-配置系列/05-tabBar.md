@@ -117,58 +117,59 @@ https://uniapp.dcloud.net.cn/component/custom-tab-bar.html#
 
 ```
 <template>
-    <u-tabbar
-        :value="active"
-        @change="changeTab"
-        :fixed="false"
-        activeColor="#00aaff"
-        inactiveColor="#7A7E83"
-        :z-index="10">
-        <u-tabbar-item
-            v-for="(item, index) in tabbarList"
-            :key="index"
-            :text="item.text"
-            :icon="item.icon" />
-    </u-tabbar>
+  <u-tabbar
+    :value="activeTabName"
+    :fixed="false"
+    @change="changeTab"
+    activeColor="#00aaff"
+    inactiveColor="#7A7E83"
+    :z-index="10">
+    <u-tabbar-item
+      v-for="(item, index) in tabbarList"
+      :key="item.name"
+      :text="item.text"
+      :name="item.name"
+      :icon="item.icon" />
+  </u-tabbar>
 </template>
 <script setup>
 const { proxy } = getCurrentInstance();
 const props = defineProps({
-    active: {
-        type: Number,
-        required: true,
-        default: 0,
-    },
+  activeTabName: { type: String, required: true, default: 'index' },
 });
 let tabbarList = [
-    {
-        pagePath: '/pages/index/index',
-        text: '首页',
-        icon: 'home',
-    },
-    {
-        pagePath: '/pages/product/index',
-        text: '点餐',
-        icon: 'shopping-cart',
-    },
-    {
-        pagePath: '/pages/order/index',
-        text: '订单',
-        icon: 'order',
-    },
-    {
-        pagePath: '/pages/mine/index',
-        text: '我的',
-        icon: 'account',
-    },
+  {
+    pagePath: '/pages/index/index',
+    text: '首页',
+    icon: 'home',
+    name: 'index',
+  },
+  {
+    pagePath: '/pages/product/index',
+    text: '点餐',
+    icon: 'shopping-cart',
+    name: 'product',
+  },
+  {
+    pagePath: '/pages/order/index',
+    text: '订单',
+    icon: 'order',
+    name: 'order',
+  },
+  {
+    pagePath: '/pages/mine/index',
+    text: '我的',
+    icon: 'account',
+    name: 'mine',
+  },
 ];
-function changeTab(index) {
-    if (index == proxy.active) {
-        return;
-    }
-    uni.switchTab({
-        url: tabbarList[index].pagePath,
-    });
+function changeTab(name) {
+  if (props.activeTabName === name) {
+    return;
+  }
+  uni.switchTab({
+    url: tabbarList.filter((e) => e.name === name)[0].pagePath,
+  });
 }
 </script>
 <style lang="scss" scoped></style>
@@ -179,5 +180,5 @@ function changeTab(index) {
 > tips: 其它内容高度需100%填满，tabBar才会在底部展示，因为自定义的tabBar中配置了`:fixed="false"`
 
 ```
-<g-tab-bar :active="0" />
+<g-tab-bar activeTabName="index" />
 ```

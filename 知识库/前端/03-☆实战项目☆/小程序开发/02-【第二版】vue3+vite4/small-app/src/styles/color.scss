@@ -1,0 +1,31 @@
+// 循环实现动态样式
+// #{xxx}：字符串  $xx：数值
+// 颜色 ********************************************
+$color-primary: #00aaff;
+$colors: (
+  'white': #fff,
+  'black': #000,
+  'primary': #00aaff,
+  'success': #4cd964,
+  'warning': #f0ad4e,
+  'error': #999,
+  'disable': #c0c0c0,
+  // 辅助灰色，如加载更多的提示信息
+  'grey': #999,
+  // 浅灰色
+  'lightgrey': #f6f6f6,
+  'placeholder': #808080,
+  'red': #ff0000,
+  // 点击状态颜色
+  'hover': #f1f1f1,
+  // 遮罩颜色
+  'mask': rgba(0, 0, 0, 0.4),
+);
+@each $key, $value in $colors {
+  .text-color-#{$key} {
+    color: $value;
+  }
+  .bg-color-#{$key} {
+    background-color: $value;
+  }
+}
