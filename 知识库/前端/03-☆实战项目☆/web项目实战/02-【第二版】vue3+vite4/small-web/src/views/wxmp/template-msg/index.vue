@@ -26,11 +26,11 @@
         <base-cell-item label="模板ID">{{ form.templateId }}</base-cell-item>
         <base-cell-item label="模板标题">{{ form.title }}</base-cell-item>
         <base-cell-item label="模板内容">
-          <div class="flex w100">
+          <div class="flex w-full">
             <div class="w-500">
               <el-input v-model="form.content" type="textarea" disabled autosize />
             </div>
-            <div class="m-l-10 w100">
+            <div class="m-l-10 w-full">
               <div v-for="item in form.dataList" :key="item.name" class="flex-start-center">
                 <span>{{ item.name }}：</span>
                 <el-input v-model="item.value" type="textarea" autosize rows="1" placeholder="内容"></el-input>

@@ -1,6 +1,6 @@
 <template>
-    <view class="h100 m-30 bg-color-white">
-        <view class="content-center h-400">
+    <view class="h-full m-30 bg-color-white">
+        <view class="flex-center-center h-400">
             <button open-type="chooseAvatar" @chooseavatar="chooseavatar">
                 <image :src="userObj.avatarUrl" class="img-base" />
             </button>
@@ -59,7 +59,7 @@
             </view> -->
         </view>
 
-        <view class="content-center m-t-30 font-bold bg-color-warning p-20 m-x-30" @click="submit">
+        <view class="flex-center-center m-t-30 font-bold bg-color-warning p-20 m-x-30" @click="submit">
             保存
         </view>
     </view>

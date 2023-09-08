@@ -1,0 +1,31 @@
+// 图片大小
+@each $key, $val in sm 50, base 100, lg 160 {
+  // img-base
+  .img-#{$key} {
+    width: #{$val}px !important;
+    height: #{$val}px !important;
+    border-radius: $val * 0.1px;
+  }
+}
+
+// 文字超出？行溢出隐藏...  text-overflow-1
+@for $i from 1 through 2 {
+  .text-overflow-#{$i} {
+    display: -webkit-box; /* 使用旧版WebKit内核布局盒模型 */
+    -webkit-line-clamp: #{$i}; /* 限制文本显示的行数为2行 */
+    -webkit-box-orient: vertical; /* 设置盒模型布局方向为垂直 */
+    overflow: hidden; /* 超出部分隐藏 */
+    text-overflow: ellipsis; /* 使用省略号表示被截断的部分 */
+    // &:hover {
+    //   white-space: normal; /* 显示全部 */
+    //   overflow: visible; /* 取消超出隐藏 */
+    // }
+  }
+}
+
+@each $key, $val in ('sm': 12px, 'base': 16px, 'lg': 20px) {
+  // font-size-base
+  .font-size-#{$key} {
+    font-size: $val !important;
+  }
+}

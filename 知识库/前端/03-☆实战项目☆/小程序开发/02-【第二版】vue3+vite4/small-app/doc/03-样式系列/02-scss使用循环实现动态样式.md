@@ -9,12 +9,6 @@ eg:
 .flex {
   display: flex;
 }
-// 内容居中 = flex-center-center
-.content-center {
-  display: flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
-}
 .flex-column {
   display: flex;
   flex-direction: column;

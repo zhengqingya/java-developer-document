@@ -1,6 +1,6 @@
 <template>
   <base-wraper activeTabName="product" class="app">
-    <view v-if="reSpuList.length > 0" class="h100 flex overflow-y-scroll">
+    <view v-if="reSpuList.length > 0" class="h-full flex overflow-y-scroll">
       <scroll-view
         class="category bg-color-lightgrey text-color-grey p-r-10"
         scroll-with-animation
@@ -45,13 +45,13 @@
                 :key="index"
                 @tap="showSpuDetailModal(item, spuItem)">
                 <image class="img-base" :src="spuItem.coverImg" />
-                <view class="flex-1 flex-c-between-start h100 p-10">
+                <view class="flex-1 flex-c-between-start h-full p-10">
                   <text class="font-size-lg text-overflow-1">{{ spuItem.name }}</text>
 
                   <text class="font-size-base text-color-grey">
                     库存：{{ spuItem.usableStockSum }}
                   </text>
-                  <view class="w100 flex-between-center">
+                  <view class="w-full flex-between-center">
                     <text class="font-size-base font-bold">
                       ￥{{ spuItem.skuList[0].sellPrice / 100 }}
                     </text>
@@ -68,7 +68,7 @@
       </scroll-view>
     </view>
 
-    <view v-else class="h100 content-center bg-color-white">
+    <view v-else class="h-full flex-center-center bg-color-white">
       <u-empty mode="data" text="商品为空" />
     </view>
 

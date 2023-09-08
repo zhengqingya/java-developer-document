@@ -1,26 +1,26 @@
 <template>
-  <view class="">
+  <view class="h-full">
     <scroll-view
-      class="h100"
+      class="h-full"
       scroll-y
       enable-back-to-top
       @scrolltolower="onPushRefresh"
       :refresher-enabled="true"
       :refresher-triggered="isReFresh"
       @refresherrefresh="onPullRefresh">
-      <view v-if="isPage" class="h100">
-        <view v-if="dataList.length > 0" class="h100">
+      <view v-if="isPage" class="h-full">
+        <view v-if="dataList.length > 0" class="h-full">
           <slot :list="dataList" />
           <u-loadmore
             v-if="dataList.length > loadmoreNum"
             :line="true"
             :status="loadmoreStatus"></u-loadmore>
         </view>
-        <view v-else class="content-center h100">
+        <view v-else class="flex-center-center h-full">
           <slot name="empty" />
         </view>
       </view>
-      <view v-else class="h100">
+      <view v-else class="h-full">
         <slot :data="dataResult" />
       </view>
     </scroll-view>

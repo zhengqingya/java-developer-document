@@ -6,16 +6,6 @@
 }
 
 // ********************************************
-// 文字超出？行溢出隐藏...  text-overflow-1
-@for $i from 1 through 2 {
-  .text-overflow-#{$i} {
-    display: -webkit-box; /* 使用旧版WebKit内核布局盒模型 */
-    -webkit-line-clamp: #{$i}; /* 限制文本显示的行数为2行 */
-    -webkit-box-orient: vertical; /* 设置盒模型布局方向为垂直 */
-    overflow: hidden; /* 超出部分隐藏 */
-    text-overflow: ellipsis; /* 使用省略号表示被截断的部分 */
-  }
-}
 
 .overflow-x-scroll {
   overflow-x: scroll; // 水平方向超出滚动
@@ -44,34 +34,34 @@
 
 // 边框颜色 ********************************************
 // 类名  .border-b
-$orientation: (
-  t: top,
-  b: bottom,
-  l: left,
-  r: right,
-);
-@each $orientationKey, $orientationVal in $orientation {
-  .border-#{$orientationKey} {
-    border-#{$orientationVal}: 1rpx solid #e4e4ee;
-  }
-}
+// $orientation: (
+//   t: top,
+//   b: bottom,
+//   l: left,
+//   r: right,
+// );
+// @each $orientationKey, $orientationVal in $orientation {
+//   .border-#{$orientationKey} {
+//     border-#{$orientationVal}: 1rpx solid #e4e4ee;
+//   }
+// }
 
 // *******************************************************
 // 外边框圆角
 @for $i from 1 through 10 {
   // 如果能够被 2 整除，将应用以下样式
   @if ($i % 2 == 0) {
-    // border-radius-6
-    .border-radius-#{$i} {
+    // b-rd-6
+    .b-rd-#{$i} {
       border-radius: #{$i}rpx;
     }
   }
 }
 
-.w100 {
+.w-full {
   width: 100%;
 }
-.h100 {
+.h-full {
   height: 100%;
 }
 
@@ -85,15 +75,6 @@ $orientation: (
         #{$val}: 1rpx * $i;
       }
     }
-  }
-}
-
-// 图片大小
-@each $key, $val in sm 100, base 160, lg 260 {
-  .img-#{$key} {
-    width: #{$val}rpx !important;
-    height: #{$val}rpx !important;
-    border-radius: $val * 0.1rpx;
   }
 }
 

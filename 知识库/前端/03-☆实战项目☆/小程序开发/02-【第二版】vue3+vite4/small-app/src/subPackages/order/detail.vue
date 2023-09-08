@@ -1,5 +1,5 @@
 <template>
-  <view class="h100">
+  <view class="h-full">
     <u-navbar
       height="44px"
       @leftClick="back"

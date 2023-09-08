@@ -1,5 +1,5 @@
 <template>
-  <view class="flex-column h100 w100">
+  <view class="flex-column h-full w-full">
     <slot />
     <g-tab-bar :activeTabName="activeTabName" />
   </view>

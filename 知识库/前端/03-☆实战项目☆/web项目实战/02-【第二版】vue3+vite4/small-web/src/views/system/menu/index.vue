@@ -1,6 +1,6 @@
 <template>
   <base-wraper class="flex-start-start">
-    <base-card title="菜单" class="w-200 border-r p-x-10">
+    <base-card title="菜单" class="w-200 p-x-10">
       <el-button type="warning" @click="handleAddMenu">新增一级菜单</el-button>
       <!--菜单树-->
       <el-tree
@@ -16,11 +16,11 @@
         @node-click="handleNodeClick" />
     </base-card>
 
-    <div class="flex-1 h100">
+    <div class="flex-1 h-full">
       <base-no-data v-if="!currentClickMenu">请先选择左侧菜单</base-no-data>
 
-      <div v-else class="flex h100">
-        <base-card title="菜单详情" class="w-400 border-r p-x-10">
+      <div v-else class="flex h-full">
+        <base-card title="菜单详情" class="w-400 p-x-10">
           <div>
             <el-button type="danger" @click="handleDelete">删除</el-button>
             <el-button type="primary" @click="handleEdit">编辑</el-button>

@@ -1,8 +1,10 @@
+@import './custom.scss';
 @import './color.scss';
 @import './flex.scss';
-@import './margin-padding.scss';
-@import './other.scss';
 @import './theme.scss';
+// 下面几个在unocss中自带了...
+// @import './margin-padding.scss';
+// @import './other.scss';
 
 * {
   // 清除默认的外边距和内边距

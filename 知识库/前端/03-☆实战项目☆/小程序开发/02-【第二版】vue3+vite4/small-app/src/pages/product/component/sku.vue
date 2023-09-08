@@ -24,9 +24,9 @@
               <text class="m-r-20">{{ item.attrKeyName }}</text>
               <!-- <view class="desc" v-if="item.attrKeyName">({{ item.attrKeyName }})</view> -->
             </view>
-            <view class="flex-wrap w100">
+            <view class="flex-wrap w-full">
               <view
-                class="border-radius-10 font-size-sm text-color-grey bg-color-lightgrey m-b-10 m-r-10 p-x-30 p-y-10"
+                class="b-rd-10 font-size-sm text-color-grey bg-color-lightgrey m-b-10 m-r-10 p-x-30 p-y-10"
                 :class="{ choose: value.isChoose }"
                 v-for="(value, key) in item.attrValueList"
                 :key="key"

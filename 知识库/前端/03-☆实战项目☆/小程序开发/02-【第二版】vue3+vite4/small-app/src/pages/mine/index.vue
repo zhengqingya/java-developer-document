@@ -1,6 +1,6 @@
 <template>
   <base-wraper activeTabName="mine">
-    <view v-if="isLogin" class="h100">
+    <view v-if="isLogin" class="h-full">
       <view class="flex-center-center bg-color-white p-30">
         <view>
           <image :src="userObj.avatarUrl" class="img-lg" />
@@ -33,7 +33,7 @@
         <up-button type="error" @tap="logout">退出登录</up-button>
       </view>
     </view>
-    <view v-else class="bg-color-white h100 w100 flex-c-center-center">
+    <view v-else class="bg-color-white h-full w-full flex-c-center-center">
       <up-button type="primary" withCredentials="true" @tap="login">授权登录</up-button>
       <up-button type="error" @tap="localLogin">本地临时登录</up-button>
     </view>

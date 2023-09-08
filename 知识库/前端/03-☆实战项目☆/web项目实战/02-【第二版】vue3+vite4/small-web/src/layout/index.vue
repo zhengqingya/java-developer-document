@@ -1,6 +1,6 @@
 <template>
   <!-- <h1>{{ route.meta }}</h1> -->
-  <div v-show="isLogin && !$route.meta.isParentView" class="flex h100 w100">
+  <div v-show="isLogin && !$route.meta.isParentView" class="flex h-full w-full">
     <!-- 侧边栏菜单 -->
     <sidebar v-if="isShowMenu" id="sidebar" class="w-200" />
     <div class="flex-1">
@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  <div v-if="!isLogin || (isLogin && $route.meta.isParentView)" class="h100">
+  <div v-if="!isLogin || (isLogin && $route.meta.isParentView)" class="h-full">
     <router-view />
   </div>
 </template>

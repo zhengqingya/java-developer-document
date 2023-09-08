@@ -1,6 +1,6 @@
 <template>
   <view class="box" v-if="cartList && cartList.length > 0">
-    <view class="cart flex-around-center w100 h-90 bg-color-white">
+    <view class="cart flex-around-center w-full h-90 bg-color-white">
       <view @click="isShowDetail = !isShowDetail" class="flex flex-1">
         <view class="position-relative" style="margin-left: 60rpx">
           <u-icon size="28" name="shopping-cart" />
@@ -10,7 +10,7 @@
             :offset="[-2, -10]"
             :absolute="true" />
         </view>
-        <view class="flex-end-center w100 m-r-20 text-color-red">
+        <view class="flex-end-center w-full m-r-20 text-color-red">
           ￥{{ cartList.reduce((total, item) => (total += item.num * item.price), 0) / 100 }}
         </view>
       </view>
@@ -21,7 +21,7 @@
 
     <u-overlay :show="isShowDetail" @click="isShowDetail = false" zIndex="1" opacity="0.3" />
 
-    <view class="detail w100 bg-color-white" :class="{ active: isShowDetail }">
+    <view class="detail w-full bg-color-white" :class="{ active: isShowDetail }">
       <view
         class="flex-end-center p-x-30 p-y-10 text-color-primary font-size-base"
         @click="clearCart">
@@ -48,7 +48,7 @@
           </view>
           <view class="flex-between-center">
             <u-icon name="minus" size="12" @tap="changeSkuNum(item, -1)" />
-            <view class="w-60 content-center font-size-base m-x-10">
+            <view class="w-60 flex-center-center font-size-base m-x-10">
               {{ item.num }}
             </view>
             <u-icon name="plus" size="12" @tap="changeSkuNum(item, +1)" />

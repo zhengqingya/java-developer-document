@@ -12,7 +12,7 @@
         </div>
 
         <template #right-show="{ isShow }">
-          <div class="right-menu flex-column border-radius-4 bg-color-white">
+          <div class="right-menu flex-column b-rd-4 bg-color-white">
             <div class="option" @click="handleCloseCurrent">
               <el-icon :size="10"> <Close /> </el-icon><span> 关闭当前</span>
             </div>

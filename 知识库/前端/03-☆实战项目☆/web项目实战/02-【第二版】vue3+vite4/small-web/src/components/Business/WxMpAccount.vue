@@ -1,6 +1,6 @@
 <template>
   <div v-if="isShow" class="">
-    <div class="box border-radius-4">
+    <div class="box b-rd-4">
       <!-- <p>{{ $route.path }}</p> -->
       <span class="m-l-10">请选择公众号：</span>
       <el-select v-model="appId" placeholder="请选择账号" @change="changeData">

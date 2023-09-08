@@ -1,5 +1,5 @@
 <template>
-  <div class="w100 p-5 border-radius-4" style="background: rgba(154, 235, 178, 0.775)">
+  <div class="w-full p-5 border-radius-4" style="background: rgba(154, 235, 178, 0.775)">
     <el-alert title="tips: 属性变动会影响sku数据！" type="warning" :closable="false" show-icon />
 
     <base-card title="sku属性" class="">
