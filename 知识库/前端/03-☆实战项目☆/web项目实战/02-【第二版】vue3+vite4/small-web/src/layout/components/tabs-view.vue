@@ -2,17 +2,17 @@
   <div class="app">
     <el-scrollbar>
       <base-right-click class="flex">
-        <div v-for="item in tabsList" :key="item" class="item m-3" :class="{ active: $route.meta.fullPath === item.meta.fullPath }" style="display: inline-block; white-space: nowrap">
+        <div v-for="item in tabsList" :key="item" class="item m-4" :class="{ active: $route.meta.fullPath === item.meta.fullPath }" style="display: inline-block; white-space: nowrap">
           <div class="flex-between-center h-20" @click.right="handleRightClick(item, $event)">
             <router-link :to="item.meta.fullPath" @click="activeTabs(item)">
-              <span class="m-r-3">{{ item.meta.title }}</span>
+              <span class="m-r-4">{{ item.meta.title }}</span>
             </router-link>
             <el-icon v-if="item.meta.fullPath !== '/'" :size="10" @click="handleClose(item)"> <Close /> </el-icon>
           </div>
         </div>
 
         <template #right-show="{ isShow }">
-          <div class="right-menu flex-column border-radius-5 bg-color-white">
+          <div class="right-menu flex-column border-radius-4 bg-color-white">
             <div class="option" @click="handleCloseCurrent">
               <el-icon :size="10"> <Close /> </el-icon><span> 关闭当前</span>
             </div>

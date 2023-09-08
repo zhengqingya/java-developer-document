@@ -1,7 +1,7 @@
 <template>
   <base-wraper class="bg-color-primary content-center">
-    <div class="flex-c-center-center bg-color-white p-100 border-radius-10">
-      <h1 class="font-size-30">SmallBoot</h1>
+    <div class="flex-c-center-center bg-color-white w-400 h-300 border-radius-10">
+      <h1 class="font-size-lg">SmallBoot</h1>
       <div class="m-t-20">
         <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules">
           <el-form-item prop="username">

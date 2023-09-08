@@ -1,5 +1,5 @@
 <template>
-  <div class="content-center font-size-30 text-color-grey">
+  <div class="content-center font-size-base text-color-grey">
     <slot>暂无数据</slot>
   </div>
 </template>

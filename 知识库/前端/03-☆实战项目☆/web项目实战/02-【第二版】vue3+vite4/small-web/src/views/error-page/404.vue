@@ -1,3 +1,3 @@
 <template>
-  <div class="bg-color-primary h100 content-center font-size-100">404</div>
+  <div class="text-center" style="font-size: 130px">404</div>
 </template>

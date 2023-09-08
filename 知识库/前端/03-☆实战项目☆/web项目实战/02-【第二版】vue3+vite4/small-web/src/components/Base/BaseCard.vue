@@ -2,7 +2,7 @@
   <div class="app p-10">
     <div class="header">
       <div class="title flex-between-center">
-        <span class="font-bold font-size-13">{{ title }}</span>
+        <span class="font-bold font-size-base">{{ title }}</span>
         <div><slot name="append" /></div>
       </div>
     </div>

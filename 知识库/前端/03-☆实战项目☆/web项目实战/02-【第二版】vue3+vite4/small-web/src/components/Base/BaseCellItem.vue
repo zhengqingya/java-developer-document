@@ -3,7 +3,7 @@
     <div class="flex-end-center p-y-10 bg-color-lightgrey" :style="{ width: computedLabelWidth }">
       <span class="m-r-10">{{ label }}</span>
     </div>
-    <div class="flex-start-center flex-1 w-1 m-x-10">
+    <div class="flex-1 flex-start-center m-x-10">
       <slot />
     </div>
   </div>

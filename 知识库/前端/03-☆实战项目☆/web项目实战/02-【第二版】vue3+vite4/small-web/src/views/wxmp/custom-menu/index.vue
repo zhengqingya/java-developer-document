@@ -160,9 +160,9 @@ function save() {
 .menu {
   background: url('./bg.png') no-repeat;
   background-size: 100% auto;
-  padding: 590px 25px 88px;
+  padding: 594px 28px 88px;
   position: relative;
-  min-width: 306px;
+  min-width: 358px;
 
   .content {
     position: relative;

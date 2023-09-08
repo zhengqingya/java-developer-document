@@ -55,14 +55,14 @@
           <el-input v-model="form.replyContent"></el-input>
         </el-form-item>
       </el-form>
-      <base-cell v-else label-width="110px">
+      <base-cell v-else label-width="100px">
         <base-cell-item label="名称">{{ form.name }}</base-cell-item>
         <base-cell-item label="类型">{{ form.typeName }}</base-cell-item>
         <base-cell-item label="关键词">{{ form.matchValue }}</base-cell-item>
         <base-cell-item label="是否精确匹配">{{ form.isExactMatch }}</base-cell-item>
         <base-cell-item label="回复消息类型">{{ form.replyTypeName }}</base-cell-item>
         <base-cell-item label="回复消息内容">
-          <span class="text-overflow-1">{{ form.replyContent }}</span>
+          <span class="text-overflow-1 w-300">{{ form.replyContent }}</span>
         </base-cell-item>
       </base-cell>
       <template v-if="dialogStatus !== 'detail'" #footer>

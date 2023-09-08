@@ -22,7 +22,7 @@
       <div class="flex-center-center">
         <el-avatar class="" :size="32" :src="userObj.avatarUrl" />
         <div class="flex-center-center">
-          <span class="m-l-5"> {{ userObj.nickname }} </span>
+          <span class="m-l-6"> {{ userObj.nickname }} </span>
           <el-icon :size="20" class="w-20">
             <ArrowDown />
           </el-icon>
