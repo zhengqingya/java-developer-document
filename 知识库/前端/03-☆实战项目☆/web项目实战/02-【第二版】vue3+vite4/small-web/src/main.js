@@ -70,7 +70,5 @@ Object.keys(directive).forEach((key) => {
   app.directive(key, directive[key]);
 });
 
-// UnoCSS
-import 'virtual:uno.css';
 
 app.mount('#app');

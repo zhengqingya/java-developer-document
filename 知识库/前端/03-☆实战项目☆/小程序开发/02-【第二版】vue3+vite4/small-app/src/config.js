@@ -1,6 +1,6 @@
 const dev = {
-  // baseUrl: 'http://127.0.0.1:888',
-  baseUrl: 'http://if83gb.natappfree.cc',
+  baseUrl: 'http://127.0.0.1:888',
+  // baseUrl: 'http://6tv72p.natappfree.cc',
   // baseUrl: "http://172.16.16.88:888",
 };
 

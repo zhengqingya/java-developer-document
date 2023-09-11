@@ -55,10 +55,12 @@ watch(
 );
 
 function calWidthAndHeight() {
-  let sidebarW = document.getElementById('sidebar').offsetWidth;
+  let sidebar = document.getElementById('sidebar');
+  let sidebarW = sidebar ? sidebar.offsetWidth : 0;
   appMainWidth.value = window.innerWidth - sidebarW;
 
-  let topH = document.getElementById('top').offsetHeight;
+  let top = document.getElementById('top');
+  let topH = top ? top.offsetHeight : 0;
   appMainHeight.value = window.innerHeight - topH;
 }
 </script>
