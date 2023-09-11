@@ -1,6 +1,6 @@
 <template>
   <view class="box" v-if="cartList && cartList.length > 0">
-    <view class="cart flex-around-center w-full h-90 bg-color-white">
+    <view class="cart flex-around-center w-full bg-color-white" style="height: 90rpx">
       <view @click="isShowDetail = !isShowDetail" class="flex flex-1">
         <view class="position-relative" style="margin-left: 60rpx">
           <u-icon size="28" name="shopping-cart" />
@@ -29,7 +29,7 @@
         <text>清空</text>
       </view>
 
-      <scroll-view class="max-height-500 overflow-y-scroll" scroll-y>
+      <scroll-view class="overflow-y-scroll" style="max-height: 500rpx" scroll-y>
         <view
           class="item flex-between-center p-x-30 p-y-10"
           v-for="(item, index) in cartList"
@@ -48,7 +48,7 @@
           </view>
           <view class="flex-between-center">
             <u-icon name="minus" size="12" @tap="changeSkuNum(item, -1)" />
-            <view class="w-60 flex-center-center font-size-base m-x-10">
+            <view style="width: 60rpx" class="flex-center-center font-size-base m-x-10">
               {{ item.num }}
             </view>
             <u-icon name="plus" size="12" @tap="changeSkuNum(item, +1)" />

@@ -1,11 +1,5 @@
 <template>
-  <div
-    class="text-center m-a w-200 h-200 text-100px lh-200px color-red"
-    bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
-    text="lg white"
-    font="mono light"
-    p="y-2 x-4"
-    border="2 rounded blue-200">
+  <div class="text-center m-a text-100px color-red" bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600" text="lg white" font="mono light" p="y-2 x-4" border="2 rounded blue-200">
     hello world
   </div>
 </template>

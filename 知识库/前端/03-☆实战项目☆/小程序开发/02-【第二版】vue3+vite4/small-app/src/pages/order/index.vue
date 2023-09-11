@@ -13,7 +13,8 @@
       </template>
       <template #default="{ list }">
         <view
-          class="bg-color-white m-20 m-y-20 p-20 b-rd-30 font-size-base"
+          class="bg-color-white m-20 m-y-20 p-20 font-size-base"
+          style="border-radius: 10rpx"
           v-for="(orderItem, index) in list"
           :key="index"
           @click="goDetail(orderItem.orderNo)">

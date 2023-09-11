@@ -1,6 +1,6 @@
 <template>
   <base-wraper>
-    <base-card title="个人信息" class="w-400">
+    <base-card title="个人信息" style="width: 400px">
       <template #append>
         <el-button type="warning" @click="updateUser">修改</el-button>
       </template>

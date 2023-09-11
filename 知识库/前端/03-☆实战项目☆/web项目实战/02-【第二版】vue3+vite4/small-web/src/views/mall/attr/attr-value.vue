@@ -1,5 +1,5 @@
 <template>
-  <base-no-data v-show="!listQuery.attrKeyId" class="h-200">tip:点击规格可查看关联属性</base-no-data>
+  <base-no-data v-show="!listQuery.attrKeyId" style="height: 200px">tip:点击规格可查看关联属性</base-no-data>
   <div v-show="listQuery.attrKeyId">
     <base-header>
       <span class="font-bold font-size-base">关联属性：</span>

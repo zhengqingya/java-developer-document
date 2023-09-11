@@ -58,17 +58,17 @@
 }
 
 // 宽高
-@for $i from 0 through 500 {
-  @each $key, $val in w width, h height, lh line-height {
-    // 如果能够被 10 整除，将应用以下样式
-    @if ($i % 10 == 0) {
-      // w-20 || lh-100
-      .#{$key}-#{$i} {
-        #{$val}: 1px * $i;
-      }
-    }
-  }
-}
+// @for $i from 0 through 500 {
+//   @each $key, $val in w width, h height, lh line-height {
+//     // 如果能够被 10 整除，将应用以下样式
+//     @if ($i % 10 == 0) {
+//       // w-20 || lh-100
+//       .#{$key}-#{$i} {
+//         #{$val}: 1px * $i;
+//       }
+//     }
+//   }
+// }
 
 .position-relative {
   position: relative; // 父：相

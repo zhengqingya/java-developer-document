@@ -1,7 +1,7 @@
 <template>
   <u-popup :show="isShow" mode="bottom" @close="handleClose" :round="10" :closeable="true">
     <view class="flex-column overflow-y-scroll">
-      <view class="top flex p-10 h-200">
+      <view class="top flex p-10" style="height: 200rpx">
         <image :src="spu.coverImg" class="img-base m-l-10"></image>
         <view class="spu-info m-l-30">
           <view class="font-size-lg font-bold">{{ spu.name }}</view>
@@ -26,8 +26,9 @@
             </view>
             <view class="flex-wrap w-full">
               <view
-                class="b-rd-10 font-size-sm text-color-grey bg-color-lightgrey m-b-10 m-r-10 p-x-30 p-y-10"
+                class="font-size-sm text-color-grey bg-color-lightgrey m-b-10 m-r-10 p-x-30 p-y-10"
                 :class="{ choose: value.isChoose }"
+                style="border-radius: 10rpx"
                 v-for="(value, key) in item.attrValueList"
                 :key="key"
                 @tap="chooseSku(index, key)">
@@ -37,7 +38,7 @@
           </view>
         </view>
       </scroll-view>
-      <view class="flex-between-center bg-color-lightgrey h-100 p-x-20">
+      <view class="flex-between-center bg-color-lightgrey p-x-20" style="height: 100rpx">
         <view class="left flex-column-center-start flex-1">
           <!-- <view class="font-size-base" v-if="chooseSkuData">
                         ￥{{ chooseSkuData.sellPrice / 100 }}

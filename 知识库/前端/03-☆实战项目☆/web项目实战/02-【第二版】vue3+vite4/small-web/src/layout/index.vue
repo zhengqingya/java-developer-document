@@ -6,7 +6,7 @@
     <div class="flex-1">
       <div id="top">
         <!-- 顶部导航栏 -->
-        <navbar class="h-50" />
+        <navbar style="height: 50px" />
         <!-- Tabs标签页 -->
         <div :style="{ width: appMainWidth + 'px' }">
           <tabs-view />

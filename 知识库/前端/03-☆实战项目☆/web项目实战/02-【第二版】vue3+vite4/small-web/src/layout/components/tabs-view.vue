@@ -3,7 +3,7 @@
     <el-scrollbar>
       <base-right-click class="flex">
         <div v-for="item in tabsList" :key="item" class="item m-4" :class="{ active: $route.meta.fullPath === item.meta.fullPath }" style="display: inline-block; white-space: nowrap">
-          <div class="flex-between-center h-20" @click.right="handleRightClick(item, $event)">
+          <div class="flex-between-center" style="height: 20px" @click.right="handleRightClick(item, $event)">
             <router-link :to="item.meta.fullPath" @click="activeTabs(item)">
               <span class="m-r-4">{{ item.meta.title }}</span>
             </router-link>

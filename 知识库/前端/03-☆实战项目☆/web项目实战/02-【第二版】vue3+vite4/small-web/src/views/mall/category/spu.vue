@@ -1,5 +1,5 @@
 <template>
-  <base-no-data v-show="!listQuery.categoryId" class="h-200">tip:点击分类可查看关联商品数据</base-no-data>
+  <base-no-data v-show="!listQuery.categoryId" style="height: 200px">tip:点击分类可查看关联商品数据</base-no-data>
   <div v-show="listQuery.categoryId">
     <base-header>
       <span class="font-bold font-size-base">关联商品：</span>

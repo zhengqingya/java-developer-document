@@ -6,8 +6,9 @@
         scroll-with-animation
         scroll-y>
         <view
-          class="item h-90 font-size-base flex-center-center"
+          class="item font-size-base flex-center-center"
           :class="{ active: item.id === currentCategoryId }"
+          style="height: 90rpx"
           v-for="(item, index) in reSpuList"
           :key="index"
           @tap="hanleCategoryTap(item.id)">
@@ -40,7 +41,8 @@
             </view>
             <view>
               <view
-                class="h-160 flex-center-center m-t-10"
+                class="flex-center-center m-t-10"
+                style="height: 160rpx"
                 v-for="(spuItem, index) in item.spuList"
                 :key="index"
                 @tap="showSpuDetailModal(item, spuItem)">

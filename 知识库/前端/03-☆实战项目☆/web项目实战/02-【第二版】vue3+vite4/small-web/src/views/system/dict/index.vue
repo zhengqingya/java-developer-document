@@ -16,7 +16,7 @@
     </base-card>
 
     <div class="flex-1 p-x-10">
-      <base-no-data v-if="!selectedDictTypeData" class="h-200">点击左侧数据查看</base-no-data>
+      <base-no-data v-if="!selectedDictTypeData" style="height: 200px">点击左侧数据查看</base-no-data>
 
       <div v-else>
         <base-card title="字典类型信息">

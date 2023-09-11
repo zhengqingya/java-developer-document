@@ -48,15 +48,15 @@
 
 // *******************************************************
 // 外边框圆角
-@for $i from 1 through 10 {
-  // 如果能够被 2 整除，将应用以下样式
-  @if ($i % 2 == 0) {
-    // b-rd-6
-    .b-rd-#{$i} {
-      border-radius: #{$i}rpx;
-    }
-  }
-}
+// @for $i from 1 through 10 {
+//   // 如果能够被 2 整除，将应用以下样式
+//   @if ($i % 2 == 0) {
+//     // b-rd-6
+//     .b-rd-#{$i} {
+//       border-radius: #{$i}rpx;
+//     }
+//   }
+// }
 
 .w-full {
   width: 100%;
@@ -66,17 +66,17 @@
 }
 
 // 宽高
-@for $i from 0 through 500 {
-  @each $key, $val in w width, h height, max-height max-height, line-height line-height {
-    // 如果能够被 10 整除，将应用以下样式
-    @if ($i % 10 == 0) {
-      // w-20 || max-height-500 || line-height-100
-      .#{$key}-#{$i} {
-        #{$val}: 1rpx * $i;
-      }
-    }
-  }
-}
+// @for $i from 0 through 500 {
+//   @each $key, $val in w width, h height, max-height max-height, line-height line-height {
+//     // 如果能够被 10 整除，将应用以下样式
+//     @if ($i % 10 == 0) {
+//       // w-20 || max-height-500 || line-height-100
+//       .#{$key}-#{$i} {
+//         #{$val}: 1rpx * $i;
+//       }
+//     }
+//   }
+// }
 
 .position-relative {
   position: relative; // 父：相

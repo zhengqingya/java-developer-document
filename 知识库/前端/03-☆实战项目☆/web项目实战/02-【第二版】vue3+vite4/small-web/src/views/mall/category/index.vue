@@ -1,6 +1,6 @@
 <template>
   <base-wraper class="flex">
-    <div class="w-400">
+    <div style="width: 400px">
       <base-header>
         <el-input v-model="listQuery.name" placeholder="请输入分类名称" style="width: 200px" clearable @clear="refreshTableData"></el-input>
         <el-button type="primary" @click="refreshTableData">查询</el-button>

@@ -27,7 +27,7 @@
         <base-cell-item label="模板标题">{{ form.title }}</base-cell-item>
         <base-cell-item label="模板内容">
           <div class="flex w-full">
-            <div class="w-500">
+            <div style="width: 500px">
               <el-input v-model="form.content" type="textarea" disabled autosize />
             </div>
             <div class="m-l-10 w-full">

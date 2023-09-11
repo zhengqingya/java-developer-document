@@ -2,7 +2,7 @@
   <base-wraper>
     <div v-if="menu != null" class="flex">
       <!-- 左边配置 -->
-      <div class="flex-c-start-center w-400">
+      <div class="flex-c-start-center" style="width: 400px">
         <div class="menu">
           <div v-for="(item, index) of menu.buttons" :key="index" class="content">
             <!-- 一级菜单 -->
