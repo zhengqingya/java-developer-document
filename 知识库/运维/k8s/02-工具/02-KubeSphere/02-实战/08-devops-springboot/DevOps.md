@@ -5,26 +5,26 @@
 
 自动检出 (Checkout) 代码、测试、分析、构建、部署并发布
 
-![img.png](images/kubesphere-devops-01.png)
+![](images/kubesphere-devops-01.png)
 
 > - 企业空间：`my-workspace`
 > - 项目：`my-project`
 
 ### 一、创建`DevOps项目`
 
-![img.png](images/kubesphere-devops-09.png)
+![](images/kubesphere-devops-09.png)
 
-![img.png](images/kubesphere-devops-10.png)
+![](images/kubesphere-devops-10.png)
 
 ### 二、DevOps凭证
 
 #### 1、gitee仓库认证`gitee-auth`
 
-![img.png](images/kubesphere-devops-02.png)
+![](images/kubesphere-devops-02.png)
 
 #### 2、阿里云docker仓库认证`aliyun-docker-registry-auth`
 
-![img.png](images/kubesphere-devops-03.png)
+![](images/kubesphere-devops-03.png)
 
 #### 3、k8s凭证`kubeconfig-auth`
 
@@ -33,27 +33,27 @@
 cat /root/.kube/config
 ```
 
-![img.png](images/kubesphere-devops-04.png)
+![](images/kubesphere-devops-04.png)
 
 将内容中的`https://lb.kubesphere.local:6443` -> `https://指定IP:6443`，不然之后部署可能会出现问题...
 
-![img.png](images/kubesphere-devops-20.png)
+![](images/kubesphere-devops-20.png)
 
 ---
 
 最终
 
-![img.png](images/kubesphere-devops-05.png)
+![](images/kubesphere-devops-05.png)
 
 ### 三、maven配置阿里云中央仓库
 
 `平台管理` -> `集群管理` -> `default` -> `配置` -> `配置字典` -> `ks-devops-agent`
 
-![img.png](images/kubesphere-devops-06.png)
+![](images/kubesphere-devops-06.png)
 
 编辑设置
 
-![img.png](images/kubesphere-devops-07.png)
+![](images/kubesphere-devops-07.png)
 
 ```
 <mirrors>
@@ -67,7 +67,7 @@ cat /root/.kube/config
 </mirrors>
 ```
 
-![img.png](images/kubesphere-devops-08.png)
+![](images/kubesphere-devops-08.png)
 
 ### 四、k8s-项目配置
 
@@ -75,11 +75,11 @@ cat /root/.kube/config
 
 `项目` -> `配置` -> `保密字典`
 
-![img.png](images/kubesphere-devops-16.png)
+![](images/kubesphere-devops-16.png)
 
-![img.png](images/kubesphere-devops-17.png)
+![](images/kubesphere-devops-17.png)
 
-![img.png](images/kubesphere-devops-18.png)
+![](images/kubesphere-devops-18.png)
 
 ```shell
 # 也可通过命令查看凭证
@@ -88,21 +88,21 @@ kubectl get secrets -n my-project
 
 ### 五、创建流水线
 
-![img.png](images/kubesphere-devops-11.png)
+![](images/kubesphere-devops-11.png)
 
-![img.png](images/kubesphere-devops-12.png)
+![](images/kubesphere-devops-12.png)
 
 进入后可以点击`编辑流水线`，提供了一些模板
 
-![img.png](images/kubesphere-devops-13.png)
+![](images/kubesphere-devops-13.png)
 
 ex: 第一步拉取代码
 
-![img.png](images/kubesphere-devops-14.png)
+![](images/kubesphere-devops-14.png)
 
 这里自己点着玩吧，很简单... 根据自己的需求去定制即可...
 
-![img.png](images/kubesphere-devops-15.png)
+![](images/kubesphere-devops-15.png)
 
 ### 六、其它
 
@@ -120,7 +120,7 @@ ex: 第一步拉取代码
 
 #### 报错 `ERROR: java.lang.RuntimeException: io.kubernetes.client.openapi.ApiException: java.net.UnknownHostException: lb.kubesphere.local: Name or service not known`
 
-![img.png](images/kubesphere-devops-19.png)
+![](images/kubesphere-devops-19.png)
 
 ```shell
 Deploy to Kubernetes14.66 s失败
@@ -235,8 +235,8 @@ stage('发布到k8s') {
 
 将内容中的`https://lb.kubesphere.local:6443` -> `https://指定IP:6443`
 
-![img.png](images/kubesphere-devops-20.png)
+![](images/kubesphere-devops-20.png)
 
 最终发布成功
 
-![img.png](images/kubesphere-devops-21.png)
+![](images/kubesphere-devops-21.png)

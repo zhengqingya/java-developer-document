@@ -4,13 +4,13 @@
 
 > /etc/mysql/my.cnf
 
-![img.png](images/kubesphere-deploy-mysql-01.png)
+![](images/kubesphere-deploy-mysql-01.png)
 
-![img_1.png](images/kubesphere-deploy-mysql-02.png)
+![](images/kubesphere-deploy-mysql-02.png)
 
-![img_2.png](images/kubesphere-deploy-mysql-03.png)
+![](images/kubesphere-deploy-mysql-03.png)
 
-![img_3.png](images/kubesphere-deploy-mysql-04.png)
+![](images/kubesphere-deploy-mysql-04.png)
 
 ### 2、创建存储卷 - mysql数据挂载卷
 
@@ -18,11 +18,11 @@
 
 > /var/lib/mysql
 
-![img_4.png](images/kubesphere-deploy-mysql-05.png)
+![](images/kubesphere-deploy-mysql-05.png)
 
-![img_5.png](images/kubesphere-deploy-mysql-06.png)
+![](images/kubesphere-deploy-mysql-06.png)
 
-![img_6.png](images/kubesphere-deploy-mysql-07.png)
+![](images/kubesphere-deploy-mysql-07.png)
 
 #### 配置动态供应的默认存储类`nfs-storage`
 
@@ -171,44 +171,44 @@ kubectl get sc
 
 ### 3、创建工作负载
 
-![img_7.png](images/kubesphere-deploy-mysql-08.png)
+![](images/kubesphere-deploy-mysql-08.png)
 
 基本信息和容器组设置
 
-![img_8.png](images/kubesphere-deploy-mysql-09.png)
+![](images/kubesphere-deploy-mysql-09.png)
 
 存储卷设置
 
-![img_9.png](images/kubesphere-deploy-mysql-10.png)
+![](images/kubesphere-deploy-mysql-10.png)
 
 下一步创建即可
 
-![img_10.png](images/kubesphere-deploy-mysql-11.png)
+![](images/kubesphere-deploy-mysql-11.png)
 
-![img_13.png](images/kubesphere-deploy-mysql-12.png)
+![](images/kubesphere-deploy-mysql-12.png)
 
 ### 4、创建服务 - 配置外网访问
 
 > 默认只能内部访问
 
-![img_12.png](images/kubesphere-deploy-mysql-13.png)
+![](images/kubesphere-deploy-mysql-13.png)
 
 ```shell
 mysql -uroot -proot -h mysql-qhft.my-project
 ```
 
-![img_11.png](images/kubesphere-deploy-mysql-14.png)
+![](images/kubesphere-deploy-mysql-14.png)
 
 现在来创建一个外部可访问的服务 `服务` -> `创建` -> `自定义服务` -> `指定工作负载`
 
-![img_14.png](images/kubesphere-deploy-mysql-15.png)
+![](images/kubesphere-deploy-mysql-15.png)
 
-![img_15.png](images/kubesphere-deploy-mysql-16.png)
+![](images/kubesphere-deploy-mysql-16.png)
 
 创建完成
 
-![img_16.png](images/kubesphere-deploy-mysql-17.png)
+![](images/kubesphere-deploy-mysql-17.png)
 
 然后可以测试通过集群任意节点的`30749`端口去连接访问了
 
-![img_17.png](images/kubesphere-deploy-mysql-18.png)
+![](images/kubesphere-deploy-mysql-18.png)

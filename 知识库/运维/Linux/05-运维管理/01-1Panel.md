@@ -11,12 +11,12 @@
 curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh && sh quick_start.sh
 ```
 
-![img_1.png](images/1Panel-01.png)
+![](images/1Panel-01.png)
 
 登录访问
 
-![img_2.png](images/1Panel-02.png)
-![img.png](images/1Panel-03.png)
+![](images/1Panel-02.png)
+![](images/1Panel-03.png)
 
 ---
 

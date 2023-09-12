@@ -25,9 +25,9 @@ watch kubectl get pods -n kuboard
 - 用户名： admin
 - 密码： Kuboard123
 
-![img.png](images/kuboard-dashboard-v3-login.png)
+![](images/kuboard-dashboard-v3-login.png)
 
-![img.png](images/kuboard-dashboard-v3.png)
+![](images/kuboard-dashboard-v3.png)
 
 --- 
 

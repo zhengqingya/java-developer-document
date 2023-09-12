@@ -20,7 +20,7 @@
 | 192.168.101.22 | node2  | worker       |
 
 > 这里小编先将之前环境保存下快照，然后用一个干净的环境来进行操作。
-> ![img_16.png](images/kubesphere-on-multiple-01.png)
+> ![](images/kubesphere-on-multiple-01.png)
 
 #### 1、配置主机名
 
@@ -71,7 +71,7 @@ chmod +x kk
 vim config-sample.yaml
 ```
 
-![img_17.png](images/kubesphere-on-multiple-02.png)
+![](images/kubesphere-on-multiple-02.png)
 
 ```yml
 spec:
@@ -103,11 +103,11 @@ spec:
 ./kk create cluster -f config-sample.yaml
 ```
 
-![img_18.png](images/kubesphere-on-multiple-03.png)
+![](images/kubesphere-on-multiple-03.png)
 然后等它自己慢慢安装吧...
-![img_19.png](images/kubesphere-on-multiple-04.png)
+![](images/kubesphere-on-multiple-04.png)
 10分钟左右安装完成`^_^`
-![img_20.png](images/kubesphere-on-multiple-05.png)
+![](images/kubesphere-on-multiple-05.png)
 
 #### 4、验证安装
 
@@ -115,15 +115,15 @@ spec:
 kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l app=ks-install -o jsonpath='{.items[0].metadata.name}') -f
 ```
 
-![img.png](images/kubesphere-on-multiple-09.png)
+![](images/kubesphere-on-multiple-09.png)
 
 #### 5、访问
 
 访问`集群任意机器IP:30880`
 初始账号密码: `admin/P@88w0rd`
 
-![img_21.png](images/kubesphere-on-multiple-06.png)
-![img_22.png](images/kubesphere-on-multiple-07.png)
+![](images/kubesphere-on-multiple-06.png)
+![](images/kubesphere-on-multiple-07.png)
 
 ### 四、卸载KubeSphere和Kubernetes
 
@@ -131,7 +131,7 @@ kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l app=
 ./kk delete cluster -f config-sample.yaml
 ```
 
-![img_23.png](images/kubesphere-on-multiple-08.png)
+![](images/kubesphere-on-multiple-08.png)
 
 
 --- 

@@ -4,7 +4,7 @@
 
 #### ->`基本信息`
 
-![img_22.png](images/kuboard-springblade-redis-01.png)
+![](images/kuboard-springblade-redis-01.png)
 
 #### ->`容器信息`
 
@@ -20,28 +20,28 @@
 | 健康检查-->容器存活检查探针 | 探测方式： `TCP连接` TCP端口： `6379`                    |      |
 | 健康检查-->容器就绪检查探针 | 探测方式： `TCP连接` TCP端口： `6379`                    |      |
 
-![img_21.png](images/kuboard-springblade-redis-02.png)
+![](images/kuboard-springblade-redis-02.png)
 
-![img_23.png](images/kuboard-springblade-redis-03.png)
+![](images/kuboard-springblade-redis-03.png)
 
 #### ->`存储挂载`
 
-![img_24.png](images/kuboard-springblade-redis-04.png)
+![](images/kuboard-springblade-redis-04.png)
 
 #### ->`高级设置`
 
-![img_25.png](images/kuboard-springblade-redis-05.png)
+![](images/kuboard-springblade-redis-05.png)
 
 #### ->`服务/应用路由`
 
-![img_26.png](images/kuboard-springblade-redis-06.png)
+![](images/kuboard-springblade-redis-06.png)
 
 保存操作
 
-![img_27.png](images/kuboard-springblade-redis-07.png)
+![](images/kuboard-springblade-redis-07.png)
 
 ### 2、验证部署结果
 
-![img_28.png](images/kuboard-springblade-redis-08.png)
+![](images/kuboard-springblade-redis-08.png)
 
-![img_29.png](images/kuboard-springblade-redis-09.png)
+![](images/kuboard-springblade-redis-09.png)

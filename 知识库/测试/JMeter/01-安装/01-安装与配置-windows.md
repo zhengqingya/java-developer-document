@@ -6,7 +6,7 @@
 
 双击运行`jmeter.bat`
 
-![img.png](images/jmeter-windows-run.png)
+![](images/jmeter-windows-run.png)
 
 ### 二、配置环境变量快捷启动jmeter
 
@@ -30,5 +30,5 @@ JMETER_HOME -> D:\zhengqingya\soft\soft-dev\apache-jmeter-5.5
 jmeter
 ```
 
-![img_1.png](images/jmeter-windows-run-cmd.png)
+![](images/jmeter-windows-run-cmd.png)
 

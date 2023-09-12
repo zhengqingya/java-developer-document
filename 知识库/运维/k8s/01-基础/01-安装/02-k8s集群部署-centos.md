@@ -16,7 +16,7 @@
 | 192.168.101.21 | k8s-node1  |
 | 192.168.101.22 | k8s-node2  |
 
-![img.png](images/k8s-install-centos-01.png)
+![](images/k8s-install-centos-01.png)
 
 > tips: 除了特别说明的地方，所有机器都要做相同操作
 
@@ -171,7 +171,7 @@ kubeadm init \
 ```
 
 日志信息如下：
-![img_1.png](images/k8s-install-centos-02.png)
+![](images/k8s-install-centos-02.png)
 
 ```
 Your Kubernetes control-plane has initialized successfully!
@@ -226,7 +226,7 @@ curl https://docs.projectcalico.org/manifests/calico.yaml -O
 cat calico.yaml | grep 192.168.0.0
 ```
 
-![img_2.png](images/k8s-install-centos-03.png)
+![](images/k8s-install-centos-03.png)
 
 ```shell
 # 修改过后再次查看
@@ -243,20 +243,20 @@ kubectl apply -f calico.yaml
 kubectl get pod -A
 ```
 
-![img_3.png](images/k8s-install-centos-04.png)
+![](images/k8s-install-centos-04.png)
 
 #### 5、加入node节点
 
 > tips: node机器执行
 
-![img_4.png](images/k8s-install-centos-05.png)
+![](images/k8s-install-centos-05.png)
 
 ```shell
 kubeadm join cluster-endpoint:6443 --token pm47n2.n9nl7oudlm3mlxoc \
     --discovery-token-ca-cert-hash sha256:3b979b2842feba026a0bbb8f5e74dd6eca52c2da664ed2eacbf14dbfd1c2b13a
 ```
 
-![img_5.png](images/k8s-install-centos-06.png)
+![](images/k8s-install-centos-06.png)
 
 ```shell
 # 如果忘记也可在master机器执行如下命令生成新令牌，然后拿到命令去node机器执行加入
@@ -273,7 +273,7 @@ kubectl get nodes
 kubectl get pods -A
 ```
 
-![img_6.png](images/k8s-install-centos-07.png)
+![](images/k8s-install-centos-07.png)
 
 ### 五、测试集群 -- 创建nginx容器
 
@@ -290,9 +290,9 @@ kubectl expose deployment nginx --port=80 --target-port=80 --type=NodePort
 kubectl get service nginx
 ```
 
-![img_7.png](images/k8s-install-centos-08.png)
+![](images/k8s-install-centos-08.png)
 访问： `http://集群任意IP:32474`
-![img_8.png](images/k8s-install-centos-09.png)
+![](images/k8s-install-centos-09.png)
 
 ### 六、部署`Kubernetes Dashboard` -- 可视化界面
 
@@ -313,13 +313,13 @@ kubectl edit svc kubernetes-dashboard -n kubernetes-dashboard
 kubectl get svc -A |grep kubernetes-dashboard
 ```
 
-![img_9.png](images/k8s-install-centos-10.png)
+![](images/k8s-install-centos-10.png)
 
 访问： `https://集群任意IP:30586`
 
 > tips: 小编使用虚拟机环境部署，通过谷歌浏览器无法正常访问，然后换了个火狐浏览器正常访问 `^_^`
 
-![img_10.png](images/k8s-install-centos-11.png)
+![](images/k8s-install-centos-11.png)
 
 #### 2、创建访问账号
 
@@ -352,12 +352,12 @@ kubectl apply -f kubernetes-dashboard-user.yaml
 kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
 ````
 
-![img_11.png](images/k8s-install-centos-12.png)
+![](images/k8s-install-centos-12.png)
 
 #### 4、访问
 
-![img_12.png](images/k8s-install-centos-13.png)
-![img_13.png](images/k8s-install-centos-14.png)
+![](images/k8s-install-centos-13.png)
+![](images/k8s-install-centos-14.png)
 
 --- 
 

@@ -29,13 +29,13 @@ cd /root/.jenkins
 
 配置&保存
 
-![img.png](images/jenkins-password-security-01.png)
+![](images/jenkins-password-security-01.png)
 
 ### 4、修改账号密码
 
 `Manage Jenkins` -> `Manage Users`
 
-![img_1.png](images/jenkins-password-security-02.png)
+![](images/jenkins-password-security-02.png)
 
 ### 5、还原认证 & 重启jenkins进行登录认证
 

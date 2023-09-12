@@ -80,7 +80,7 @@ public class ContiPerfTest {
 
 `target/contiperf-report/index.html`
 
-![img.png](images/contiperf-report.png)
+![](images/contiperf-report.png)
 
 指标说明：
 

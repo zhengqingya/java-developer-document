@@ -1,6 +1,6 @@
 # Linux目录
 
-![img.png](images/linux-ll.png)
+![](images/linux-ll.png)
 
 - `bin目录`：binary 二进制，该目录中存储的是一些二进制文件，文件都可以被运行
 - `dev目录`：该目录中主要存放的是外接设备，例如盘、其他的光盘等。在其中的外接设备是不能直接被使用的，需要挂载（类似windows下的分配盘符）

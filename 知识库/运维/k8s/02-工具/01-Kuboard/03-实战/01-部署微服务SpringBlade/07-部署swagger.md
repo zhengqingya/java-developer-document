@@ -6,7 +6,7 @@
 
 ##### ->`基本信息`
 
-![img.png](images/kuboard-springblade-swagger-01.png)
+![](images/kuboard-springblade-swagger-01.png)
 
 ##### ->`容器信息`
 
@@ -23,9 +23,9 @@
 | 健康检查-->容器存活检查探针 | 探测方式： `HTTP请求` HTTP请求端口： `80` HTTP请求路径： `/actuator/health`                                                                                                                                                                                                   |                                                              |
 | 健康检查-->容器就绪检查探针 | 探测方式： `HTTP请求` HTTP请求端口： `80` HTTP请求路径： `/actuator/health`                                                                                                                                                                                                   |                                                              |
 
-![img_1.png](images/kuboard-springblade-swagger-02.png)
+![](images/kuboard-springblade-swagger-02.png)
 
-![img_2.png](images/kuboard-springblade-swagger-03.png)
+![](images/kuboard-springblade-swagger-03.png)
 
 ##### ->`存储挂载`
 
@@ -41,10 +41,10 @@
 
 保存操作
 
-![img_3.png](images/kuboard-springblade-swagger-04.png)
+![](images/kuboard-springblade-swagger-04.png)
 
 ### 2、验证部署结果
 
 追踪日志
 
-![img_4.png](images/kuboard-springblade-swagger-05.png)
+![](images/kuboard-springblade-swagger-05.png)

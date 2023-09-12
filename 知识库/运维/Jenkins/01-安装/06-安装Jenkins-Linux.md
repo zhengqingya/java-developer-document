@@ -27,9 +27,9 @@ sh jenkins.sh start/stop/restart
 
 访问`IP:10000/jenkins`
 
-![img.png](images/jenkins-install-01.png)
+![](images/jenkins-install-01.png)
 
-![img_1.png](images/jenkins-install-02.png)
+![](images/jenkins-install-02.png)
 
 ---
 

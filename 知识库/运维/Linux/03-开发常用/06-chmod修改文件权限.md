@@ -6,7 +6,7 @@
 -rwxrwxrwx 1 root root 74552 1月   3 17:20 zhengqingya.sh
 ```
 
-![img.png](images/chmod-rwx.png)
+![](images/chmod-rwx.png)
 
 | 参数  | 含义                          |
 |-----|-----------------------------|

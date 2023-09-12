@@ -25,7 +25,7 @@ kubectl get deploy
 kubectl delete deploy my-dep-nginx
 ```
 
-![img_8.png](images/k8s-actual-09.png)
+![](images/k8s-actual-09.png)
 
 #### 1、多副本
 
@@ -36,7 +36,7 @@ kubectl delete deploy my-dep-nginx
 kubectl create deployment my-dep-nginx --image=nginx --replicas=3
 ```
 
-![img_9.png](images/k8s-actual-10.png)
+![](images/k8s-actual-10.png)
 
 ##### b、配置文件
 
@@ -79,7 +79,7 @@ kubectl delete -f my-dep-nginx.yaml
 ##### c、`Kubernetes Dashboard`可视化界面中操作
 
 切换到指定命名空间下 -> `＋` -> `从表单创建`
-![img_10.png](images/k8s-actual-11.png)
+![](images/k8s-actual-11.png)
 
 #### 2、扩缩容
 
@@ -95,7 +95,7 @@ kubectl scale deploy/my-dep-nginx --replicas=2
 kubectl get pod
 ```
 
-![img_11.png](images/k8s-actual-12.png)
+![](images/k8s-actual-12.png)
 
 ##### 方式2
 
@@ -107,13 +107,13 @@ kubectl edit deploy my-dep-nginx
 kubectl get pod
 ```
 
-![img_12.png](images/k8s-actual-13.png)
+![](images/k8s-actual-13.png)
 
 ##### 方式3
 
 `Kubernetes Dashboard`可视化界面中操作
-![img_13.png](images/k8s-actual-14.png)
-![img_14.png](images/k8s-actual-15.png)
+![](images/k8s-actual-14.png)
+![](images/k8s-actual-15.png)
 
 #### 3、自愈&故障转移
 
@@ -135,7 +135,7 @@ docker stop xxx
 kubectl get pod -w
 ```
 
-![img_15.png](images/k8s-actual-16.png)
+![](images/k8s-actual-16.png)
 
 #### 4、滚动更新
 
@@ -151,7 +151,7 @@ kubectl set image deploy/my-dep-nginx nginx=nginx:1.21.6 --record
 kubectl rollout status deploy/my-dep-nginx
 ```
 
-![img_16.png](images/k8s-actual-17.png)
+![](images/k8s-actual-17.png)
 
 #### 5、版本回退
 
@@ -175,8 +175,8 @@ kubectl get pod -w
 kubectl get deploy/my-dep-nginx -oyaml | grep image
 ```
 
-![img_17.png](images/k8s-actual-18.png)
-![img_18.png](images/k8s-actual-19.png)
+![](images/k8s-actual-18.png)
+![](images/k8s-actual-19.png)
 
 #### 6、其它工作负载
 

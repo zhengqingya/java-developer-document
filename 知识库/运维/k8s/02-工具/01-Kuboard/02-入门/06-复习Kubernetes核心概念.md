@@ -19,7 +19,7 @@ Kubernetes不仅仅支持Docker，还支持Rocket，这是另一种容器技术�
 集群是一组节点，这些节点可以是物理服务器或者虚拟机，之上安装了Kubernetes平台。下图展示这样的集群。注意该图为了强调核心概念有所简化。
 这里可以看到一个典型的Kubernetes架构图。
 
-![img.png](images/k8s-cluster.png)
+![](images/k8s-cluster.png)
 
 上图可以看到如下组件，使用特别的图标表示Service和Label：
 
@@ -57,7 +57,7 @@ Replication Controller确保任意时间都有指定数量的Pod“副本”在�
 如果为某个Pod创建了Replication Controller并且指定3个副本，它会创建3个Pod，并且持续监控它们。
 如果某个Pod不响应，那么Replication Controller会替换它，保持总数为3.如下面的动画所示：
 
-![](https://www.kuboard.cn/assets/img/03d07039d9fc80c0f692d6176f65936e.7af9fab5.gif)
+![](./images/06-复习Kubernetes核心概念-20230912152436083.png)
 
 如果之前不响应的Pod恢复了，现在就有4个Pod了，那么Replication Controller会将其中一个终止保持总数为3。如果在运行中将副本总数改为5，Replication
 Controller会立刻启动2个新Pod，保证总数为5。还可以按照这样的方式缩小Pod，这个特性在执行滚动 升级 (opens new window)时很有用。
@@ -81,7 +81,7 @@ Controller会立刻启动2个新Pod，保证总数为5。还可以按照这样�
 
 下述动画展示了Service的功能。注意该图作了很多简化。如果不进入网络配置，那么达到透明的负载均衡目标所涉及的底层网络和路由相对先进。
 
-![](https://www.kuboard.cn/assets/img/e7a273fcdc03d2417b354b60c253552f.19ae82d9.gif)
+![](./images/06-复习Kubernetes核心概念-20230912152436393.png)
 
 每个节点都运行如下Kubernetes关键组件：
 

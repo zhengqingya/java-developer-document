@@ -2,7 +2,7 @@
 
 > 将一组Pods公开为网络服务的抽象方法；Pod的服务发现与负载均衡。
 
-![img_19.png](images/k8s-actual-20.png)
+![](images/k8s-actual-20.png)
 
 ###### 命令行
 
@@ -27,8 +27,8 @@ kubectl delete service my-dep-nginx
 kubectl get pod -l app=my-dep-nginx
 ```
 
-![img_20.png](images/k8s-actual-21.png)
-![img_21.png](images/k8s-actual-22.png)
+![](images/k8s-actual-21.png)
+![](images/k8s-actual-22.png)
 
 ###### 配置文件
 

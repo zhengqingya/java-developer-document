@@ -4,7 +4,7 @@
 > [https://kubernetes.io/zh/docs/concepts/services-networking/ingress](https://kubernetes.io/zh/docs/concepts/services-networking/ingress)
 > [https://github.com/kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx)
 
-![img_22.png](images/k8s-actual-23.png)
+![](images/k8s-actual-23.png)
 
 #### 1、安装
 
@@ -30,14 +30,14 @@ kubectl get pod,svc -n ingress-nginx
 kubectl get svc -A
 ```
 
-![img_23.png](images/k8s-actual-24.png)
+![](images/k8s-actual-24.png)
 
 访问
 
 1. `https://集群任意IP:32248`
 2. `http://集群任意IP:31424`
 
-![img_24.png](images/k8s-actual-25.png)
+![](images/k8s-actual-25.png)
 
 #### 2、使用
 
@@ -125,7 +125,7 @@ kubectl apply -f ingress-test.yaml
 
 ##### a、域名访问
 
-![img_25.png](images/k8s-actual-26.png)
+![](images/k8s-actual-26.png)
 
 ```shell
 cat <<EOF | sudo tee ./ingress-rule-host.yaml
@@ -170,19 +170,19 @@ kubectl apply -f ingress-rule-host.yaml
 kubectl get ingress
 ```
 
-![img_26.png](images/k8s-actual-27.png)
+![](images/k8s-actual-27.png)
 
 访问
 
 > hosts域名切换工具 [https://github.com/oldj/SwitchHosts](https://github.com/oldj/SwitchHosts)
 
-![img_27.png](images/k8s-actual-28.png)
+![](images/k8s-actual-28.png)
 
 1. `foo.bar.com:31424`       => service1
 2. `bar.foo.com:31424`       => service2 -- ingress层返回404
 2. `bar.foo.com:31424/nginx` => service2 -- nginx层返回404
 
-![img_28.png](images/k8s-actual-29.png)
+![](images/k8s-actual-29.png)
 
 ##### b、路径重写
 
@@ -234,7 +234,7 @@ kubectl get ingress
 ```
 
 访问 `bar.foo.com:31424/nginx` => `bar.foo.com:31424` 即访问nginx根路径
-![img_29.png](images/k8s-actual-30.png)
+![](images/k8s-actual-30.png)
 
 ##### c、流量限制
 
@@ -276,4 +276,4 @@ kubectl get ingress
 ```
 
 频繁访问 `limit.ingress.com:31424` 会出现503
-![img_30.png](images/k8s-actual-31.png)
+![](images/k8s-actual-31.png)

@@ -28,7 +28,7 @@ java -version
 #### 2、JMeter
 
 下载 [https://jmeter.apache.org/download_jmeter.cgi](https://jmeter.apache.org/download_jmeter.cgi)
-![jmeter-download](images/jmeter-download.png)
+![](images/jmeter-download.png)
 
 运行
 
@@ -37,7 +37,7 @@ cd apache-jmeter-5.4.3/bin
 sh jmeter
 ```
 
-![jmeter-sh](images/jmeter-sh.png)
+![](images/jmeter-sh.png)
 
 ### 二、配置环境变量快捷启动jmeter
 
@@ -61,5 +61,5 @@ source ~/.bash_profile
 jmeter
 ```
 
-![jmeter-sh-2](images/jmeter-sh-2.png)
+![](images/jmeter-sh-2.png)
 

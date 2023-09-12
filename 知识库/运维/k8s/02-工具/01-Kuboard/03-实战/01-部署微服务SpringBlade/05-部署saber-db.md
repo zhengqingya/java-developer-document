@@ -4,7 +4,7 @@
 
 #### ->`基本信息`
 
-![img_38.png](images/kuboard-springblade-db-01.png)
+![](images/kuboard-springblade-db-01.png)
 
 #### ->`容器信息`
 
@@ -20,23 +20,23 @@
 | 健康检查-->容器存活检查探针 | 探测方式： `命令行` 执行命令： `mysqladmin -uroot -proot ping`                          |                                               |
 | 健康检查-->容器就绪检查探针 | 探测方式： `命令行` 执行命令： `mysql -uroot -proot -e 'select 1'`                      |                                               |
 
-![img_39.png](images/kuboard-springblade-db-02.png)
+![](images/kuboard-springblade-db-02.png)
 
 #### ->`存储挂载`
 
-![img_40.png](images/kuboard-springblade-db-03.png)
+![](images/kuboard-springblade-db-03.png)
 
 #### ->`高级设置`
 
-![img_41.png](images/kuboard-springblade-db-04.png)
+![](images/kuboard-springblade-db-04.png)
 
 #### ->`服务/应用路由`
 
-![img_42.png](images/kuboard-springblade-db-05.png)
+![](images/kuboard-springblade-db-05.png)
 
 保存操作
 
-![img_43.png](images/kuboard-springblade-db-06.png)
+![](images/kuboard-springblade-db-06.png)
 
 ### 2、验证部署结果
 
@@ -49,4 +49,4 @@ use blade;
 show tables;
 ```
 
-![img_44.png](images/kuboard-springblade-db-07.png)
+![](images/kuboard-springblade-db-07.png)

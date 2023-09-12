@@ -53,11 +53,11 @@ chmod +x kk
 ./kk create cluster --with-kubernetes v1.21.5 --with-kubesphere v3.2.1
 ```
 
-![img_7.png](images/kubesphere-on-one-01.png)
+![](images/kubesphere-on-one-01.png)
 日志如下的时候：表示Kubernetes部署完成，等待部署KubeSphere，这里时间会有点久~
 
 `Please wait for the installation to complete:   >>---> `
-![img_8.png](images/kubesphere-on-one-02.png)
+![](images/kubesphere-on-one-02.png)
 如下安装成功
 
 > tips: 记录下控制台地址，账号密码
@@ -65,7 +65,7 @@ chmod +x kk
 > Account: admin
 > Password: P@88w0rd
 
-![img_9.png](images/kubesphere-on-one-03.png)
+![](images/kubesphere-on-one-03.png)
 
 ```shell
 # 查看版本
@@ -80,11 +80,11 @@ kubectl get pod --all-namespaces
 
 ### 四、访问控制台
 
-![img_10.png](images/kubesphere-on-one-04.png)
-![img_11.png](images/kubesphere-on-one-05.png)
-![img_12.png](images/kubesphere-on-one-06.png)
-![img_13.png](images/kubesphere-on-one-07.png)
-![img_14.png](images/kubesphere-on-one-08.png)
+![](images/kubesphere-on-one-04.png)
+![](images/kubesphere-on-one-05.png)
+![](images/kubesphere-on-one-06.png)
+![](images/kubesphere-on-one-07.png)
+![](images/kubesphere-on-one-08.png)
 
 ### 五、卸载
 
@@ -95,7 +95,7 @@ kubectl get pod --all-namespaces
 ./kk delete cluster
 ```
 
-![img_15.png](images/kubesphere-on-one-09.png)
+![](images/kubesphere-on-one-09.png)
 
 ### 六、使用 KubeKey 升级 （`kubesphere v3.2.1` -> `kubesphere v3.3.1`）
 
@@ -112,12 +112,12 @@ chmod +x kk
 ./kk upgrade --with-kubernetes v1.22.12 --with-kubesphere v3.3.1
 ```
 
-![img.png](images/kubesphere-on-one-10.png)
+![](images/kubesphere-on-one-10.png)
 
-![img.png](images/kubesphere-on-one-11.png)
+![](images/kubesphere-on-one-11.png)
 
 > tips: 经测试升级后devops不能正常使用`一直在等待中`...
-> ![img.png](images/kubesphere-on-one-12.png)
+> ![](images/kubesphere-on-one-12.png)
 > 通过卸载devops后重新启用也不可用...
 > 个人感觉为了避免后期再有其它功能异常，这里直接重装新版kubesphere吧... 当然我这里里面目前也没啥东西，所以不重要...
 
@@ -126,7 +126,7 @@ chmod +x kk
 > 补充说明：
 > 重装也没用... 可能是我等太久太着急了 后面发现还有一个在Pending...
 > `kubectl get pod -n kubesphere-devops-system`
-> ![img.png](images/kubesphere-on-one-13.png)
+> ![](images/kubesphere-on-one-13.png)
 
 下面来尝试下解决
 
@@ -152,11 +152,11 @@ kubectl describe node master
 
 会不会是因为新版本jenkins运行cpu太大申请调度不了足够cpu导致？？ 目前测试机条件有限，到处为止吧...
 
-![img.png](images/kubesphere-on-one-14.png)
+![](images/kubesphere-on-one-14.png)
 
 看了下旧版的cpu果然要小些，那么是否我尝试下修改新版配置就可以正常运行了呢？ 后期再测试吧...
 
-![img.png](images/kubesphere-on-one-15.png)
+![](images/kubesphere-on-one-15.png)
 
 --- 
 

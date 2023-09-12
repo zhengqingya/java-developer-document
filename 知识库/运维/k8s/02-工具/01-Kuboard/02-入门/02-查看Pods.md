@@ -2,7 +2,7 @@
 
 #### 1.1、Pod 容器组
 
-![img.png](images/kuboard-pod-01.png)
+![](images/kuboard-pod-01.png)
 
 `Pod 容器组` 是一个k8s中一个抽象的概念，用于存放一组 container（可包含一个或多个 container 容器，即图上正方体)，以及这些 container （容器）的一些共享资源。这些资源包括：
 
@@ -24,7 +24,7 @@ Pod（容器组）是 k8s 集群上的最基本的单元。当我们在 k8s 上�
 
 下图显示一个 Node（节点）上含有4个 Pod（容器组）
 
-![img.png](images/kuboard-pod-02.png)
+![](images/kuboard-pod-02.png)
 
 Pod（容器组）总是在 **Node（节点）** 上运行。Node（节点）是 kubernetes 集群中的计算机，可以是虚拟机或物理机。每个 Node（节点）都由 master 管理。一个
 Node（节点）可以有多个Pod（容器组），kubernetes master 会根据每个 Node（节点）上可用资源的情况，自动调度 Pod（容器组）到最佳的 Node（节点）上。
@@ -42,10 +42,10 @@ Kuboard 中的名称空间首页如下图所示，在右上角的 `自定义名�
 
 左侧 `工作负载` 菜单，可以按列表的形式展示 `Deployment`、`StatefulSet`、`DaemonSet` 等工作负载。
 
-![img.png](images/kuboard-pod-03.png)
+![](images/kuboard-pod-03.png)
 
 #### 2.2、查看部署及其容器组
 
-![img.png](images/kuboard-pod-04.png)
+![](images/kuboard-pod-04.png)
 
 > tips: Worker节点是k8s中的工作计算机，可能是VM或物理计算机，具体取决于群集。多个Pod可以在一个节点上运行。

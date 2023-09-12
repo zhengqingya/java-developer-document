@@ -15,7 +15,7 @@ echo $(kubectl -n kube-system get secret $(kubectl -n kube-system get secret | g
 
 访问： `http://集群任意节点IP:32567/dashboard`
 
-![img.png](images/kuboard-dashboard-v2.png)
+![](images/kuboard-dashboard-v2.png)
 
 --- 
 

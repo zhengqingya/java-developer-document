@@ -48,7 +48,7 @@ pipeline {
 - 账号：`admin`
 - 密码：`P@88w0rd`
 
-![img.png](images/node-upgrade-01.png)
+![](images/node-upgrade-01.png)
 
 ### 2、重启jenkins
 
@@ -56,4 +56,4 @@ pipeline {
 
 ### 3、全局工具配置
 
-![img.png](images/node-upgrade-02.png)
+![](images/node-upgrade-02.png)

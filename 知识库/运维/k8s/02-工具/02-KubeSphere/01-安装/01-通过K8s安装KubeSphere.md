@@ -18,7 +18,7 @@
 | 192.168.101.21 | k8s-node1  |
 | 192.168.101.22 | k8s-node2  |
 
-![img.png](images/kubesphere-on-k8s-01.png)
+![](images/kubesphere-on-k8s-01.png)
 
 #### 1、配置k8s集群中的默认存储类型 -- NFS
 
@@ -214,7 +214,7 @@ kubectl apply -f storageclass.yaml
 kubectl get sc
 ```
 
-![img_1.png](images/kubesphere-on-k8s-02.png)
+![](images/kubesphere-on-k8s-02.png)
 
 创建一个PVC测试一下动态供应能力
 
@@ -243,7 +243,7 @@ kubectl get pvc
 kubectl get pv
 ```
 
-![img_2.png](images/kubesphere-on-k8s-03.png)
+![](images/kubesphere-on-k8s-03.png)
 
 #### 2、metrics-server
 
@@ -453,7 +453,7 @@ kubectl top pods
 kubectl top pods -A
 ```
 
-![img_3.png](images/kubesphere-on-k8s-04.png)
+![](images/kubesphere-on-k8s-04.png)
 
 ### 三、安装KubeSphere
 
@@ -477,13 +477,13 @@ kubectl get pod --all-namespaces
 kubectl get svc/ks-console -n kubesphere-system
 ```
 
-![img_4.png](images/kubesphere-on-k8s-05.png)
+![](images/kubesphere-on-k8s-05.png)
 
 访问`集群任意机器IP:30880`
 初始账号密码: `admin/P@88w0rd`
 
-![img_5.png](images/kubesphere-on-k8s-06.png)
-![img_6.png](images/kubesphere-on-k8s-07.png)
+![](images/kubesphere-on-k8s-06.png)
+![](images/kubesphere-on-k8s-07.png)
 
 ### 四、卸载KubeSphere
 

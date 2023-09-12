@@ -8,7 +8,7 @@
 
 `JDK1.8` -> `/usr/lib/jvm/java`
 
-![img.png](images/jenkins-global-tool-config-jdk.png)
+![](images/jenkins-global-tool-config-jdk.png)
 
 ### Maven
 

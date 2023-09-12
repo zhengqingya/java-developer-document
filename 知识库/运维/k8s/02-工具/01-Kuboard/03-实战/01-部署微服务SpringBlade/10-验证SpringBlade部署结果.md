@@ -8,17 +8,17 @@
 
 ### `名称空间` -> `spring-blade` -> `概要`
 
-![img.png](images/kuboard-springblade-schema.png)
+![](images/kuboard-springblade-schema.png)
 
 ### 问题： `FailedScheduling 0/3 nodes are available: 3 Too many pods.`
 
-![img.png](images/kuboard-springblade-problem-FailedScheduling.png)
+![](images/kuboard-springblade-problem-FailedScheduling.png)
 
 腾讯云tke的节点pod数量限制
 
-![img.png](images/tke-cluster-pod-num-01.png)
+![](images/tke-cluster-pod-num-01.png)
 
 增大一点即可...
 
-![img.png](images/tke-cluster-pod-num-02.png)
+![](images/tke-cluster-pod-num-02.png)
 

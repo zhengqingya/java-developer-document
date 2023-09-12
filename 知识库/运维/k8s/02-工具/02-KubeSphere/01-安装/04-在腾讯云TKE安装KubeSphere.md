@@ -4,11 +4,11 @@
 
 > tips: 我这里演示就在当前机器操作安装kubesphere，tke无需额外配置了...
 
-![img.png](images/kubesphere-on-tke-01.png)
+![](images/kubesphere-on-tke-01.png)
 
 `基本信息` -> `集群APIServer信息` -> 开启`外网访问`
 
-![img_1.png](images/kubesphere-on-tke-02.png)
+![](images/kubesphere-on-tke-02.png)
 
 ### 安装 KubeSphere
 
@@ -48,4 +48,4 @@ kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l 'app
 - Account: admin
 - Password: P@88w0rd
 
-![img.png](images/kubesphere-on-tke-03.png)
+![](images/kubesphere-on-tke-03.png)

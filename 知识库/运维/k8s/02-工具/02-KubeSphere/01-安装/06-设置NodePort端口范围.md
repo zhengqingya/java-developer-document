@@ -13,7 +13,7 @@ vim /etc/kubernetes/manifests/kube-apiserver.yaml
 --service-node-port-range=1-32767
 ```
 
-![img.png](images/kubesphere-NodePort-01.png)
+![](images/kubesphere-NodePort-01.png)
 
 ```shell
 # 重启apiserver
@@ -27,4 +27,4 @@ kubectl describe pod $apiserver_pods -n kube-system
 ```
 
 检验
-![img.png](images/kubesphere-NodePort-02.png)
+![](images/kubesphere-NodePort-02.png)

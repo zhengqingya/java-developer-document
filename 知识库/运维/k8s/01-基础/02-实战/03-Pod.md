@@ -31,7 +31,7 @@ curl 10.0.169.136:80
 kubectl exec -it mynginx -- /bin/bash
 ```
 
-![img_2.png](images/k8s-actual-03.png)
+![](images/k8s-actual-03.png)
 
 #### 2、配置文件
 
@@ -92,14 +92,14 @@ kubectl delete -f my-pods.yaml
 watch -n 1 kubectl get pod
 ```
 
-![img_3.png](images/k8s-actual-04.png)
+![](images/k8s-actual-04.png)
 
 #### 3、`Kubernetes Dashboard`可视化界面中操作
 
 切换到指定命名空间下 -> `＋` -> `输入并创建`
-![img_4.png](images/k8s-actual-05.png)
-![img_5.png](images/k8s-actual-06.png)
+![](images/k8s-actual-05.png)
+![](images/k8s-actual-06.png)
 
 查看日志
-![img_6.png](images/k8s-actual-07.png)
-![img_7.png](images/k8s-actual-08.png)
+![](images/k8s-actual-07.png)
+![](images/k8s-actual-08.png)

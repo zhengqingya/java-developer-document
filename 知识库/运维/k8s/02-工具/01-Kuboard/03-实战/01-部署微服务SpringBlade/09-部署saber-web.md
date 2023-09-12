@@ -6,7 +6,7 @@
 
 ##### ->`基本信息`
 
-![img.png](images/kuboard-springblade-web-01.png)
+![](images/kuboard-springblade-web-01.png)
 
 ##### ->`容器信息`
 
@@ -21,7 +21,7 @@
 | 健康检查-->容器存活检查探针 | 探测方式： `HTTP请求` httpGet端口： `80` httpGet路径：`/`            |      |
 | 健康检查-->容器就绪检查探针 | 探测方式： `HTTP请求` httpGet端口： `80` httpGet路径：`/`            |      |
 
-![img_1.png](images/kuboard-springblade-web-02.png)
+![](images/kuboard-springblade-web-02.png)
 
 ##### ->`存储挂载`
 
@@ -33,14 +33,14 @@
 
 ##### ->`服务/应用路由`
 
-![img_2.png](images/kuboard-springblade-web-03.png)
+![](images/kuboard-springblade-web-03.png)
 
 保存操作
 
-![img.png](images/kuboard-springblade-web-04.png)
+![](images/kuboard-springblade-web-04.png)
 
 ### 2、验证部署结果
 
 访问: `http://任意节点IP:32102`
 
-![img_1.png](images/kuboard-springblade-web-05.png)
+![](images/kuboard-springblade-web-05.png)

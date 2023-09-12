@@ -17,11 +17,11 @@ ncdu
 ncdu /home
 ```
 
-![img.png](images/ncdu-01.png)
+![](images/ncdu-01.png)
 
 按 `回车` 进入指定目录
 按 `?` 查看帮助
 按 `d` 删除文件
 
-![img_1.png](images/ncdu-02.png)
+![](images/ncdu-02.png)
 
