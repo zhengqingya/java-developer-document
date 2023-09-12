@@ -37,7 +37,7 @@ npm install -g nrm open@8.4.2 -save
 
 ### 二、使用
 
-![img.png](images/nrm-ls.png)
+![](images/nrm-ls.png)
 
 ```shell
 # 查看可选源，其中带有 * 号的表示当前正在使用的版本

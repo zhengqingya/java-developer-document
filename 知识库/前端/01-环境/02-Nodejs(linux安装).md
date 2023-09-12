@@ -76,7 +76,7 @@ npm cache clean -f
 > tips: 建议不要轻易改这个，感觉有坑... 一般正常服务器也不会出现这个问题，我这里是由于局域网的虚拟机出现此问题；
 > 建议操作前存个快照。
 
-![img.png](images/nodejs-problem-GLIBCXX.png)
+![](images/nodejs-problem-GLIBCXX.png)
 
 ```shell
 node: /lib64/libm.so.6: version `GLIBC_2.27' not found (required by node)
@@ -176,15 +176,15 @@ node -v
 npm -v
 ```
 
-![img.png](images/GLIBC_2.27-not-found-problem-01.png)
+![](images/GLIBC_2.27-not-found-problem-01.png)
 
 ##### 解决中文乱码问题
 
-![img.png](images/GLIBC_2.27-not-found-problem-02.png)
+![](images/GLIBC_2.27-not-found-problem-02.png)
 
 ```shell
 # 解决中文乱码问题
 cd /root/glibc-2.28/build && make localedata/install-locales
 ```
 
-![img_1.png](images/GLIBC_2.27-not-found-problem-03.png)
+![](images/GLIBC_2.27-not-found-problem-03.png)

@@ -10,8 +10,8 @@ nvm（Node.js Version Manager）是一个用于管理 Node.js 版本的工具，
 下载`nvm-setup.exe` https://github.com/coreybutler/nvm-windows/releases
 
 双击安装
-![img.png](images/nvm-windows-01.png)
-![img_1.png](images/nvm-windows-02.png)
+![](images/nvm-windows-01.png)
+![](images/nvm-windows-02.png)
 
 ### 二、常用命令 & 安装nodejs
 
@@ -40,4 +40,4 @@ nvm alias 别名 版本号
 nvm use 别名
 ```
 
-![img_1.png](images/nvm-windows-03.png)
+![](images/nvm-windows-03.png)

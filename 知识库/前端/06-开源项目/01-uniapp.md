@@ -8,14 +8,14 @@
 - https://ext.dcloud.net.cn/plugin?id=9340
 - https://gitee.com/wangdan22/tiannuo
 
-![app.png](images/app-01.png)
+![](images/app-01.png)
 
 ###### 仿喜茶GO小程序前端模板(微信小程序 + H5)
 
 - https://ext.dcloud.net.cn/plugin?id=1807
 - https://gitee.com/tinypuppet/nxdc-milktea
 
-![app.png](images/app-02.png)
+![](images/app-02.png)
 
 ###### 扫码点餐，外卖系统，含优惠券、会员打折、支付、积分、小票打印机打单等功能
 

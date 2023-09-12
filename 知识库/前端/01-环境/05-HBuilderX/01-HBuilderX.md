@@ -13,22 +13,22 @@
 
 > VS Code
 
-![HBuilderX.png](images/HBuilderX-keymap.png)
+![](images/HBuilderX-keymap.png)
 
 ### 主题
 
-![HBuilderX.png](images/HBuilderX-theme.png)
+![](images/HBuilderX-theme.png)
 
 ### 配置微信开发者工具路径
 
-![HBuilderX.png](images/HBuilderX-微信开发者工具-01.png)
+![](images/HBuilderX-微信开发者工具-01.png)
 
 到`微信开发者工具`中，通过`设置` -> `安全设置` 面板，开启“微信开发者工具”的服务端口
 
-![HBuilderX.png](images/HBuilderX-微信开发者工具-02.png)
+![](images/HBuilderX-微信开发者工具-02.png)
 
 ### 保存时自动格式化
 
-![HBuilderX.png](images/HBuilderX-save-auto-format.png)
+![](images/HBuilderX-save-auto-format.png)
 
 

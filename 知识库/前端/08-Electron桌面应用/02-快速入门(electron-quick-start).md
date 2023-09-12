@@ -9,5 +9,5 @@ npm install
 npm start
 ```
 
-![img.png](images/electron-quick-start.png)
+![](images/electron-quick-start.png)
 

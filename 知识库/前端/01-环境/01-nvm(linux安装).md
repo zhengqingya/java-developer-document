@@ -62,7 +62,7 @@ command -v nvm
 nvm -v
 ```
 
-![img.png](images/nvm-linux-01.png)
+![](images/nvm-linux-01.png)
 
 ### 二、常用命令 & 安装nodejs
 
