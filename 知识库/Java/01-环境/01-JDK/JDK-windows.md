@@ -8,8 +8,8 @@ eg: `jdk-8u291-windows-x64.exe`
 
 可根据自己的需要修改jdk/jre安装目录
 
-![jdk.png](images/jdk.png)
-![jre.png](images/jre.png)
+![](images/jdk.png)
+![](images/jre.png)
 
 ### JDK - 配置环境变量
 

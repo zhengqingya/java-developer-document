@@ -104,7 +104,7 @@ sh ./bin/seatunnel.sh --config ./config/seatunnel-mysql-cdc.conf -e local
 ### 问题
 
 报错：
-![img.png](images/mysql-cdc-problem.png)
+![](images/mysql-cdc-problem.png)
 
 ```shell
 Exception in thread "main" org.apache.seatunnel.api.table.catalog.exception.CatalogException: ErrorCode:[API-03], ErrorDescription:[Catalog initialize failed] - Failed listing database in catalog mysql

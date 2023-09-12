@@ -4,4 +4,4 @@
 printf('HelloWorld')
 ```
 
-![groovy-helloworld.png](images/groovy-helloworld.png)
+![](images/groovy-helloworld.png)

@@ -15,4 +15,4 @@ IDEA安装插件`Maven Helper`
 
 Exclude冲突的jar包即可
 
-![maven-helper-exclude.png](images/maven-helper-exclude.png)
+![](images/maven-helper-exclude.png)

@@ -28,7 +28,7 @@ server:
     accept-count: 10
 ```
 
-![img.png](images/springboot-concurrent-test.png)
+![](images/springboot-concurrent-test.png)
 
 ---
 

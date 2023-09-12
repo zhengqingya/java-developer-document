@@ -12,4 +12,4 @@ JRE：Java运行环境
 
 JVM、核心类库
 
-![jdk-jre.png](images/jdk-jre.png)
+![](images/jdk-jre.png)

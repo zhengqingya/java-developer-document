@@ -20,4 +20,4 @@
 </profiles>
 ```
 
-![maven-set-jdk.png](images/maven-set-jdk.png)
+![](images/maven-set-jdk.png)

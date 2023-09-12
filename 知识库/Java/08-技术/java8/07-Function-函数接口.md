@@ -67,7 +67,7 @@ public class Java8Function {
 }
 ```
 
-![java8-function.png](images/java8-function-apply.png)
+![](images/java8-function-apply.png)
 
 ### `compose`/`andThen`
 
@@ -87,7 +87,7 @@ public class Java8Function {
 }
 ```
 
-![java8-function.png](images/java8-function-compose-andThen.png)
+![](images/java8-function-compose-andThen.png)
 
 ### 作为方法参数传入
 
@@ -120,4 +120,4 @@ public class Java8Function {
 }
 ```
 
-![java8-function.png](images/java8-function-list-to-map.png)
+![](images/java8-function-list-to-map.png)

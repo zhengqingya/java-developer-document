@@ -87,7 +87,7 @@ sh ./bin/seatunnel.sh --config ./config/seatunnel-mysql.conf -e local
 
 #### 1、报错：`Plugin PluginIdentifier{engineType='seatunnel', pluginType='source', pluginName='Jdbc'} not found`
 
-![img.png](images/jdbc-not-found.png)
+![](images/jdbc-not-found.png)
 
 之前在Linux上是通过链接直接下载的资源`https://dlcdn.apache.org/incubator/seatunnel/2.3.0/apache-seatunnel-incubating-2.3.0-bin.tar.gz`
 

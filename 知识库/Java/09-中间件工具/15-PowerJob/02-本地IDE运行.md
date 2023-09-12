@@ -33,12 +33,12 @@ spring.datasource.core.password=root
 http://127.0.0.1:7700
 
 点击右上角`执行应用注册`
-![img.png](images/powerjob-ide-01.png)
+![](images/powerjob-ide-01.png)
 
 登陆
-![img.png](images/powerjob-ide-02.png)
+![](images/powerjob-ide-02.png)
 
 ### 6、`任务管理` -> `新建任务`
 
-![img.png](images/powerjob-ide-03.png)
+![](images/powerjob-ide-03.png)
 

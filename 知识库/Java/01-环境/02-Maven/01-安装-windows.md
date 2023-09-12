@@ -2,7 +2,7 @@
 
 [点击下载Apache Maven](http://maven.apache.org/download.cgi)
 
-![maven-download.png](images/maven-download.png)
+![](images/maven-download.png)
 
 解压`apache-maven-3.8.6-bin.zip`
 
@@ -23,4 +23,4 @@ MAVEN_HOME -> D:\zhengqingya\soft\soft-dev\Maven\apache-maven-3.8.6
 mvn -v
 ```
 
-![maven-v.png](images/maven-v.png)
+![](images/maven-v.png)

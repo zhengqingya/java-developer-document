@@ -22,7 +22,7 @@ MAVEN_MVND_HOME -> D:\zhengqingya\soft\soft-dev\Maven\maven-mvnd-1.0-m6-m39-wind
 mvnd --version
 ```
 
-![img.png](images/maven-mvnd.png)
+![](images/maven-mvnd.png)
 
 ### 三、配置使用原先已存在的 maven 的仓库
 
@@ -47,7 +47,7 @@ mvnd -help
 mvnd clean install -DskipTests
 ```
 
-![img.png](images/maven-mvnd-clean-install.png)
+![](images/maven-mvnd-clean-install.png)
 
 `mvnd`打包速度确实比`mvn`快点
 

@@ -109,7 +109,7 @@ javac A.java
 javap -c A.class
 ```
 
-![img.png](images/javap-c-同步代码块.png)
+![](images/javap-c-同步代码块.png)
 
 ```shell
 Compiled from "A.java"
@@ -390,4 +390,4 @@ ACC_STATIC、ACC_SYNCHRONIZED 访问标志区分该方法是否静态同步方�
 
 ObjectMonitor.java -> ObjectMonitor.cpp -> ObjectMonitor.hpp
 
-![img.png](images/ObjectMonitor-hpp-底层源码解析.png)
+![](images/ObjectMonitor-hpp-底层源码解析.png)

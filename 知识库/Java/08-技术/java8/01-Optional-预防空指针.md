@@ -69,7 +69,7 @@ public class Java8Optional {
 }
 ```
 
-![java8-optional.png](images/java8-optional-orelse.png)
+![](images/java8-optional-orelse.png)
 
 ### orElseThrow 为空的时候抛出异常
 
@@ -83,7 +83,7 @@ public class Java8Optional {
 }
 ```
 
-![java8-optional.png](images/java8-optional-orelsethrow.png)
+![](images/java8-optional-orelsethrow.png)
 
 ---
 

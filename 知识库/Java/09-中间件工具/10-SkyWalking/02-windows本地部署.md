@@ -6,7 +6,7 @@
 
 https://skywalking.apache.org/downloads/
 
-![img.png](images/skywalking-download.png)
+![](images/skywalking-download.png)
 
 > eg:
 > https://dlcdn.apache.org/skywalking/9.3.0/apache-skywalking-apm-9.3.0.tar.gz

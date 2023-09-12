@@ -16,7 +16,7 @@ File -> Settings... -> Plugins
 
 File -> Settings... -> Tools -> File Watchers -> 右边加号 -> 选择`go fmt` -> 默认内容即可，OK保存
 
-![File Watchers.png](images/File%20Watchers.png)
+![](images/File%20Watchers.png)
 
 之后`Ctrl+S`就会自动格式化代码了...
 

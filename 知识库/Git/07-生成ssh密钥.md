@@ -38,7 +38,7 @@ git clone git@github.com:zhengqingya/git-test.git
 #### 方式2：TortoiseGit
 
 `Generate` -> `Save public key` -> `Save private key`
-![tortoise-git-ssh-generate.png](images/tortoise-git-ssh-generate.png)
+![](images/tortoise-git-ssh-generate.png)
 
 `Load Putty Key` 选择上面`Save private key`保存的`.ppk`文件
-![tortoise-git-ssh-clone.png](images/tortoise-git-ssh-clone.png)
+![](images/tortoise-git-ssh-clone.png)

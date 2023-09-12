@@ -21,4 +21,4 @@ jad --source-only com.zhengqing.demo.api.TestController --lineNumber false
 jad --source-only com.zhengqing.demo.api.TestController handleBusiness2 --lineNumber false
 ```
 
-![jad.png](images/jad.png)
+![](images/jad.png)

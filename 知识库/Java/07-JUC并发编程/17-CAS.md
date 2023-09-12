@@ -33,7 +33,7 @@ public class TestCAS {
 }
 ```
 
-![img.png](images/cas-do-while.png)
+![](images/cas-do-while.png)
 
 CAS ： 比较当前工作内存中的值和主内存中的值，如果这个值是期望的，那么则执行操作！如果不是就一直循环！
 
@@ -43,7 +43,7 @@ CAS ： 比较当前工作内存中的值和主内存中的值，如果这个值
 2. 一次性只能保证一个共享变量的原子性
 3. ABA问题
 
-![img.png](images/cas_aba.png)
+![](images/cas_aba.png)
 
 ### ABA问题
 

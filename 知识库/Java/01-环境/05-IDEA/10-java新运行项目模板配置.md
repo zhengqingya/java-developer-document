@@ -2,7 +2,7 @@
 
 `File` -> `New Projects Setup` -> `Run Configuration Templates...`
 
-![idea-set-new-projects-run-configuration-templates.png](images/idea-set-new-projects-run-configuration-templates.png)
+![](images/idea-set-new-projects-run-configuration-templates.png)
 
 idea每次打开新项目时，设置jvm启动默认参数 => 调优节省本地内存空间
 
@@ -12,9 +12,9 @@ idea每次打开新项目时，设置jvm启动默认参数 => 调优节省本地
 
 ### `Spring Boot`
 
-![idea-set-new-projects-run-configuration-templates-springboot.png](images/idea-set-new-projects-run-configuration-templates-springboot.png)
+![](images/idea-set-new-projects-run-configuration-templates-springboot.png)
 
-![idea-set-new-projects-run-configuration-templates-springboot-jar.png](images/idea-set-new-projects-run-configuration-templates-springboot-jar.png)
+![](images/idea-set-new-projects-run-configuration-templates-springboot-jar.png)
 
 ### `JUnit`
 
@@ -22,7 +22,7 @@ idea每次打开新项目时，设置jvm启动默认参数 => 调优节省本地
 -Xmx100M -Xms100M -XX:+UseG1GC
 ```
 
-![img.png](images/idea-set-new-projects-run-configuration-templates-junit.png)
+![](images/idea-set-new-projects-run-configuration-templates-junit.png)
 
 ### `Application`
 
@@ -32,4 +32,4 @@ idea每次打开新项目时，设置jvm启动默认参数 => 调优节省本地
 -Xmx100M -Xms100M -XX:+UseG1GC
 ```
 
-![img.png](images/idea-set-new-projects-run-configuration-templates-main.png)
+![](images/idea-set-new-projects-run-configuration-templates-main.png)

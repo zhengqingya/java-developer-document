@@ -36,7 +36,7 @@ public class MyThread extends Thread {
 - `Thread.currentThread().isInterrupted()`: 实例方法，查询线程中断标识状态 false/true
 - `Thread.interrupted()`: 静态方法，返回当前线程的中断状态 & 将当前线程的中断状态设为false；即如果有2次调用，第一次为true，第二次为false
 
-![img.png](images/Thread实例方法和静态方法.png)
+![](images/Thread实例方法和静态方法.png)
 
 - 静态方法`Thread.interrupted()`将会清除中断状态(传入的参数ClearInterrupted为true)
 - 实例方法`Thread.currentThread().isInterrupted()`则不会(传入的参数ClearInterrupted为false)

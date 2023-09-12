@@ -29,7 +29,7 @@ public class TestOom {
 
 指定jvm运行参数 `-Xmx100M -Xms100M -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError`
 
-![img.png](images/jprofiler-oom-analyse-01.png)
+![](images/jprofiler-oom-analyse-01.png)
 
 运行程序会OOM，在项目目录下生成导出的堆dump文件，比如这里是`java_pid98392.hprof`
 
@@ -58,24 +58,24 @@ Disconnected from the target VM, address: '127.0.0.1:60094', transport: 'socket'
 
 在最大对象上右击选择`使用选定对象`
 
-![img_1.png](images/jprofiler-oom-analyse-02.png)
+![](images/jprofiler-oom-analyse-02.png)
 
 引用处选择`传入引用（Incoming references）`查看持有当前对象的引用
 
 > tips: 这里根据情况进行选择
 
-![img_2.png](images/jprofiler-oom-analyse-03.png)
+![](images/jprofiler-oom-analyse-03.png)
 
 在`显示更多`中可查看问题根源
-![img_3.png](images/jprofiler-oom-analyse-04.png)
+![](images/jprofiler-oom-analyse-04.png)
 
 也可以点击`在图表中显示`
-![img.png](images/jprofiler-oom-analyse-06.png)
-![img.png](images/jprofiler-oom-analyse-07.png)
+![](images/jprofiler-oom-analyse-06.png)
+![](images/jprofiler-oom-analyse-07.png)
 
 #### 方式2、通过`具体线程`分析
 
 在OOM日志处，找到相关线程，然后在`JProfiler`中的`线程转储`中查看具体错误
 
-![img_4.png](images/jprofiler-oom-analyse-05.png)
+![](images/jprofiler-oom-analyse-05.png)
 

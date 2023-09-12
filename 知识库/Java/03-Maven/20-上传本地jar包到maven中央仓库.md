@@ -11,20 +11,20 @@
 ### 一、注册sonatype账号：【申请上传资格】
 
 https://issues.sonatype.org/secure/Signup!default.jspa
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190624114719621.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746420.png)
 如下注册成功！
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190624115239574.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746457.png)
 
 ### 二、登录
 
 https://issues.sonatype.org/secure/Dashboard.jspa
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190624115900673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746506.png)
 登录成功进来之后可选择自己喜欢的语言显示~
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190624122551986.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746557.png)
 接下来的就是创建头像等等了，这里不多说
 
 进来之后如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190624140008456.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746586.png)
 
 ### 三、新建issue
 
@@ -32,24 +32,24 @@ https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134
 
 > **My issue : https://issues.sonatype.org/browse/OSSRH-49683**
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190624141507639.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746642.png)
 创建之后如下，等待审核...
 
 > Status状态从OPEN变成RESOLVED表示成功！
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190624141724571.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746684.png)
 小编第一次创建后审核失败，现如今改成如下，再看看是否成功吧~
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190625234907804.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190625091516120.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746719.png)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746760.png)
 第二次审核失败，修改如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190625234835345.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190625234733425.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746792.png)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746835.png)
 第三次审核失败，修改如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190626085120695.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2019062608522157.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746874.png)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746915.png)
 在第三次修改后，没有任何回复，这时我就重新创建了一个issue，如下审核成功，这次审核速度就非常快了，可能也就几分钟过后就通过了，如下Status状态从OPEN变成了RESOLVED ~
 https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134    
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627093418654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150746982.png)
 
 #### 新建issue遇坑问题总结：
 
@@ -57,7 +57,7 @@ https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134
 2. 如何使用github的信息呢？
    ① Group Id：填写com.github.xx -> xx为github用户名
    ② Project URL：刚创建时随便填写一个github中已有的一个开放仓库名，创建后修改为与之对应的名称，如下：
-   ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627094135638.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+   ![](./images/20-上传本地jar包到maven中央仓库-20230912150747017.png)
    ③ SCM url：填写github中的仓库名.git
 3. 用户名设置不要太长，因为小编之前填写名称过长，被要求过重新创建新账号
 
@@ -74,21 +74,21 @@ https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&pid=10134
 Windows系统下载地址： https://www.gpg4win.org/download.html
 
 安装很简单，如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627145958607.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627150053484.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627150109488.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747057.png)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747088.png)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747131.png)
 因为我们只需要GnuPG，所以其它的可以不必勾选
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627150325388.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627150404189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2019062715042383.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627150448205.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747169.png)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747208.png)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747240.png)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747276.png)
 cmd执行如下命令验证是否安装成功：
 
 ```java
 gpg--version
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627150929325.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747320.png)
 
 ##### ② 使用gpg生成密钥对
 
@@ -99,13 +99,13 @@ gpg--gen-key
 ```
 
 【注】输入的 **Passphrase** 值相当于密钥的密码，后面会用到！！
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627153204208.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747354.png)
 如果ok之后出现如下界面，是提示密码安全度不高，需要包含至少一个数字或特殊字符~ 重新输入一下即可
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2019062715292373.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627153128810.png)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747401.png)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747436.png)
 ok之后，我们的密钥对就设置好了
 【注】，下图中的 **448854BCFF61E7F7** 相当于我们生成的key，后面要用到！！
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190701150608183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747485.png)
 
 ##### ③ 上传GPG公钥
 
@@ -118,7 +118,7 @@ gpg--list-keys
 ```
 
 其中3408AAAFEE3AB847DE82602B448854BCFF61E7F7为公钥ID
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190701112937982.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747528.png)
 将公钥或key发布到 PGP 密钥服务器（注：这里我暂时未发现有何区别~）
 
 ```java
@@ -307,7 +307,7 @@ mvn clean deploy
 
 ###### 方法二： idea图形化 -> 直接双击deploy
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627171640655.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747572.png)
 
 【注】第一次执行时需要输入之前设置的passphrase密码 ~
 > 如果不想出现此，也可在一开始直接执行如下命令：
@@ -315,22 +315,22 @@ mvn clean deploy
 mvn clean deploy -P sonatype-oss-release -Darguments="gpg.passphrase=设置gpg密钥时输入的Passphrase"
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190627171347817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747603.png)
 
 ##### 上传所遇问题
 
 如果出现上传问题，可以尝试将 https://oss.sonatype.org/#stagingRepositories 上之前上传的错误项目全部删除【选中点击Drop即可删除】，然后再次上传~
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190701135516639.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747632.png)
 
 最后成功如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2019070117500660.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747676.png)
 本地仓库：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190702092712200.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747711.png)
 
 ### 五、同步到maven中央仓库
 
 到 https://oss.sonatype.org/#stagingRepositories 中勾选自己上传的构件（我们的jar包上传到这里哦）点击Close然后再Release，Release之后就会同步到maven中央仓库
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190702092911688.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/20-上传本地jar包到maven中央仓库-20230912150747745.png)
 
 最终到 [maven中央仓库](https://mvnrepository.com/) 中就可以搜索到了
 

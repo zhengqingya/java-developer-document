@@ -19,4 +19,4 @@ profiler getSamples
 profiler stop
 ```
 
-![profiler.png](images/profiler.png)
+![](images/profiler.png)

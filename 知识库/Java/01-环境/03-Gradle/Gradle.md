@@ -22,7 +22,7 @@ GRADLE_USER_HOME  ->  D:\zhengqingya\soft\soft-dev\Gradle\repository-zhengqingya
 gradle -v
 ```
 
-![gradle-v.png](images/gradle-v-windows.png)
+![](images/gradle-v-windows.png)
 
 #### mac 配置
 
@@ -47,7 +47,7 @@ source ~/.bash_profile
 gradle -v
 ```
 
-![gradle-v.png](images/gradle-v-mac.png)
+![](images/gradle-v-mac.png)
 
 ### Gradle - 配置仓库源
 
@@ -76,4 +76,4 @@ allprojects {
 
 gradle存放下载依赖后的jar包目录`${GRADLE_USER_HOME}\caches\modules-2\files-2.1`
 
-![gradle-caches-files.png](images/gradle-caches-files.png)
+![](images/gradle-caches-files.png)

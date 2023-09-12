@@ -2,9 +2,9 @@
 
 下载解压 https://groovy.apache.org/download.html
 
-![groovy-download.png](images/groovy-download.png)
+![](images/groovy-download.png)
 
-![groovy-download-2.png](images/groovy-download-2.png)
+![](images/groovy-download-2.png)
 
 ### 配置环境变量
 
@@ -25,4 +25,4 @@ GROOVY_HOME -> D:\zhengqingya\soft\soft-dev\Groovy\groovy-4.0.4
 groovy -v
 ```
 
-![groovy-v.png](images/groovy-v.png)
+![](images/groovy-v.png)

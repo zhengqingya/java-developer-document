@@ -12,9 +12,9 @@ thread 1 | grep 'main('
 thread -n 3
 ```
 
-![thread.png](images/thread.png)
+![](images/thread.png)
 
-![thread.png](images/thread-id.png)
+![](images/thread-id.png)
 
 ### 线程状态
 

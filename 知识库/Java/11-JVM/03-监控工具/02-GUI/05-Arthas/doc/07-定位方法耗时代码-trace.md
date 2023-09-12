@@ -11,4 +11,4 @@ trace com.zhengqing.demo.api.TestController time
 trace com.zhengqing.demo.api.TestController time '#cost>2000'
 ```
 
-![trace.png](images/trace.png)
+![](images/trace.png)

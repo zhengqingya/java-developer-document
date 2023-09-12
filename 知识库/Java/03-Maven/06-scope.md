@@ -100,7 +100,7 @@ ex: 通过`<scope>import</scope>`实现多继承，导入SpringBoot和SpringClou
 </dependencyManagement>
 ```
 
-![idea-maven-pom.png](images/idea-maven-pom.png)
+![](images/idea-maven-pom.png)
 
 ### 依赖传递性
 

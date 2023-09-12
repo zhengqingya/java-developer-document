@@ -8,8 +8,8 @@ ForkJoin的特点:工作窃取
 
 这个里面维护的都是双端队列
 
-![img.png](images/ForkJoin-01.png)
-![img.png](images/ForkJoin-02.png)
+![](images/ForkJoin-01.png)
+![](images/ForkJoin-02.png)
 
 ```java
 package com.zhengqing.demo.daily.juc;

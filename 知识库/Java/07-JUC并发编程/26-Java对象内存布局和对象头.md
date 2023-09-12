@@ -8,7 +8,7 @@
 * 实例数据
 * 对齐填充(保证8个字节的倍数)
 
-![img.png](images/ClassLayout-01.png)
+![](images/ClassLayout-01.png)
 
 ### 二、对象头结构
 
@@ -22,7 +22,7 @@ java对象的对象头由两部分构成:
 默认存储对象的HashCode、分代年龄和锁标志位等信息。  
 这些信息都是与对象自身定义无关的数据，所以MarkWord被设计成一个非固定的数据结构以便在极小的空间内存存储尽量多的数据。  
 它会根据对象的状态复用自己的存储空间，也就是说在运行期间MarkWord里存储的数据会随着锁标志位的变化而变化。  
-![img_1.png](images/ClassLayout-02.png)
+![](images/ClassLayout-02.png)
 
 他的存储内容是什么
 
@@ -35,14 +35,14 @@ java对象的对象头由两部分构成:
 | 偏向线程ID,偏向时间戳,对象分带年龄 | 01  | 可偏向       |
 
 在64位系统中，Mark Word占了8个字节(就是64bit大小的存储容量),其具体的存储结构为:  
-![img_2.png](images/ClassLayout-03.png)
+![](images/ClassLayout-03.png)
 
 > 小知识点:GC年龄采用4位bit存储，最大也只能为15，所以MaxTenuringThreshold参数默认值就是15,也不能超过15
 
 #### 2、类型指针
 
 直接指向了方法区内的kclass信息  
-![img_3.png](images/ClassLayout-04.png)
+![](images/ClassLayout-04.png)
 
 #### 3、对象头的大小
 

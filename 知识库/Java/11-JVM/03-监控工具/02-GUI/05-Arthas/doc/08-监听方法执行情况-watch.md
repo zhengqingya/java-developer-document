@@ -16,7 +16,7 @@ watch com.zhengqing.demo.api.TestController test2 "{params[0],returnObj}" -x 3
 watch com.zhengqing.demo.api.TestController test2 "{params[0],returnObj,throwExp}" -x 3 -n 2
 ```
 
-![watch.png](images/watch.png)
+![](images/watch.png)
 
 ```java
 package com.zhengqing.demo.api;

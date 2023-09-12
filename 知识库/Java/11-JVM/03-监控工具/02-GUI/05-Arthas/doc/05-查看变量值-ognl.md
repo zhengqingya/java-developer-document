@@ -8,4 +8,4 @@ ognl '@com.zhengqing.demo.api.OgnlController@LOCAL_NUM'
 getstatic com.zhengqing.demo.api.OgnlController LOCAL_NUM -x 3
 ```
 
-![ognl.png](images/ognl-static-field-value.png)
+![](images/ognl-static-field-value.png)

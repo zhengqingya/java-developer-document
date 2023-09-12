@@ -9,10 +9,10 @@
    和set()方法,获取默认值或将其值更改为当前线程所存的副本的值从而避免了线程安全的问题)
 2. synchronized或者lock,有个管理员,好比,现在大家签到,多个同学(线程),但是只有一只笔,只能同一个时间,只有一个线程(同学)
    签到,加锁(同步机制是以时间换空间,执行时间不一样,类似于排队)
-   ![img.png](images/ThreadLocal-01.png)
+   ![](images/ThreadLocal-01.png)
 3. ThreadLocal,人人有份,每个同学手上都有一支笔,自己用自己的,不用再加锁来维持秩序(
    同步机制是以空间换时间,为每一个线程都提供了一份变量的副本,从而实现同时访问,互不干扰同时访问,肯定效率高啊)
-   ![img_1.png](images/ThreadLocal-02.png)
+   ![](images/ThreadLocal-02.png)
 
 #### 2、api介绍
 
@@ -22,7 +22,7 @@
 - `set()`: 将当前线程的此线程局部变量的副本设置为指定的值
 - `remove()`: 删除此线程局部变量的当前线程的值
 
-![img_2.png](images/ThreadLocal-03.png)
+![](images/ThreadLocal-03.png)
 
 #### 3、helloword
 
@@ -82,7 +82,7 @@ public class TestThreadLocal {
 
 公司业务:在对一些业务日志写入数据库的时候,日期调用了sdf的静态,导致了会报错或者日期乱了(生产故障)
 
-![img_3.png](images/ThreadLocal-04.png)
+![](images/ThreadLocal-04.png)
 
 #### 1、非线程安全的SimpleDateFormat
 
@@ -177,7 +177,7 @@ SimpleDateFormat类内部有一个Calendar对象引用,它用来储存和这个S
 都是交由Calendar引用来储存的.这样就会导致一个问题如果你的SimpleDateFormat是个static的,
 那么多个thread之间就会共享这个SimpleDateFormat, 同时也是共享这个Calendar引用
 
-![img_4.png](images/ThreadLocal-05.png)
+![](images/ThreadLocal-05.png)
 
 #### 2、将SimpleDateFormat定义成局部变量(方案一)
 
@@ -285,10 +285,10 @@ public class Test_DateUtil_Resolve_ThreadLocal {
 #### 1、Thread|ThreadLocal|ThreadLocalMap关系
 
 Thread和ThreadLocal  
-![img_5.png](images/ThreadLocal-06.png)
+![](images/ThreadLocal-06.png)
 
 ThreadLocal和ThreadLocalMap  
-![img_6.png](images/ThreadLocal-07.png)
+![](images/ThreadLocal-07.png)
 
 三者总概括
 
@@ -297,7 +297,7 @@ ThreadLocal和ThreadLocalMap
 2. 当我们为threadLocal变量赋值,实际上就是以当前threadLocal实例为key,值为value的Entry往这个threadLocalMap中存放
 3. t.threadLocals = new ThreadLocalMap(this, firstValue)
    如下这行代码,可以知道每个线程都会创建一个ThreadLocalMap对象,每个线程都有自己的变量副本  
-   ![img_7.png](images/ThreadLocal-08.png)
+   ![](images/ThreadLocal-08.png)
 
 ```
 //核心代码说明
@@ -479,7 +479,7 @@ private T setInitialValue() {
 2. 若这个key引用是强引用,就会导致key指向的ThreadLocal对象及v指向的对象不能被gc回收,造成内存泄漏
 3. 若这个key引用是弱引用就大概率会减少内存泄漏的问题(还有一个key为null的雷)。
    使用弱引用,就可以使ThreadLocal对象在方法执行完毕后顺利被回收且Entry的key引用指向为null  
-   ![img_8.png](images/ThreadLocal-09.png)
+   ![](images/ThreadLocal-09.png)
 
 #### 2、key为null的entry,原理解析
 
@@ -492,22 +492,22 @@ private T setInitialValue() {
 4. 如果当前thread运行结束,threadLocal,threadLocalMap, Entry没有引用链可达,在垃圾回收的时候都会被系统进行回收
 5. 但在实际使用中我们有时候会用线程池去维护我们的线程,比如在Executors.newFixedThreadPool()
    时创建线程的时候,为了复用线程是不会结束的,所以threadLocal内存泄漏就值得我们小心
-   ![img_9.png](images/ThreadLocal-10.png)
+   ![](images/ThreadLocal-10.png)
 6. 出现内存泄漏的真实原因 (1). 没有手动删除这个Entry (2). CurrentThread依然运行
 
 #### 3、set、get方法会去检查所有键为null的Entry对象
 
 * ①. set( )  
-  ![img_10.png](images/ThreadLocal-11.png)
+  ![](images/ThreadLocal-11.png)
 * ②. get( )  
-  ![img_11.png](images/ThreadLocal-12.png)  
-  ![img_12.png](images/ThreadLocal-13.png)
+  ![](images/ThreadLocal-12.png)  
+  ![](images/ThreadLocal-13.png)
 * ③. remove( )  
-  ![img_13.png](images/ThreadLocal-14.png)
+  ![](images/ThreadLocal-14.png)
 
 #### 4、结论(在finally后面调用remove方法)
 
-![img_14.png](images/ThreadLocal-15.png)
+![](images/ThreadLocal-15.png)
 
 ### 五、ThreadLocal小总结
 

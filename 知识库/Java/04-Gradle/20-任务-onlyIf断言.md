@@ -10,4 +10,4 @@ task A {
 A.onlyIf { !project.hasProperty('hi') }
 ```
 
-![gradle-task-onlyIf.png](images/gradle-task-onlyIf.png)
+![](images/gradle-task-onlyIf.png)

@@ -21,7 +21,7 @@ JMM规定了所有的变量都存储在主内存（Main Memory）中。
 2. 线程加锁前,必须读取主存中的最新值到工作内存中
 3. 加锁和解锁都是一把锁
 
-![img.png](images/JMM.png)
+![](images/JMM.png)
 
 ### 八种操作
 

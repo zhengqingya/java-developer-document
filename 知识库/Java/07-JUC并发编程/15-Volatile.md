@@ -149,7 +149,7 @@ Volatile则可以避免指令重排
 1. 保证特定操作的执行顺序
 2. 可以保证某些内存表变量的可见性(利用这些特性Volatile实现了可见性)
 
-![img.png](images/Volatile.png)
+![](images/Volatile.png)
 
 Volatile 是可以保持 可见性。不能保证原子性，由于内存屏障，可以保证避免指令重排的现象产生！
 
@@ -162,7 +162,7 @@ Volatile 是可以保持 可见性。不能保证原子性，由于内存屏障�
 3. 在每个volatile读操作的后面插入一个LoadLoad屏障。
 4. 在每个volatile读操作的后面插入一个LoadStore屏障。
 
-![img.png](images/JMM内存屏障.png)
+![](images/JMM内存屏障.png)
 
 ### JVM层面的内存屏障
 

@@ -34,10 +34,10 @@ Map<Integer, User> selectMap();
 }
 ```
 
-![img.png](images/return-map-01.png)
+![](images/return-map-01.png)
 
 ---
 
 > tips: 返回类型对应map的value类型，但是idea会有警告，可不管；
 > 如果为`resultType="java.util.Map"`，返回类型无法对应`com.zhengqing.demo.entity.User`，当获取User对象中的字段值时就会出现问题！
-> ![img_1.png](images/return-map-02.png)
+> ![](images/return-map-02.png)

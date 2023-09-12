@@ -2,4 +2,4 @@
 
 在idea -> password 中选择如下：
 
-![idea-git-password.png](images/idea-git-password.png)
+![](images/idea-git-password.png)

@@ -19,4 +19,4 @@ javac -encoding utf-8 Hello.java
 java Hello
 ```
 
-![HelloWorld.png](images/HelloWorld.png)
+![](images/HelloWorld.png)

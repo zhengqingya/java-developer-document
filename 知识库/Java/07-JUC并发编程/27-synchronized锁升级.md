@@ -12,13 +12,13 @@
     1. Java对象是天生的Monitor,每一个Java对象都有成为Monitor的潜质,
        因为在Java的设计中,每一个Java对象自打娘胎里出来就带了一把看不见的锁,它叫做内部锁或者Monitor锁。
     2. Monitor的本质是依赖于底层操作系统的Mutex Lock实现,操作系统实现线程之间的切换需要从用户态到内核态的转换,成本非常高
-       ![img.png](images/synchronized-upgrade-01.png)
+       ![](images/synchronized-upgrade-01.png)
 4. Mutex Lock  
    Monitor是在jvm底层实现的,底层代码是c++。本质是依赖于底层操作系统的Mutex
    Lock实现,操作系统实现线程之间的切换需要从用户态到内核态的转换,状态转换需要耗费很多的处理器时间成本非常高。所以synchronized是Java语言中的一个重量级操作。
 5. Java 6之后,为了减少获得锁和释放锁所带来的性能消耗,引入了轻量级锁和偏向锁,需要有个逐步升级的过程,别一开始就捅到重量级锁
 6. synchronized锁:由对象头中的Mark Word根据锁标志位的不同而被复用及锁升级策略  
-   ![img.png](images/synchronized-upgrade-17.png)
+   ![](images/synchronized-upgrade-17.png)
 
 ### 二、无锁
 
@@ -68,7 +68,7 @@ Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
   同一个老顾客来访,直接老规矩行方便  
   偏向锁为了解决只有在一个线程执行同步时提高性能
 * ②. 64位标记图再看(通过CAS方式修改markword中的线程ID)  
-  ![img_1.png](images/synchronized-upgrade-02.png)
+  ![](images/synchronized-upgrade-02.png)
 * ③. 偏向锁的理论
     1. 在实际应用运行过程中发现,“锁总是同一个线程持有,很少发生竞争”,也就是说锁总是被第一个占用他的线程拥有,这个线程就是锁的偏向线程
     2. 那么只需要在锁第一次被拥有的时候,记录下偏向线程ID。这样偏向线程就一直持有着锁(
@@ -80,16 +80,16 @@ Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
   一个synchronized方法被一个线程抢到了锁时,那这个方法所在的对象就会在其所在的Mark
   Word中将偏向锁修改状态位,同时还会有占用前54位来存储线程指针作为标识。若该线程再次访问同一个synchronized方法时,该线程只需去对象头的Mark
   Word 中去判断一下是否有偏向锁指向本身的ID,无需再进入Monitor去竞争对象了。  
-  ![img_2.png](images/synchronized-upgrade-03.png)
+  ![](images/synchronized-upgrade-03.png)
 * ⑤. 对于如上的③、④进行细化
   > 步骤:  
   > (1).
   > 偏向锁的操作不用直接捅到操作系统,不涉及用户到内核转换,不必要直接升级为最高级,我们以一个account对象的“对象头”为例,  
-  > ![img_3.png](images/synchronized-upgrade-04.png)  
+  > ![](images/synchronized-upgrade-04.png)  
   > (2). 假如有一个线程执行到synchronized代码块的时候,JVM使用CAS操作把线程指针ID记录到Mark
   > Word当中,并修改标偏向标示,标示当前线程就获得该锁。锁对象变成偏向锁(通过CAS修改对象头里的锁标志位)
   > ,字面意思是“偏向于第一个获得它的线程”的锁。执行完同步代码块后,线程并不会主动释放偏向锁。  
-  > ![img_4.png](images/synchronized-upgrade-05.png)  
+  > ![](images/synchronized-upgrade-05.png)  
   > (3). 这时线程获得了锁,可以执行同步代码块。当该线程第二次到达同步代码块时会判断此时持有锁的线程是否还是自己(
   > 持有锁的线程ID也在对象头里),JVM通过account对象的Mark Word判断:
   > 当前线程ID还在,说明还持有着这个对象的锁,就可以继续进入临界区工作。由于之前没有释放锁,这里也就不需要重新加锁。
@@ -122,8 +122,8 @@ Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
       }
   }
   ```
-  ![img_5.png](images/synchronized-upgrade-06.png)
-  ![img_6.png](images/synchronized-upgrade-07.png)
+  ![](images/synchronized-upgrade-06.png)
+  ![](images/synchronized-upgrade-07.png)
 * ⑧. 偏向锁的撤销(
   偏向锁使用一种等到竞争出现才释放锁的机制,只有当其他线程竞争锁时,持有偏向锁的原来线程才会被撤销。撤销需要等待全局安全点(
   该时间点上没有字节码正在执行),同时检查持有偏向锁的线程是否还在执行)
@@ -132,15 +132,15 @@ Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
     2. 第一个线程执行完成synchronized方法(退出同步块),则将对象头设置成无锁状态并撤销偏向锁 ,重新偏向  
        (我的理解是,其实如果线程A执行完毕,如果不再去竞争,那么就会重新线程B为偏向锁;如果线程A继续竞争,那么就会CAS自旋
        也就升级到了轻量级锁)
-       ![img_7.png](images/synchronized-upgrade-08.png)
-       ![img_8.png](images/synchronized-upgrade-09.png)
+       ![](images/synchronized-upgrade-08.png)
+       ![](images/synchronized-upgrade-09.png)
 
 ### 四、轻量级锁 多个线程竞争
 
 * ①. 主要作用(本质就是自旋锁)  
   有线程来参与锁的竞争,但是获取锁的冲突时间极短
 * ②. 64位标记图再看  
-  ![img_9.png](images/synchronized-upgrade-10.png)
+  ![](images/synchronized-upgrade-10.png)
 * ③. 轻量级锁的获取
   > 理论落地  
   > (1). 轻量级锁是为了在线程近乎交替执行同步块时提高性能  
@@ -152,13 +152,13 @@ Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
   > 如果锁获取成功,直接替换Mark Word中的线程ID为B自己的ID(A → B),重新偏向于其他线程(
   即将偏向锁交给其他线程,相当于当前线程"
   > 被"释放了锁),该锁会保持偏向锁状态,A线程Over,B线程上位  
-  > ![img_10.png](images/synchronized-upgrade-11.png)
+  > ![](images/synchronized-upgrade-11.png)
   >
   如果锁获取失败,则偏向锁升级为轻量级锁,此时轻量级锁由原持有偏向锁的线程持有,继续执行其同步代码,而正在竞争的线程B会进入自旋等待获得该轻量级锁。
-  > ![img_11.png](images/synchronized-upgrade-12.png)
+  > ![](images/synchronized-upgrade-12.png)
 * ④. 代码展示  
   如果关闭偏向锁,就可以直接进入轻量级锁 -XX:-UseBiasedLocking
-  ![img_12.png](images/synchronized-upgrade-13.png)
+  ![](images/synchronized-upgrade-13.png)
 * ⑤. 自旋达到一定次数和程度
     1. java6之前(了解):默认启用,默认情况下自旋的次数是10次,-XX:PreBlockSpin=10来修改或者自旋线程数超过cpu核数一半
     2. Java6之后:自适应(自适应意味着自旋的次数不是固定不变的),而是根据:同一个锁上一次自旋的时间和拥有锁线程的状态来决定。
@@ -170,14 +170,14 @@ Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
 
 * ①. 有大量的线程参与锁的竞争,冲突性很高
 * ②. 锁标志位  
-  ![img_13.png](images/synchronized-upgrade-14.png)
+  ![](images/synchronized-upgrade-14.png)
 * ③. 代码展示:  
-  ![img_14.png](images/synchronized-upgrade-15.png)
+  ![](images/synchronized-upgrade-15.png)
 
 ### 六、各种锁优缺点、synchronized锁升级和实现原理
 
 * ①. 各个锁的优缺点的对比  
-  ![img_15.png](images/synchronized-upgrade-16.png)
+  ![](images/synchronized-upgrade-16.png)
 * ②. synchronized锁升级过程总结:一句话,就是先自旋,不行再阻塞。  
   实际上是把之前的悲观锁(重量级锁)变成在一定条件下使用偏向锁以及使用轻量级(自旋锁CAS)的形式
 * ③. synchronized在修饰方法和代码块在字节码上实现方式有很大差异,但是内部实现还是基于对象头的MarkWord来实现的
