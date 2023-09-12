@@ -2,7 +2,7 @@ Action 类似于 mutation，不同在于：
 - Action 提交的是 mutation，而不是直接变更状态。
 - Action 可以包含任意异步操作。
 
-![https://vuex.vuejs.org/vuex.png](https://vuex.vuejs.org/vuex.png)
+![](./images/06-action-20230912153739347.png)
 
 `my-vuex/src/store/index.js`
 

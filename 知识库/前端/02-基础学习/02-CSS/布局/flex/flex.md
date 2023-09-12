@@ -4,7 +4,7 @@
 
 布局简单，移动端应用广泛
 
-![img.png](images/flex-01.png)
+![](images/flex-01.png)
 
 ### 一、flex布局原理
 
@@ -16,7 +16,7 @@ flex 是 flexible Box 的缩写，意为"弹性布局"，用来为盒状模型�
 采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。
 它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
 
-![img.png](images/flex-02.png)
+![](images/flex-02.png)
 
 * 上述例子 div 就是 flex父容器。
 * 上述例子 span 就是 子容器 flex项目
@@ -42,7 +42,7 @@ flex 是 flexible Box 的缩写，意为"弹性布局"，用来为盒状模型�
 * 默认主轴方向就是 x 轴方向，水平向右
 * 默认侧轴方向就是 y 轴方向，水平向下
 
-![img.png](images/flex-03.png)
+![](images/flex-03.png)
 
 | 属性值              | 说明          |
 |------------------|-------------|

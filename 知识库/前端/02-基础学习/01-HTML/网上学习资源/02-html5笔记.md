@@ -9,7 +9,7 @@
 ✍目录总览
 =======================================================================
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a9ad9c8238d54fbfada7a8ffdbcc1a68.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70)
+![](./images/02-html5笔记-20230912153739038.png)
 
 1.HTML5提高
 ===========================================================================
@@ -27,7 +27,7 @@ HTML5有更大的技术集，允许更多样化和强大的网站和应用程序
 
 新增语义化标签如下：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/07df0702684841339d1b4884b4bdc677.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](./images/02-html5笔记-20230912153739082.png)
 
 * < header > :头部标签
 * < nav >: 导航标签
@@ -72,7 +72,7 @@ HTML5有更大的技术集，允许更多样化和强大的网站和应用程序
 
 ### 2.1 video视频🔥
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/fdfab228a4164a33a69d417ae5a688bb.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](./images/02-html5笔记-20230912153739126.png)
 
 语法：
 
@@ -107,7 +107,7 @@ HTML5有更大的技术集，允许更多样化和强大的网站和应用程序
 
 ### 2.2 audio音频
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f26b894dc30e4d24a193e9c18caa0c58.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center)
+![](./images/02-html5笔记-20230912153739160.png)
 
 ```
 <audio src="文件地址" controls="controls"></audio>

@@ -19,4 +19,4 @@ vue create my-vue-app-cli
 
 > 最后一个表示是否需要将此次配置存储起来，取一个名字，方便下次快速创建项目。
 
-![img.png](images/vue3-cli.png)
+![](images/vue3-cli.png)

@@ -21,4 +21,4 @@ declare class Cat {
 1. https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types
 2. https://www.typescriptlang.org/dt/search?search=
 
-![typescript-declare.png](images/typescript-declare.png)
+![](images/typescript-declare.png)
