@@ -11,7 +11,7 @@
 pip install pyecharts
 ```
 
-![pip-install-pyecharts.png](images/pip-install-pyecharts.png)
+![](images/pip-install-pyecharts.png)
 
 ### 使用
 
@@ -44,4 +44,4 @@ bar.set_global_opts(
 bar.render()
 ```
 
-![pyecharts-use-demo.png](images/pyecharts-use-demo.png)
+![](images/pyecharts-use-demo.png)

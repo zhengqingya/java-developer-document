@@ -51,5 +51,5 @@ scrapy crawl baidu
 ```
 
 项目结构
-![img.png](images/scrapy-baidu.png)
+![](images/scrapy-baidu.png)
 

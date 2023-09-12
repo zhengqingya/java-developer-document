@@ -10,4 +10,4 @@ cmdline.execute("scrapy crawl 爬虫名".split())
 
 右击运行`main.py`进行debug调试
 
-![img.png](images/pycharm-debug-scrapy.png)
+![](images/pycharm-debug-scrapy.png)

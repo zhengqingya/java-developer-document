@@ -53,7 +53,7 @@ pip uninstall pathlib
 ```
 
 再次打包后生成的文件目录
-![img.png](images/pyinstaller-exe.png)
+![](images/pyinstaller-exe.png)
 
 - `xx.spec`：打包配置文件，可使用 `pyinstaller xx.spec` 命令重复执行打包任务
 - `dist`：结果

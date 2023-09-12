@@ -2,7 +2,7 @@
 
 下载解释器地址 https://www.python.org/downloads
 
-![python-linux-downloads.png](images/python-linux-downloads.png)
+![](images/python-linux-downloads.png)
 
 ```shell
 cd /zhengqingya/soft/python
@@ -37,7 +37,7 @@ ln -s /usr/local/python3.10.6/bin/python3.10 /usr/bin/python
 python -V
 ```
 
-![python-linux-install.png](images/python-linux-install.png)
+![](images/python-linux-install.png)
 
 #### 问题：创建软链接后，会破坏yum程序的正常使用（只能使用系统自带的python2）
 

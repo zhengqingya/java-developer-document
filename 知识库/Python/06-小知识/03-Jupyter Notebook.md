@@ -23,5 +23,5 @@ jupyter notebook --port 8888
 jupyter notebook --no-browser
 ```
 
-![img.png](images/jupyter-notebook-01.png)
-![img.png](images/jupyter-notebook-02.png)
+![](images/jupyter-notebook-01.png)
+![](images/jupyter-notebook-02.png)

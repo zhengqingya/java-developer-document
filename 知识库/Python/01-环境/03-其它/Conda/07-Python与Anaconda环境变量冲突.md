@@ -28,11 +28,11 @@ python-ana -V
 python-ana -m pip --version
 ```
 
-![img.png](images/python-anaconda-v.png)
+![](images/python-anaconda-v.png)
 
 ---
 
 如果默认的python和pip想要用本地的python环境而非anaconda中的，可将python的环境变量上移到anaconda前面即可。
 
-![img.png](images/python-anaconda-path.png)
-![img.png](images/python-anaconda-path-v.png)
+![](images/python-anaconda-path.png)
+![](images/python-anaconda-path-v.png)

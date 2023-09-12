@@ -19,4 +19,4 @@ scrapy shell www.baidu.com
 response.xpath("//*[@id='su']//@value").extract_first()
 ```
 
-![img.png](images/scrapy-shell.png)
+![](images/scrapy-shell.png)

@@ -2,16 +2,16 @@
 
 下载解释器地址 https://www.python.org/downloads
 
-![python-mac-downloads.png](images/python-mac-downloads.png)
+![](images/python-mac-downloads.png)
 
 安装
-![python-mac-install.png](images/python-mac-install-01.png)
-![python-mac-install.png](images/python-mac-install-02.png)
-![python-mac-install.png](images/python-mac-install-03.png)
-![python-mac-install.png](images/python-mac-install-04.png)
-![python-mac-install.png](images/python-mac-install-05.png)
+![](images/python-mac-install-01.png)
+![](images/python-mac-install-02.png)
+![](images/python-mac-install-03.png)
+![](images/python-mac-install-04.png)
+![](images/python-mac-install-05.png)
 安装完成
-![python-mac-install.png](images/python-mac-install-06.png)
+![](images/python-mac-install-06.png)
 
 ### 配置
 
@@ -41,4 +41,4 @@ source ~/.bash_profile
 python -V
 ```
 
-![python-mac-config.png](images/python-mac-config.png)
+![](images/python-mac-config.png)

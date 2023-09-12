@@ -2,4 +2,4 @@
 
 `File` -> `Settings...` -> `Tools` -> `Python Integrated Tools`
 
-![img.png](images/pycharm-testing.png)
+![](images/pycharm-testing.png)

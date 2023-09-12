@@ -33,4 +33,4 @@ pip list
 pip list -o
 ```
 
-![img.png](images/pip-v.png)
+![](images/pip-v.png)

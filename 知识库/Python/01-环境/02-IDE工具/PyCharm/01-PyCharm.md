@@ -6,20 +6,20 @@ PyCharm是一种Python的IDE，带有一整套可以帮助用户在使用Python�
 
 下载：https://www.jetbrains.com/pycharm/download
 
-![pycharm-download.png](images/pycharm-download.png)
+![](images/pycharm-download.png)
 
 双击安装
 
-![pycharm-install-01.png](images/pycharm-install-01.png)
+![](images/pycharm-install-01.png)
 
-![pycharm-install-02.png](images/pycharm-install-02.png)
+![](images/pycharm-install-02.png)
 
-![pycharm-install-03.png](images/pycharm-install-03.png)
+![](images/pycharm-install-03.png)
 
-![pycharm-install-04.png](images/pycharm-install-04.png)
+![](images/pycharm-install-04.png)
 
 安装完成之后重启电脑
 
-![pycharm-install-05.png](images/pycharm-install-05.png)
+![](images/pycharm-install-05.png)
 
-![pycharm-install-06.png](images/pycharm-install-06.png)
+![](images/pycharm-install-06.png)

@@ -18,7 +18,7 @@ pip install auto-py-to-exe
 auto-py-to-exe
 ```
 
-![img.png](images/auto-py-to-exe-01.png)
+![](images/auto-py-to-exe-01.png)
 
 ### 三、使用
 
@@ -27,7 +27,7 @@ auto-py-to-exe
 3. 点击底部的蓝色大按钮进行转换
 4. 完成后在目录 `/output` 中找到转换后的文件
 
-![img.png](images/auto-py-to-exe-02.png)
+![](images/auto-py-to-exe-02.png)
 
 `.ico`图标在线转换工具： http://www.ico8.net
 
@@ -37,4 +37,4 @@ auto-py-to-exe
 
 https://github.com/pythonprogrammingbook/simple_calculator
 
-![img.png](images/auto-py-to-exe-03.png)
+![](images/auto-py-to-exe-03.png)

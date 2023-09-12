@@ -16,7 +16,7 @@ D:\zhengqingya\soft\soft-dev\Python\anaconda3\Library\bin
 conda --version
 ```
 
-![img.png](images/conda-path.png)
+![](images/conda-path.png)
 
-![img.png](images/conda-v.png)
+![](images/conda-v.png)
 

@@ -20,7 +20,7 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 # 会生成一个默认的配置文件
 ```
 
-![img.png](images/pip-ini.png)
+![](images/pip-ini.png)
 
 ---
 

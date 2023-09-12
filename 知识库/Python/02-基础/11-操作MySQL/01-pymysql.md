@@ -8,7 +8,7 @@ pymysql：可以对MySQL数据库进行操作的第三方库。
 pip install pymysql
 ```
 
-![pymysql-install.png](images/pymysql-install.png)
+![](images/pymysql-install.png)
 
 ### 使用
 
