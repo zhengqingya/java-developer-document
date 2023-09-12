@@ -8,13 +8,13 @@
 SELECT VERSION();
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/42435a867dfe415da86538a7421eed7a.png)
+![](./images/03-数据恢复-binlog-20230912152944673.png)
 
 #### 2、官方文档
 
 mysql5.7之备份和恢复: [https://dev.mysql.com/doc/refman/5.7/en/backup-and-recovery.html](https://dev.mysql.com/doc/refman/5.7/en/backup-and-recovery.html)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1d8d4819ff9043fc89cf3013367d328a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/03-数据恢复-binlog-20230912152945239.png)
 
 #### 3、查看binlog是否开启
 
@@ -26,7 +26,7 @@ show variables like 'log_%';
 1. OFF -> 未开启；
 2. ON -> 开启；
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5d4cbb215a04420d8cdd5fe79f2ab36f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/03-数据恢复-binlog-20230912152945278.png)
 
 #### 4、开启binlog
 
@@ -113,7 +113,7 @@ flush logs;
 show master status;
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c34ebf56cf97448a921fae6327e7af26.png)
+![](./images/03-数据恢复-binlog-20230912152945320.png)
 
 ###### 小白建库建表造数据
 
@@ -241,7 +241,7 @@ show master status;
 
 从binlog可以看出执行删库命令的事件位置在`1996`，时间点在`2021-09-05 16:42:08`
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/93dca70f2c364b039649b2c84f90b299.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/03-数据恢复-binlog-20230912152945375.png)
 
 
 ```shell
@@ -252,7 +252,7 @@ mysqlbinlog --no-defaults --stop-datetime='2021-09-05 16:42:08' mysql-bin.000002
 ```
 
 之后查看数据已恢复成功`^_^`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0be3e9e465e04c30889150f0b8dd2446.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/03-数据恢复-binlog-20230912152945443.png)
 
 
 ### 三、其它
@@ -262,7 +262,7 @@ mysqlbinlog --no-defaults --stop-datetime='2021-09-05 16:42:08' mysql-bin.000002
 2. 执行flush logs命令;
 3. binlog文件大小达到设定的日志文件最大值（不是绝对，例如：指定1G，因为某些情况，超过1G后，暂时还不会重新生成新的日志文件进行写入）；
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6324ff2b70254836a3e2f237a1f46f59.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_19,color_FFFFFF,t_70,g_se,x_16)
+![](./images/03-数据恢复-binlog-20230912152945490.png)
 
 #### 2、查看/删除 binlog
 

@@ -27,7 +27,7 @@ explain select * from t_user where user_id=1;
 
 Navicat中可点击解释查看
 
-![navicat-explain.png](images/navicat-explain.png)
+![](images/navicat-explain.png)
 
 ### 各字段解释
 

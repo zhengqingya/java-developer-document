@@ -20,4 +20,4 @@ zrevrange myscore_set 0 2 withscores
 zrevrangebyscore myscore_set 100 0 withscores limit 0 3
 ```
 
-![redis-Zset.png](images/redis-Zset.png)
+![](images/redis-Zset.png)

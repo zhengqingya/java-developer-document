@@ -54,4 +54,4 @@ show profile all for query 2;
 - `SOURCE` 显示源代码中函数的名称，以及函数所在文件的名称和行号
 - `SWAPS` 显示交换计数
 
-![show profile.png](images/show-profile.png)
+![](images/show-profile.png)

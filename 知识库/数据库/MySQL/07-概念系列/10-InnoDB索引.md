@@ -31,7 +31,7 @@ t(id PK, name KEY, sex, flag);
 9, wangwu, f, B
 ```
 
-![InnoDB索引01.png](images/InnoDB索引01.png)
+![](images/InnoDB索引01.png)
 
 其B+树索引构造如上图：
 
@@ -56,7 +56,7 @@ InnoDB的主键索引与行记录是存储在一起的，故叫做聚集索引�
 
 聚集索引，也只能够有一个，因为行数据在物理磁盘上只能有一份聚集存储。
 
-![InnoDB索引02.png](images/InnoDB索引02.png)
+![](images/InnoDB索引02.png)
 
 InnoDB的普通索引可以有多个，它与聚集索引是不同的：
 普通索引的叶子节点，存储主键（也不是指针）；
@@ -83,7 +83,7 @@ name(index),
 birthday(index));
 ```
 
-![InnoDB索引0401.png](images/InnoDB索引0401.png)
+![](images/InnoDB索引0401.png)
 
 此时的索引树与行记录结构如上：
 
@@ -107,7 +107,7 @@ name(index),
 birthday(index));
 ```
 
-![InnoDB索引0402.png](images/InnoDB索引0402.png)
+![](images/InnoDB索引0402.png)
 
 如此一来，有限的缓冲区，能够缓冲更多的索引与行数据，磁盘IO的频率会降低，整体性能会增加。
 
@@ -134,7 +134,7 @@ t(id PK, name KEY, sex, flag);
 9, wangwu, f, B
 ```
 
-![InnoDB索引0501.png](images/InnoDB索引0501.png)
+![](images/InnoDB索引0501.png)
 
 两个B+树索引分别如上图：
 
@@ -153,7 +153,7 @@ select id,name,sex from t where name='lisi';
 
 是如何执行的呢？
 
-![InnoDB索引0502.png](images/InnoDB索引0502.png)
+![](images/InnoDB索引0502.png)
 
 如粉红色路径，需要扫码两遍索引树：
 

@@ -6,7 +6,7 @@
 实时持久化,将处理的每一个写命令都记录在AOF文件中,数据安全性更高.持久化效率低
 当aof文件过大时，会进行重写，即命令压缩(根据类型使用一条命令来替代之前的键值对多条命令)
 
-![redis-aof.png](images/redis-aof-base.png)
+![](images/redis-aof-base.png)
 
 ### 启用AOF
 
@@ -63,4 +63,4 @@ no-appendfsync-on-rewrite no
 bgrewriteaof
 ```
 
-![redis-aof.png](images/redis-aof.png)
+![](images/redis-aof.png)

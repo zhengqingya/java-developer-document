@@ -86,7 +86,7 @@ fork采用的是copy-on-write技术：
 - 当主进程执行读操作时，访问共享内存；
 - 当主进程执行写操作时，则会拷贝一份数据，执行写操作。
 
-![redis-bgsave](images/redis-bgsave.png)
+![](images/redis-bgsave.png)
 
 ### RDB缺点？
 

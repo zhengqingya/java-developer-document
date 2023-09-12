@@ -12,34 +12,34 @@ Navicat是一款很不错的数据库可视化界面，有for mysql版本的，�
 # 创建数据库
 
 使用Oracle默认账户“system”或者自己的账户连接Oracle
-![页面截图](https://img-blog.csdnimg.cn/20190402191023151.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Vhem9uX2NoYW4=,size_16,color_FFFFFF,t_70)
+![](./images/Navicat创建Oracle数据库-20230912152947209.png)
 
 新建一个表空间
-![页面截图](https://img-blog.csdnimg.cn/20190402191044411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Vhem9uX2NoYW4=,size_16,color_FFFFFF,t_70)
+![](./images/Navicat创建Oracle数据库-20230912152947234.png)
 
 创建的表空间如下
 （建议开启自动扩展）
-![页面截图](https://img-blog.csdnimg.cn/2019040219110429.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Vhem9uX2NoYW4=,size_16,color_FFFFFF,t_70)
+![](./images/Navicat创建Oracle数据库-20230912152947265.png)
 
 到数据库数据存放目录下会看到自己创建的DBF文件
-![页面截图](https://img-blog.csdnimg.cn/20190402191316286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Vhem9uX2NoYW4=,size_16,color_FFFFFF,t_70)
+![](./images/Navicat创建Oracle数据库-20230912152947284.png)
 
 创建一个新用户
-![页面截图](https://img-blog.csdnimg.cn/20190402191124435.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Vhem9uX2NoYW4=,size_16,color_FFFFFF,t_70)
+![](./images/Navicat创建Oracle数据库-20230912152947318.png)
 
 设置信息如下
 （**！！注意用户名需要设置为全大写英文字母！！**）
 （否则在后面连接用户时会出现“用户名或者密码无效”的错误，笔者猜想应该时Oracle在创建用户名是没有要求，但在连接用户是却对用户名进行了检查，所以造成无法连接）
 默认表空间设置为刚刚新建的表空间
-![页面截图](https://img-blog.csdnimg.cn/20190402191355762.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Vhem9uX2NoYW4=,size_16,color_FFFFFF,t_70)
+![](./images/Navicat创建Oracle数据库-20230912152947340.png)
 
 为该用户设置“成员属于”
-![页面截图](https://img-blog.csdnimg.cn/20190402191713334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Vhem9uX2NoYW4=,size_16,color_FFFFFF,t_70)
+![](./images/Navicat创建Oracle数据库-20230912152947361.png)
 
-![页面截图](https://img-blog.csdnimg.cn/20190402191719832.png)
+![](./images/Navicat创建Oracle数据库-20230912152947385.png)
 
 设置“服务器权限”
-![页面截图](https://img-blog.csdnimg.cn/20190402191738991.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Vhem9uX2NoYW4=,size_16,color_FFFFFF,t_70)
+![](./images/Navicat创建Oracle数据库-20230912152947413.png)
 
 至此，数据库已经创建完毕了
 接下来只需要登陆刚刚新建的用户
@@ -48,7 +48,7 @@ Navicat是一款很不错的数据库可视化界面，有for mysql版本的，�
 # 连接验证
 
 根据刚刚配置的用户信息连接用户
-![页面截图](https://img-blog.csdnimg.cn/20190402192231455.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Vhem9uX2NoYW4=,size_16,color_FFFFFF,t_70)
+![](./images/Navicat创建Oracle数据库-20230912152947432.png)
 
 打开连接，打开模式，即可以看到和mysql创建完数据库基本一致的界面，
 可以新建表，也可以新建视图等等

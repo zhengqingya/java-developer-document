@@ -39,7 +39,7 @@ eg： t(id PK, name);
 2. zhangsan
 3. lisi
 
-![mysql回滚段init.png](images/mysql回滚段init.png)
+![](images/mysql回滚段init.png)
 
 此时没有事务未提交，故回滚段是空的。
 
@@ -54,7 +54,7 @@ insert (4, wangwu);
 
 并且事务处于`未提交`的状态。
 
-![mysql回滚段未提交事务.png](images/mysql回滚段未提交事务.png)
+![](images/mysql回滚段未提交事务.png)
 
 可以看到：
 
@@ -66,7 +66,7 @@ insert (4, wangwu);
 
 画外音：假设事务提交，回滚段里的undo日志可以删除。
 
-![mysql回滚段事务回滚.png](images/mysql回滚段事务回滚.png)
+![](images/mysql回滚段事务回滚.png)
 
 可以看到：
 
@@ -74,6 +74,6 @@ insert (4, wangwu);
 2. 被修改的旧数据也恢复了；
 3. 被插入的数据，删除了；
 
-![mysql回滚段事务回滚成功.png](images/mysql回滚段事务回滚成功.png)
+![](images/mysql回滚段事务回滚成功.png)
 
 事务回滚成功，一切如故。

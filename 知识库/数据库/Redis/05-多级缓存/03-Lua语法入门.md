@@ -28,7 +28,7 @@ lua hello.lua
 
 #### 1、Lua的数据类型
 
-![Lua-常见数据类型.png](images/Lua-常见数据类型.png)
+![](images/Lua-常见数据类型.png)
 
 另外，Lua提供了`type()`函数来判断一个变量的数据类型：
 
@@ -146,7 +146,7 @@ end
 
 与java不同，布尔表达式中的逻辑运算是基于英文单词：
 
-![Lua-逻辑运算.png](images/Lua-逻辑运算.png)
+![](images/Lua-逻辑运算.png)
 
 #### 3、案例
 

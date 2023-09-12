@@ -135,7 +135,7 @@ mysql -uroot -proot -e "show databases;"
 ```
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f2b473daee2e438bbc7867867ffa2949.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_19,color_FFFFFF,t_70,g_se,x_16)
+![](./images/05-数据恢复-Percona-XtraBackup-20230912152946163.png)
 
 
 --- 

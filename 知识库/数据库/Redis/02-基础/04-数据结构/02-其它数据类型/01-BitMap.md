@@ -21,4 +21,4 @@ getbit zq 8
 bitcount zq
 ```
 
-![redis-BitMap.png](images/redis-BitMap.png)
+![](images/redis-BitMap.png)

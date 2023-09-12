@@ -10,15 +10,15 @@
 4. Navicat12.0.11
 5. idea
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191225104656219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946238.png)
 
 ### 二、开始移植
 
 点击 `工具` -> `数据传输`
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191225104754879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946285.png)
 左边 `源` 标识mysql数据库 ， 右边 `目标` 标识要移植到的oracle数据库
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226114855451.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946330.png)
 高级选项中勾选`大写`
 
 > **温馨小提示：**  
@@ -27,16 +27,16 @@
 
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226115026809.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946363.png)
 
 选择需要移植的表，这里我一把梭全选了~
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191225104419243.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946404.png)
 然后等待数据传输完成
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226115910236.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946429.png)
 如果最后遇到如下情况，可暂不管，直接关闭即可~
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226133137920.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946465.png)
 然后查看oracle，如下，数据导入成功
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226123008459.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946501.png)
 
 > 温馨小提示：传输过程中可能会存在有部分几张表不成功，手动导一下就好了~~
 
@@ -58,20 +58,20 @@
 ###### ① 备份数据 -> 数据泵方式
 
 ` 数据泵` -> ` 数据泵导出`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226133725124.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226133812251.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226134054134.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946537.png)
+![](./images/MySQL迁移数据到Oracle-20230912152946574.png)
+![](./images/MySQL迁移数据到Oracle-20230912152946615.png)
 
 ###### ② idea中如下查看ddl
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226134712771.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946651.png)
 然后将ddl拷贝到一个txt文本文件中保存
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226124115517.png)
+![](./images/MySQL迁移数据到Oracle-20230912152946694.png)
 
 ###### ③ ddl文件内容替换自增主键工具类
 
 > **温馨小提示：**
 这里小编数据库中的时间类型为 `DATE` 类型 需 改为 `TIMESTAMP` 类型 ，这个问题可以直接使用idea的替换功能完成修改~ ，其余修改可根据个人实际情况来进行修改
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226135905165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946733.png)
 
 ```java
 public class MySQLToOracleTest {
@@ -142,19 +142,19 @@ public class MySQLToOracleTest {
 
 ###### ④ 将替换过后的ddl拷贝到idea中的一个新控制台中运行创建表
 全选ddl，然后点击左上角运行创建表 【 注：这里需先清空该库下所有表，因此步骤①要先备份一下从mysql迁移到oracle后的表数据，不要忘记哦！！】
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226140200763.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946774.png)
 等待表全部创建成功，如下所示：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226140910293.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946817.png)
 
 ###### ⑤ 导入备份数据
 
 ` 数据泵` -> ` 数据泵导入`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226141400926.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226141418583.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226141458585.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152946861.png)
+![](./images/MySQL迁移数据到Oracle-20230912152946897.png)
+![](./images/MySQL迁移数据到Oracle-20230912152947002.png)
 
 ###### ⑥ 最后查看数据导入成功！
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191225184128266.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152947046.png)
 
 这时候，数据有了，自增主键也有了，但是存在一个问题就是插入数据的时候主键自增ID都是从1开始自增，如果表中没有数据都还ok，问题是如果表有数据，就会出现主键ID重复的问题！！！
 
@@ -223,11 +223,11 @@ WHERE NOT EXISTS (
 ORDER BY t1.Table_Name, t1.Column_ID
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226163019651.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152947085.png)
 拷贝到新的控制台后注意删除最后一个 `UNION ALL` 再运行哦！！！
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226163235718.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152947121.png)
 最终完成自增主键ID从表数据最大值开始自增！
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20191226163309428.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly96aGVuZ3FpbmcuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](./images/MySQL迁移数据到Oracle-20230912152947165.png)
 
 #### 3、程序中的sql语句转换
 

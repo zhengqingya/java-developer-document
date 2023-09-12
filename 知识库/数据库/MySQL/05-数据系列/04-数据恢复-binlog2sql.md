@@ -4,7 +4,7 @@
 
 #### binlog2sql使用条件
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/788cbca772c34f68aa138e89eb804170.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-数据恢复-binlog2sql-20230912152945528.png)
 
 ### 二、binlog2sql
 
@@ -18,7 +18,7 @@ git clone https://github.com/danfengcao/binlog2sql.git && cd binlog2sql
 pip3 install -r requirements.txt
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/24b2f4209585438eaa01bd16ccfede57.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-数据恢复-binlog2sql-20230912152945583.png)
 
 
 #### 2、使用
@@ -53,7 +53,7 @@ update test.t_user set username='test03' where id=3;
 show master status;
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a381068885b94113868c9ce2bf70f218.png)
+![](./images/04-数据恢复-binlog2sql-20230912152945744.png)
 
 
 
@@ -63,7 +63,7 @@ show master status;
 python3 binlog2sql.py -h127.0.0.1 -P3306 -uroot -p'root' -dtest -t t_user --start-file='mysql-bin.000002'
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ea7ed322ba8d47298cd3793d4ce38ae1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-数据恢复-binlog2sql-20230912152945797.png)
 
 
 ##### ③ 解析出回滚SQL
@@ -74,7 +74,7 @@ python3 binlog2sql.py -h127.0.0.1 -P3306 -uroot -p'root' -dtest -t t_user --star
 python3 binlog2sql.py -h127.0.0.1 -P3306 -uroot -p'root' -dtest -t t_user --start-file='mysql-bin.000002' -B > rollback.sql | cat
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a66fdfb5f20a40a79f02f7a8594dc67e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-数据恢复-binlog2sql-20230912152945876.png)
 
 ##### ④ 执行回滚语句
 
@@ -86,7 +86,7 @@ mysql -h127.0.0.1 -P3306 -uroot -p'root' < rollback.sql
 
 #### 3、命令选项
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2139e001408141e6b5ca83aae2ca868f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/04-数据恢复-binlog2sql-20230912152946027.png)
 
 |                  选项                  |                                                                               描述                                                                               |
 | :------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: |

@@ -20,7 +20,7 @@ MVCC，全称Multi-Version Concurrency Control，即多版本并发控制。
 2. 写任务操作新克隆的数据，直至提交；
 3. 并发读任务可以继续读取旧版本的数据，不至于阻塞；
 
-![mysql数据多版本.png](images/mysql数据多版本.png)
+![](images/mysql数据多版本.png)
 
 1. 最开始数据的版本是V0；
 2. T1时刻发起了一个写任务，这是把数据clone了一份，进行修改，版本变为V1，但任务还未完成；

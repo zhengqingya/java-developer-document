@@ -8,7 +8,7 @@
 2. 生产者：发送消息到消息队列
 3. 消费者：从消息队列中获取消息并处理消息
 
-![redis-消息队列.png](images/redis-消息队列.png)
+![](images/redis-消息队列.png)
 
 Redis提供了三种不同的方式来实现消息队列：
 
@@ -41,7 +41,7 @@ lpush zq_queue a b c
 brpop zq_queue 10
 ```
 
-![redis-消息队列-list结构.png](images/redis-消息队列-list结构.png)
+![](images/redis-消息队列-list结构.png)
 
 ### PubSub
 
@@ -76,7 +76,7 @@ publish channel_zq.1 aaa
 publish channel_zq.2 bbb
 ```
 
-![redis-消息队列-PubSub-发布订阅.png](images/redis-消息队列-PubSub-发布订阅.png)
+![](images/redis-消息队列-PubSub-发布订阅.png)
 
 ### Stream
 
@@ -107,7 +107,7 @@ xread count 1 streams channel_zq $
 xread count 1 block 0 streams channel_zq $
 ```
 
-![redis-消息队列-Stream-单消费模式.png](images/redis-消息队列-Stream-单消费模式.png)
+![](images/redis-消息队列-Stream-单消费模式.png)
 
 #### Stream - 消费者组模式
 
@@ -174,7 +174,7 @@ XPENDING channel_zq group_zq - + 10
 XACK channel_zq group_zq 1666257129050-0 1666257132295-0 1666257135023-0
 ```
 
-![redis-消息队列-Stream-消费者组模式.png](images/redis-消息队列-Stream-消费者组模式.png)
+![](images/redis-消息队列-Stream-消费者组模式.png)
 
 STREAM类型消息队列的XREADGROUP命令特点：
 

@@ -10,7 +10,7 @@ Redis的Key虽然可以自定义，但最好遵循下面的几个最佳实践约
 
 例如：我们的登录业务，保存用户信息，其key可以设计成如下格式：
 
-![img](images/key-01.png)
+![](images/key-01.png)
 
 这样设计的好处：
 
@@ -21,7 +21,7 @@ Redis的Key虽然可以自定义，但最好遵循下面的几个最佳实践约
   key是string类型，底层编码包含`int`、`embstr`和`raw`
   三种。embstr在小于44字节使用，采用连续内存空间，内存占用更小。当字节数大于44字节时，会转为raw模式存储，在raw模式下，内存空间不是连续的，而是采用一个指针指向了另外一段内存空间，在这段空间里存储SDS内容，这样空间不连续，访问的时候性能也就会收到影响，还有可能产生内存碎片
 
-![img](images/key-02.png)
+![](images/key-02.png)
 
 ### 2、拒绝BigKey
 
@@ -33,7 +33,7 @@ BigKey通常以Key的大小和Key中成员的数量来综合判定，例如：
 
 那么如何判断元素的大小呢？redis也给我们提供了命令
 
-![img](images/key-03.png)
+![](images/key-03.png)
 
 推荐值：
 
@@ -59,13 +59,13 @@ BigKey通常以Key的大小和Key中成员的数量来综合判定，例如：
 
 命令：`redis-cli -a 密码 --bigkeys`
 
-![img](images/key-04.png)
+![](images/key-04.png)
 
 ##### ②scan扫描
 
 自己编程，利用scan扫描Redis中的所有key，利用strlen、hlen等命令判断key的长度（此处不建议使用MEMORY USAGE）
 
-![img](images/key-05.png)
+![](images/key-05.png)
 
 scan 命令调用完后每次会返回2个元素，第一个是下一次迭代的光标，第一次光标会设置为0，当最后一次scan 返回的光标等于0时，表示整个scan遍历结束了，第二个返回的是List，一个匹配的key的数组
 
@@ -168,7 +168,7 @@ public class JedisTest {
 - 自定义工具，监控进出Redis的网络数据，超出预警值时主动告警
 - 一般阿里云搭建的云服务器就有相关监控页面
 
-![img](images/key-06.png)
+![](images/key-06.png)
 
 #### 2.3、如何删除BigKey
 
@@ -177,7 +177,7 @@ BigKey内存占用较多，即便时删除这样的key也需要耗费很长时�
 - redis 3.0 及以下版本
     - 如果是集合类型，则遍历BigKey的元素，先逐个删除子元素，最后删除BigKey
 
-![img](images/key-07.png)
+![](images/key-07.png)
 
 - Redis 4.0以后
     - Redis在4.0后提供了异步删除的命令：unlink
@@ -249,7 +249,7 @@ BigKey内存占用较多，即便时删除这样的key也需要耗费很长时�
 存在的问题：
 
 - hash的entry数量超过500时，会使用哈希表而不是ZipList，内存占用较多
-    - ![img](images/key-08.png)
+    - ![](images/key-08.png)
 - 可以通过hash-max-ziplist-entries配置entry上限。但是如果entry过多就会导致BigKey问题
 
 ##### 方案一
@@ -279,7 +279,7 @@ BigKey内存占用较多，即便时删除这样的key也需要耗费很长时�
 
 - string结构底层没有太多内存优化，内存占用较多
 
-![img](images/key-09.png)
+![](images/key-09.png)
 
 - 想要批量获取这些数据比较麻烦
 
@@ -337,7 +337,7 @@ BigKey内存占用较多，即便时删除这样的key也需要耗费很长时�
     </tr>
 </table>
 
-![img](images/key-10.png)
+![](images/key-10.png)
 
 ```java
 import com.zhengqingya.jedis.util.JedisConnectionFactory;

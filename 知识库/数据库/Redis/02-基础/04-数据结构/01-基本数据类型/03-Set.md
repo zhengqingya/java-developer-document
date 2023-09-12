@@ -23,4 +23,4 @@ sdiff my_set_a my_set_b
 sinter my_set_a my_set_b
 ```
 
-![redis-set.png](images/redis-set.png)
+![](images/redis-set.png)

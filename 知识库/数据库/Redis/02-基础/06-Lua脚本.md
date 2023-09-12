@@ -8,4 +8,4 @@ eval "return redis.call('set', 'name', 'zhengqingya')" 0
 eval "return redis.call('set', KEYS[1], ARGV[1])" 1 name zhengqingya
 ```
 
-![redis-lua.png](images/redis-lua.png)
+![](images/redis-lua.png)
