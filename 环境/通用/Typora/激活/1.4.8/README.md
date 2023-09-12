@@ -4,7 +4,7 @@
 
 > ex: `D:\zhengqingya\soft\soft-dev\Typora`
 
-![img.png](images/Typora1.4.8-01.png)
+![](images/Typora1.4.8-01.png)
 
-![img.png](images/Typora1.4.8-02.png)
+![](images/Typora1.4.8-02.png)
 

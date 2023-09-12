@@ -18,4 +18,4 @@ curl -s https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh && sudo chmod +x
 curl cheat.sh/free
 ```
 
-![img.png](images/cheat.sh.png)
+![](images/cheat.sh.png)

@@ -24,7 +24,7 @@ pandoc -f docx -t markdown --extract-media ./images -o test.md test.docx
 
 文件大了之后，就不太行...
 
-![img.png](images/word2md.png)
+![](images/word2md.png)
 
 ### 四、Typora
 

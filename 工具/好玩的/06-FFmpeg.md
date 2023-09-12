@@ -6,7 +6,7 @@ https://ffmpeg.org
 
 https://github.com/BtbN/FFmpeg-Builds/releases
 
-![img.png](images/ffmpeg-dir.png)
+![](images/ffmpeg-dir.png)
 
 ### 配置环境变量
 
@@ -49,4 +49,4 @@ source ~/.bash_profile
 ffmpeg -version
 ```
 
-![img.png](images/ffmpeg-mac.png)
+![](images/ffmpeg-mac.png)
