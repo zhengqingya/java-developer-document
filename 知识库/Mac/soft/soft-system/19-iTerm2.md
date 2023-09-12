@@ -7,4 +7,4 @@ https://iterm2.com
 brew install iterm2
 ```
 
-![mac-iterm2-install.png](images/mac-iterm2-install.png)
+![](images/mac-iterm2-install.png)

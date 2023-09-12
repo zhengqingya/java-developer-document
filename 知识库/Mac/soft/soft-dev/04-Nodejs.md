@@ -4,7 +4,7 @@
 
 下载安装  https://nodejs.org/zh-cn/download/
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20201202200312972.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MjI1NTU4,size_16,color_FFFFFF,t_70)
+![](./images/04-Nodejs-20230912151738771.png)
 
 ```shell
 # 查看版本

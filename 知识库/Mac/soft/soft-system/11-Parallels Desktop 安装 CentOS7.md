@@ -11,28 +11,28 @@
 
 ### 三、`Parallels Desktop`安装`CentOS7`
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4ce1dbb183ce48b486855562f57cbc18.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b8f611179b1f4852bb8abec1ce3b6d75.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8334d62193f64a23bedde7a2f8be365e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/61b262c565e640388fd075c4b6d24a61.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/20230912151944070.png)
+![](./images/20230912151944102.png)
+![](./images/20230912151944128.png)
+![](./images/20230912151944151.png)
 虚拟机配置
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6963d5b3284d40338bd7e03acb9c8add.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/20230912151944184.png)
 这里根据自己的条件分配即可~
-![在这里插入图片描述](https://img-blog.csdnimg.cn/020ff6f75cae4568b84b0a4f05fe3808.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/57937bc8d88f449fbc02a57a2a062c5d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5a86eb72a80249168f65ec89011c3e76.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4d0130d9685b4860890f69cb48242f8a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0215a4251d99454ea6796d6757d4b3f8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/20230912151944225.png)
+![](./images/20230912151944256.png)
+![](./images/20230912151944281.png)
+![](./images/20230912151944309.png)
+![](./images/20230912151944340.png)
 安装位置配置
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c369d0c682b0484e911cebfe73cfeb26.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/38d4aee5563545e1832a9dea9433b00e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/20230912151944368.png)
+![](./images/20230912151944409.png)
 设置密码
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5aa6cc175f364b8d9bbad7d89409b3ad.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/cc9af2dcd43d4cb0946c9ecd4e69c234.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/79a30697a0d447fabe70c161d3831930.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/20230912151944438.png)
+![](./images/20230912151944468.png)
+![](./images/20230912151944502.png)
 登录，完成安装~
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8b709a0c107f403ca9fb3df4bc81f421.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a0819a2fe10245f6a5491e4e8f4c0788.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/20230912151944525.png)
+![](./images/20230912151944551.png)
 
 
 ### 四、CentOS7配置
@@ -40,7 +40,7 @@
 #### 1、网络配置  -- 设置固定ip
 
 查看虚拟机网络
-![在这里插入图片描述](https://img-blog.csdnimg.cn/022546c5b1bc40aa8488ee2081269b71.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/20230912151944581.png)
 
 ```shell
 # 设置固定ip
@@ -88,7 +88,7 @@ reboot
 ip addr
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2e807ec874b84566b72748d42690620f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6YOR5riF,size_20,color_FFFFFF,t_70,g_se,x_16)
+![](./images/20230912151944617.png)
 
 
 #### 2、关闭防火墙
