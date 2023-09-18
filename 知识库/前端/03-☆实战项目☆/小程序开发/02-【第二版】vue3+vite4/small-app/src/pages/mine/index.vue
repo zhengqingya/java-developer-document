@@ -1,5 +1,5 @@
 <template>
-  <base-wraper activeTabName="mine">
+  <base-wrapper activeTabName="mine">
     <view v-if="isLogin" class="h-full">
       <view class="flex-center-center bg-color-white p-30">
         <view>
@@ -37,7 +37,7 @@
       <up-button type="primary" withCredentials="true" @tap="login">授权登录</up-button>
       <up-button type="error" @tap="localLogin">本地临时登录</up-button>
     </view>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

@@ -1,9 +1,9 @@
 <template>
-  <base-wraper activeTabName="index">
+  <base-wrapper activeTabName="index">
     <u-swiper :list="bannerList" indicator indicatorMode="line" circular height="550rpx" />
 
     <view class="introText h-full flex-center-center">Vue3+Vite4 小程序</view>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

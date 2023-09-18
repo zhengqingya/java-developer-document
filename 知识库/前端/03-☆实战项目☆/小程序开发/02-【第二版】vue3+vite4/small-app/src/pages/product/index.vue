@@ -1,5 +1,5 @@
 <template>
-  <base-wraper activeTabName="product" class="app">
+  <base-wrapper activeTabName="product" class="app">
     <view v-if="reSpuList.length > 0" class="h-full flex overflow-y-scroll">
       <scroll-view
         class="category bg-color-lightgrey text-color-grey p-r-10"
@@ -78,7 +78,7 @@
     <sku ref="skuRef" @close="handleCloseSkuChoose" />
     <!-- 购物车 -->
     <cart ref="cartRef" v-model="cartList" />
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

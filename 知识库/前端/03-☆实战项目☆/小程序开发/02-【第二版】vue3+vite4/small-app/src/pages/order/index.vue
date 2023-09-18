@@ -1,5 +1,5 @@
 <template>
-  <base-wraper activeTabName="order">
+  <base-wrapper activeTabName="order">
     <base-scroll
       class="h-full overflow-y-scroll bg-color-lightgrey"
       :isPage="true"
@@ -66,7 +66,7 @@
         </view>
       </template>
     </base-scroll>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>
