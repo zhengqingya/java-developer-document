@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <base-header>
       <el-input v-model="listQuery.username" clearable placeholder="请输入账号" style="width: 200px" @clear="refreshTableData" />
       <el-input v-model="listQuery.nickname" clearable placeholder="请输入名称" style="width: 200px" @clear="refreshTableData" />
@@ -69,7 +69,7 @@
     </base-dialog>
 
     <role-permission ref="rolePermRef" @save-succ="refreshTableData" />
-  </base-wraper>
+  </base-wrapper>
 </template>
 <script setup>
 import RolePermission from './rolePermission.vue';
@@ -85,7 +85,7 @@ let form = ref({});
 let dialogStatus = ref('');
 let titleMap = ref({
   update: '编辑',
-  create: '创建',
+  add: '创建',
   updatePwd: '更新密码',
 });
 let newPassword = ref('123456');
@@ -101,7 +101,7 @@ async function refreshTableData() {
 function handleCreate() {
   form.value = {};
   form.value.sex = 0;
-  dialogStatus.value = 'create';
+  dialogStatus.value = 'add';
   dialogVisible.value = true;
 }
 function handleUpdate(row, type) {

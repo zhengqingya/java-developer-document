@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <base-header>
       <el-input v-model="listQuery.key" clearable placeholder="key" style="width: 200px" @clear="refreshTableData" />
       <el-button type="primary" @click="refreshTableData">查询</el-button>
@@ -8,7 +8,7 @@
       </template>
     </base-header>
 
-    <base-table-p ref="baseTableRef" api="sys_property.listPage" :params="listQuery">
+    <base-table-p ref="baseTableRef" api="sys_config.listPage" :params="listQuery">
       <el-table-column prop="key" label="属性key" />
       <el-table-column prop="value" label="属性value" />
       <el-table-column prop="remark" label="备注" />
@@ -37,7 +37,7 @@
         <el-button type="primary" @click="saveForm">确 定</el-button>
       </template>
     </base-dialog>
-  </base-wraper>
+  </base-wrapper>
 </template>
 <script setup>
 const { proxy } = getCurrentInstance();
@@ -46,7 +46,7 @@ const state = reactive({
   form: {},
   dialogVisible: false,
   listLoading: false,
-  listQuery: {},
+  listQuery: { type: 2 },
   dialogStatus: '',
 });
 const { form, dialogVisible, listQuery, dialogStatus } = toRefs(state);
@@ -57,7 +57,8 @@ async function refreshTableData() {
 function saveForm() {
   proxy.$refs.formRef.validate(async (valid) => {
     if (valid) {
-      let res = await proxy.$api.sys_property[state.form.id ? 'update' : 'add'](state.form);
+      state.form.type = 2;
+      let res = await proxy.$api.sys_config[state.form.id ? 'update' : 'add'](state.form);
       proxy.submitOk(res.msg);
       refreshTableData();
       state.dialogVisible = false;
@@ -67,7 +68,7 @@ function saveForm() {
 function update(row) {
   state.form = Object.assign({}, row);
   state.dialogVisible = true;
-  state.dialogStatus = 'edit';
+  state.dialogStatus = 'update';
 }
 function add() {
   state.dialogVisible = true;
@@ -75,7 +76,7 @@ function add() {
   state.form = {};
 }
 async function deleteData(id) {
-  let res = await proxy.$api.sys_property.delete(id);
+  let res = await proxy.$api.sys_config.delete(id);
   proxy.submitOk(res.msg);
   refreshTableData();
 }

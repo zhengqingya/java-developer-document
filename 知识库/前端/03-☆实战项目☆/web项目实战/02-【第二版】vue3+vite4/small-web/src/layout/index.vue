@@ -3,7 +3,8 @@
   <div v-show="isLogin && !$route.meta.isParentView" class="flex h-full w-full">
     <!-- 侧边栏菜单 -->
     <sidebar v-if="isShowMenu" id="sidebar" class="w-200" />
-    <div class="flex-1">
+
+    <div class="flex-1 flex-column">
       <div id="top">
         <!-- 顶部导航栏 -->
         <navbar style="height: 50px" />
@@ -12,12 +13,12 @@
           <tabs-view />
         </div>
       </div>
+
       <!-- 主页面 -->
-      <div :style="{ height: appMainHeight + 'px', width: appMainWidth + 'px' }">
-        <app-main class="app-main" />
-      </div>
+      <app-main class="flex-1 app-main" :height="appMainHeight + 'px'" :width="appMainWidth + 'px'" />
     </div>
   </div>
+
   <div v-if="!isLogin || (isLogin && $route.meta.isParentView)" class="h-full">
     <router-view />
   </div>

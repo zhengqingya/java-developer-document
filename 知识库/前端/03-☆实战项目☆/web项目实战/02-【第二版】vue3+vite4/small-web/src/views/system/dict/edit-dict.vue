@@ -36,7 +36,7 @@ function open(type, data, dictTypeId, code, maxSort) {
   dialogStatus = type;
   if (type === 'add') {
     form = { dictTypeId: dictTypeId, code: code, sort: maxSort };
-  } else if (type === 'edit') {
+  } else if (type === 'update') {
     form = Object.assign({}, data);
   }
   dialogVisible = true;

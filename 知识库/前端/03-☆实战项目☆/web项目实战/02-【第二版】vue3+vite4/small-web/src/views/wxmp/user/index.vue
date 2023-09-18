@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <base-header>
       <el-input v-model="listQuery.openid" placeholder="请输入微信openid" style="width: 200px" clearable @clear="refreshTableData"></el-input>
       <el-button type="primary" @click="refreshTableData">查询</el-button>
@@ -35,7 +35,7 @@
         <el-button type="primary" @click="submitForm">确 定</el-button>
       </template>
     </base-dialog>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

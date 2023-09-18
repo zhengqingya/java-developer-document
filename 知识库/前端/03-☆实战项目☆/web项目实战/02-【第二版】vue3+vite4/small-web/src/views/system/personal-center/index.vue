@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <base-card title="个人信息" style="width: 400px">
       <template #append>
         <el-button type="warning" @click="updateUser">修改</el-button>
@@ -70,7 +70,7 @@
         <el-button type="primary" @click="submitForm">确定</el-button>
       </template>
     </base-dialog>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

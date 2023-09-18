@@ -1,5 +1,5 @@
 <template>
-  <base-wraper class="flex">
+  <base-wrapper class="flex">
     <div style="width: 400px">
       <base-header>
         <el-input v-model="listQuery.name" placeholder="请输入分类名称" style="width: 200px" clearable @clear="refreshTableData"></el-input>
@@ -54,7 +54,7 @@
     <div class="flex-1 m-x-10">
       <spu ref="spuRef" />
     </div>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

@@ -10,8 +10,6 @@ export default {
       // 弹出框标题
       dialogTitleObj: {
         add: '添加',
-        create: '添加',
-        edit: '编辑',
         update: '编辑',
         detail: '详情',
       },

@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <base-header>
       <el-input v-model="listQuery.title" placeholder="请输入模板标题" style="width: 200px" clearable @clear="refreshTableData"></el-input>
       <el-button type="primary" @click="refreshTableData">查询</el-button>
@@ -48,7 +48,7 @@
         <el-button type="primary" @click="submitForm">发送消息</el-button>
       </template>
     </base-dialog>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

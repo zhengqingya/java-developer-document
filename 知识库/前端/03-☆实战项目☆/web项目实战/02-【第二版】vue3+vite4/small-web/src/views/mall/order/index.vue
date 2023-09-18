@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <base-header>
       <el-select v-model="listQuery.tabValue" placeholder="请选择订单状态" style="width: 200px">
         <el-option v-for="item in tabList" :key="item.value" :label="item.name" :value="item.value" />
@@ -59,7 +59,7 @@
         </template>
       </el-table-column> -->
     </base-table-p>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

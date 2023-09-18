@@ -1,5 +1,5 @@
 <template>
-  <base-wraper class="flex-start-start">
+  <base-wrapper class="flex-start-start">
     <base-card title="菜单" class="p-x-10" style="width: 200px">
       <el-button type="warning" @click="handleAddMenu">新增一级菜单</el-button>
       <!--菜单树-->
@@ -87,7 +87,7 @@
     </div>
 
     <edit-menu ref="editRef" @handle-succ="getMenuTree" />
-  </base-wraper>
+  </base-wrapper>
 </template>
 <script setup>
 import EditMenu from './edit.vue';
@@ -158,7 +158,7 @@ async function saveMenuRePermForm() {
 function updateForMenuRePerm(row) {
   menuRePermForm = Object.assign({}, row);
   dialogVisibleForMenuRePerm = true;
-  dialogStatusForMenuRePerm = 'edit';
+  dialogStatusForMenuRePerm = 'update';
 }
 function addForMenuRePerm() {
   dialogVisibleForMenuRePerm = true;

@@ -1,5 +1,5 @@
 <template>
-  <base-wraper class="bg-color-primary flex-center-center">
+  <base-wrapper class="bg-color-primary flex-center-center">
     <div class="flex-c-center-center bg-color-white b-rd-10" style="height: 400px; width: 500px">
       <h1 class="font-size-lg">SmallBoot</h1>
       <div class="m-t-20">
@@ -21,7 +21,7 @@
     <div class="copyright">
       <p>IF I WERE YOU</p>
     </div>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

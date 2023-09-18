@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <base-header>
       <el-input v-model="listQuery.name" placeholder="请输入名称" style="width: 200px" clearable @clear="refreshTableData"></el-input>
       <el-input v-model="listQuery.account" placeholder="请输入公众号ID" style="width: 200px" clearable @clear="refreshTableData"></el-input>
@@ -66,7 +66,7 @@
         <el-button type="primary" @click="submitForm">确 定</el-button>
       </template>
     </base-dialog>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

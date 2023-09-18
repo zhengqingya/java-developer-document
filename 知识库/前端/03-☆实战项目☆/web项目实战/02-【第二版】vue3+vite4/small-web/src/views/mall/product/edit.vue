@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <h1 class="flex-center-center m-b-20">{{ proxy.$route.query.isAdd ? '添加商品' : '编辑商品' }}</h1>
     <el-form ref="dataFormRef" :model="form" label-width="100px">
       <el-form-item label="名称:" prop="name">
@@ -40,7 +40,7 @@
       <router-link to="/mall/product"> <el-button>返回</el-button></router-link>
       <el-button type="primary" class="m-l-20" @click="submitForm">确定</el-button>
     </div>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>
@@ -86,7 +86,7 @@ function submitForm() {
 
       let res = await proxy.$api.pms_spu[apiForm.id ? 'update' : 'add'](apiForm);
       proxy.submitOk(res.message);
-      // proxy.$router.push('/mall/product');
+      proxy.$router.push('/mall/product');
     }
   });
 }

@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <div v-if="menu != null" class="flex">
       <!-- 左边配置 -->
       <div class="flex-c-start-center" style="width: 400px">
@@ -74,7 +74,7 @@
         <!-- <div>{{ menu }}</div> -->
       </div>
     </div>
-  </base-wraper>
+  </base-wrapper>
 </template>
 <script setup>
 const { proxy } = getCurrentInstance();

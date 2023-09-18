@@ -4,15 +4,15 @@
 
     <base-card title="sku属性" class="">
       <span>选择属性：</span>
-      <el-autocomplete v-model="newAttrKey" class="w-200 m-b-10" :fetch-suggestions="getAttrKeyList" value-key="attrKeyName" clearable placeholder="如：颜色" @select="selectAttrKey">
+      <el-autocomplete v-model="newAttrKey" style="width: 200px" class="m-b-10" :fetch-suggestions="getAttrKeyList" value-key="attrKeyName" clearable placeholder="如：颜色" @select="selectAttrKey">
         <template v-if="newAttrKey && attrKeyList.length === 0" #suffix> <el-button link @click="addAttrKey">添加</el-button> </template>
       </el-autocomplete>
     </base-card>
 
     <div class="flex">
-      <base-card v-for="item in attrDbList" :key="item.attrKeyName" :title="item.attrKeyName" class="w-300 m-l-10 bg-color-white">
+      <base-card v-for="item in attrDbList" :key="item.attrKeyName" :title="item.attrKeyName" class="m-l-10 bg-color-white" style="width: 300px">
         <template #append>
-          <el-input v-model="item.newAttrValue" class="w-150" placeholder="添加新属性值 如：蓝色">
+          <el-input v-model="item.newAttrValue" style="width: 150px" placeholder="添加新属性值 如：蓝色">
             <template #append> <el-button link @click="addAttrValue(item)">添加</el-button></template>
           </el-input>
           <base-delete-btn @ok="delAttr(item.attrKeyId)" />

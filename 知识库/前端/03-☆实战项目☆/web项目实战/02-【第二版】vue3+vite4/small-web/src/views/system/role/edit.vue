@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <base-card title="角色信息">
       <base-cell label-width="100px">
         <base-cell-item label="角色名：">{{ roleForm.name }}</base-cell-item>
@@ -50,7 +50,7 @@
       </router-link>
       <el-button type="primary" class="m-l-20" @click="savePerm">保存</el-button>
     </div>
-  </base-wraper>
+  </base-wrapper>
 </template>
 <script setup>
 import { onMounted } from 'vue';

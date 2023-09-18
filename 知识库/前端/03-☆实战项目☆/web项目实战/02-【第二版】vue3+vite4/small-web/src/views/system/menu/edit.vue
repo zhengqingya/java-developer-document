@@ -95,7 +95,7 @@ function open(type, currentClickMenu) {
     }
   } else if (type === 3) {
     // 编辑
-    dialogStatus = 'edit';
+    dialogStatus = 'update';
     if (currentClickMenu) {
       if (currentClickMenu.parentId) {
         hasParent = true;

@@ -38,7 +38,7 @@ function open(type, data) {
   if (type === 'add') {
     form = {};
     form.status = 1;
-  } else if (type === 'edit') {
+  } else if (type === 'update') {
     form = Object.assign({}, data);
   }
   dialogVisible = true;

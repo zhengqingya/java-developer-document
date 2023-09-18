@@ -1,5 +1,5 @@
 <template>
-  <base-wraper class="flex">
+  <base-wrapper class="flex">
     <base-card title="字典类型">
       <template #append>
         <el-button type="primary" @click="addDictType">添加</el-button>
@@ -53,7 +53,7 @@
 
     <edit-dict ref="editDictRef" @save-succ="getDicList(selectedDictTypeData)" />
     <edit-dict-type ref="editDictTypeRef" @save-succ="getDictTree()" />
-  </base-wraper>
+  </base-wrapper>
 </template>
 <script setup>
 import editDict from './edit-dict.vue';
@@ -102,7 +102,7 @@ function addDict() {
   proxy.$refs.editDictRef.open('add', null, selectedDictTypeData.id, selectedDictTypeData.code, maxSort);
 }
 function updateDict(row) {
-  proxy.$refs.editDictRef.open('edit', row);
+  proxy.$refs.editDictRef.open('update', row);
 }
 async function deleteDict({ id }) {
   let res = await proxy.$api.sys_dict.delete(id);
@@ -114,7 +114,7 @@ function addDictType() {
   proxy.$refs.editDictTypeRef.open('add');
 }
 function updateDictType(row) {
-  proxy.$refs.editDictTypeRef.open('edit', row);
+  proxy.$refs.editDictTypeRef.open('update', row);
 }
 function deleteDictType() {
   if (!selectedDictTypeData.name) {

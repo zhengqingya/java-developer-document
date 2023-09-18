@@ -13,7 +13,7 @@ import mixin from '@/utils/mixin.js';
 // 全局过滤器
 import { filters } from '@/utils/filters.js';
 // uviewPlus
-import uviewPlus from '@/uni_modules/uview-plus';
+import uviewPlus from 'uview-plus'
 
 export function createApp() {
   const app = createSSRApp(App);

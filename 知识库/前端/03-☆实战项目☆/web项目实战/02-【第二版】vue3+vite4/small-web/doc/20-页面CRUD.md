@@ -8,7 +8,7 @@
 
 ```vue
 <template>
-  <base-wraper>
+  <base-wrapper>
     <base-header>
       <el-input v-model="listQuery.name" clearable placeholder="角色名称" style="width: 200px" @clear="refreshTableData" />
       <el-button type="primary" @click="refreshTableData">查询</el-button>
@@ -45,7 +45,7 @@
         <el-button type="primary" @click="saveForm">确 定</el-button>
       </template>
     </base-dialog>
-  </base-wraper>
+  </base-wrapper>
 </template>
 <script setup>
 const { proxy } = getCurrentInstance();
@@ -57,7 +57,7 @@ let rules = {
   name: [{ required: true, message: '请输入角色名称', trigger: 'blur' }],
 };
 let dialogStatus = $ref('');
-let textMap = $ref({ update: '编辑', create: '添加' });
+let textMap = $ref({ update: '编辑', add: '添加' });
 
 async function refreshTableData() {
   proxy.$refs.baseTableRef.refresh();
@@ -79,7 +79,7 @@ function update(row) {
 }
 function add() {
   dialogVisible = true;
-  dialogStatus = 'create';
+  dialogStatus = 'add';
   roleForm.roleId = null;
   roleForm.name = '';
   roleForm.code = '';

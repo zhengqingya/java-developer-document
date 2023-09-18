@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <base-header>
       <el-input v-model="listQuery.id" placeholder="请输入主键ID" style="width: 200px" clearable @clear="refreshTableData"></el-input>
       <el-input v-model="listQuery.openid" placeholder="请输入微信openid" style="width: 200px" clearable @clear="refreshTableData"></el-input>
@@ -24,7 +24,7 @@
       </el-table-column>
       <el-table-column label="创建时间" prop="createTime" align="center"> </el-table-column>
     </base-table-p>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

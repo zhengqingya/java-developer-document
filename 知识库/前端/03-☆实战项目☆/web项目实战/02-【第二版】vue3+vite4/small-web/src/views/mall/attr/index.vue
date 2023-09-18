@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <el-row :gutter="20">
       <el-col :span="8">
         <base-header>
@@ -40,7 +40,7 @@
         <attr-value ref="attrValueRef" />
       </el-col>
     </el-row>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>

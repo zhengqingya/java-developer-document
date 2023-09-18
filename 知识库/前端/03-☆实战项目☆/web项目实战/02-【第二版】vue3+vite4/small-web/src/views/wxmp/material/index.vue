@@ -1,5 +1,5 @@
 <template>
-  <base-wraper>
+  <base-wrapper>
     <base-header>
       <el-select v-model="listQuery.mediaType" placeholder="请选择">
         <el-option v-for="item in materialTypeList" :key="item.value" :label="item.name" :value="item.value" />
@@ -48,7 +48,7 @@
         <el-button type="primary" @click="submitForm">确 定</el-button>
       </template>
     </base-dialog>
-  </base-wraper>
+  </base-wrapper>
 </template>
 
 <script setup>
