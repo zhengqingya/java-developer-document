@@ -11,7 +11,11 @@ app.use(router);
 // element-plus
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
-app.use(ElementPlus);
+// 国际化
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
+app.use(ElementPlus, {
+  locale: zhCn,
+});
 // 注册所有图标
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -69,6 +73,5 @@ import directive from '@/directive/index.js';
 Object.keys(directive).forEach((key) => {
   app.directive(key, directive[key]);
 });
-
 
 app.mount('#app');

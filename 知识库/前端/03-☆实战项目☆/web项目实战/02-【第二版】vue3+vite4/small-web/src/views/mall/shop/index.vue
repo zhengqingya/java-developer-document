@@ -13,9 +13,8 @@
 
     <base-table-p ref="baseTableRef" api="sms_shop.page" :params="listQuery">
       <el-table-column label="门店ID" prop="shopId" align="center"></el-table-column>
-      <el-table-column label="租户ID" prop="tenantId" align="center"></el-table-column>
       <el-table-column label="门店名称" prop="shopName" align="center"></el-table-column>
-      <el-table-column label="店铺类型" prop="type" align="center"></el-table-column>
+      <!-- <el-table-column label="店铺类型" prop="type" align="center"></el-table-column> -->
       <el-table-column label="是否显示 " prop="isShow" align="center">
         <template #default="scope">
           <span>{{ scope.row.isShow ? '是' : '否' }}</span>
@@ -42,7 +41,9 @@
           <router-link :to="`/mall/shop-edit?shopId=` + scope.row.shopId">
             <el-button link>编辑</el-button>
           </router-link>
-          <el-button link @click="handleDetail(scope.row)">详情</el-button>
+          <router-link :to="`/mall/shop-edit?isDetail=true&shopId=` + scope.row.shopId">
+            <el-button link>详情</el-button>
+          </router-link>
           <base-delete-btn @ok="handleDelete(scope.row)"></base-delete-btn>
         </template>
       </el-table-column>
