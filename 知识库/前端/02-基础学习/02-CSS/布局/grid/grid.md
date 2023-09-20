@@ -89,7 +89,7 @@ $align: (
         justify-items: #{$justifyVal}; // start | end | center | stretch;
         align-items: #{$alignVal}; // start | end | center | stretch;
         grid-template-columns: repeat(#{$i}, 1fr); // 列大小 -- 划分份数
-        // grid-template-rows: repeat(auto-fill, 30px);
+        grid-template-rows: min-content; // 行大小 -- 最小高度
       }
       // @each $directionKey, $directionVal in $direction { }
     }
@@ -104,15 +104,15 @@ $align: (
   }
 }
 
-@for $i from 20 through 50 {
-  // 如果能够被 10 整除，将应用以下样式
-  @if ($i % 10 == 0) {
-    // .grid-template-rows-30
-    .grid-template-rows-#{$i} {
-      grid-template-rows: repeat(auto-fill, #{$i}px); // 行大小 -- 指定大小后自动填充，填满后剩余区域留空
-    }
-  }
-}
+// @for $i from 20 through 50 {
+//   // 如果能够被 10 整除，将应用以下样式
+//   @if ($i % 10 == 0) {
+//     // .grid-template-rows-30
+//     .grid-template-rows-#{$i} {
+//       grid-template-rows: repeat(auto-fill, #{$i}px); // 行大小 -- 指定大小后自动填充，填满后剩余区域留空
+//     }
+//   }
+// }
 
 @for $i from 1 through 10 {
   // 如果能够被 2 整除，将应用以下样式
