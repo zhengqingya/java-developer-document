@@ -5,6 +5,7 @@ Grid布局是将容器划分成“行”和“列”，产生单元格，然后�
 ### 学习资源
 
 - [CSS Grid 布局完全指南(图解 Grid 详细教程)](https://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&mid=2649089984&idx=1&sn=ba9719bc4b1b7805c36f42470ab07cb2)
+- [（超详细）强大的grid布局](https://www.jianshu.com/p/3762f214cd6f)
 
 ### 简单示例
 
@@ -35,6 +36,7 @@ Grid布局是将容器划分成“行”和“列”，产生单元格，然后�
 //   display: grid; // grid布局
 //   grid-auto-flow: row; // row | column | row dense | column dense; 自动布局算法依次填充 往 行/列 方向
 //   // grid-template-rows: repeat(3, 1fr); // 行大小 -- 划分份数
+//   // grid-template-rows: repeat(auto-fill, 30px); // 行大小 -- 自动填充
 //   grid-template-columns: repeat(3, 1fr); // 列大小 -- 划分份数
 //   // grid-row-gap: 50px; // 行间距
 //   // grid-column-gap: 10px; // 列间距
@@ -43,26 +45,6 @@ Grid布局是将容器划分成“行”和“列”，产生单元格，然后�
 //   // align-items: stretch; // start | end | center | stretch;
 //   // justify-content: center; // start | end | center | stretch | space-around | space-between | space-evenly;
 // }
-
-@for $i from 1 through 5 {
-  // .grid-3
-  .grid-#{$i} {
-    display: grid;
-    grid-template-columns: repeat(#{$i}, 1fr); // 列大小 -- 划分份数
-  }
-}
-
-@for $i from 1 through 10 {
-  // 如果能够被 2 整除，将应用以下样式
-  @if ($i % 2 == 0) {
-    // .grid-gap-10
-    .grid-gap-#{$i} {
-      grid-gap: #{$i}px; // 行、列间距  grid-gap: <grid-row-gap> <grid-column-gap>;
-    }
-  }
-}
-
-// ----------------------------------------------------------------
 
 // 设置主轴方向 x y      grid-auto-flow: row; // row | column | row dense | column dense; 自动布局算法依次填充 往 行/列 方向
 $direction: (
@@ -97,17 +79,48 @@ $align: (
   'stretch': stretch
 );
 
-// @each $alignKey, $alignVal in $align {
-//   @each $justifyKey, $justifyVal in $justify {
-//     // grid-start-center
-//     .grid-#{$justifyKey}-#{$alignKey} {
-//       display: grid;
-//       grid-template-columns: repeat(3, 1fr); // 列大小 -- 划分份数
-//       // grid-gap: 10px; // 行、列间距  grid-gap: <grid-row-gap> <grid-column-gap>;
-//       justify-items: #{$justifyVal}; // start | end | center | stretch;
-//       align-items: #{$alignVal}; // start | end | center | stretch;
-//     }
-//     // @each $directionKey, $directionVal in $direction { }
-//   }
-// }
+@each $alignKey, $alignVal in $align {
+  @each $justifyKey, $justifyVal in $justify {
+    @for $i from 2 through 3 {
+      // grid-start-center-2
+      .grid-#{$justifyKey}-#{$alignKey}-#{$i} {
+        display: grid;
+        // grid-gap: 10px; // 行、列间距  grid-gap: <grid-row-gap> <grid-column-gap>;
+        justify-items: #{$justifyVal}; // start | end | center | stretch;
+        align-items: #{$alignVal}; // start | end | center | stretch;
+        grid-template-columns: repeat(#{$i}, 1fr); // 列大小 -- 划分份数
+        // grid-template-rows: repeat(auto-fill, 30px);
+      }
+      // @each $directionKey, $directionVal in $direction { }
+    }
+  }
+}
+
+@for $i from 1 through 5 {
+  // .grid-3
+  .grid-#{$i} {
+    display: grid;
+    grid-template-columns: repeat(#{$i}, 1fr); // 列大小 -- 划分份数
+  }
+}
+
+@for $i from 20 through 50 {
+  // 如果能够被 10 整除，将应用以下样式
+  @if ($i % 10 == 0) {
+    // .grid-template-rows-30
+    .grid-template-rows-#{$i} {
+      grid-template-rows: repeat(auto-fill, #{$i}px); // 行大小 -- 指定大小后自动填充，填满后剩余区域留空
+    }
+  }
+}
+
+@for $i from 1 through 10 {
+  // 如果能够被 2 整除，将应用以下样式
+  @if ($i % 2 == 0) {
+    // .grid-gap-10
+    .grid-gap-#{$i} {
+      grid-gap: #{$i}px; // 行、列间距  grid-gap: <grid-row-gap> <grid-column-gap>;
+    }
+  }
+}
 ```
