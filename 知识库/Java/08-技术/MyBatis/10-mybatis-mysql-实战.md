@@ -68,11 +68,24 @@
     <!-- ============================================================================================================ -->
 
     <update id="updateBatchStatus">
-        UPDATE joms_order_item
-        SET status = #{status}
-        WHERE order_item_id IN
-        <foreach collection="orderItemIdList" separator="," open="(" close=")" item="orderItemId">
-            #{orderItemId}
+        UPDATE sms_shop
+        <set>
+            <if test="filter.isShow!=null">
+                is_show = #{filter.isShow},
+            </if>
+            <if test="filter.snackStatus!=null">
+                snack_status = #{filter.snackStatus},
+            </if>
+            <if test="filter.takeoutStatus!=null">
+                takeout_status = #{filter.takeoutStatus},
+            </if>
+            <if test="filter.openStatus!=null">
+                open_status = #{filter.openStatus},
+            </if>
+        </set>
+        WHERE is_deleted = 0 AND shop_id IN
+        <foreach collection="filter.shopIdList" separator="," open="(" close=")" item="shopId">
+            #{shopId}
         </foreach>
     </update>
     
