@@ -56,6 +56,7 @@ const getStr2 = computed({
 // watch：监听器
 watch(
   count, // ref
+  // () => geoObj.value.lng, // ref 对象中的某一个属性值
   // data, // reactive
   // () => data.age, // reactive 对象中的某一个属性值
   // [count, data], // 监听多个数据
