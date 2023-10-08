@@ -56,9 +56,13 @@ List<Integer> userIdListOld = Lists.newArrayList(1, 2, 3, 4);
 
 // 删除人员 [4]
 List<Integer> removeUserIdList = userIdListOld.stream().filter(userIdOld -> !userIdListNew.contains(userIdOld)).collect(Collectors.toList());
+// 或使用hutool
+List<Integer> addList = CollUtil.subtractToList(userIdListOld, userIdListNew); // [4]
 
 // 新增人员 [5, 6]
 List<Integer> addUserIdList = userIdListNew.stream().filter(userIdNew -> !userIdListOld.contains(userIdNew)).collect(Collectors.toList());
+// 或使用hutool
+List<Integer> addList = CollUtil.subtractToList(userIdListNew, userIdListOld); // [5, 6]
 ```
 
 #### 分类统计数量
