@@ -13,7 +13,7 @@
 {
   "extEnable": true,
   "extAppid": "xxx",
-  "directCommit": true,
+  "directCommit": false,
   "extPages": {
     "pages/index/index": {
       "navigationBarTitleText": "自定义首页"
