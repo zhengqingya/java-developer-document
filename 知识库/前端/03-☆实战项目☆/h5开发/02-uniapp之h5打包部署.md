@@ -48,7 +48,7 @@ tips: 这里是将打包好的h5目录下的文件放在nginx中的`/usr/share/n
 
 ```
 # 子目录访问
-location /h5 {
+location ^~ /h5 {
     alias   /usr/share/nginx/html/h5;
     index  index.html index.htm;
     try_files $uri $uri/ /h5/index.html; # 解决页面刷新 404 问题
