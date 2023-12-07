@@ -1,5 +1,7 @@
 ### 自定义 TypeHandler 类型处理器
 
+> tips: 可以直接使用 {@link com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler}
+
 数据库为json字符串，映射给java为list对象
 
 ```java
