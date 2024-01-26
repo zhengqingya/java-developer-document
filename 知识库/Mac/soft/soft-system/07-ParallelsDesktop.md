@@ -7,6 +7,8 @@
 
 ### Parallels Desktop 19 破解版
 
+#### 方式一
+
 https://macwk.cn/app/532.html
 
 安装后破解
@@ -18,3 +20,9 @@ chmod -R 777 Crack_Parallels
 cd Crack_Parallels
 ./Install_Patch.command
 ```
+
+#### 方式二
+
+https://mp.weixin.qq.com/s/qdk3zN48TN-BAjzNxWcIRg
+
+会收费40，没试过...
