@@ -75,3 +75,25 @@ Disable-WindowsOptionalFeature -Online -FeatureName HypervisorPlatform
 ![](./images/01-Kali-1706773961855.png)
 ![](./images/01-Kali-1706774003565.png)
 
+### 配置ssh远程连接
+
+```shell
+sudo vim /etc/ssh/sshd_config
+# 修改下面2个参数
+permitRootLogin yes
+pubkeyAuthentication yes
+
+# 重启
+sudo systemctl restart ssh.service
+# 查询服务状态
+sudo systemctl status ssh.service
+```
+
+![](./images/01-Kali-1706780574527.png)
+
+
+然后就可以远程连接了
+
+```shell
+ssh zhengqingya@172.18.48.236
+```
