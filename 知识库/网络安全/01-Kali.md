@@ -1,15 +1,17 @@
-# Kali 安装
+# Kali
 
 https://www.kali.org/
 
-### 方式一：虚拟机
+### 一、安装
+
+#### 方式一：虚拟机
 
 下载虚拟机版本 https://www.kali.org/get-kali/#kali-virtual-machines
 ![](./images/01-Kali-1706757290616.png)
 
 > tips: 个人实践后，`Hyper-V`和`VMware`方式安装都失败了... 于是最后使用iso镜像方式安装
 
-#### `VMware`
+##### `VMware`
 
 ![](./images/01-Kali-1706758669481.png)
 
@@ -46,7 +48,7 @@ Disable-WindowsOptionalFeature -Online -FeatureName HypervisorPlatform
 
 ---
 
-### 方式二：`Hyper-V` + `iso` 镜像
+#### 方式二：`Hyper-V` + `iso` 镜像
 
 通过`kali-linux-2023.4-installer-amd64.iso`镜像安装
 ![](./images/01-Kali-1706772376644.png)
@@ -75,7 +77,9 @@ Disable-WindowsOptionalFeature -Online -FeatureName HypervisorPlatform
 ![](./images/01-Kali-1706773961855.png)
 ![](./images/01-Kali-1706774003565.png)
 
-### 配置ssh远程连接
+### 二、配置
+
+#### 配置ssh远程连接
 
 ```shell
 sudo vim /etc/ssh/sshd_config
@@ -84,9 +88,11 @@ permitRootLogin yes
 pubkeyAuthentication yes
 
 # 重启
-sudo systemctl restart ssh.service
+sudo systemctl restart ssh
 # 查询服务状态
-sudo systemctl status ssh.service
+sudo systemctl status ssh
+# 开机自启动 -- 保证系统重启之后还可以远程连接
+systemctl enable ssh
 ```
 
 ![](./images/01-Kali-1706780574527.png)
@@ -95,5 +101,27 @@ sudo systemctl status ssh.service
 然后就可以远程连接了
 
 ```shell
-ssh zhengqingya@172.18.48.236
+ssh zhengqingya@192.168.137.194
 ```
+
+#### 中文
+
+```shell
+sudo su
+sudo dpkg-reconfigure locales
+```
+
+`zh_CN.UTF-8 UTF-8`
+![](./images/01-Kali-1706840039912.png)
+`zh_CN.UTF-8`
+![](./images/01-Kali-1706840093344.png)
+
+重启
+
+```shell
+reboot
+```
+
+然后就看见系统变成中文了...
+![](./images/01-Kali-1706840268242.png)
+![](./images/01-Kali-1706840291926.png)

