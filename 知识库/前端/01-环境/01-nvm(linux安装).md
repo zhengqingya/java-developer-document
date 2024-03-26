@@ -84,7 +84,7 @@ nvm use 版本号
 nvm ls
 
 # 修改npm镜像源为淘宝镜像
-# npm config set registry https://registry.npm.taobao.org
+# npm config set registry https://registry.npmmirror.com
 # 检查是否成功
 # npm config get registry
 

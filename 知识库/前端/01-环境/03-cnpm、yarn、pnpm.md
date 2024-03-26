@@ -1,5 +1,7 @@
 ### cnpm
 
+tips: 淘宝镜像过期，已从 `https://registry.npm.taobao.org` -> https://registry.npmmirror.com
+
 ```shell
 # 设置淘宝`NPM`镜像
 npm install -g cnpm --registry=https://registry.npm.taobao.org
