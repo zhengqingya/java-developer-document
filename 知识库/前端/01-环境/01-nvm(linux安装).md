@@ -80,6 +80,11 @@ nvm use 版本号
 # 列出当前已经安装的所有 Node.js 版本，其中带有 * 号的表示当前正在使用的版本
 nvm ls
 
+# 修改npm镜像源为淘宝镜像
+# npm config set registry https://registry.npm.taobao.org
+# 检查是否成功
+# npm config get registry
+
 # 卸载指定版本的 Node.js。
 nvm uninstall 版本号
 
