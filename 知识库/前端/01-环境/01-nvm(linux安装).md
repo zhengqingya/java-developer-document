@@ -67,6 +67,9 @@ nvm -v
 ### 二、常用命令 & 安装nodejs
 
 ```shell
+# 如果在jenkins中出现 "nvm: 未找到命令"，可以先执行如下命令
+# . ~/.nvm/nvm.sh 
+
 # 查看版本
 nvm -v
 
