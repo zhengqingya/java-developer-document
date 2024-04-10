@@ -45,7 +45,7 @@ open /Applications/OBS.app/Contents/MacOS/OBS --args -picture
 
 --- 
 
-抖音直播步骤：
+### 抖音直播步骤：
 
 1. 直播伴侣开启直播
 2. 推流码获取
@@ -53,3 +53,12 @@ open /Applications/OBS.app/Contents/MacOS/OBS --args -picture
 4. 直播伴侣退出（不要关播）
 5. obs 开启直播
 6. 最后关闭时： 1、obs关播 2、直播伴侣重新打开后关闭直播
+
+###### 声音降噪
+
+麦克风 -> 滤镜
+![](./images/18-OBS-1712773039260.png)
+
+左下角添加 -> 噪音抑制
+![](./images/18-OBS-1712773059723.png)
+![](./images/18-OBS-1712773082672.png)
