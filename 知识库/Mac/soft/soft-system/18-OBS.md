@@ -62,3 +62,14 @@ open /Applications/OBS.app/Contents/MacOS/OBS --args -picture
 左下角添加 -> 噪音抑制
 ![](./images/18-OBS-1712773059723.png)
 ![](./images/18-OBS-1712773082672.png)
+噪音阈值 -> 打开阈值（不要拉满，否则没声音）
+![](./images/18-OBS-1712773749084.png)
+
+###### 插件中心
+
+> 目前mac上没有看见有这个配置
+
+https://www.obsworks.com/center/
+
+弹幕显示插件使用教程 https://docs.qq.com/doc/DS0FZSkduZk5FdHNr
+
