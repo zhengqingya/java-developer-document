@@ -8,6 +8,9 @@
 Map<Integer, User> map = list.stream().collect(Collectors.toMap(User::getId, t -> t, (oldData, newData) -> newData));
 
 Map<Integer, String> map2 = list.stream().collect(Collectors.toMap(User::getId, User::getName, (oldData, newData) -> newData));
+
+// 提取 List 对象中包含的 List<Integer> 转新集合
+List<Integer> idList = list.stream().flatMap(e -> e.getIdList().stream()).collect(Collectors.toList());
 ```
 
 #### list对象转Map<String, List<对象>>
