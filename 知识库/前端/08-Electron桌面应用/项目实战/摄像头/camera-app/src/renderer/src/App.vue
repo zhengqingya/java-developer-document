@@ -1,9 +1,9 @@
 <template>
-  <div style="height: 100vh; width: 100vh; background-color: aqua">
-    <el-avatar :size="300" :src="circleUrl" />
-
-    <!-- <video id="camera" autoplay></video> -->
+  <div style="height: 100vh; width: 100vh; border-radius: 10px; background-color: #000">
+    <camera />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import camera from './components/camera.vue'
+</script>

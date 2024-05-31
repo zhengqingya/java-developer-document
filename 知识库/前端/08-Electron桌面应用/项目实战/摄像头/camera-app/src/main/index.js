@@ -6,20 +6,25 @@ import icon from '../../resources/icon.png?asset'
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 500,
-    height: 370,
+    width: 1000,
+    height: 600,
     show: false,
-    autoHideMenuBar: true,
+    autoHideMenuBar: true, // 隐藏菜单栏
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
+      sandbox: false,
+      nodeIntegration: true // 允许在渲染进程中使用Node.js
     },
-
     transparent: true, // 透明
     // frame: false, // 去除边框
-    devTools: false
+    devTools: false,
+    alwaysOnTop: true // 窗口置顶
+    // allowMediaDevices: true // 允许访问摄像头和麦克风
   })
+
+  // 开发环境 -- 右侧打开调试工具
+  if (is.dev) mainWindow.webContents.openDevTools({ mode: 'right' })
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()

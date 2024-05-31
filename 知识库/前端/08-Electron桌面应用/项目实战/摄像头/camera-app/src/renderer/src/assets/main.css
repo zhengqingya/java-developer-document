@@ -10,7 +10,7 @@ body {
   /* user-select: none; */
    /* 背景透明 */
   background:#ffffff00;
-  background-color: red;
+  background-color: rgb(0, 145, 255);
   /* 可拖拽 */
   -webkit-app-region: drag;
 }

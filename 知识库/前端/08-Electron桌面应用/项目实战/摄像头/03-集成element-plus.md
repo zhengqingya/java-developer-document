@@ -7,6 +7,7 @@
 
 ```shell
 npm install element-plus --save
+npm install sass --save-dev
 ```
 
 ### 2、引入
