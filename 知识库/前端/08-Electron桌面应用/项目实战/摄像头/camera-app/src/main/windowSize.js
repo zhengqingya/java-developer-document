@@ -10,7 +10,7 @@ ipcMain.on('setWindowSize', (event, opt) => {
   //  1.获取win对象
   const win = getWin(event)
 
-  // 2.改变win缩放比例
+  // 2.改变win缩放比例 https://www.electronjs.org/zh/docs/latest/api/browser-window
   win.setAspectRatio(opt.AspectRatio)
 
   // 3.设置win宽高

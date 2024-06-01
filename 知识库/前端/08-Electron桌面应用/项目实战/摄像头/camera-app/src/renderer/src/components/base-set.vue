@@ -2,8 +2,8 @@
   <div
     class="flex-c-start-center"
     style="
-      width: 100vh;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       padding: 50px 20px;
       background-color: rebeccapurple;
       border-radius: 10px;

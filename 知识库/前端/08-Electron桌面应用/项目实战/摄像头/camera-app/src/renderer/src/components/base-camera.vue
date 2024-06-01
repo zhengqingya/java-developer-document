@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="{ 'border-radius': config.isRound ? '50%' : '50%' }"
+    :style="{ 'border-radius': config.isRound ? '50%' : '10px' }"
     style="width: 100%; height: 100%; overflow: hidden"
   >
     <video style="width: 100%; height: 100%; border-radius: 10px" />
@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { onMounted, toRefs, getCurrentInstance } from 'vue'
+import { onMounted, ref, toRefs, getCurrentInstance } from 'vue'
 const { proxy } = getCurrentInstance()
 let { setWinSize } = proxy.$store.settings.useSettingsStore()
 let { config } = toRefs(proxy.$store.settings.useSettingsStore())

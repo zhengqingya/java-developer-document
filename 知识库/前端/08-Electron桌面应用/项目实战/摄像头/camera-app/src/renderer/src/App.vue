@@ -1,8 +1,5 @@
 <template>
-  <div
-    style="position: relative; width: 100vh; height: 100vh; background-color: blue"
-    @contextmenu="quit"
-  >
+  <div style="width: 100%; height: 100%" @contextmenu="quit">
     <base-camera v-if="$store.settings.useSettingsStore().config.isCamera" />
     <base-set v-else />
 

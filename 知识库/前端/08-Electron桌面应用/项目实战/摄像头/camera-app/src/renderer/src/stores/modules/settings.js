@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 
 export const useSettingsStore = defineStore('settings', () => {
-  let config = ref({ cameraList: [], isRound: !true, isCamera: true })
+  let config = ref({ cameraList: [], isRound: true, isCamera: true })
 
   function changeRound() {
     config.value.isRound = !config.value.isRound

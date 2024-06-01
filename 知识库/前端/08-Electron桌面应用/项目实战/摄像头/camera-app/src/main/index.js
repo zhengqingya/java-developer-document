@@ -12,10 +12,10 @@ import './windowSize'
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    // width: 800,
-    // height: 600,
-    // minHeight: 200,
-    // minWidth: 400,
+    width: 800,
+    height: 600,
+    minWidth: 400,
+    minHeight: 300,
     show: false,
     autoHideMenuBar: true, // 隐藏菜单栏
     ...(process.platform === 'linux' ? { icon } : {}),
@@ -31,8 +31,7 @@ function createWindow() {
     allowMediaDevices: true, // 允许访问摄像头和麦克风
     resizable: true, //是否可以拖拉窗口边框改变大小
     useContentSize: true, // 窗口大小是否包含边框
-    // backgroundColor: '#00000000' //窗口底色为透明色
-    backgroundColor: 'red' //窗口底色为透明色
+    backgroundColor: '#00000000' //窗口底色为透明色
   })
 
   // 拖拽
