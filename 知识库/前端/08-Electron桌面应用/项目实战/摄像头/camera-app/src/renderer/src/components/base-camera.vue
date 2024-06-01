@@ -1,9 +1,9 @@
 <template>
   <div
-    :style="{ 'border-radius': config.isRound ? '50%' : '10px' }"
-    style="width: 100vh; height: 100vh; overflow: hidden"
+    :style="{ 'border-radius': config.isRound ? '50%' : '50%' }"
+    style="width: 100%; height: 100%; overflow: hidden"
   >
-    <video style="width: 100%; height: 100vh; border-radius: 10px" />
+    <video style="width: 100%; height: 100%; border-radius: 10px" />
   </div>
 </template>
 

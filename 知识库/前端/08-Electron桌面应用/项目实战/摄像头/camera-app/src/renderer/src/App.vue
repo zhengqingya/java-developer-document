@@ -1,13 +1,16 @@
 <template>
-  <div @contextmenu="quit">
+  <div
+    style="position: relative; width: 100vh; height: 100vh; background-color: blue"
+    @contextmenu="quit"
+  >
     <base-camera v-if="$store.settings.useSettingsStore().config.isCamera" />
     <base-set v-else />
 
-    <div class="close-btn flex-center-center">
+    <div class="opt-btn close-btn" style="top: 10px">
       <el-icon :size="28" color="white" @click="exit"><Close /></el-icon>
     </div>
 
-    <div class="set-btn flex-center-center">
+    <div class="opt-btn set-btn" style="bottom: 10px">
       <el-icon :size="28" color="white" @click="changeConfig"><Setting /></el-icon>
       <span style="width: 10px"></span>
       <el-icon
@@ -24,11 +27,9 @@
 <script setup>
 import BaseCamera from './components/base-camera.vue'
 import BaseSet from './components/base-set.vue'
-import { ref, toRefs, getCurrentInstance, onMounted } from 'vue'
+import { ref, getCurrentInstance, onMounted } from 'vue'
 const { proxy } = getCurrentInstance()
 let { changeRound, changeConfig } = proxy.$store.settings.useSettingsStore()
-let { config } = toRefs(proxy.$store.settings.useSettingsStore())
-
 // 右键退出
 const quit = () => {
   window.api.quit()
@@ -39,10 +40,17 @@ function exit() {
   window.api.exit()
 }
 
-// 拖拽
-handleMousedown()
+onMounted(() => {
+  // 拖拽
+  handleMousedown()
+
+  // 显示隐藏操作按钮
+  handleShowOpt()
+})
+
 let isDown = ref(true)
 function handleMousedown() {
+  // 鼠标按下
   document.querySelector('body').addEventListener('mousedown', (e) => {
     isDown.value = true
     let baseX = e.x
@@ -63,29 +71,39 @@ function handleMousedown() {
         window.api.drag(position)
       }
     }
+    // 鼠标弹起
     document.onmouseup = (ev) => {
       isDown.value = false
     }
   })
 }
+
+function handleShowOpt() {
+  // 鼠标移入
+  document.querySelector('body').addEventListener('mouseenter', () => {
+    document.querySelector('.close-btn').style.display = 'flex'
+    document.querySelector('.set-btn').style.display = 'flex'
+  })
+
+  // 鼠标移出
+  document.querySelector('body').addEventListener('mouseleave', () => {
+    document.querySelector('.close-btn').style.display = 'none'
+    document.querySelector('.set-btn').style.display = 'none'
+  })
+}
 </script>
 
 <style lang="scss" scoped>
-.close-btn {
-  width: 100%;
-  position: absolute;
-  top: 10px;
-  z-index: 1000;
-  opacity: 0.8;
-  cursor: pointer;
-}
+.opt-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.set-btn {
   width: 100%;
   position: absolute;
-  bottom: 10px;
   z-index: 1000;
   opacity: 0.8;
   cursor: pointer;
+  display: none;
 }
 </style>

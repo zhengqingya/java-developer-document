@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 
 export const useSettingsStore = defineStore('settings', () => {
-  let config = ref({ cameraList: [], isRound: true, isCamera: true })
+  let config = ref({ cameraList: [], isRound: !true, isCamera: true })
 
   function changeRound() {
     config.value.isRound = !config.value.isRound
@@ -22,7 +22,7 @@ export const useSettingsStore = defineStore('settings', () => {
       window.api.setWindowSize({ AspectRatio: 1, width: 500, height: 500 })
     } else {
       // 如果不是圆角 设置窗口为16/9缩放
-      window.api.setWindowSize({ AspectRatio: 16 / 9, width: 500, height: 500 })
+      window.api.setWindowSize({ AspectRatio: 16 / 9, width: 500, height: 330 })
     }
   }
 
