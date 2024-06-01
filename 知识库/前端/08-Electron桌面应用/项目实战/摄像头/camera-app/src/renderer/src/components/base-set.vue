@@ -11,7 +11,6 @@
   >
     <h1>程序员郑清</h1>
     <el-form
-      class="no-drag"
       style="margin-top: 20px; width: 100%; height: 100vh"
       label-position="left"
       :model="config"

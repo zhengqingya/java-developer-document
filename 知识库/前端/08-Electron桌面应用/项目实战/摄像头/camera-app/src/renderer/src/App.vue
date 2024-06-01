@@ -1,13 +1,13 @@
 <template>
-  <div style="background-color: rgba(0, 0, 0, 0)" @contextmenu="quit">
+  <div @contextmenu="quit">
     <base-camera v-if="$store.settings.useSettingsStore().config.isCamera" />
     <base-set v-else />
 
-    <div class="close-btn no-drag flex-center-center">
+    <div class="close-btn flex-center-center">
       <el-icon :size="28" color="white" @click="exit"><Close /></el-icon>
     </div>
 
-    <div class="set-btn no-drag flex-center-center">
+    <div class="set-btn flex-center-center">
       <el-icon :size="28" color="white" @click="changeConfig"><Setting /></el-icon>
       <span style="width: 10px"></span>
       <el-icon
@@ -24,7 +24,7 @@
 <script setup>
 import BaseCamera from './components/base-camera.vue'
 import BaseSet from './components/base-set.vue'
-import { toRefs, getCurrentInstance } from 'vue'
+import { ref, toRefs, getCurrentInstance, onMounted } from 'vue'
 const { proxy } = getCurrentInstance()
 let { changeRound, changeConfig } = proxy.$store.settings.useSettingsStore()
 let { config } = toRefs(proxy.$store.settings.useSettingsStore())
@@ -38,6 +38,36 @@ const quit = () => {
 function exit() {
   window.api.exit()
 }
+
+// 拖拽
+handleMousedown()
+let isDown = ref(true)
+function handleMousedown() {
+  document.querySelector('body').addEventListener('mousedown', (e) => {
+    isDown.value = true
+    let baseX = e.x
+    let baseY = e.y
+    let width = parseInt(window.outerWidth)
+    let height = parseInt(window.outerHeight)
+    document.onmousemove = (ev) => {
+      if (isDown.value) {
+        const x = parseInt(ev.screenX - baseX)
+        const y = parseInt(ev.screenY - baseY)
+        // 给主进程传入坐标
+        let position = {
+          posX: x,
+          posY: y,
+          width,
+          height
+        }
+        window.api.drag(position)
+      }
+    }
+    document.onmouseup = (ev) => {
+      isDown.value = false
+    }
+  })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -47,6 +77,7 @@ function exit() {
   top: 10px;
   z-index: 1000;
   opacity: 0.8;
+  cursor: pointer;
 }
 
 .set-btn {
@@ -55,5 +86,6 @@ function exit() {
   bottom: 10px;
   z-index: 1000;
   opacity: 0.8;
+  cursor: pointer;
 }
 </style>

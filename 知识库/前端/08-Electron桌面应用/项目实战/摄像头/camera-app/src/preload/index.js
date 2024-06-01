@@ -16,6 +16,11 @@ const api = {
   // 设置窗口尺寸事件
   setWindowSize: (opt) => {
     ipcRenderer.send('setWindowSize', opt)
+  },
+
+  // 拖拽
+  drag: (opt) => {
+    ipcRenderer.invoke('drag', opt)
   }
 }
 

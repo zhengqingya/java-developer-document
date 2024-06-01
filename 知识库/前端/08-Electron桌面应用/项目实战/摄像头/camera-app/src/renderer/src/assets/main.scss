@@ -9,7 +9,7 @@
 body {
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0); //  背景透明
-  -webkit-app-region: drag; // 可拖拽
+  // -webkit-app-region: drag; // 可拖拽 -- 这种方式会导致点击事件失效
 }
 
 #app {
@@ -17,6 +17,5 @@ body {
 }
 
 .no-drag {
-  /* 不可拖拽 */
-  -webkit-app-region: no-drag;
+  -webkit-app-region: no-drag; // 不可拖拽
 }

@@ -3,6 +3,7 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
+import drag from './drag'
 // 主进程监听事件
 import './ipcMain'
 // 导入控制窗口尺寸方法
@@ -29,6 +30,9 @@ function createWindow() {
     resizable: true, //是否可以拖拉窗口边框改变大小
     backgroundColor: '#00000000' //窗口底色为透明色
   })
+
+  // 拖拽
+  drag(mainWindow)
 
   // 开发环境 -- 右侧打开调试工具
   // if (is.dev) mainWindow.webContents.openDevTools({ mode: 'right' })
