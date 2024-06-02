@@ -7,14 +7,14 @@
 }
 
 body {
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0); //  背景透明
   // -webkit-app-region: drag; // 可拖拽 -- 这种方式会导致点击事件失效
 }
 
 #app {
-  // width: 100vh;
-  // height: 100vh;
 }
 
 .no-drag {

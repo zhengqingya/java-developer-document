@@ -1,6 +1,10 @@
 <template>
-  <div style="width: 100%; height: 100%" @contextmenu="quit">
-    <base-camera v-if="$store.settings.useSettingsStore().config.isCamera" />
+  <div
+    style="width: 100%; height: 100%"
+    :style="{ height: config.isRound ? '100vh' : '100%' }"
+    @contextmenu="quit"
+  >
+    <base-camera v-if="config.isCamera" />
     <base-set v-else />
 
     <div class="opt-btn close-btn" style="top: 10px">
@@ -24,9 +28,11 @@
 <script setup>
 import BaseCamera from './components/base-camera.vue'
 import BaseSet from './components/base-set.vue'
-import { ref, getCurrentInstance, onMounted } from 'vue'
+import { ref, getCurrentInstance, onMounted, toRefs } from 'vue'
 const { proxy } = getCurrentInstance()
 let { changeRound, changeConfig } = proxy.$store.settings.useSettingsStore()
+let { config } = toRefs(proxy.$store.settings.useSettingsStore())
+
 // 右键退出
 const quit = () => {
   window.api.quit()

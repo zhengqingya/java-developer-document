@@ -16,5 +16,5 @@ ipcMain.on('setWindowSize', (event, opt) => {
   // 3.设置win宽高
   win.setBounds({ width: opt.width, height: opt.height })
 
-  console.log(opt, 'opt')
+  // console.log(opt, 'opt')
 })
