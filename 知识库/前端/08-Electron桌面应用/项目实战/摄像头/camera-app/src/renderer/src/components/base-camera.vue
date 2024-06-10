@@ -26,7 +26,6 @@ watch(
 )
 
 // 打开摄像头
-
 function show() {
   let video = document.querySelector('video')
   // 拿到指定媒体设备 https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia

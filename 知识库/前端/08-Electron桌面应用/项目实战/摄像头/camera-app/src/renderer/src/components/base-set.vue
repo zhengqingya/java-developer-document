@@ -3,15 +3,15 @@
     class="flex-c-start-center"
     style="
       width: 100%;
-      height: 100%;
-      padding: 50px 20px;
+      height: 120px;
+      padding: 20px 20px;
       background-color: rebeccapurple;
       border-radius: 10px;
     "
   >
     <h1 style="color: #87ceeb">程序员郑清</h1>
     <el-form
-      style="margin-top: 20px; width: 100%; height: 100vh"
+      style="margin-top: 10px; width: 100%; height: 100vh"
       label-position="left"
       :model="config"
       label-width="40px"
