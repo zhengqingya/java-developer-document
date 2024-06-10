@@ -1,5 +1,5 @@
 appId: com.electron.app
-productName: camera-app
+productName: 程序员郑清的摄像头
 directories:
   buildResources: build
 files:
