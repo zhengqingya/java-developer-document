@@ -1,7 +1,6 @@
 <template>
   <div class="flex-column" style="width: 100%; height: 100vh" @contextmenu="quit">
     <!-- 设置 -->
-
     <div
       v-if="config.isOpenSetting"
       class="flex-c-start-center"
@@ -86,8 +85,6 @@ onMounted(() => {
 function handleChangeRound() {
   config.value.isRound = !config.value.isRound
   setWinSize()
-
-  // show()
 }
 
 // 切换设备
@@ -137,6 +134,11 @@ function show() {
 // 控制鼠标移入时的操作按钮显示、隐藏
 let isDown = ref(true)
 function handleMousedown() {
+  // 双击事件监听器
+  document.querySelector('body').addEventListener('dblclick', function () {
+    window.api.fullScreen()
+  })
+
   // 鼠标按下
   document.querySelector('body').addEventListener('mousedown', (e) => {
     isDown.value = true

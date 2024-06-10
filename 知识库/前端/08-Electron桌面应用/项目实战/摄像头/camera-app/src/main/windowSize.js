@@ -1,4 +1,4 @@
-import { BrowserWindow, ipcMain } from 'electron'
+import { BrowserWindow, ipcMain, screen } from 'electron'
 
 // 定义获取win对象的方法
 const getWin = (event) => {
@@ -17,4 +17,12 @@ ipcMain.on('setWindowSize', (event, opt) => {
   win.setBounds({ width: opt.width, height: opt.height })
 
   // console.log(opt, 'opt')
+})
+
+// 监听fullScreen 双击全屏
+let isFullScreen = false
+ipcMain.on('fullScreen', (event) => {
+  const win = getWin(event)
+  isFullScreen = !isFullScreen
+  win.setFullScreen(isFullScreen)
 })

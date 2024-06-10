@@ -17,6 +17,10 @@ const api = {
   setWindowSize: (opt) => {
     ipcRenderer.send('setWindowSize', opt)
   },
+  // 全屏
+  fullScreen: () => {
+    ipcRenderer.send('fullScreen')
+  },
 
   // 拖拽
   drag: (opt) => {
