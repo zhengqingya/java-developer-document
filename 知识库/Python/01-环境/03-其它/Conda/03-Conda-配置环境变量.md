@@ -9,7 +9,7 @@
 # 编辑Path环境变量，新增
 D:\zhengqingya\soft\soft-dev\Python\anaconda3
 D:\zhengqingya\soft\soft-dev\Python\anaconda3\Scripts
-D:\zhengqingya\soft\soft-dev\Python\anaconda3\Library\bin 
+D:\zhengqingya\soft\soft-dev\Python\anaconda3\Library\bin
 
 
 # 验证

@@ -17,3 +17,8 @@ GOPATH -> E:\IT_zhengqing\code\go-workspace
 # 编辑PATH环境变量，新增
 %GOROOT%\bin
 ```
+
+```
+# 查看配置信息
+go env
+```
