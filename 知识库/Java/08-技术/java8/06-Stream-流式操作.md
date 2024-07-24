@@ -12,6 +12,10 @@ List<Integer> userIdList = userList.stream().map(e -> e.getUserId()).collect(Col
 
 ```
 Map<String, List<User>> mapByName = list.stream().collect(Collectors.groupingBy(User::getName));
+
+Map<Long, List<Long>> userIdReOrderIdsMap = list.stream()
+                            .collect(Collectors.groupingBy(OrderVO::getUserId,
+                                    Collectors.mapping(OrderVO::getOrderId, Collectors.toList())));
 ```
 
 #### 去重 `distinct()`
