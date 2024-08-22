@@ -32,7 +32,7 @@ for (SysDictVO item : list) {
 // 分组 value会重复
 Map<String, List<SysDictVO>> map = list.stream().collect(Collectors.groupingBy(
                             SysDictVO::getCode, 
-                            Collectors.mapping(t -> t, Collectors.toList())))
+                            Collectors.mapping(t -> t, Collectors.toList())));
 
 // 分组 value不重复
 Map<Long, List<Long>> codeReTypesMap = list.stream().collect(Collectors.groupingBy(
