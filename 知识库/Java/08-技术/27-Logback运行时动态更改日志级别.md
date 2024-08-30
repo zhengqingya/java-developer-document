@@ -1,5 +1,7 @@
 # Logback运行时动态更改日志级别
 
+> jvm指定参数控制日志级别： `-Dlogging.level.root=info -Dlogging.level.org.apache=error`
+
 ### SpringBoot
 
 ```java
