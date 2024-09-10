@@ -54,7 +54,7 @@ git push origin master --force-with-lease
 操作成功如下：
 ![](./images/17-撤销merge_1725726982966.png)
 
-#### 情景2.2：其他人已经基于这个合并做了修改提交，您应该创建一个新的合并来撤销之前的合并
+#### 情景2.2：revert回滚提交 -- 其他人已经基于这个合并做了修改提交，您应该创建一个新的合并来撤销之前的合并
 
 ![](./images/17-撤销merge_1725728627169.png)
 
@@ -87,3 +87,13 @@ fatal: revert failed
 - 问题：不能确定合并的具体父提交
 - 解决：git revert时指定一个非合并分支的提交哈希id即可。
 
+#### 情景2.2：补充说明
+
+revert回滚提交之后，意味着dev分支开发的新功能代码合并到master分支之后，代码会丢失，因为已经revert了，如果需要恢复
+
+操作步骤：
+
+1. 基于master分支创建一个新分支`dev_v1`，并切换到新分支 (此分支包含revert记录)
+2. 在`dev_v1`分支上，执行`git revert <revert_commit_id>`，恢复dev分支之前revert的代码 （`revert_commit_id`为之前revert的commit id）
+
+idea中可以直接在之前revert操作的commit上右键，选择`Revert Commit`，即可恢复dev分支之前revert的代码。
