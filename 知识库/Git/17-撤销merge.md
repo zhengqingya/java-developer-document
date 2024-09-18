@@ -91,8 +91,9 @@ fatal: revert failed
 解决方式1: 
 
 ```shell
+# 回滚dev分支的修改，保留master分支的提交（一般来说，只会使用到这种情况）
 git revert -m 1 2d4b5856
-# 或
+# 回滚master分支的修改，保留dev分支的提交
 git revert -m 2 2d4b5856
 ```
 
