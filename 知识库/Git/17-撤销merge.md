@@ -16,6 +16,8 @@ git reset --hard <commit-id>
 
 commit-id查看方式：
 ![](./images/17-撤销merge_1725724645136.png)
+或
+![](./images/17-撤销merge-1726639171183.png)
 
 eg：
 
