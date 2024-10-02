@@ -1,5 +1,10 @@
 # Pycharm中使用Conda环境
 
+![](./images/06-Pycharm中使用Conda环境_1727888755130.png)
+![](./images/06-Pycharm中使用Conda环境_1727891133313.png)
+
+---
+
 ### 配置
 
 ![](images/pycharm-conda-config-01.png)

@@ -22,6 +22,8 @@ conda search "pandas [version='>=1.0.0,<1.1']"
 
 # 安装包 
 conda install xxx
+# 指定镜像源安装包
+conda install -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ 包名
 
 # 删除某个包
 conda remove xxx
@@ -34,6 +36,15 @@ conda  create  --name  new_env_name  --clone  old_env_name
 
 # 删除虚拟环境
 conda remove -n my_env_name --all
+```
+
+eg: 创建一个python=3.10.6的虚拟环境
+
+```shell
+conda create -n python3.10.6
+activate python3.10.6
+conda install selenium
+conda list
 ```
 
 ---
