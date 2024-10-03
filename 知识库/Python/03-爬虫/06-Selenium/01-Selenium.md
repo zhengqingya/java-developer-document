@@ -14,6 +14,13 @@ https://www.selenium.dev
    放到python安装目录下`D:\zhengqingya\soft\soft-dev\Python\Python310\chromedriver.exe`
    或放在程序指定的位置
 
+##### tips: 下载 Chrome Driver （版本说明）
+
+- M114 及之前Chrome版本见 https://registry.npmmirror.com/binary.html?path=chromedriver/
+- M115 起见：https://googlechromelabs.github.io/chrome-for-testing/
+
+> 若失效，可通过官方渠道查找：https://developer.chrome.com/docs/chromedriver?hl=zh-cn
+
 #### 配置环境变量
 
 > `此电脑` -> `属性` -> `高级系统设置` -> `环境变量`
