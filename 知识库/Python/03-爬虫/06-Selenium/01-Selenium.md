@@ -18,6 +18,7 @@ https://www.selenium.dev
 
 - M114 及之前Chrome版本见 https://registry.npmmirror.com/binary.html?path=chromedriver/
 - M115 起见：https://googlechromelabs.github.io/chrome-for-testing/
+   - eg: https://storage.googleapis.com/chrome-for-testing-public/129.0.6668.91/win64/chromedriver-win64.zip
 
 > 若失效，可通过官方渠道查找：https://developer.chrome.com/docs/chromedriver?hl=zh-cn
 
