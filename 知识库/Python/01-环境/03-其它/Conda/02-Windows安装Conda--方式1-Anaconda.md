@@ -9,7 +9,7 @@
 
 官网下载 https://www.anaconda.com/products/distribution
 
-> ex: https://repo.anaconda.com/archive/Anaconda3-2022.10-Windows-x86_64.exe
+> eg: https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Windows-x86_64.exe
 
 双击`.exe`文件进行安装 (选择安装位置)
 ![](images/conda-install-anaconda-01.png)
