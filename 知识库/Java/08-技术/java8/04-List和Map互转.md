@@ -8,9 +8,19 @@
 Map<Integer, User> map = list.stream().collect(Collectors.toMap(User::getId, t -> t, (oldData, newData) -> newData));
 
 Map<Integer, String> map2 = list.stream().collect(Collectors.toMap(User::getId, User::getName, (oldData, newData) -> newData));
+```
 
+### List嵌套对象转List<String>
+
+```
 // 提取 List 对象中包含的 List<Integer> 转新集合
 List<Integer> idList = list.stream().flatMap(e -> e.getIdList().stream()).collect(Collectors.toList());
+
+// 提取 List 对象中包含的 List<DictBO> 中的code值 转 新集合
+List<String> codeList = list.stream().filter(e -> Strings.isNotBlank(e.getContent())).flatMap(e -> {
+    List<DictBO> list = JSONObject.parseArray(e.getContent(), DictBO.class);
+    return list.stream().map(DictBO::getCode).filter(Strings::isNotBlank);
+}).collect(Collectors.toList());
 ```
 
 #### list对象转Map<String, List<对象>>
