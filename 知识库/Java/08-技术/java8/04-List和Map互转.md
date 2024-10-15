@@ -18,7 +18,7 @@ List<Integer> idList = list.stream().flatMap(e -> e.getIdList().stream()).collec
 
 // 提取 List 对象中包含的 List<DictBO> 中的code值 转 新集合
 List<String> codeList = list.stream().filter(e -> Strings.isNotBlank(e.getContent())).flatMap(e -> {
-    List<DictBO> list = JSONObject.parseArray(e.getContent(), DictBO.class);
+    List<DictBO> list = JSONUtil.toList(e.getContent(), DictBO.class);
     return list.stream().map(DictBO::getCode).filter(Strings::isNotBlank);
 }).collect(Collectors.toList());
 ```
