@@ -7,8 +7,9 @@
 ```mysql
 -- 声明会话变量
 SET @id_val := '666';
+SET @user_ids := ( select GROUP_CONCAT(id) from t_user ); -- 1,2,3
 
 -- 使用
 select * from t_user where id = @id_val;
-select * from t_test where id = @id_val;
+select * from t_test where FIND_IN_SET(user_id, @user_ids) > 0; -- 类似效果 user_id in (1,2,3)
 ```
