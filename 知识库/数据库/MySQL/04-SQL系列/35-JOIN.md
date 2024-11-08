@@ -1,0 +1,63 @@
+# JOIN
+
+在 SQL 查询中，JOIN 操作的性能优化是一个重要的考虑因素。
+特别是当涉及到大表和小表的连接时，选择合适的驱动表（即首先被扫描的表）可以显著影响查询性能。
+
+### 原则
+
+- 左表（驱动表）：通常是较大的表，因为它会被完整扫描。
+- 右表（被驱动表）：通常是较小的表，因为它会根据左表的每一行进行查找。
+
+### 为什么选择大表作为驱动表？
+
+- 减少 I/O 操作：如果大表作为驱动表，每次从右表中查找数据时，由于右表较小，I/O 操作较少，可以提高查询效率。
+- 索引利用：如果右表上有适当的索引，可以快速定位到需要的数据，进一步提升性能。
+
+### 示例
+
+假设你有两个表：
+
+- big_table：大表，包含数百万行数据。
+- small_table：小表，包含数千行数据。
+
+1. 使用 INNER JOIN
+
+```mysql
+SELECT big_table.*, small_table.*
+FROM big_table
+         JOIN small_table ON big_table.id = small_table.big_table_id;
+```
+
+2. 使用 LEFT JOIN
+
+```mysql
+SELECT big_table.*, small_table.*
+FROM big_table
+         LEFT JOIN small_table ON big_table.id = small_table.big_table_id;
+```
+
+#### 注意事项
+
+- 索引：确保右表上的连接字段有适当的索引，以便快速查找。
+- 统计信息：确保数据库的统计信息是最新的，这样查询优化器可以做出更好的决策。
+- 查询优化器：现代数据库系统通常有智能的查询优化器，能够自动选择最优的执行计划。但有时手动调整可以进一步优化性能。
+
+#### 手动指定驱动表
+
+在某些情况下，你可能需要手动指定驱动表。这可以通过使用提示（hints）来实现，具体取决于你使用的数据库系统。
+
+#### MySQL 示例
+
+```mysql
+SELECT big_table.*, small_table.*
+FROM big_table
+         STRAIGHT_JOIN small_table ON big_table.id = small_table.big_table_id;
+```
+
+### 总结
+
+- 大表作为驱动表：通常更优，因为可以减少 I/O 操作和利用索引。
+- 索引：确保右表上的连接字段有适当的索引。
+- 查询优化器：现代数据库系统通常有智能的查询优化器，但手动调整有时也是必要的。
+
+通过合理选择驱动表和优化索引，可以显著提升 JOIN 操作的性能。
