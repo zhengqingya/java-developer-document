@@ -38,25 +38,22 @@ function initTableSort() {
     onStart: (item) => {
       // console.log(11, item);
     },
-
     // 结束拖动事件
     onEnd: (item) => {
-      // console.log(22, item);
       doSort(item.oldIndex, item.newIndex);
     },
   });
 }
 // 处理排序
-const doSort = (oldIndex, newIndex) => {
-  // pageRes.records 为请求后端拿到的分页数据
+function doSort(oldIndex, newIndex) {
   const arr = pageRes.records;
   const currentRow = arr.splice(oldIndex, 1)[0];
+  console.log('拖拽后的下标：', newIndex, '拖拽行：', currentRow);
   arr.splice(newIndex, 0, currentRow);
-
   pageRes.records = [];
   nextTick(async () => {
     pageRes.records = arr;
     // api更新排序 ... TODO
   });
-};
+}
 ```
