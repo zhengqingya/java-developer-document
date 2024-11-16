@@ -27,33 +27,43 @@ onMounted(() => {
   initTableSort();
 });
 
+
 // 拖动排序
+var sortable;
 function initTableSort() {
-  const table = document.querySelector('.elTable .el-table__body-wrapper tbody');
-  Sortable.create(table, {
+  const elTable = document.querySelector('.elTable .el-table__body-wrapper tbody');
+  // 创建拖拽对象
+  sortable = Sortable.create(elTable, {
+    sort: true, //是否可以进行拖拽排序
     group: 'shared',
     animation: 150,
     ghostClass: 'sortable-ghost', //拖拽样式
     easing: 'cubic-bezier(1, 0, 0, 1)',
-    onStart: (item) => {
-      // console.log(11, item);
+    disabled: false, // 初始状态下开启拖拽，如果想要一开始禁用拖拽，可以设置disabled为true，然后调用disableDrag方法来实现动态开关
+    onStart: (evt) => {
+      // console.log('11', evt);
     },
-    // 结束拖动事件
-    onEnd: (item) => {
-      doSort(item.oldIndex, item.newIndex);
+    onEnd: (evt) => {
+      doUpdateSort(evt.oldIndex, evt.newIndex);
     },
   });
 }
-// 处理排序
-function doSort(oldIndex, newIndex) {
+// 是否禁用拖拽 true:禁用 false:启用
+function disableDrag(disabled) {
+  sortable.option('disabled', disabled);
+}
+// 更新排序
+function doUpdateSort(oldIndex, newIndex) {
   const arr = pageRes.records;
   const currentRow = arr.splice(oldIndex, 1)[0];
-  console.log('拖拽后的下标：', newIndex, '拖拽行：', currentRow);
+  // console.log('拖拽后的下标：', newIndex, '拖拽行：', currentRow);
   arr.splice(newIndex, 0, currentRow);
   pageRes.records = [];
   nextTick(async () => {
     pageRes.records = arr;
-    // api更新排序 ... TODO
+    // 子组建回调父组件触发更新排序 TODO 这里实现自己的排序接口更新数据接口...
+    const startIndex = (pageParams.pageNum - 1) * pageParams.pageSize;
+    proxy.$emit('doSort', pageRes.records, startIndex);
   });
 }
 ```
