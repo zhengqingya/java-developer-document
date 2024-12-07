@@ -31,7 +31,8 @@ const request = ({
     }
     // console.log('请求头参数:', headers);
 
-    uni[isUploadFile ? 'uploadFile' : 'request']({
+    let api = isUploadFile ? uni.uploadFile : uni.request;
+    api({
       url: url.startsWith('http') ? url : config.baseUrl + url,
       data: method === 'get' ? params : data,
       method: method,
