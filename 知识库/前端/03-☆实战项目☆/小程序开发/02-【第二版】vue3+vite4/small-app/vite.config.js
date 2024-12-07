@@ -17,4 +17,15 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  // 反向代理解决跨域问题
+  server: {
+    proxy: {
+      '/dev-api': {
+        target: 'http://127.0.0.1:888', // 目标接口
+        changeOrigin: true, // 是否换源
+        secure: true, // 设置支持https协议的代理
+        rewrite: (path) => path.replace(new RegExp('^/dev-api'), ''), // 匹配接口进行转发
+      },
+    },
+  },
 });

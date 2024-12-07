@@ -4,4 +4,9 @@ const dev = {
   // baseUrl: "http://172.16.16.88:888",
 };
 
+// 解决外部浏览器跨域问题
+const local_dev_api = {
+  baseUrl: '/dev-api',
+};
+
 export default dev;
