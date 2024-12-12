@@ -23,6 +23,14 @@ List<String> codeList = list.stream().filter(e -> Strings.isNotBlank(e.getConten
 }).collect(Collectors.toList());
 ```
 
+#### list转Map<Integer, List<Integer>>
+
+```
+List<Integer> list = Lists.newArrayList(1, 2, 3, 1, 3);
+// value可能会重复
+Map<Integer, List<Integer>> idGroupMap = list.stream().collect(Collectors.groupingBy(e -> e)); // {"1":[1,1],"2":[2],"3":[3,3]}
+```
+
 #### list对象转Map<String, List<对象>>
 
 ```
