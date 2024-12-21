@@ -1,22 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { useState } from "react";
 
-// 创建上下文
-const CountContext = createContext();
-
-// 提供者组件
-function CountProvider({ children }) {
-  const [count, setCount] = useState(0);
-
-  return (
-    <CountContext.Provider value={{ count, setCount }}>
-      {children}
-    </CountContext.Provider>
-  );
-}
-
-// 消费者组件
 function Counter() {
-  const { count, setCount } = useContext(CountContext);
+  const [count, setCount] = useState(0);
 
   return (
     <div>
@@ -27,13 +12,4 @@ function Counter() {
   );
 }
 
-// 根组件
-function App() {
-  return (
-    <CountProvider>
-      <Counter />
-    </CountProvider>
-  );
-}
-
-export default App;
+export default Counter;
