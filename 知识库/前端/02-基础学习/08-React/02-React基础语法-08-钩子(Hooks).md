@@ -312,3 +312,11 @@ export default Counter;
 - **自定义 Hooks**：用于提取可重用的逻辑。
 
 通过这些 Hooks，你可以更高效地编写 React 函数组件，使代码更加简洁和易于维护。
+
+### 六：具体的应用场景
+
+- 数据获取: 使用 useEffect 和 useState 来从 API 获取数据。
+- 表单管理: 使用 useState 来管理输入框的状态，并处理提交。
+- 动画: 使用 useEffect 来设置动画的入场和离场。
+- 订阅: 在 useEffect 中添加订阅，返回一个清理函数以取消订阅。
+- 组合逻辑: 使用自定义 Hooks 来提取组件之间共享的逻辑。
