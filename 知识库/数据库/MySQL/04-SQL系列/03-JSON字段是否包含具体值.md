@@ -6,7 +6,9 @@
     - 第二个参数 "dict" 是要查找的具体值。
     - 第三个参数 '$' 表示从根路径开始查找。
 
-### JSON_CONTAINS -- 普通json
+### JSON_CONTAINS
+
+#### 普通json
 
 ```
 -- 返回json字段`menu_id_list`中包含'666'的行数据
@@ -15,7 +17,43 @@ select * from t_sys_tenant_package where JSON_CONTAINS(menu_id_list, '666');
 SELECT JSON_CONTAINS('[1,2,3]', '3'); -- 如果包含返回1，不包含返回0
 ```
 
-### JSON_EXTRACT -- json对象数组
+#### json对象数组
+
+现有字段`data_json`，里面的数据为： [{"id":2,"name":"张三"},{"id":3,"name":"李四"}]
+
+
+想查出data_json里面id=3匹配的值
+
+例：
+
+```
+SELECT * FROM table_name WHERE JSON_CONTAINS( data_json, JSON_OBJECT( 'id', 3 ))
+```
+
+> 注：mysql需5.7以上的版本，字段类型需为json
+
+
+### JSON_EXTRACT
+
+#### json对象
+
+app_version_obj 字段值示例：`{"audit":{"name":"xx","status":1}}`
+
+```sql
+SELECT * 
+FROM `t_sys_app_config` 
+WHERE JSON_EXTRACT(app_version_obj, '$.audit.status') = 1;
+```
+
+或
+
+```sql
+SELECT *
+FROM `t_sys_app_config`
+WHERE app_version_obj->'$.audit.status' = 1;
+```
+
+#### json对象数组
 
 ```sql
 -- 创建表并插入示例数据
@@ -49,3 +87,4 @@ WHERE JSON_CONTAINS(
 | 2  | [{"code": "ghi"}, {"code": "dict"}] |
 +----+----------------------------------+
 ```
+
