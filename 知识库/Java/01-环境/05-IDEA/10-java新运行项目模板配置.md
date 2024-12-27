@@ -1,4 +1,4 @@
-### java新运行项目配置
+# java新运行项目配置
 
 `File` -> `New Projects Setup` -> `Run Configuration Templates...`
 
