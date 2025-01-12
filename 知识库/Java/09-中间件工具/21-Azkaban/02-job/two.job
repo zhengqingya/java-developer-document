@@ -1,4 +1,4 @@
 # two.job
 dependencies=one
 type=command
-command=echo "this is the second job..."
+command=sh two.sh
