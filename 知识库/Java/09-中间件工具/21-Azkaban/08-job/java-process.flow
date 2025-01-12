@@ -1,0 +1,9 @@
+nodes:
+  - name: my-java-job # job名称
+    type: javaprocess # job类型
+    config:
+      Xms: 100M # jvm参数-最小堆内存
+      Xmx: 100M # jvm参数-最大堆内存
+      #      classpath: ./ # 类路径 -- 这里jar包和配置文件在同一目录下，可以不写
+      java.class: com.zhengqing.App # 要运行的java类，其中必须包含main方法
+      main.args: is-open=true name=zq # main方法的参数
