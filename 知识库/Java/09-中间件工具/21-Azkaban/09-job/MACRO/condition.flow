@@ -1,0 +1,20 @@
+nodes:
+  - name: JobA
+    type: command
+    config:
+      command: echo "do JobA"
+
+  - name: JobB
+    type: command
+    config:
+      command: sh ./not-exist.sh
+
+  - name: JobC
+    type: command
+    dependsOn:
+      - JobA
+      - JobB
+    config:
+      command: echo "do JobC"
+    # 执行条件：依赖于JobA和JobB，只有当至少一个父任务成功时才会执行。
+    condition: one_success
