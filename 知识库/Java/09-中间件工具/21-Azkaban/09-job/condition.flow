@@ -1,0 +1,14 @@
+nodes:
+  - name: JobA
+    type: command
+    config:
+      command: sh JobA.sh
+
+  - name: JobB
+    type: command
+    dependsOn:
+      - JobA
+    config:
+      command: sh JobB.sh
+    # 指定执行条件：JobA执行完后 wk为0，才执行JobB
+    condition: ${JobA:wk} == 0
