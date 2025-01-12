@@ -1,0 +1,5 @@
+nodes:
+  - name: jobA # job名称
+    type: command # job类型
+    config:
+      command: echo "Hello World" # 执行命令
