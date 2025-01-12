@@ -1,0 +1,13 @@
+# 全局配置 -- 作用于每个任务，如果任务都单独配置，优先使用任务上的单独配置
+config:
+  retries: 3 # 重试次数
+  retry.backoff: 3000  # 重试的时间间隔，时间单位：ms
+
+nodes:
+  - name: jobA # job名称
+    type: command # job类型
+    # 单个配置
+    config:
+      command: sh ./not-exist.sh # 执行命令
+      retries: 2 # 重试次数
+      retry.backoff: 5000  # 重试的时间间隔，时间单位：ms

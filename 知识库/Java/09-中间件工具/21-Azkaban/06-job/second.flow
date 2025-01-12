@@ -1,0 +1,18 @@
+nodes:
+  - name: jobA # job名称
+    type: command # job类型
+    config:
+      command: echo "jobA execute ..." # 执行命令
+
+  - name: jobB # job名称
+    type: command # job类型
+    config:
+      command: echo "jobB execute ..." # 执行命令
+
+  - name: jobC # job名称
+    type: command # job类型
+    dependsOn: # 依赖的job名称
+      - jobA
+      - jobB
+    config:
+      command: echo "jobC execute ..." # 执行命令
