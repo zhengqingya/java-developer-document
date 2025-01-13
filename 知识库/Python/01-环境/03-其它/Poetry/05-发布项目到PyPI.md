@@ -50,9 +50,15 @@ poetry add --dev build twine
 
 ```shell
 poetry build
+# Building my-project (0.1.0)
+#   - Build# ing sdist
+#   - Built my_project-0.1.0.tar.gz
+#   - Building wheel
+#   - Built my_project-0.1.0-py3-none-any.whl
 ```
 
 这将在 `dist/` 目录下生成分发文件。
+![](./images/05-发布项目到PyPI-1736791075019.png)
 
 ### 发布到 PyPI
 
