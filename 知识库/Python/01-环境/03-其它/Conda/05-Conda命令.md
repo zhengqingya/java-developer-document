@@ -24,6 +24,8 @@ conda search "pandas [version='>=1.0.0,<1.1']"
 conda install xxx
 # 指定镜像源安装包
 conda install -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ 包名
+# 有时候 conda 安装的依赖可能会有问题，可以尝试使用pip安装
+pip install xx
 
 # 删除某个包
 conda remove xxx
@@ -43,7 +45,7 @@ eg: 创建一个python=3.10.6的虚拟环境
 ```shell
 conda create -n python3.10.6 python=3.10.6
 activate python3.10.6
-conda install selenium
+pip install selenium mysql-connector-python
 conda list
 
 conda remove -n python3.10.6 --all

@@ -17,6 +17,9 @@
 eg: `D:\zhengqingya\soft\soft-dev\Python\anaconda3\envs\my_csdn_exe\python.exe`
 ![](images/pycharm-conda-config-03.png)
 
+选择conda环境后，如果没有自动刷新包依赖，可以手动刷新下
+![](./images/06-Pycharm中使用Conda环境-1736818583423.png)
+
 ### 测试
 
 ```
