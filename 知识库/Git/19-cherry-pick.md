@@ -2,6 +2,16 @@
 
 从dev分支选择N次提交，合并到master分支
 
+### 方式一：IDEA
+
+选择要合并到当前分支的提交，右键选择 Cherry-Pick
+![](./images/19-cherry-pick-1737702721631.png)
+
+查看 cherry-pick 过来的代码
+![](./images/19-cherry-pick-1737702912318.png)
+
+### 方式二：命令
+
 ```shell
 git checkout master
 
@@ -27,3 +37,4 @@ git push
 ```
 
 ![](./images/19-cherry-pick_1725729768403.png)
+
