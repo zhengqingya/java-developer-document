@@ -33,3 +33,10 @@ idea每次打开新项目时，设置jvm启动默认参数 => 调优节省本地
 ```
 
 ![](images/idea-set-new-projects-run-configuration-templates-main.png)
+
+
+### 实时强制Maven检查SNAPSHOT更新
+
+![](./images/36-实时强制Maven检查SNAPSHOT更新-1735286369466.png)
+
+Always update snapshots: 始终更新快照。
