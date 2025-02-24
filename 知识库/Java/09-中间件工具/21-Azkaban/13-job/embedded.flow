@@ -1,9 +1,3 @@
-# 父子任务
-
-> https://azkaban.readthedocs.io/en/latest/createFlows.html
-> ![](./images/13-父子任务-1740388952183.png)
-
-```yaml
 nodes:
   - name: JobA
     type: command
@@ -47,7 +41,3 @@ nodes:
       - JobB
     config:
       command: echo "JobC is done ..."
-```
-
-效果
-![](./images/13-父子任务-1740390087103.png)
