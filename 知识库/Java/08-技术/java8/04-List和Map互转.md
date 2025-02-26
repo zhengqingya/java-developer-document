@@ -58,6 +58,27 @@ Map<Long, List<Long>> codeReTypesMap = list.stream().collect(Collectors.grouping
                             Collectors.mapping(SysDictVO::getType, Collectors.collectingAndThen(Collectors.toSet(), ArrayList::new))));
 ```
 
+#### list对象转Map<Long, Map<String, List<对象>>>
+
+```
+public class MetricsField {
+    private Long userId;
+    private String code;
+    private String value;
+}
+
+Map<Long, Map<String, List<MetricsField>>> userIdReCodeResultMap = results.stream()
+            .collect(Collectors.groupingBy(
+                // 先根据userId分组
+                MetricsField::getUserId,
+                // 再根据同一组userId数据下的code分组
+                Collectors.groupingBy(MetricsField::getCode)
+            ));
+
+// {"1":{"code2":[{"userId":1,"code":"code2","value":"value2"}],"code1":[{"userId":1,"code":"code1","value":"value1"}]}}
+System.out.println(JSONUtil.toJsonStr(userIdReCodeResultMap));
+```
+
 ### Map转List
 
 ```
