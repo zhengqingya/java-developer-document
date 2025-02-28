@@ -124,3 +124,48 @@ my-project/
 
 通过使用 `git config core.hooksPath`，你可以更灵活地管理和分发 Git 钩子，提升团队协作效率和代码质量。
 
+### 四、husky 配置Git钩子
+
+> 适用于前端node环境。这种方式配置好之后，进行版本管理，其它人拉取项目后也可以生效。
+
+#### 1、安装 husky
+
+```shell
+npm install husky --save-dev
+npx husky install
+
+# 将 husky 的初始化脚本添加到 package.json 中，确保每次安装依赖后自动启用 husky
+npm pkg set scripts.prepare="husky install"
+```
+
+#### 2、创建 commit-msg 钩子
+
+`.husky/commit-msg`
+![](./images/23-Git钩子-提交时自动追加分支名称-1740730405944.png)
+
+
+```shell
+#!/bin/sh
+
+# 获取当前分支名称
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+
+# 读取原始提交信息
+commit_msg=$(cat $1)
+
+# 检查提交信息是否已经包含分支名称
+if ! echo "$commit_msg" | grep -q "\[$branch_name\]"; then
+    echo "🚨 提交信息必须包含分支名 $branch_name"
+    exit 1
+    # 在提交信息末尾添加分支名称
+    # echo "$commit_msg ✅:" | sed "s/$/ [$branch_name]/" > $1
+fi
+```
+
+#### 3、提交信息 -- 测试钩子是否生效
+
+不包含分支名，提交失败
+![](./images/23-Git钩子-提交时自动追加分支名称-1740730452959.png)
+
+包含时，提交成功
+![](./images/23-Git钩子-提交时自动追加分支名称-1740730547830.png)
