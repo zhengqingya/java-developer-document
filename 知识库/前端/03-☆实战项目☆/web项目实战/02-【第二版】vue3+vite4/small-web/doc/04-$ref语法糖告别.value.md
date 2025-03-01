@@ -24,7 +24,7 @@ export default defineConfig({
 
 #### 法二
 
-https://vue-macros.sxzz.moe/zh-CN/features/reactivity-transform.html
+使用建议参考最新文档说明：https://vue-macros.sxzz.moe/zh-CN/features/reactivity-transform.html
 
 > tips: store(pinia版) 中使用 `$ref` 无法正常持久化数据！！！
 
@@ -46,6 +46,20 @@ export default defineConfig({
   ]
 })
 ```
+
+[`tsconfig.json`](tsconfig.json)
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "@vue-macros/reactivity-transform/macros-global"
+    ]
+  }
+}
+```
+
+![](./images/04-$ref语法糖告别.value_1740829506797.png)
 
 #### 解决ESLint警告: '$ref' is not defined.
 
