@@ -20,6 +20,13 @@ let sumSku = this.skuList.reduce((total, item) => total += item.num, 0)
 this.skuList = this.skuList.filter(e => e.num > 0)
 ```
 
+### 判断list中是否存在某个值
+
+```
+// 是否存在大于0的数据
+let isGt0 = this.skuList.some(e => e.num > 0)
+```
+
 ### 获取对象数组中某一属性所组成的list
 
 ```
