@@ -5,6 +5,8 @@
 
 ---
 
+> 用上面的方式即可，下面的不用看了...
+
 ### 配置
 
 ![](images/pycharm-conda-config-01.png)
