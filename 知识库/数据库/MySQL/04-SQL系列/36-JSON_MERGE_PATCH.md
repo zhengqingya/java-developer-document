@@ -3,6 +3,23 @@
 `JSON_MERGE_PATCH` 是一个用于合并 JSON 对象的函数，通常用于更新 JSON 文档。
 它根据 JSON Merge Patch 标准（RFC 7396）来合并两个 JSON 对象。
 
+快速入门
+
+```
+-- 单数据
+INSERT INTO t_table (id, tags) VALUES
+('1-1', JSON_MERGE_PATCH('{}', '{"-1":1,"-2":2}'))
+ON DUPLICATE KEY UPDATE tags = JSON_MERGE_PATCH(tags, '{"-1":1,"-2":2}');
+
+-- 注：不支持批量语句，批量sql中，新增和编辑数据会合并，移除数据不会合并...
+INSERT INTO t_table (id, tags) VALUES
+('1-1', JSON_MERGE_PATCH('{}', '{"-1":1,"-2":2}')),
+('1-2', JSON_MERGE_PATCH('{}', '{"-1":1,"-2":null}'))
+ON DUPLICATE KEY UPDATE tags = JSON_MERGE_PATCH(tags, values(tags));
+```
+
+---
+
 下面是一些使用 `JSON_MERGE_PATCH` 的例子。
 
 ### 示例 1: 基本合并
