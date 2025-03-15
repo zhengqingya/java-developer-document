@@ -27,6 +27,20 @@ this.skuList = this.skuList.filter(e => e.num > 0)
 let isGt0 = this.skuList.some(e => e.num > 0)
 ```
 
+### 获取list中第一个符合条件的值
+
+```
+const sexList = $ref([
+  { value: 'MAN', name: '男' },
+  { value: 'WOMAN', name: '女' },
+  { value: 'NO_LIMIT', name: '不限' },
+]);
+
+const firstValue = sexList.find((item) => item.value === 'WOMAN')?.name }}
+
+console.log(firstValue); // 输出 "女"
+```
+
 ### 获取对象数组中某一属性所组成的list
 
 ```
