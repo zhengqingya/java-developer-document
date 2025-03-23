@@ -1,0 +1,17 @@
+' 基础样式
+skinparam package {
+  BackgroundColor #9370DB
+  ' BackgroundColor #fff
+  BorderColor #AFEEEE
+  FontSize 24
+}
+
+skinparam class {
+  ' 背景色
+  BackgroundColor #BBFFFF
+  ArrowColor SeaGreen     
+  ' 边框颜色
+  BorderColor SpringGreen 
+  FontColor #6495ED
+  FontStyle bold
+} 
