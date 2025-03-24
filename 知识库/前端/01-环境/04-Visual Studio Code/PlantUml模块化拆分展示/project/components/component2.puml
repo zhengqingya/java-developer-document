@@ -1,3 +1,5 @@
+@startuml
+
 package 组件2模块 <<Database>>{
 
 ' 订单相关实体
@@ -27,3 +29,5 @@ note right of order
 end note
 
 }
+
+@enduml

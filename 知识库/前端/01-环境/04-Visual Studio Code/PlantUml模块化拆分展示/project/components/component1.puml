@@ -1,3 +1,5 @@
+@startuml
+
 package 组件1模块 <<Cloud>> {
 
 ' 用户相关实体
@@ -21,3 +23,5 @@ entity "Address" as address {
 user ||--o{ address : "拥有"
 
 }
+
+@enduml
