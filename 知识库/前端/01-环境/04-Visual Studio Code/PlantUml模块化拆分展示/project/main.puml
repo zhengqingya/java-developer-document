@@ -15,5 +15,7 @@
 user ||--o{ order : "1对多\n(via user_id)"
 
 
+' 隐藏字段
+'hide fields
 
 @enduml
