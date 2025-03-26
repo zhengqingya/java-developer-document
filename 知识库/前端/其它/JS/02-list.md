@@ -190,3 +190,21 @@ console.log('分组-数组对象', getGroupArrayObj(list, 'sex')) // [["男",[{"
 console.log('分组-对象', getGroupObject(list, 'sex')) // {"男":[{"id":1,"name":"zhengqingya","sex":"男"},{"id":3,"name":"test","sex":"男"}],"女":[{"id":2,"name":"admin","sex":"女"}]}
 ```
 
+### 过滤idList，只保留存在于list对象数组中的id。
+
+```
+const list = [{"id":1,"name":"admin"}, {"id":2,"name":"test"}];
+const idList = [1, 3, 4];
+
+function filterIdList(list, idList) {
+  if (!list?.length || !idList?.length) return [];
+
+  // 统一转换为字符串避免类型问题
+  const listIdSet = new Set(list.map((item) => item?.id?.toString()));
+
+  return idList.filter((id) => listIdSet.has(id?.toString()));
+}
+
+// 测试
+console.log(filterIdList(list, idList)); // [1]
+```
