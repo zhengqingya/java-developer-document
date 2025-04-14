@@ -32,7 +32,7 @@ package 组件1模块 {
   entity "Address" as address {
     {field} + address_id  bigint        "主键"
     --
-    {field}  user_id      bigint        "用户id"
+    {field}  ~user_id      bigint        "用户id"
     {field}  city         varchar(50)   "城市"
     {field}  street       varchar(100)  "街道"
   }
@@ -47,7 +47,7 @@ package 组件2模块 #LightGreen {
   entity "Order" as order {
     {field} + order_id    bigint                "主键"
     --
-    {field}  user_id      bigint                "用户id"
+    {field}  ~user_id      bigint                "用户id"
     {field}  amount       decimal(10,2)         "余额"
     {field}  status       enum('pending', 'completed')   "状态"
   }
