@@ -1,0 +1,27 @@
+@startuml
+
+' 基础样式
+skinparam package {
+  BackgroundColor #9370DB
+  ' BackgroundColor #fff
+  BorderColor #AFEEEE
+  FontSize 24
+}
+
+skinparam class {
+  ' 背景色
+  BackgroundColor #BBFFFF
+  ArrowColor SeaGreen
+  ' 边框颜色
+  BorderColor SpringGreen
+  FontColor #6495ED
+  FontStyle bold
+}
+
+
+'隐藏实体关系图（ERD）中默认显示的圆形符号。
+'hide circle
+'设置实体关系图（ERD）或类图中连接线的类型为正交线（orthogonal lines）。正交线的特点是连接两个元素时，线条会以水平和垂直段的方式呈现，避免斜线的出现，从而让图表更加规整和清晰。
+'skinparam linetype ortho
+
+@enduml

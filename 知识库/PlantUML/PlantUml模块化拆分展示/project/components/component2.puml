@@ -1,0 +1,33 @@
+@startuml
+
+package 组件2模块 <<Database>>{
+
+' 订单相关实体
+entity "Order" as order {
+  + order_id [PK]
+  --
+  user_id [FK] : int
+  amount : decimal(10,2)
+  status : enum('pending', 'completed')
+}
+
+entity "OrderItem" as item {
+  + item_id [PK]
+  --
+  order_id [FK] : int
+  product_name : varchar(100)
+  quantity : int
+}
+
+' 订单模块关系
+order ||--o{ item : "包含"
+
+' 跨模块关系（示例）
+note right of order
+  订单系统依赖用户模块的
+  <color:blue>user_id</color> 字段
+end note
+
+}
+
+@enduml

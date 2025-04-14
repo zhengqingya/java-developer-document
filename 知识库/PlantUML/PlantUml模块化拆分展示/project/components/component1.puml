@@ -1,0 +1,27 @@
+@startuml
+
+package 组件1模块 <<Cloud>> {
+
+' 用户相关实体
+entity "User" as user {
+  + user_id [PK]
+  --
+  username : varchar(50)
+  email : varchar(100)
+  created_at : timestamp
+}
+
+entity "Address" as address {
+  + address_id [PK]
+  --
+  user_id [FK] : int
+  city : varchar(50)
+  street : varchar(100)
+}
+
+' 用户模块关系
+user ||--o{ address : "拥有"
+
+}
+
+@enduml

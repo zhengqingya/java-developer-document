@@ -1,0 +1,69 @@
+@startuml
+
+' 基础样式
+skinparam package {
+  BackgroundColor #9370DB
+  ' BackgroundColor #fff
+  BorderColor #AFEEEE
+  FontSize 12
+}
+
+skinparam class {
+  ' 背景色
+  BackgroundColor #BBFFFF
+  ArrowColor SeaGreen
+  ' 边框颜色
+  BorderColor SpringGreen
+  FontColor #6495ED
+  FontStyle bold
+}
+
+
+package 组件1模块 {
+  ' 用户相关实体
+  entity "User" as user {
+    {field} + user_id       bigint        "主键"
+    --
+    {field}  username       varchar(50)   "用户名"
+    {field}  email          varchar(100)  "邮箱"
+    {field}  create_time    bigint        "创建时间"
+  }
+
+  entity "Address" as address {
+    {field} + address_id  bigint        "主键"
+    --
+    {field}  user_id      bigint        "用户id"
+    {field}  city         varchar(50)   "城市"
+    {field}  street       varchar(100)  "街道"
+  }
+
+  ' 用户模块关系
+  user ||--o{ address : "1对多 \n (via user_id)"
+}
+
+
+package 组件2模块 #LightGreen {
+  ' 订单相关实体
+  entity "Order" as order {
+    {field} + order_id    bigint                "主键"
+    --
+    {field}  user_id      bigint                "用户id"
+    {field}  amount       decimal(10,2)         "余额"
+    {field}  status       enum('pending', 'completed')   "状态"
+  }
+
+  ' 跨模块关系（示例）
+  note right of order
+    订单系统依赖用户模块的
+    <color:blue>user_id</color> 字段
+  end note
+}
+
+'---------- 辅助关联关系 ----------
+user ||--o{ order : "1对多 \n (via user_id)"
+
+
+' 隐藏字段
+'hide fields
+
+@enduml

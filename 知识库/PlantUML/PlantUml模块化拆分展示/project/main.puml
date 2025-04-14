@@ -1,0 +1,20 @@
+@startuml
+
+
+' 引入通用配置
+!include ./styles/common.puml
+
+
+' 引入模块化 ER 定义
+!include ./components/component1.puml
+!include ./components/component2.puml
+
+
+'---------- 辅助关联关系 ----------
+user ||--o{ order : "1对多\n(via user_id)"
+
+
+' 隐藏字段
+'hide fields
+
+@enduml
