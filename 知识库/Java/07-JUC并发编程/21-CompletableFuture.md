@@ -56,6 +56,24 @@ public class TestCompletableFuture1_use {
         System.out.println(task.get()); // null
         threadPool.shutdown();
     }
+    
+    @Test // 批处理
+    public void test_batch() throws Exception {
+        List<Integer> saveList = Lists.newArrayList(1, 2, 3, 4, 5);
+        ExecutorService executorService = Executors.newFixedThreadPool(5); //固定线程池大小
+
+        // 批量保存
+        List<List<Integer>> splitList = ListUtil.split(saveList, 3);
+        List<CompletableFuture<Void>> futureList = splitList.stream()
+            .map(itemList -> CompletableFuture.runAsync(() ->
+                    // 模拟批量保存逻辑 ...
+                    System.out.println(DateUtil.now() + ": " + JSONUtil.toJsonStr(itemList)),
+                executorService))
+            .collect(Collectors.toList());
+
+        // 异步阻塞，等待所有线程执行完
+        CompletableFuture.allOf(futureList.toArray(new CompletableFuture[0])).join();
+    }
 
     @Test // 有返回值
     public void test03() throws Exception {
