@@ -1,0 +1,27 @@
+@startuml
+
+' 全局样式定义
+skinparam activityBorderColor #1e90ff
+skinparam activityFontSize 12
+skinparam activityArrowColor #1e90ff
+skinparam activityArrowFontColor #ff4500
+
+<style>
+activityDiagram {
+  BackgroundColor #f0f8ff
+
+'  泳道样式
+  swimlane {
+    FontColor green
+    BackgroundColor #ccf
+    LineColor #00FF00
+    FontSize 18
+  }
+
+}
+document {
+   BackgroundColor transparent
+}
+</style>
+
+@enduml

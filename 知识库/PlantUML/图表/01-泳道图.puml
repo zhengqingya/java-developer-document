@@ -1,13 +1,22 @@
-'泳道图（Swimlane Diagram）示例
+' 泳道图（Swimlane Diagram）示例
+' https://plantuml.com/zh/activity-diagram-beta#dadd115c61036c7a
 
 @startuml
+' 引入通用配置
+!include ./styles/swimlane_styles.puml
 
-|用户|
+' 使用管道符|来定义泳道 & 增加别名 & 定义样式
+|#palegreen|user| 用户
+|system| 系统
+|#gold|db| 数据库
+
+
+|user|
 start
   :输入用户名和密码;
   -> 点击登录按钮;
 
-|系统|
+|system|
   :验证用户信息;
   if (验证成功?) then (是)
     -> 生成登录凭证;
@@ -15,10 +24,10 @@ start
     -> 返回错误提示;
   endif
 
-|数据库|
+|db|
   :查询用户数据;
 
-|用户|
+|user|
 :返回查询结果;
 stop
 
