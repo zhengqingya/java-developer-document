@@ -20,7 +20,8 @@ activityDiagram {
 
 }
 document {
-   BackgroundColor transparent
+'   BackgroundColor transparent '背景透明
+   BackgroundColor #fff
 }
 </style>
 
