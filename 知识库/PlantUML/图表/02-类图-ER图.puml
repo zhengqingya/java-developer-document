@@ -1,22 +1,11 @@
+' 类图（Class Diagram）示例
+' https://plantuml.com/zh/class-diagram
+
+
 @startuml
 
-' 基础样式
-skinparam package {
-  BackgroundColor #9370DB
-  ' BackgroundColor #fff
-  BorderColor #AFEEEE
-  FontSize 12
-}
-
-skinparam class {
-  ' 背景色
-  BackgroundColor #BBFFFF
-  ArrowColor SeaGreen
-  ' 边框颜色
-  BorderColor SpringGreen
-  FontColor #6495ED
-  FontStyle bold
-}
+' 引入通用配置
+!include ./styles/class_diagram.puml
 
 
 package 组件1模块 {
