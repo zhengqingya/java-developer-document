@@ -1,0 +1,40 @@
+@startuml
+
+!include ../C4/Context.puml
+
+Sketch()
+
+LayoutWithLegend()
+
+title System Landscape diagram for Big Bank plc
+
+Person(customer, "Personal Banking Customer", "A customer of the bank, with personal bank accounts.")
+
+Boundary(c0, "Big Bank plc", "Enterprise") {
+    System(banking_system, "Internet Banking System", "Allows customers to view information about their bank accounts, and make payments.")
+
+    SystemExt(atm, "ATM", "Allows customers to withdraw cash.")
+    SystemExt(mail_system, "E-mail system", "The internal Microsoft Exchange e-mail system.")
+
+    SystemExt(mainframe, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
+
+    PersonExt(customer_service, "Customer Service Staff", "Customer service staff within the bank.")
+    PersonExt(back_office, "Back Office Staff", "Administration and support staff within the bank.")
+}
+
+RelNeighbor(customer, banking_system, "Uses")
+RelRight(customer, atm, "Withdraws cash using")
+RelBack(customer, mail_system, "Sends e-mails to")
+
+RelRight(customer, customer_service, "Asks questions to", "Telephone")
+
+RelDown(banking_system, mail_system, "Sends e-mail using")
+RelRight(atm, mainframe, "Uses")
+RelRight(banking_system, mainframe, "Uses")
+RelDown(customer_service, mainframe, "Uses")
+RelUp(back_office, mainframe, "Uses")
+
+Lay_D(atm, banking_system)
+Lay_U(mail_system, customer)
+
+@enduml

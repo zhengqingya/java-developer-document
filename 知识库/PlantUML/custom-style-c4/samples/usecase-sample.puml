@@ -1,0 +1,17 @@
+@startuml usecase-sample
+
+!include ../C4/Code.puml
+
+'Sketch()
+
+actor customer
+actor clerk
+
+rectangle rec as "买单" {
+    customer -- (checkout)
+    (checkout) -> (payment) : include
+    (help) .> (checkout) : extends
+    (checkout) -- clerk
+}
+
+@enduml

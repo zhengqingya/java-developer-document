@@ -1,0 +1,49 @@
+@startuml
+
+!include ../C4/Component.puml
+!include ../C4/Deployment.puml
+!include <tupadr3/font-awesome/file>
+!include <tupadr3/font-awesome/server>
+!include <tupadr3/font-awesome/chain>
+!include <tupadr3/font-awesome/database>
+
+Sketch()
+
+hide stereotype
+
+Boundary(hwcloud, "云端") {
+    Container(manager, manager, 管理服务, <$server>)
+    DeployNode(ief, k8sForEdge) {
+        Component(cm, configmap, 消息通道, <$database>)
+    }
+}
+
+Boundary(edge, "边缘侧") {
+    DeployNode(node1, 节点1) {
+        Container(wnode1, <$chain>, agent)
+        Container(proxy, 代理服务, 自带 console) {
+            Component(backend, <$server>, 后台)
+            Component(file, <$file>, 挂载)
+        }
+    }
+    DeployNode(node2, 节点2) {
+        Container(wnode2, <$chain>, agent)
+    }
+    DeployNode(node3, 节点3) {
+        Container(wnode3, <$chain>, agent)
+    }
+}
+
+manager ~>> cm : 定时更新token
+
+Rel_R(manager, cm, 写入请求)
+Rel_R(manager, cm, 读取响应)
+
+cm ~~>> file : 挂载文件
+
+Rel_L(backend, file, 轮询消息)
+file <<~ backend : 获取 token
+
+Rel_U(backend, cm, 响应结果)
+
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+
+!include ../C4/Container.puml
+
+'left to right direction
+
+title Container diagram for Internet Banking System
+
+Person(customer, "Customer", "A customer of the bank, with personal bank accounts")
+
+Boundary(c1, "Internet Banking", "System") {
+    Container(web_app, "Web 应用", "Java, Spring MVC", "提供静态内容和网银SPA")
+    Container(spa, "Single-Page App", "JavaScript, Angular", "Provides all the Internet banking functionality to cutomers via their web browser")
+    Container(mobile_app, "Mobile App", "C#, Xamarin", "Provides a limited subset of the Internet banking functionality to customers via their mobile device")
+    ContainerDb(database, "Database", "SQL Database", "Stores user registraion information, hased auth credentials, access logs, etc.")
+    Container(backend_api, "API Application", "Java, Docker Container", "Provides Internet banking functionality via API")
+}
+
+SystemExt(email_system, "E-Mail System", "The internal Microsoft Exchange system")
+SystemExt(banking_system, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
+
+Rel(customer, web_app, "Uses", "HTTPS")
+Rel(customer, spa, "Uses", "HTTPS")
+Rel(customer, mobile_app, "Uses")
+
+RelNeighbor(web_app, spa, "Delivers")
+Rel(spa, backend_api, "Uses", "async, JSON/HTTPS")
+Rel(mobile_app, backend_api, "Uses", "async, JSON/HTTPS")
+RelBackNeighbor(database, backend_api, "Reads from and writes to", "sync, JDBC")
+
+RelBack(customer, email_system, "Sends e-mails to")
+RelBack(email_system, backend_api, "Sends e-mails using", "sync, SMTP")
+RelNeighbor(backend_api, banking_system, "Uses", "sync/async, XML/HTTPS")
+@enduml

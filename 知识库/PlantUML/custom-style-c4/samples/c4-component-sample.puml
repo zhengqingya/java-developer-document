@@ -1,0 +1,32 @@
+@startuml
+
+!include ../C4/Component.puml
+
+'Sketch()
+
+title Component diagram for Internet Banking System - API Application
+
+Container(spa, "Single Page Application", "javascript and angular", "Provides xxx via their web browser.")
+Container(ma, "移动应用", "android 和 ios", "手机端访问入口 移动互联网必须")
+ContainerDb(db, "Database", "Relational Database Schema", "Stores user registration information, hashed authentication credentials, access logs, etc.")
+SystemExt(mbs, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
+
+Boundary(api, "API 应用", "容器") {
+    Component(sign, "登录鉴权访问管理 第一层控制器", "MVC 控制层", "允许用户登录到银行系统里边 速度快慢取决于鉴权复杂度 需要好好优化才行")
+    Component(accounts, "Accounts Summary Controller", "MVC Rest Controlle", "Provides customers with a summory of their bank accounts")
+    Component(security, "Security Component", "Spring Bean", "Provides functionality related to singing in, changing passwords, etc.")
+    Component(mbsfacade, "Mainframe Banking System Facade", "Spring Bean", "A facade onto the mainframe banking system.")
+}
+
+Rel(spa, sign, "Uses", "JSON/HTTPS")
+Rel(spa, accounts, "Uses", "JSON/HTTPS")
+Rel(ma, sign, "Uses", "JSON/HTTPS")
+Rel(ma, accounts, "Uses", "JSON/HTTPS")
+
+Rel(sign, security, "使用")
+Rel(accounts, mbsfacade, "Uses")
+
+Rel(security, db, "读写", "JDBC")
+Rel(mbsfacade, mbs, "Uses", "XML/HTTPS")
+
+@enduml

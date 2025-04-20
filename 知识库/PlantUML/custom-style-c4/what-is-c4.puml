@@ -1,0 +1,25 @@
+@startuml
+
+!include C4/Component.puml
+
+'Sketch()
+
+hide stereotype
+
+System(sys, System Context, [C1]) {
+'    Person(u, 内部用户,)
+    Container(con, Container, C2) {
+        Component(com, Component, C3) {
+            rectangle Code as "Code\n[C4]" {
+                (A) -> (B): Hello, world!
+            }
+        }
+    }
+}
+
+'SystemBoundary(sysb, systemBoundary) {
+'    SystemExt(sysext, extroSystem, )
+'    PersonExt(user, 外部用户,)
+'}
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml sequence-sample
+
+!include ../C4/Code.puml
+
+Sketch()
+
+actor User
+participant "第一个家伙" as A
+participant "Second Class" as B
+participant "最后一个家伙" as C
+
+User -> A: 干活
+activate A
+note over A: 这是一条注释说明
+A -> B: Create Request
+activate B
+
+B -> C: Do Work
+activate C
+C --> B: Work Done
+destroy C
+'deactivate C
+
+B --> A: Request Created
+deactivate B
+
+A --> User: 收工
+deactivate A
+
+@enduml

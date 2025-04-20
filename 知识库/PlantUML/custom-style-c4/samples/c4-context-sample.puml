@@ -1,0 +1,22 @@
+@startuml
+
+!include ../C4/Context.puml
+
+Sketch()
+
+LayoutWithLegend()
+
+title System Context diagram for Internet Banking System
+
+Person(customer, "Personal Banking Customer", "A customer of the bank, with personal bank accounts.")
+System(banking_system, "Internet Banking System", "Allows customers to view information about their bank accounts, and make payments.")
+
+SystemExt(mail_system, "E-mail system", "The internal Microsoft Exchange e-mail system.")
+SystemExt(mainframe, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
+
+Rel(customer, banking_system, "Uses")
+RelBack(customer, mail_system, "Sends e-mails to")
+RelNeighbor(banking_system, mail_system, "Sends e-mails", "SMTP")
+Rel(banking_system, mainframe, "Uses")
+
+@enduml

@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="571.875px" preserveAspectRatio="none" style="width:562px;height:571px;background:#FFFFFF;" version="1.1" viewBox="0 0 562 571" width="562.5px" zoomAndPan="magnify"><defs><linearGradient id="g1wx0tdy90clii0" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#33B2E2"/><stop offset="100%" stop-color="#009FDB"/></linearGradient><linearGradient id="g1wx0tdy90clii1" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#3786BE"/><stop offset="100%" stop-color="#0568AE"/></linearGradient></defs><g><rect fill="#F5F5F5" height="296.1792" style="stroke:#C2C2C2;stroke-width:1.0416666666666667;" width="10.4167" x="139.5833" y="154.9764"/><rect fill="#F5F5F5" height="144.9646" style="stroke:#C2C2C2;stroke-width:1.0416666666666667;" width="10.4167" x="315.625" y="257.8695"/><rect fill="#F5F5F5" height="48.3215" style="stroke:#C2C2C2;stroke-width:1.0416666666666667;" width="10.4167" x="497.9167" y="306.191"/><line style="stroke:#C2C2C2;stroke-width:2.0833333333333335;stroke-dasharray:5.0,5.0;" x1="30.2083" x2="30.2083" y1="104.5715" y2="469.9056"/><line style="stroke:#C2C2C2;stroke-width:2.0833333333333335;stroke-dasharray:5.0,5.0;" x1="144.7917" x2="144.7917" y1="104.5715" y2="469.9056"/><line style="stroke:#C2C2C2;stroke-width:2.0833333333333335;stroke-dasharray:5.0,5.0;" x1="320.8333" x2="320.8333" y1="104.5715" y2="469.9056"/><line style="stroke:#C2C2C2;stroke-width:2.0833333333333335;stroke-dasharray:5.0,5.0;" x1="503.125" x2="503.125" y1="104.5715" y2="469.9056"/><text fill="#009FDB" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="28.125" x="13.5417" y="93.4916">User</text><ellipse cx="30.7292" cy="15.625" fill="url(#g1wx0tdy90clii0)" rx="8.3333" ry="8.3333" style="stroke:#33B2E2;stroke-width:2.0833333333333335;"/><path d="M30.7292,23.9583 L30.7292,52.0833 M17.1875,32.2917 L44.2708,32.2917 M30.7292,52.0833 L17.1875,67.7083 M30.7292,52.0833 L44.2708,67.7083 " fill="none" style="stroke:#33B2E2;stroke-width:2.0833333333333335;"/><text fill="#009FDB" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="28.125" x="13.5417" y="491.5222">User</text><ellipse cx="30.7292" cy="513.0188" fill="url(#g1wx0tdy90clii0)" rx="8.3333" ry="8.3333" style="stroke:#33B2E2;stroke-width:2.0833333333333335;"/><path d="M30.7292,521.3521 L30.7292,549.4771 M17.1875,529.6855 L44.2708,529.6855 M30.7292,549.4771 L17.1875,565.1021 M30.7292,549.4771 L44.2708,565.1021 " fill="none" style="stroke:#33B2E2;stroke-width:2.0833333333333335;"/><rect fill="url(#g1wx0tdy90clii0)" height="48.3215" rx="1.0417" ry="1.0417" style="stroke:#33B2E2;stroke-width:1.5625;" width="93.75" x="97.9167" y="55.2083"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="62.5" x="113.5417" y="85.1583">第一个家伙</text><rect fill="url(#g1wx0tdy90clii0)" height="48.3215" rx="1.0417" ry="1.0417" style="stroke:#33B2E2;stroke-width:1.5625;" width="93.75" x="97.9167" y="468.8639"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="62.5" x="113.5417" y="498.8139">第一个家伙</text><rect fill="url(#g1wx0tdy90clii0)" height="48.3215" rx="1.0417" ry="1.0417" style="stroke:#33B2E2;stroke-width:1.5625;" width="112.5" x="264.5833" y="55.2083"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="81.25" x="280.2083" y="85.1583">Second Class</text><rect fill="url(#g1wx0tdy90clii0)" height="48.3215" rx="1.0417" ry="1.0417" style="stroke:#33B2E2;stroke-width:1.5625;" width="112.5" x="264.5833" y="468.8639"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="81.25" x="280.2083" y="498.8139">Second Class</text><rect fill="url(#g1wx0tdy90clii0)" height="48.3215" rx="1.0417" ry="1.0417" style="stroke:#33B2E2;stroke-width:1.5625;" width="106.25" x="450" y="55.2083"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="75" x="465.625" y="85.1583">最后一个家伙</text><rect fill="url(#g1wx0tdy90clii0)" height="48.3215" rx="1.0417" ry="1.0417" style="stroke:#33B2E2;stroke-width:1.5625;" width="106.25" x="450" y="468.8639"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="75" x="465.625" y="498.8139">最后一个家伙</text><rect fill="#F5F5F5" height="296.1792" style="stroke:#C2C2C2;stroke-width:1.0416666666666667;" width="10.4167" x="139.5833" y="154.9764"/><rect fill="#F5F5F5" height="144.9646" style="stroke:#C2C2C2;stroke-width:1.0416666666666667;" width="10.4167" x="315.625" y="257.8695"/><rect fill="#F5F5F5" height="48.3215" style="stroke:#C2C2C2;stroke-width:1.0416666666666667;" width="10.4167" x="497.9167" y="306.191"/><polygon fill="#666666" points="127.0833,150.8097,137.5,154.9764,127.0833,159.1431,131.25,154.9764" style="stroke:#666666;stroke-width:1.0416666666666667;"/><line style="stroke:#666666;stroke-width:3.125;" x1="30.7292" x2="133.3333" y1="154.9764" y2="154.9764"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="25" x="46.3542" y="141.8132">干活</text><path d="M70.8333,169.5597 L70.8333,211.2264 A1.0417,1.0417 0 0 0 71.875,212.2681 L217.7083,212.2681 A1.0417,1.0417 0 0 0 218.75,211.2264 L218.75,178.9347 L208.3333,168.5181 L71.875,168.5181 A1.0417,1.0417 0 0 0 70.8333,169.5597 " fill="url(#g1wx0tdy90clii1)" style="stroke:#0568AE;stroke-width:1.0416666666666667;"/><path d="M208.3333,168.5181 L208.3333,178.4139 A0.5208,0.5208 0 0 0 208.8542,178.9347 L218.75,178.9347 L208.3333,168.5181 " fill="url(#g1wx0tdy90clii1)" style="stroke:#0568AE;stroke-width:1.0416666666666667;"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="100" x="94.7917" y="196.3847">这是一条注释说明</text><polygon fill="#666666" points="303.125,253.7028,313.5417,257.8695,303.125,262.0361,307.2917,257.8695" style="stroke:#666666;stroke-width:1.0416666666666667;"/><line style="stroke:#666666;stroke-width:3.125;" x1="150" x2="309.375" y1="257.8695" y2="257.8695"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="90.625" x="165.625" y="244.7062">Create Request</text><polygon fill="#666666" points="485.4167,302.0243,495.8333,306.191,485.4167,310.3577,489.5833,306.191" style="stroke:#666666;stroke-width:1.0416666666666667;"/><line style="stroke:#666666;stroke-width:3.125;" x1="326.0417" x2="491.6667" y1="306.191" y2="306.191"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="48.9583" x="341.6667" y="293.0278">Do Work</text><polygon fill="#666666" points="337.5,350.3459,327.0833,354.5125,337.5,358.6792,333.3333,354.5125" style="stroke:#666666;stroke-width:1.0416666666666667;"/><line style="stroke:#666666;stroke-width:3.125;stroke-dasharray:2.0,2.0;" x1="331.25" x2="502.0833" y1="354.5125" y2="354.5125"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="63.5417" x="352.0833" y="341.3493">Work Done</text><line style="stroke:#C2C2C2;stroke-width:2.0833333333333335;" x1="493.75" x2="512.5" y1="345.1375" y2="363.8875"/><line style="stroke:#C2C2C2;stroke-width:2.0833333333333335;" x1="493.75" x2="512.5" y1="363.8875" y2="345.1375"/><polygon fill="#666666" points="161.4583,398.6674,151.0417,402.8341,161.4583,407.0007,157.2917,402.8341" style="stroke:#666666;stroke-width:1.0416666666666667;"/><line style="stroke:#666666;stroke-width:3.125;stroke-dasharray:2.0,2.0;" x1="155.2083" x2="319.7917" y1="402.8341" y2="402.8341"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="97.9167" x="176.0417" y="389.6708">Request Created</text><polygon fill="#666666" points="42.1875,446.9889,31.7708,451.1556,42.1875,455.3223,38.0208,451.1556" style="stroke:#666666;stroke-width:1.0416666666666667;"/><line style="stroke:#666666;stroke-width:3.125;stroke-dasharray:2.0,2.0;" x1="35.9375" x2="143.75" y1="451.1556" y2="451.1556"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="25" x="56.7708" y="437.9924">收工</text><!--MD5=[36f5eb9d375b2d1d0cbb8840813e0b95]
+@startuml sequence-sample
+
+!include ../C4/Code.puml
+
+'Sketch()
+
+actor User
+participant "第一个家伙" as A
+participant "Second Class" as B
+participant "最后一个家伙" as C
+
+User -> A: 干活
+activate A
+note over A: 这是一条注释说明
+A -> B: Create Request
+activate B
+
+B -> C: Do Work
+activate C
+C - -> B: Work Done
+destroy C
+'deactivate C
+
+B - -> A: Request Created
+deactivate B
+
+A - -> User: 收工
+deactivate A
+
+@enduml
+
+@startuml sequence-sample
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor transparent
+skinparam useBetaStyle false
+
+
+
+
+
+
+
+
+
+skinparam defaultFontName        "Verdana"
+skinparam defaultFontSize        12
+skinparam dpi                    100
+skinparam shadowing              false
+skinparam roundcorner            20
+skinparam ParticipantPadding     30
+skinparam BoxPadding             40
+skinparam Padding                8
+skinparam ArrowColor             #959595
+skinparam stereotype {
+    CBackgroundColor #f5f5f5
+    CBorderColor #c2c2c2
+    ABackgroundColor #c4ca33
+    ABorderColor #919700
+    IBackgroundColor #d95555
+    IBorderColor #a62222
+    EBackgroundColor #ee9033
+    EBorderColor #bb5d00
+    NBackgroundColor #3786be
+    NBorderColor #04538b
+}
+skinparam title {
+	FontColor	                 #009fdb
+	BorderColor	                 #c2c2c2
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              #f5f5f5-#f2f2f2
+}
+
+
+skinparam legend {
+	BackgroundColor #f2f2f2
+	BorderColor #c2c2c2
+	FontColor #5a5a5a
+}
+
+skinparam swimlane {
+	BorderColor #0568ae
+	BorderThickness 2
+	TitleBackgroundColor  #f5f5f5-#f2f2f2
+	TitleFontColor #009fdb
+}
+
+
+skinparam activity {
+	FontColor #fff
+	BorderColor #009fdb
+	BackgroundColor #33b2e2-#009fdb
+	BarColor #b5bd00
+	StartColor #0568ae
+	EndColor #0568ae
+	DiamondBackgroundColor #f5f5f5-#c2c2c2
+  	DiamondBorderColor #c2c2c2
+	DiamondFontColor #5a5a5a
+}
+
+
+skinparam participant {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	FontColor #009fdb
+}
+
+
+skinparam arrow {
+	Thickness 3
+	Color #009fdb
+	FontColor #5a5a5a
+}
+
+
+skinparam sequence {
+	BorderColor #009fdb
+	TitleFontColor #009fdb
+	BackgroundColor transparent
+	StartColor #009fdb
+	EndColor #009fdb
+	BoxBackgroundColor #d2d2d2
+	BoxBorderColor #959595
+	BoxFontColor #5a5a5a
+	LifeLineBorderColor #c2c2c2
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #f5f5f5
+	GroupBorderColor #959595
+	GroupFontColor #5a5a5a
+	GroupHeaderFontColor #0568ae
+	DividerBackgroundColor #fff-#d2d2d2
+    DividerBorderColor #959595
+    DividerBorderThickness 2
+    DividerFontColor #5a5a5a
+	ReferenceBackgroundColor transparent
+	ReferenceBorderColor #959595
+	ReferenceFontColor #5a5a5a
+	ReferenceHeaderFontColor #0568ae
+}
+
+
+skinparam partition {
+	BorderColor #009fdb
+	FontColor #009fdb
+	BackgroundColor transparent
+}
+
+
+skinparam collections {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+}
+
+
+skinparam control {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	FontColor #009fdb
+}
+
+
+skinparam entity {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	FontColor #009fdb
+}
+
+
+skinparam boundary {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	FontColor #009fdb
+}
+
+
+skinparam agent {
+	BackgroundColor #orange
+	BorderColor #999999
+	FontColor #333333
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #3786be-#0568ae
+	BorderColor #0568ae
+	FontColor #fff
+}
+
+
+skinparam artifact {
+	BackgroundColor #fff-#d2d2d2
+	BorderColor #c2c2c2
+	FontColor #5a5a5a
+}
+
+
+skinparam component {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+}
+
+
+skinparam interface {
+	BackgroundColor  #d95555
+	BorderColor  #cf2a2a
+	FontColor #5a5a5a
+}
+
+
+skinparam storage {
+	BackgroundColor #ee9033-#ea7400
+  	BorderColor #ea7400
+	FontColor #fff
+}
+
+
+skinparam node {
+	BackgroundColor #f5f5f5-#f2f2f2
+	BorderColor #c2c2c2
+	FontColor #009fdb
+}
+
+
+skinparam cloud {
+	BackgroundColor #F2FCFE-#eeeeee
+	BorderColor #F2FCFE
+	FontColor #009fdb
+}
+
+
+skinparam database {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	BorderColor #007faf
+}
+
+
+skinparam class {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	HeaderBackgroundColor #33b2e2-#009fdb
+	StereotypeFontColor #5a5a5a
+	BorderThickness 1
+	AttributeFontColor #d2d2d2
+	AttributeFontSize 11
+}
+
+
+skinparam object {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	StereotypeFontColor #5a5a5a
+	BorderThickness 1
+	AttributeFontColor #d2d2d2
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	BorderThickness 2
+	StereotypeFontColor #009fdb
+}
+
+
+skinparam rectangle {
+		FontColor #5a5a5a
+	BorderColor #c2c2c2
+	BackgroundColor #fff-#fefefe
+	BorderThickness 2
+	StereotypeFontColor #009fdb
+}
+
+
+skinparam package {
+	FontColor #009fdb
+	BorderColor #33b2e2
+	BackgroundColor transparent
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #fff-#f5f5f5
+  	BorderColor #ea7400
+	FontColor #ea7400
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #fff-#f5f5f5
+  	BorderColor #0568ae
+	FontColor #0568ae
+	BorderThickness 2
+}
+
+
+skinparam state {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	BorderColor #007faf
+	StartColor #0568ae
+	EndColor #0568ae
+	AttributeFontColor #d2d2d2
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+}
+
+
+skinparam card {
+	BackgroundColor #3786be-#0568ae
+	BorderColor #0568ae
+	FontColor #fff
+}
+
+
+skinparam file {
+	BackgroundColor #f5f5f5-#f2f2f2
+	BorderColor #0568ae
+	FontColor #5a5a5a
+
+}
+
+
+skinparam defaultFontName "Verdana, 宋体"
+skinparam backgroundColor white
+skinparam roundCorner 2
+skinparam title {
+	FontColor           black
+	BorderThickness     0
+	BackgroundColor     transparent
+}
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam LegendBorderColor transparent
+skinparam LegendBackgroundColor transparent
+skinparam LegendFontColor #FFFFFF
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam queue {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+skinparam package {
+    StereotypeFontSize 6
+    StereotypeFontColor #FFFFFF
+    FontStyle plain
+    BackgroundColor #FFFFFF
+}
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 6
+    StereotypeFontColor #FFFFFF
+    FontColor #444444
+    BorderColor #444444
+    BackgroundColor #FFFFFF
+    BorderStyle dashed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+actor User
+participant "第一个家伙" as A
+participant "Second Class" as B
+participant "最后一个家伙" as C
+
+User -> A: 干活
+activate A
+note over A: 这是一条注释说明
+A -> B: Create Request
+activate B
+
+B -> C: Do Work
+activate C
+C - -> B: Work Done
+destroy C
+
+B - -> A: Request Created
+deactivate B
+
+A - -> User: 收工
+deactivate A
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 20:40:07 CST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: GBK
+Language: zh
+Country: CN
+--></g></svg>

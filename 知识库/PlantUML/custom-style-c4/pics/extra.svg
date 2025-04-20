@@ -1,0 +1,1162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="759.375px" preserveAspectRatio="none" style="width:827px;height:759px;background:#FFFFFF;" version="1.1" viewBox="0 0 827 759" width="827.0833px" zoomAndPan="magnify"><defs/><g><!--MD5=[eed25d2df78ed8ede6e58b848b785faf]
+cluster hwcloud--><rect fill="#FFFFFF" height="304.1667" rx="1.0417" ry="1.0417" style="stroke:#444444;stroke-width:2.0833333333333335;stroke-dasharray:7.0,7.0;" width="410.4167" x="309.375" y="7.2917"/><text fill="#444444" font-family="Verdana, 宋体" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="29.1667" x="500" y="34.4208">云端</text><!--MD5=[9870ce8fbea54c706994bc3f6d0df161]
+cluster ief--><rect fill="#FFFFFF" height="214.5833" rx="1.0417" ry="1.0417" style="stroke:#A2A2A2;stroke-width:2.0833333333333335;" width="147.9167" x="546.875" y="71.875"/><text fill="#000000" font-family="Verdana, 宋体" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="87.5" x="577.0833" y="99.0041">k8sForEdge</text><!--MD5=[319ee75c8f406d79e65d91285d4e6e53]
+cluster edge--><rect fill="#FFFFFF" height="372.9167" rx="1.0417" ry="1.0417" style="stroke:#444444;stroke-width:2.0833333333333335;stroke-dasharray:7.0,7.0;" width="813.5417" x="7.2917" y="380.2083"/><text fill="#444444" font-family="Verdana, 宋体" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="43.75" x="392.1875" y="407.3374">边缘侧</text><!--MD5=[382132f11b9af598b1e0a89de7a28197]
+cluster node1--><rect fill="#FFFFFF" height="283.3333" rx="1.0417" ry="1.0417" style="stroke:#A2A2A2;stroke-width:2.0833333333333335;" width="471.875" x="323.9583" y="444.7917"/><text fill="#000000" font-family="Verdana, 宋体" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="37.5" x="541.1458" y="471.9208">节点1</text><!--MD5=[3c860f157884091a1d956b7d06c4c4d5]
+cluster proxy--><rect fill="#438DD5" height="193.75" rx="1.0417" ry="1.0417" style="stroke:#3C7FC0;stroke-width:2.0833333333333335;" width="322.9167" x="447.9167" y="509.375"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="58.3333" x="580.2083" y="536.5041">代理服务</text><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="79.1667" x="569.7917" y="554.0334">[自带 console]</text><!--MD5=[83059df3ed4488b0e552eb9aa26e0015]
+cluster node2--><rect fill="#FFFFFF" height="177.0833" rx="1.0417" ry="1.0417" style="stroke:#A2A2A2;stroke-width:2.0833333333333335;" width="120.8333" x="178.125" y="526.0417"/><text fill="#000000" font-family="Verdana, 宋体" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="37.5" x="219.7917" y="553.1708">节点2</text><!--MD5=[63c2bcdd1f266244d2689dd4f796e603]
+cluster node3--><rect fill="#FFFFFF" height="177.0833" rx="1.0417" ry="1.0417" style="stroke:#A2A2A2;stroke-width:2.0833333333333335;" width="120.8333" x="32.2917" y="526.0417"/><text fill="#000000" font-family="Verdana, 宋体" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="37.5" x="73.9583" y="553.1708">节点3</text><!--MD5=[2b2d5ad518bf6746de4ffeb5be0566d4]
+entity manager--><rect fill="#438DD5" height="141.5599" rx="1.0417" ry="1.0417" style="stroke:#3C7FC0;stroke-width:2.0833333333333335;" width="101.0417" x="326.5625" y="128.125"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="63.5417" x="345.3125" y="163.5874">manager</text><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="56.25" x="348.9583" y="181.1167">[管理服务]</text><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="0" x="378.6458" y="198.1883"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="0" x="353.6458" y="248.1883"/><image height="50" width="50" x="353.6458" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAABd0lEQVR4Xu2XsUoDQRCG824+gC+QB/AF8gB5AFNZiZ2FhWU6q2An2FiIRBACchAIKBqIBAT9YMzc3a7LERd2Bryfv5obmC83ezObwcHxvSsP4pCte6AuewWa3r3cLtaGHl0uWkDV6/bLVOPpsyXQ+8en9EQjSaCLmxXP8j25qrRYIGodnjxI3dPrpQTHKaCj8yeJZJqSNUJbQDQzJWgJRBPitCQQfaW7+Z7N32qESPqzNS0JVExBRXugQCEQB43WGlqb6HV1+PEPkIwyQw/PHltA7g61X6D5csOwyndzccaS8oxpTUsCFVgdzPE4zRJov+VKNpe3fFOgRmiLWkoz2d1SkkBlRDmm86yxgI2BYoVAnHaYDD0KLvl+7BiID9XQIVDl7VD/dyAmEJ8VU5F/jBJJAhVYHYwYTQNLgpZA++2yAkD0S9MoJ8EkEE2Nx+gfrIfjV7HIuLPSr2pXNwlkJfdAvEDaaWgd1o53mRP3QF3ugbrcA3X5G9Jgosc7LBs9AAAAAElFTkSuQmCC" y="200.9349"/><!--MD5=[64b9ee45fd53269cc28b23451fac552c]
+entity cm--><rect fill="#85BBF0" height="141.5599" rx="1.0417" ry="1.0417" style="stroke:#78A8D8;stroke-width:2.0833333333333335;" width="113.5417" x="564.0625" y="128.125"/><text fill="#000000" font-family="Verdana, 宋体" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="76.0417" x="582.8125" y="163.5874">configmap</text><text fill="#000000" font-family="Verdana, 宋体" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="56.25" x="592.7083" y="181.1167">[消息通道]</text><text fill="#000000" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="0" x="622.3958" y="198.1883"/><text fill="#000000" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="0" x="597.3958" y="248.1883"/><image height="50" width="50" x="597.3958" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACtklEQVR4Xu2XrUqFQRCGTzUIYhOLQWyCGKzHZrAYtYnYLApWwfIVk8kseAHaLV6Cl+AleAk+nMFhndmf72/xE3x5kXPW3dl3Z2Zn58ya189JceaHfpfdBF0/vZ/dvRxd3e8dnm7PjzZ39+H61s7q2gZ/IV8Zh/PjS6ZdPLzdPH94OxmWBWH04PyWnWZ9sbS8gkT0cR5v3zApiMW4AVvW/DDgRZT57ZRxQUixlkYF5yT0ft+4IA5hDdQBmeB3t4JIRruuJnzKW0FDkrcHfOD+Bf3EHxREkbCLqoHLb3aPCGrqFyEFb4DfPSIIntw88jxZA+OBl8Rf+JwglTVuShEj6lz+RbOCorPxLYYQ1+Npw9OZl9X7yQqSjiK6WMl/cR57UPshWkk7/kK+Mg65Pn6zkMyJvmgRQXIyPrAmb7QHOQy61dMdBCl4azHByrzbUuRIRFx6On9R+ggywChzJEYaICKoQZTYkTecpJhzZUGTe+2bqfVDwtrFOnq/coKaqfXUIaUqDonjoF8dstLPE474uwxTTPOBs4Lk2nMmMi5layARgRRxXltBCq2K3m4nymvjk9JbLggKgS0piTgP69giIuwE8SXkAyOMQyZoebSGApQF1b7wBj7NrSBmjH7VU8B/ZveIINHkX8HRQUD91nFBQi5tJVk4xkeqLEg4vCoKtDYWS4kVNE/3vFIS54teFuelUo1xyBlQIPcxZVAaSzNoBcm1x1b0N0qKcu39eIqaD20FCViDPzopyxDFeEtrtKCboBBhCDIvlJIJJsTW4gJlQeYERZAubCaU7LEzsvDut4KQbBdVA2cwu0cENYsfrHZpBZAD0bhHBDXfzYq1MRIIa6bligsScgKyeHhVFEhtxP1+o5A5QSHJrTbtRAhtV1o2r8K2ggx996MdkjRJfklL9hRUj5MT9AU1SPnpo3eZPgAAAABJRU5ErkJggg==" y="200.9349"/><!--MD5=[24145b560eada3e8ba9690df6338f610]
+entity wnode1--><rect fill="#438DD5" height="104.5715" rx="1.0417" ry="1.0417" style="stroke:#3C7FC0;stroke-width:2.0833333333333335;" width="87.5" x="340.625" y="582.2917"/><image height="50" width="50" x="359.375" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACUElEQVR4Xu2XMUoEQRBF9251AC/gAbyAB/AAGhmJmYGB4WaGZoKJgYiCsCALC4KCgiII44fCoad+dc/sdA1usMVnGXqqpx/V1dW1Mzm82yjNeOh/NQho9/TxYP58dLmE8MwOgeoBwvI3i4+ma8u37/2LBTuHqASEVQ1KaogWT6lXFqhMozYFkw80hEYtnMkBcmlOrlZ7Z09Y3r6IZrJAWNUu2DRpCsPh/evHOAQyWSBejA/UpEwdIOyLWYZpVC4TBtlzXXWATMlBMeQJrZjpYfXJbuuqA4SK134dz+xtxAlXX8ergCBz7uozacyWIbGQbRoM/KZTMM7+a6kDxGWGmdLE1xs3cY+OkHjH3jCl28oWnEPi5WnTZcJRsq//LP6Uqdyro2VyidXi61CrMtP59Yt91zTz29f0C9g75BMSbt2ezgeSDBMSqJBDSow48bZiZGD8skCSYSob4mSHEuMzyyoBySimsvXWhR4g8e4sNQwCdwRxmakfSIWvoI4jgcCBhEC27hzf66scE6aM6OmGAhWUAypXihxTLRDi5G6oWnvgXSY3x2uBuKdLLb1rXSauBbVApuQYPtNwMhPfNrVA6X7p17UwIv3dVoSZTB2PB+qViaLJpFqggT1dKhMkc9xqgTipc39UclOCIyReT1dg4qIVnENCW6DmMjENdtz4BACJt1JDTK4Pt0oxQJJZr80PPNh3RKwKA5IMU66nc2kkFkgyTGw5GgkHkszupFagkSmApNjT8W1qNAmQqu3pIDzkGiCjCYHGaQvUpy1QnzYO6Bf8op6N3JN5NQAAAABJRU5ErkJggg==" y="601.0417"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="38.5417" x="365.1042" y="665.3666">[agent]</text><!--MD5=[4e8ecd94af36cce41665c9f079adf9fd]
+entity backend--><rect fill="#85BBF0" height="104.5715" rx="1.0417" ry="1.0417" style="stroke:#78A8D8;stroke-width:2.0833333333333335;" width="87.5" x="666.6667" y="582.2917"/><image height="50" width="50" x="685.4167" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAABe0lEQVR4Xu2XsUoDQRCGr7UQ5LpgYyF2AUlhGzsLmytNJ8HORsE2YGNjZWUt+ADa2+QR8gg+go/gB5MbLrtZjriwM+D9/NVkyHzJ7M3sVU9fP65cxSFbD0B99gp0dnl9PDk39Pz5cwOoHh1Vppot3iyB9vYPpCcaSQJNr+74LN/N/YsWC0Stxce31L24eZTgLAV0+7qUSKYpKV8YC4hupgQtgWhCnJYEoq90N9/jadMCbJH+bE1LAhVTUNEeKFAIxEGjtYbWJq6B/NgrkIwyQz+8rzaA3B1qv0CHJ6cMq3x3F2csKc+Y1rQkUIHVwRyP0yyBdluuZHN5yzcFWoBQ1FKapr2lJIHKiHJM53FnARsDxQqBOO0wGXoeXPL92DEQD6qhQ6Da26H+70BMIB4rpiJvjBJJAhVYHYwYTQNLgpZAu+2yAkD0S9MoJ8EkEE2Nx+gfrIdjq1hk3FnpV93WTQJZyT0QfyDtNLQO6zWQHw9AfR6A+jwA9dkd0C9wb9Bi2+VauQAAAABJRU5ErkJggg==" y="601.0417"/><text fill="#000000" font-family="Verdana, 宋体" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="31.25" x="694.7917" y="665.3666">[后台]</text><!--MD5=[7edcefaa406c65155265f04249a95b70]
+entity file--><rect fill="#85BBF0" height="104.5715" rx="1.0417" ry="1.0417" style="stroke:#78A8D8;stroke-width:2.0833333333333335;" width="87.5" x="464.5833" y="582.2917"/><image height="50" width="50" x="483.3333" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAABCUlEQVR4Xu3XIQ7CQBAF0LEIEoIjGATBkRAEFhwCUwmOEBwGDtAEg0Gh0NwAPIajcASOwMiy0/bvlu62Yn6+adPdedlVpdPzU6uSfFVtU0DT5b7d6RVrdzCSGzrVBM23R/ojjWYruZWcB2uC+uOZOcQlSRA/8mHLkfn1CyJ3k3cQOZpCgMjFFAhE1qZwILIzBQWRhSk0iJCpAhDlmqoBUbbJI4hH5je+v4OCirVkEGdzfsgx9i0fxJks1tHhYlN5a15A9pHHqaDfKAhFQSgKQlEQioJQFISiIBQFoSgIRUEoCkLBoOE0Mhf5zO76AiD+wlzkLXwbxvQUEJf/t1fxzXflZWWCqm3tQF9XZYJkWB5CVQAAAABJRU5ErkJggg==" y="601.0417"/><text fill="#000000" font-family="Verdana, 宋体" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="31.25" x="492.7083" y="665.3666">[挂载]</text><!--MD5=[4761f984ff52c5eb8d9e63897f1f8de1]
+entity wnode2--><rect fill="#438DD5" height="104.5715" rx="1.0417" ry="1.0417" style="stroke:#3C7FC0;stroke-width:2.0833333333333335;" width="87.5" x="194.7917" y="582.2917"/><image height="50" width="50" x="213.5417" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACUElEQVR4Xu2XMUoEQRBF9251AC/gAbyAB/AAGhmJmYGB4WaGZoKJgYiCsCALC4KCgiII44fCoad+dc/sdA1usMVnGXqqpx/V1dW1Mzm82yjNeOh/NQho9/TxYP58dLmE8MwOgeoBwvI3i4+ma8u37/2LBTuHqASEVQ1KaogWT6lXFqhMozYFkw80hEYtnMkBcmlOrlZ7Z09Y3r6IZrJAWNUu2DRpCsPh/evHOAQyWSBejA/UpEwdIOyLWYZpVC4TBtlzXXWATMlBMeQJrZjpYfXJbuuqA4SK134dz+xtxAlXX8ergCBz7uozacyWIbGQbRoM/KZTMM7+a6kDxGWGmdLE1xs3cY+OkHjH3jCl28oWnEPi5WnTZcJRsq//LP6Uqdyro2VyidXi61CrMtP59Yt91zTz29f0C9g75BMSbt2ezgeSDBMSqJBDSow48bZiZGD8skCSYSob4mSHEuMzyyoBySimsvXWhR4g8e4sNQwCdwRxmakfSIWvoI4jgcCBhEC27hzf66scE6aM6OmGAhWUAypXihxTLRDi5G6oWnvgXSY3x2uBuKdLLb1rXSauBbVApuQYPtNwMhPfNrVA6X7p17UwIv3dVoSZTB2PB+qViaLJpFqggT1dKhMkc9xqgTipc39UclOCIyReT1dg4qIVnENCW6DmMjENdtz4BACJt1JDTK4Pt0oxQJJZr80PPNh3RKwKA5IMU66nc2kkFkgyTGw5GgkHkszupFagkSmApNjT8W1qNAmQqu3pIDzkGiCjCYHGaQvUpy1QnzYO6Bf8op6N3JN5NQAAAABJRU5ErkJggg==" y="601.0417"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="38.5417" x="219.2708" y="665.3666">[agent]</text><!--MD5=[f82a3fb83c4ea74b5dd3b58db7f85318]
+entity wnode3--><rect fill="#438DD5" height="104.5715" rx="1.0417" ry="1.0417" style="stroke:#3C7FC0;stroke-width:2.0833333333333335;" width="87.5" x="48.9583" y="582.2917"/><image height="50" width="50" x="67.7083" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACUElEQVR4Xu2XMUoEQRBF9251AC/gAbyAB/AAGhmJmYGB4WaGZoKJgYiCsCALC4KCgiII44fCoad+dc/sdA1usMVnGXqqpx/V1dW1Mzm82yjNeOh/NQho9/TxYP58dLmE8MwOgeoBwvI3i4+ma8u37/2LBTuHqASEVQ1KaogWT6lXFqhMozYFkw80hEYtnMkBcmlOrlZ7Z09Y3r6IZrJAWNUu2DRpCsPh/evHOAQyWSBejA/UpEwdIOyLWYZpVC4TBtlzXXWATMlBMeQJrZjpYfXJbuuqA4SK134dz+xtxAlXX8ergCBz7uozacyWIbGQbRoM/KZTMM7+a6kDxGWGmdLE1xs3cY+OkHjH3jCl28oWnEPi5WnTZcJRsq//LP6Uqdyro2VyidXi61CrMtP59Yt91zTz29f0C9g75BMSbt2ezgeSDBMSqJBDSow48bZiZGD8skCSYSob4mSHEuMzyyoBySimsvXWhR4g8e4sNQwCdwRxmakfSIWvoI4jgcCBhEC27hzf66scE6aM6OmGAhWUAypXihxTLRDi5G6oWnvgXSY3x2uBuKdLLb1rXSauBbVApuQYPtNwMhPfNrVA6X7p17UwIv3dVoSZTB2PB+qViaLJpFqggT1dKhMkc9xqgTipc39UclOCIyReT1dg4qIVnENCW6DmMjENdtz4BACJt1JDTK4Pt0oxQJJZr80PPNh3RKwKA5IMU66nc2kkFkgyTGw5GgkHkszupFagkSmApNjT8W1qNAmQqu3pIDzkGiCjCYHGaQvUpy1QnzYO6Bf8op6N3JN5NQAAAABJRU5ErkJggg==" y="601.0417"/><text fill="#FFFFFF" font-family="Verdana, 宋体" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="38.5417" x="73.4375" y="665.3666">[agent]</text><!--MD5=[65aa4dca436bfc0abaa3f8e95cb8c1bb]
+link manager to cm--><path d="M427.8854,198.9583 C464.875,198.9583 515.3021,198.9583 555.3229,198.9583 " fill="none" id="manager-to-cm" style="stroke:#666666;stroke-width:3.125;stroke-dasharray:1.0,3.0;"/><polygon fill="#666666" points="563.6979,198.9583,555.3646,195.8333,555.3646,202.0833,563.6979,198.9583" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="81.25" x="455.2083" y="184.1166">定时更新token</text><!--MD5=[65aa4dca436bfc0abaa3f8e95cb8c1bb]
+link manager to cm--><path d="M427.6771,166.9167 C433.625,164.2708 439.7396,162.0104 445.8333,160.4167 C467.3333,154.8021 524.2292,155.1875 545.8333,160.4167 C549.1042,161.2083 552.3854,162.1667 555.6563,163.2604 " fill="none" id="manager-to-cm-1" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="563.7604,166.2188,557.0038,160.4258,554.8608,166.2969,563.7604,166.2188" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="50" x="470.8333" y="142.45">写入请求</text><!--MD5=[65aa4dca436bfc0abaa3f8e95cb8c1bb]
+link manager to cm--><path d="M427.6354,226.25 C438.5,230.9062 450.125,235.0313 461.4583,237.5 C491.3125,244 500.2708,243.6042 530.2083,237.5 C538.7188,235.7708 547.4063,233.2083 555.8854,230.2083 " fill="none" id="manager-to-cm-2" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="563.9375,227.2188,555.0375,227.1909,557.2137,233.0498,563.9375,227.2188" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="50" x="470.8333" y="225.7833">读取响应</text><!--MD5=[a1e493108e6fb82670f73cd02b2ff6d5]
+link cm to file--><path d="M591.8438,269.8021 C584.7083,288.5417 577.5,308.9271 571.875,328.125 C547.2708,412.0833 528.3958,511.6979 517.8333,573.7292 " fill="none" id="cm-to-file" style="stroke:#666666;stroke-width:3.125;stroke-dasharray:1.0,3.0;"/><polygon fill="#666666" points="516.4063,582.2292,520.8858,574.5387,514.7245,573.4895,516.4063,582.2292" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="50" x="581.25" y="351.825">挂载文件</text><!--MD5=[1f0b7ca4749caf52d1280d9b579908e1]
+reverse link file to backend--><path d="M559.8333,667.5313 C564.8229,669.6979 569.9167,671.5521 575,672.9167 C604.5104,680.8333 614.2396,680.8333 643.75,672.9167 C651.5,670.8333 659.2708,667.6146 666.6458,663.9063 " fill="none" id="file-backto-backend" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="552.1042,663.9063,558.3198,670.2762,560.9756,664.6186,552.1042,663.9063" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="50" x="584.375" y="661.2">轮询消息</text><!--MD5=[1f0b7ca4749caf52d1280d9b579908e1]
+reverse link file to backend--><path d="M560.7708,634.375 C593.6563,634.375 635.5625,634.375 666.6563,634.375 " fill="none" id="file-backto-backend-1" style="stroke:#666666;stroke-width:3.125;stroke-dasharray:1.0,3.0;"/><polygon fill="#666666" points="552.1875,634.375,560.5208,637.5,560.5208,631.25,552.1875,634.375" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" lengthAdjust="spacing" textLength="59.375" x="579.6875" y="619.5333">获取 token</text><!--MD5=[f1565f3d2d249306463281edd264e6cd]
+reverse link cm to backend--><path d="M637.0521,278.4583 C655.2604,366.5417 684.2813,506.9271 699.8021,582 " fill="none" id="cm-backto-backend" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="635.3229,270.1042,633.9453,278.8969,640.0665,277.6347,635.3229,270.1042" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana, 宋体" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="50" x="661.4583" y="351.825">响应结果</text><!--MD5=[301b6e346a42cbb68c99deeb7557696b]
+@startuml
+
+!include ../C4/Component.puml
+!include ../C4/Deployment.puml
+!include <tupadr3/font-awesome/file>
+!include <tupadr3/font-awesome/server>
+!include <tupadr3/font-awesome/chain>
+!include <tupadr3/font-awesome/database>
+
+'Sketch()
+
+hide stereotype
+
+Boundary(hwcloud, "云端") {
+    Container(manager, manager, 管理服务, <$server>)
+    DeployNode(ief, k8sForEdge) {
+        Component(cm, configmap, 消息通道, <$database>)
+    }
+}
+
+Boundary(edge, "边缘侧") {
+    DeployNode(node1, 节点1) {
+        Container(wnode1, <$chain>, agent)
+        Container(proxy, 代理服务, 自带 console) {
+            Component(backend, <$server>, 后台)
+            Component(file, <$file>, 挂载)
+        }
+    }
+    DeployNode(node2, 节点2) {
+        Container(wnode2, <$chain>, agent)
+    }
+    DeployNode(node3, 节点3) {
+        Container(wnode3, <$chain>, agent)
+    }
+}
+
+manager ~>> cm : 定时更新token
+
+Rel_R(manager, cm, 写入请求)
+Rel_R(manager, cm, 读取响应)
+
+cm ~~>> file : 挂载文件
+
+Rel_L(backend, file, 轮询消息)
+file <<~ backend : 获取 token
+
+Rel_U(backend, cm, 响应结果)
+
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam backgroundColor transparent
+skinparam useBetaStyle false
+
+
+
+
+
+
+
+
+
+skinparam defaultFontName        "Verdana"
+skinparam defaultFontSize        12
+skinparam dpi                    100
+skinparam shadowing              false
+skinparam roundcorner            20
+skinparam ParticipantPadding     30
+skinparam BoxPadding             40
+skinparam Padding                8
+skinparam ArrowColor             #959595
+skinparam stereotype {
+    CBackgroundColor #f5f5f5
+    CBorderColor #c2c2c2
+    ABackgroundColor #c4ca33
+    ABorderColor #919700
+    IBackgroundColor #d95555
+    IBorderColor #a62222
+    EBackgroundColor #ee9033
+    EBorderColor #bb5d00
+    NBackgroundColor #3786be
+    NBorderColor #04538b
+}
+skinparam title {
+	FontColor	                 #009fdb
+	BorderColor	                 #c2c2c2
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              #f5f5f5-#f2f2f2
+}
+
+
+skinparam legend {
+	BackgroundColor #f2f2f2
+	BorderColor #c2c2c2
+	FontColor #5a5a5a
+}
+
+skinparam swimlane {
+	BorderColor #0568ae
+	BorderThickness 2
+	TitleBackgroundColor  #f5f5f5-#f2f2f2
+	TitleFontColor #009fdb
+}
+
+
+skinparam activity {
+	FontColor #fff
+	BorderColor #009fdb
+	BackgroundColor #33b2e2-#009fdb
+	BarColor #b5bd00
+	StartColor #0568ae
+	EndColor #0568ae
+	DiamondBackgroundColor #f5f5f5-#c2c2c2
+  	DiamondBorderColor #c2c2c2
+	DiamondFontColor #5a5a5a
+}
+
+
+skinparam participant {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	FontColor #009fdb
+}
+
+
+skinparam arrow {
+	Thickness 3
+	Color #009fdb
+	FontColor #5a5a5a
+}
+
+
+skinparam sequence {
+	BorderColor #009fdb
+	TitleFontColor #009fdb
+	BackgroundColor transparent
+	StartColor #009fdb
+	EndColor #009fdb
+	BoxBackgroundColor #d2d2d2
+	BoxBorderColor #959595
+	BoxFontColor #5a5a5a
+	LifeLineBorderColor #c2c2c2
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #f5f5f5
+	GroupBorderColor #959595
+	GroupFontColor #5a5a5a
+	GroupHeaderFontColor #0568ae
+	DividerBackgroundColor #fff-#d2d2d2
+    DividerBorderColor #959595
+    DividerBorderThickness 2
+    DividerFontColor #5a5a5a
+	ReferenceBackgroundColor transparent
+	ReferenceBorderColor #959595
+	ReferenceFontColor #5a5a5a
+	ReferenceHeaderFontColor #0568ae
+}
+
+
+skinparam partition {
+	BorderColor #009fdb
+	FontColor #009fdb
+	BackgroundColor transparent
+}
+
+
+skinparam collections {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+}
+
+
+skinparam control {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	FontColor #009fdb
+}
+
+
+skinparam entity {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	FontColor #009fdb
+}
+
+
+skinparam boundary {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	FontColor #009fdb
+}
+
+
+skinparam agent {
+	BackgroundColor #orange
+	BorderColor #999999
+	FontColor #333333
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #3786be-#0568ae
+	BorderColor #0568ae
+	FontColor #fff
+}
+
+
+skinparam artifact {
+	BackgroundColor #fff-#d2d2d2
+	BorderColor #c2c2c2
+	FontColor #5a5a5a
+}
+
+
+skinparam component {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+}
+
+
+skinparam interface {
+	BackgroundColor  #d95555
+	BorderColor  #cf2a2a
+	FontColor #5a5a5a
+}
+
+
+skinparam storage {
+	BackgroundColor #ee9033-#ea7400
+  	BorderColor #ea7400
+	FontColor #fff
+}
+
+
+skinparam node {
+	BackgroundColor #f5f5f5-#f2f2f2
+	BorderColor #c2c2c2
+	FontColor #009fdb
+}
+
+
+skinparam cloud {
+	BackgroundColor #F2FCFE-#eeeeee
+	BorderColor #F2FCFE
+	FontColor #009fdb
+}
+
+
+skinparam database {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	BorderColor #007faf
+}
+
+
+skinparam class {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	HeaderBackgroundColor #33b2e2-#009fdb
+	StereotypeFontColor #5a5a5a
+	BorderThickness 1
+	AttributeFontColor #d2d2d2
+	AttributeFontSize 11
+}
+
+
+skinparam object {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	StereotypeFontColor #5a5a5a
+	BorderThickness 1
+	AttributeFontColor #d2d2d2
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	BorderThickness 2
+	StereotypeFontColor #009fdb
+}
+
+
+skinparam rectangle {
+		FontColor #5a5a5a
+	BorderColor #c2c2c2
+	BackgroundColor #fff-#fefefe
+	BorderThickness 2
+	StereotypeFontColor #009fdb
+}
+
+
+skinparam package {
+	FontColor #009fdb
+	BorderColor #33b2e2
+	BackgroundColor transparent
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #fff-#f5f5f5
+  	BorderColor #ea7400
+	FontColor #ea7400
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #fff-#f5f5f5
+  	BorderColor #0568ae
+	FontColor #0568ae
+	BorderThickness 2
+}
+
+
+skinparam state {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+	BorderColor #007faf
+	StartColor #0568ae
+	EndColor #0568ae
+	AttributeFontColor #d2d2d2
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+	
+	FontColor #fff
+	BorderColor #33b2e2
+	BackgroundColor #33b2e2-#009fdb
+
+}
+
+
+skinparam card {
+	BackgroundColor #3786be-#0568ae
+	BorderColor #0568ae
+	FontColor #fff
+}
+
+
+skinparam file {
+	BackgroundColor #f5f5f5-#f2f2f2
+	BorderColor #0568ae
+	FontColor #5a5a5a
+
+}
+
+
+skinparam defaultFontName "Verdana, 宋体"
+skinparam backgroundColor white
+skinparam roundCorner 2
+skinparam title {
+	FontColor           black
+	BorderThickness     0
+	BackgroundColor     transparent
+}
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam LegendBorderColor transparent
+skinparam LegendBackgroundColor transparent
+skinparam LegendFontColor #FFFFFF
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam queue {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+skinparam package {
+    StereotypeFontSize 6
+    StereotypeFontColor #FFFFFF
+    FontStyle plain
+    BackgroundColor #FFFFFF
+}
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 6
+    StereotypeFontColor #FFFFFF
+    FontColor #444444
+    BorderColor #444444
+    BackgroundColor #FFFFFF
+    BorderStyle dashed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam database<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam queue<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam database<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam queue<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+
+
+sprite $person [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000025788300000000005886410000000000000
+000000000007DFFFFFFD9643347BFFFFFFFB400000000000
+0000000004EFFFFFFFFFFFFFFFFFFFFFFFFFFB1000000000
+000000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFD200000000
+00000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE10000000
+0000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB0000000
+000000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5000000
+000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD000000
+000009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF200000
+00000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF600000
+00000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00000EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF700000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+0000008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD3000000
+000000014555555555555555555555555555555300000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+sprite $person2 [48x48/16] {
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000002578888300000000005888864100000000000
+0000000007DFFFFFFFFD9643347BFFFFFFFFFB4000000000
+00000004EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB10000000
+0000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD2000000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+00003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+0000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF50000
+0003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD0000
+0009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+0009FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFF2000
+0003FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFD0000
+0000BFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFF50000
+00003FFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFB00000
+000006FFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFE100000
+0000007FFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFD2000000
+00000004EFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFB10000000
+0000000007DF8FFFFFFFFFFFFFFFFFFFFFF8FB4000000000
+000000000002578888888888888888888864100000000000
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam database<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam queue<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam database<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam queue<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+skinparam database<<component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+skinparam queue<<component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+
+skinparam rectangle<<external_component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #CCCCCC
+    BorderColor #BFBFBF
+}
+skinparam database<<external_component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #CCCCCC
+    BorderColor #BFBFBF
+}
+skinparam queue<<external_component>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #CCCCCC
+    BorderColor #BFBFBF
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<node>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #FFFFFF
+    BorderColor #A2A2A2
+}
+skinparam database<<node>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #FFFFFF
+    BorderColor #A2A2A2
+}
+skinparam queue<<node>> {
+    StereotypeFontColor #000000
+    FontColor #000000
+    BackgroundColor #FFFFFF
+    BorderColor #A2A2A2
+}
+
+skinparam rectangle<<node>> {
+    FontStyle normal
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sprite $file [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+0000008DDDDDDDDDDDDDDDDDDDC000000000000000000000
+000007FFFFFFFFFFFFFFFFFFFFE000700000000000000000
+00000BFFFFFFFFFFFFFFFFFFFFE000F80000000000000000
+00000BFFFFFFFFFFFFFFFFFFFFE000FF8000000000000000
+00000BFFFFFFFFFFFFFFFFFFFFE000FFF800000000000000
+00000BFFFFFFFFFFFFFFFFFFFFE000FFFF80000000000000
+00000BFFFFFFFFFFFFFFFFFFFFE000FFFFF8000000000000
+00000BFFFFFFFFFFFFFFFFFFFFE000FFFFFF800000000000
+00000BFFFFFFFFFFFFFFFFFFFFE000FFFFFFF80000000000
+00000BFFFFFFFFFFFFFFFFFFFFE000FFFFFFFF8000000000
+00000BFFFFFFFFFFFFFFFFFFFFE000FFFFFFFFF800000000
+00000BFFFFFFFFFFFFFFFFFFFFE000FFFFFFFFFF80000000
+00000BFFFFFFFFFFFFFFFFFFFFE000888888888881000000
+00000BFFFFFFFFFFFFFFFFFFFFE000000000000000000000
+00000BFFFFFFFFFFFFFFFFFFFFF400000000000000000000
+00000BFFFFFFFFFFFFFFFFFFFFFF96666666666666100000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF300000
+000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000000
+000000155555555555555555555555555555555540000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+
+skinparam folderBackgroundColor<<FA FILE>> White
+sprite $server [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+009BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB400
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF500
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE9BFFF500
+00DFF8555555555555555555555556FFFFFFFFD1007FF500
+00DFF3000000000000000000000001FFFFFFFF70000FF500
+00DFF3000000000000000000000001FFFFFFFF80001FF500
+00DFFB99999999999999999999999AFFFFFFFFF300AFF500
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFFFF500
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF500
+007888888888888888888888888888888888888888888300
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+005666666666666666666666666666666666666666666200
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF500
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF500
+00DFFCAAAAAAAAAAAAAAAAAAAAAAABFFFFFFFFF501BFF500
+00DFF3000000000000000000000001FFFFFFFF90001FF500
+00DFF3000000000000000000000001FFFFFFFF70000FF500
+00DFF7444444444444444444444445FFFFFFFFD0006FF500
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD8AFFF500
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF500
+00BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD400
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000111111111111111111111111111111111111111111000
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF500
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF500
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA46EFF500
+00DFF3000000000000000000000001FFFFFFFFB0004FF500
+00DFF3000000000000000000000001FFFFFFFF70000FF500
+00DFF3000000000000000000000001FFFFFFFFA0003FF500
+00DFFEDDDDDDDDDDDDDDDDDDDDDDDEFFFFFFFFF824DFF500
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF500
+00DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF500
+002333333333333333333333333333333333333333333100
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+
+skinparam folderBackgroundColor<<FA SERVER>> White
+sprite $chain [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000256620000000000000000000000000000000
+00000000002BFFFFFD400000000000000000000000000000
+0000000004FFFFFFFFF60000000000000000000000000000
+000000004FFFFFFFFFFF6000000000000000000000000000
+00000004FFFFFFFFFFFFF600000000000000000000000000
+0000004FFFFFF736FFFFFF60000000000000000000000000
+000003FFFFFF40003EFFFFF6000000000000000000000000
+00000EFFFFF4000003EFFFFF600000000000000000000000
+00007FFFFF400000003EFFFFF30000000000000000000000
+0000BFFFF50000000003EFFFFC0000000000000000000000
+0000DFFFD000000000003FFFFF2000000000000000000000
+0000DFFFD0000000000006FFFF6000000000000000000000
+0000BFFFF5000000047202FFFF7000000000000000000000
+00006FFFFF5000007FFF56FFFF6000000000000000000000
+00000EFFFFF50000DFFFFFFFFF2000000000000000000000
+000003FFFFFF5000CFFFFFFFFC0000000000000000000000
+0000004FFFFFF5003FFFFFFFF30000000000000000000000
+00000004FFFFFF5008FFFFFF900002676200000000000000
+000000004FFFFFFDDFFFFFFFF503CFFFFFC3000000000000
+0000000004FFFFFFFFFFFFFFFF9FFFFFFFFF500000000000
+00000000004FFFFFFFFFFFFFFFFFFFFFFFFFF60000000000
+000000000003EFFFFFFE44FFFFFFFFFFFFFFFF6000000000
+00000000000006BDEC71004FFFFFFF636FFFFFF600000000
+00000000000000000000004FFFFFFF5003FFFFFF60000000
+0000000000000000000001EFFFFFFFF2003FFFFFF5000000
+0000000000000000000007FFFFFFFFF70003FFFFFF300000
+000000000000000000000CFFFF7FFFF400003FFFFFC00000
+000000000000000000000EFFFC03CD70000003FFFFF20000
+000000000000000000000EFFFC0000000000007FFFF50000
+000000000000000000000BFFFF5000000000003FFFF60000
+0000000000000000000007FFFFF400000000007FFFF50000
+0000000000000000000000EFFFFF4000000004FFFFF20000
+00000000000000000000003FFFFFF40000004FFFFFB00000
+000000000000000000000004FFFFFF400004FFFFFF200000
+0000000000000000000000004FFFFFF5005FFFFFF4000000
+00000000000000000000000004FFFFFFDDFFFFFF40000000
+000000000000000000000000004FFFFFFFFFFFF400000000
+0000000000000000000000000005FFFFFFFFFF4000000000
+00000000000000000000000000003EFFFFFFE30000000000
+0000000000000000000000000000006BDDB6000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+
+skinparam folderBackgroundColor<<FA CHAIN>> White
+sprite $database [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+0000000000000002469ABBCDCCBAA8631000000000000000
+0000000000037BFFFFFFFFFFFFFFFFFFFEA6200000000000
+0000000029EFFFFFFFFFFFFFFFFFFFFFFFFFFC6000000000
+00000009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE40000000
+000000CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7000000
+000008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF100000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+00000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF400000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE000000
+0000009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3000000
+00000005DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA10000000
+0000000005BFFFFFFFFFFFFFFFFFFFFFFFFFE82000000000
+00000200000038BEFFFFFFFFFFFFFFFFDA62000000100000
+00000BB2000000000256778988766410000000006E400000
+00000BFFB610000000000000000000000000028EFF400000
+00000BFFFFFC842000000000000000001369DFFFFF400000
+00000BFFFFFFFFFFDB98766556788ACEFFFFFFFFFF400000
+000008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF100000
+000000CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7000000
+00000009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE40000000
+0000000029EFFFFFFFFFFFFFFFFFFFFFFFFFFC6000000000
+0000000000038CFFFFFFFFFFFFFFFFFFFEA6200000000000
+00000A6000000002469ABBCDCCBAA863100000002A400000
+00000BFE7100000000000000000000000000004AFF400000
+00000BFFFFC84000000000000000000000259EFFFF400000
+00000BFFFFFFFFEB975432211234458ACFFFFFFFFF400000
+000009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF200000
+000002EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA000000
+0000002DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF80000000
+000000006DFFFFFFFFFFFFFFFFFFFFFFFFFFFFA200000000
+000000000038CFFFFFFFFFFFFFFFFFFFFFEA610000000000
+00000820000000468BDEFFFFFFFEECA75200000006400000
+00000BFA30000000000000011000000000000006DF400000
+00000BFFFD830000000000000000000000015AFFFF400000
+00000BFFFFFFFCA753100000000001468BDFFFFFFF400000
+00000AFFFFFFFFFFFFFFFEDDDEEFFFFFFFFFFFFFFF300000
+000004FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD000000
+0000005FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC1000000
+00000002AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE600000000
+00000000017CFFFFFFFFFFFFFFFFFFFFFFFEA50000000000
+000000000000048ACFFFFFFFFFFFFFEB9620000000000000
+000000000000000000123445543320000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+
+skinparam folderBackgroundColor<<FA DATABASE>> White
+
+
+hide stereotype
+
+rectangle "==云端" <<boundary>> as hwcloud  {
+    rectangle "==manager\n//<size:12>[管理服务]</size>//\n\n <$server>" <<container>> as manager 
+    rectangle "==k8sForEdge" <<node>> as ief  {
+        rectangle "==configmap\n//<size:12>[消息通道]</size>//\n\n <$database>" <<component>> as cm 
+    }
+}
+
+rectangle "==边缘侧" <<boundary>> as edge  {
+    rectangle "==节点1" <<node>> as node1  {
+        rectangle "==<$chain>\n//<size:12>[agent]</size>//" <<container>> as wnode1 
+        rectangle "==代理服务\n//<size:12>[自带 console]</size>//" <<container>> as proxy  {
+            rectangle "==<$server>\n//<size:12>[后台]</size>//" <<component>> as backend 
+            rectangle "==<$file>\n//<size:12>[挂载]</size>//" <<component>> as file 
+        }
+    }
+    rectangle "==节点2" <<node>> as node2  {
+        rectangle "==<$chain>\n//<size:12>[agent]</size>//" <<container>> as wnode2 
+    }
+    rectangle "==节点3" <<node>> as node3  {
+        rectangle "==<$chain>\n//<size:12>[agent]</size>//" <<container>> as wnode3 
+    }
+}
+
+manager ~>> cm : 定时更新token
+
+manager -RIGHT->> cm : **写入请求**
+manager -RIGHT->> cm : **读取响应**
+
+cm ~~>> file : 挂载文件
+
+backend -LEFT->> file : **轮询消息**
+file <<~ backend : 获取 token
+
+backend -UP->> cm : **响应结果**
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 20:40:07 CST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: GBK
+Language: zh
+Country: CN
+--></g></svg>
