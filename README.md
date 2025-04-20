@@ -34,6 +34,7 @@
   - [JVM](./知识库/Java/11-JVM)
   - [Netty](./知识库/Java/15-Netty)
 - [Mac](./知识库/Mac)
+- [PlantUML](./知识库/PlantUML)
 - [OTHER](./知识库/OTHER)
 - [Python](./知识库/Python)
   - [环境搭建](./知识库/Python/01-环境)
