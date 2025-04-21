@@ -1,0 +1,62 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.maven.userSettings": "C:\\zhengqingya\\soft\\soft-dev\\Maven\\apache-maven-3.8.6\\conf\\settings.xml",// 本地maven配置路径
+    "java.jdt.ls.java.home": "C:\\zhengqingya\\soft\\soft-dev\\jdk\\jdk1.8.0_291",// 本地jdk路径
+    "maven.executable.path": "C:\\zhengqingya\\soft\\soft-dev\\Maven\\apache-maven-3.8.6\\bin\\mvn.cmd",// 本地maven路径
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-1.8",
+            "path": "C:\\zhengqingya\\soft\\soft-dev\\jdk\\jdk1.8.0_291",// 本地jdk路径
+            "default": true
+        }
+    ],
+    // 处理编码问题
+    "files.encoding": "utf8",
+    "files.autoGuessEncoding": true,
+    "java.compile.encoding": "UTF-8",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.profiles.windows": {
+        "Command Prompt": {
+            "path": "cmd.exe",
+            "args": ["/K", "chcp 65001"]
+        }
+    },
+    "terminal.integrated.env.windows": {
+        "LANG": "zh_CN.UTF-8",
+        "JAVA_TOOL_OPTIONS": "-Dfile.encoding=UTF-8 -Xmx100M -Xms100M -XX:+UseG1GC -Dserver.port=81" // JVM运行参数
+    },
+    "debug.console.fontSize": 14,
+    "debug.console.fontFamily": "Consolas, 'Courier New', monospace",
+    "debug.console.wordWrap": false,
+    "console.encoding": "utf8",
+    "output.encoding": "utf8",
+
+    // 以下都是忽略cursor编辑器的警告提示，可以不要
+    "problems.decorations.enabled": false,
+    "editor.renderControlCharacters": false,
+    "editor.minimap.showSlider": "mouseover",
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.overviewRulerBorder": false,
+    "editor.renderLineHighlight": "none",
+    "editor.occurrencesHighlight": "off",
+    "editor.matchBrackets": "never",
+    "workbench.editor.showIcons": false,
+    "problems.showCurrentInStatus": false,
+    "editor.matchBrackets": "never",
+    "editor.guides.indentation": false,
+    "java.debug.settings.showLogicalStructure": false,
+    "java.debug.settings.showQualifiedNames": false,
+    "java.debug.settings.showStaticVariables": false,
+    "java.debug.settings.showToString": false,
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "editor.parameterHints.enabled": false,
+    "editor.hover.enabled": false
+}
