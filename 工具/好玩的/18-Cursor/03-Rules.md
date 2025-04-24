@@ -1,8 +1,14 @@
 # Rules
 
-限定cursor的思考范围，设置一些规则，让结果更符合我们的预期。
+###### 什么是Rules？
 
-### User Rules
+Rules 可以被理解为一组提示词模板或规则集，用于指导 AI 在生成代码时的行为。
+通过定义命名规则、注释标准、错误处理方式等，开发者可以让 AI 生成的代码更符合自己的开发风格。
+
+- 全局 Rules：适用于所有项目的通用规则配置文件。
+- 项目 Rules：适用于当前项目的规则配置文件（`.cursorrules`文件）。在项目中通过.cursorrules文件配置，仅对当前项目生效。
+
+### 一、User Rules -- 全局 Rules
 
 ![](./images/03-Rules-1745463213184.png)
 
@@ -40,7 +46,7 @@
 在完成用户要求的任务后，你应该对改成任务完成的步骤进行反思，思考项目可能存在的问题和改进方式，并更新在readme.md文件中
 ```
 
-### Project Rules
+### 二、Project Rules -- 项目 Rules
 
 创建一个`my-custom-rule.mdc`文件
 ![](./images/03-Rules-1745464007725.png)
@@ -49,7 +55,7 @@
 生成项目历史文件
 
 ```
-每一次会话请求结束后进行会话总结，无论生成新文件还是修改已有文件都需要做总结，并将总结内容Append写入到Readme.md文件中(说明文件中的内容是累积增加的)。
+每一次会话请求结束后进行会话总结，无论生成新文件还是修改已有文件都需要做总结，并将总结内容Append写入到README.md文件中(说明文件中的内容是累积增加的)。
 
 总结内容应包括：
 
@@ -61,3 +67,28 @@
 6. 文件的修改内容
 
 ```
+
+> 触发：@my-custom-rule.mdc 
+![](./images/03-Rules-1745473542169.png)
+
+---
+
+### 其它： `.cursorrules` 配置参考
+
+`.cursorrules` 配置文件：用于自定义代码生成、自动补全和其他AI行为的规则‌。
+该文件应放置在项目根目录下，通过定义各种规则，可以控制AI在代码生成和补全时的行为。
+
+1. https://cursor.directory
+2. https://cursorlist.com
+3. https://github.com/PatrickJS/awesome-cursorrules
+
+#### 安装插件 `Cursor Rules` -- 通过插件创建`.cursorrules`
+
+![](./images/03-Rules-1745469755736.png)
+
+打开命令面板 (Ctrl+Shift+P) 并输入 "Cursor Rules: Add .cursorrules"。
+![](./images/03-Rules-1745469815207.png)
+
+选择自己需要的规则模板，插件会自动帮你创建并填充内容
+![](./images/03-Rules-1745469831699.png)
+
