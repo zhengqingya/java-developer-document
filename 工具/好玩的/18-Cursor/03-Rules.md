@@ -76,7 +76,7 @@ Always respond in 中文
 
 ```
 
-> 触发：@my-custom-rule.mdc 
+> 手动触发：@my-custom-rule.mdc 
 ![](./images/03-Rules-1745473542169.png)
 
 ---
