@@ -51,4 +51,5 @@ https://dash.cloudflare.com
 ![](./images/18-域名绑定Cloudflare实现无限邮箱_1746268513621.png)
 
 接下来就可以发邮箱测试下了，eg：zq666@zhengqingya.com
+![34544474f15e0518529ee616aa9c04c.jpg](./images/18-域名绑定Cloudflare实现无限邮箱_1746269152604.jpg)
 
