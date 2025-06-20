@@ -45,7 +45,7 @@ jabba install openjdk@1.11.0
 jabba  ls
 
 # 卸载JDK
-jabba uninstall zulu@1.6.77
+jabba uninstall openjdk@1.11.0
 
 # 切换使用的JDK版本
 jabba use openjdk@1.11.0
