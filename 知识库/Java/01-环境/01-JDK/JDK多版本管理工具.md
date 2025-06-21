@@ -25,7 +25,9 @@ https://asdf-vm.com/zh-hans/
 
 ##### 法一：
 
-> tips: 可能会存在网络问题，需要科学上网。
+> tips:
+> 1. 可能会存在网络问题，需要科学上网。
+> 2. 此方式安装之后，只能在 PowerShell 中使用，CMD 中无法使用。
 
 以管理员身份运行 PowerShell，执行如下命令：
 
