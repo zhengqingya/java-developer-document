@@ -11,7 +11,12 @@ List<Integer> userIdList = userList.stream().map(e -> e.getUserId()).collect(Col
 #### 根据指定字段分组 `Collectors.groupingBy()`
 
 ```
+// 根据name字段分组，User对象值相同时不去重
 Map<String, List<User>> mapByName = list.stream().collect(Collectors.groupingBy(User::getName));
+// 根据name字段分组，User对象值相同时去重
+Map<String, List<User>> mapByName = list.stream().collect(Collectors.groupingBy(
+    e -> e.getName(),
+    Collectors.mapping(e -> e, Collectors.collectingAndThen(Collectors.toSet(), ArrayList::new))));
 
 Map<Long, List<Long>> userIdReOrderIdsMap = list.stream()
                             .collect(Collectors.groupingBy(OrderVO::getUserId,
@@ -143,39 +148,39 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Java8_stream {
-    @Test
-    public void test() throws Exception {
-        List<Integer> numList = Lists.newArrayList(1, 5, 3, 3, 6);
-        List<User> list = Lists.newArrayList(
-                User.builder().id(1).age(16).name("小张").build(),
-                User.builder().id(10).age(20).name("小孙").build(),
-                User.builder().id(1).age(18).name("李四").build(),
-                User.builder().id(3).age(6).name("王五").build()
-        );
+  @Test
+  public void test() throws Exception {
+    List<Integer> numList = Lists.newArrayList(1, 5, 3, 3, 6);
+    List<User> list = Lists.newArrayList(
+      User.builder().id(1).age(16).name("小张").build(),
+      User.builder().id(10).age(20).name("小孙").build(),
+      User.builder().id(1).age(18).name("李四").build(),
+      User.builder().id(3).age(6).name("王五").build()
+    );
 
-        Map<String, List<User>> mapByName = list.stream().collect(Collectors.groupingBy(User::getName));
-        System.out.println("分组：" + JSONUtil.toJsonStr(mapByName));
+    Map<String, List<User>> mapByName = list.stream().collect(Collectors.groupingBy(User::getName));
+    System.out.println("分组：" + JSONUtil.toJsonStr(mapByName));
 
-        numList = numList.stream().distinct().collect(Collectors.toList());
-        System.out.println("去重：" + numList);
+    numList = numList.stream().distinct().collect(Collectors.toList());
+    System.out.println("去重：" + numList);
 
-        list = list.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(User::getId))), ArrayList::new));
-        System.out.println("根据指定字段去重：" + JSONUtil.toJsonStr(list));
+    list = list.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(User::getId))), ArrayList::new));
+    System.out.println("根据指定字段去重：" + JSONUtil.toJsonStr(list));
 
-        list = list.stream().filter(e -> e.getName().equals("小孙")).collect(Collectors.toList());
-        System.out.println("条件过滤：" + JSONUtil.toJsonStr(list));
-    }
+    list = list.stream().filter(e -> e.getName().equals("小孙")).collect(Collectors.toList());
+    System.out.println("条件过滤：" + JSONUtil.toJsonStr(list));
+  }
 
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    static class User {
-        private Integer id;
-        private String name;
-        private Integer age;
-        private Date time;
-    }
+  @Data
+  @Builder
+  @NoArgsConstructor
+  @AllArgsConstructor
+  static class User {
+    private Integer id;
+    private String name;
+    private Integer age;
+    private Date time;
+  }
 }
 ```
 
