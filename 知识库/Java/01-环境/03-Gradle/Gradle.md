@@ -4,6 +4,9 @@
 
 [点击下载Gradle](https://gradle.org/releases/)
 
+> eg: https://services.gradle.org/distributions/gradle-9.1.0-bin.zip
+> 国内镜像下载地址：https://repo.huaweicloud.com/gradle/gradle-9.1.0-bin.zip
+
 ### Gradle - 配置环境变量
 
 #### windows 配置
