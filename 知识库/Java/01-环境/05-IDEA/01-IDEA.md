@@ -6,7 +6,14 @@
 
 安装之后
 
-`windows`：配置存放目录`C:\Users\zhengqingya\AppData\Roaming\JetBrains\IntelliJIdea2022.1`
+`windows`
+
+```
+# 配置存放目录
+C:\Users\zhengqingya\AppData\Roaming\JetBrains\IntelliJIdea2022.1
+# 日志存放目录 -- 用于观察启动异常日志
+C:\Users\zhengqingya\AppData\Local\JetBrains\IntelliJIdea2025.2\log
+```
 
 `mac`: 配置存放目录
 
