@@ -35,3 +35,24 @@ nvm alias default 16.18.0
 # 设置默认版本为当前使用的版本
 nvm alias default $(node -v)
 ```
+
+### 问题
+
+![](./images/01-nvm常用命令-1762332600013.png)
+
+```shell
+nvm install 24.11.0
+# 安装高版本后，出现警告如下
+# npm warn Unknown user config "home". This will stop working in the next major version of npm.
+# npm warn Unknown user config "ELECTRON_MIRROR". This will stop working in the next major version of npm.
+
+# 解决：
+# 查看配置项
+npm config list
+# 移除过时的配置项
+npm config delete home
+npm config delete ELECTRON_MIRROR
+```
+
+最终修复成功：
+![](./images/01-nvm常用命令-1762332551354.png)
