@@ -38,6 +38,12 @@ nvm uninstall 版本号
 nvm alias 别名 版本号
 # 通过设置的别名切换到对应版本的 Node.js，例如 nvm use default
 nvm use 别名
+
+
+# 设置默认版本
+nvm alias default 16.18.0
+# 设置默认版本为当前使用的版本
+nvm alias default $(node -v)
 ```
 
 ![](images/nvm-windows-03.png)
