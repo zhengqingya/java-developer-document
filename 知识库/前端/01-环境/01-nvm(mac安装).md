@@ -17,3 +17,4 @@ nvm -v
 
 ![](images/nvm-mac-02.png)
 
+> [01-nvm常用命令.md](01-nvm常用命令.md)
