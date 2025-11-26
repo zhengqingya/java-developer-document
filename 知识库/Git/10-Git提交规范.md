@@ -13,3 +13,9 @@
 - ci 持续集成
 - types 类型定义文件更改
 - wip 开发中
+
+### idea 插件：Git Commit Template
+
+https://plugins.jetbrains.com/plugin/23641-git-commit-template
+
+![](./images/10-Git提交规范-1764136435255.png)
