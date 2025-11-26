@@ -55,10 +55,4 @@
 通过切换线程控制线程执行顺序
 ![](images/idea-debug-thread.png)
 
----
-
-### 其它
-
-如果不想进入一些源码，可以设置跳过断点。 eg: `org.springframework.*`
-![](./images/24-DEBUG调试-1739343015109.png)
 
