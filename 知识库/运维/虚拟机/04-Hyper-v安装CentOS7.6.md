@@ -59,14 +59,151 @@ CentOS7.6镜像地址：https://mirrors.aliyun.com/centos-vault/7.6.1810/isos/x8
 重启进入系统
 ![](./images/04-Hyper-v安装CentOS7.6-1765116311265.png)
 
-### 四、FinalShell 连接
+### 四、其它配置
 
 ```shell
-# 默认eth0接口没有分配到IP地址，直接激活连接 -- 作用：使网卡eth0建立网络连接并获取IP地址。
-nmcli connection up eth0
-# 查看ip地址信息
+# 修改密码
+# echo "new_password" | passwd --stdin username
+# 示例：修改root账号密码为centos
+# echo "centos" | passwd --stdin root
+```
+
+#### 1、网络配置 -- 设置固定ip
+
+> tips: 不要使用`nmcli connection up eth0`直接激活网卡获取ip地址，这种方式会导致系统重启后无法获取IP。
+
+```shell
+# 修改配置
+cat> /etc/sysconfig/network-scripts/ifcfg-eth0 <<EOF
+
+TYPE="Ethernet"
+PROXY_METHOD="none"
+BROWSER_ONLY="no"
+# ip设置为静态：dhcp改成static
+BOOTPROTO="static"
+DEFROUTE="yes"
+IPV4_FAILURE_FATAL="no"
+IPV6INIT="yes"
+IPV6_AUTOCONF="yes"
+IPV6_DEFROUTE="yes"
+IPV6_FAILURE_FATAL="no"
+IPV6_ADDR_GEN_MODE="stable-privacy"
+NAME="eth0"
+UUID="ad5ab7ef-9f17-49c1-b205-d7a89651376b"
+# 网卡名
+DEVICE="eth0"
+# no改成yes
+ONBOOT="yes"
+# 网关
+GATEWAY="192.168.137.1"
+# 设置ip地址 TODO
+IPADDR="192.168.137.162"
+# 子网掩码
+NETMASK="255.255.255.0"
+DNS1="114.114.114.114"
+DNS2="8.8.8.8"
+ZONE="public"
+# 自动连接网络
+NM_CONTROLLED=yes
+AUTOCONNECT=yes
+
+EOF
+```
+
+```shell
+# 重启网络
+# systemctl restart network
+# 重启
+reboot
+# 查看ip
 ip addr
 ```
 
-![](./images/04-Hyper-v安装CentOS7.6-1765117073771.png)
-![](./images/04-Hyper-v安装CentOS7.6-1765117150788.png)
+![](./images/04-Hyper-v安装CentOS7.6-1765124599839.png)
+
+##### FinalShell 连接
+
+![](./images/04-Hyper-v安装CentOS7.6-1765124646876.png)
+![](./images/04-Hyper-v安装CentOS7.6-1765124386947.png)
+
+#### 2、关闭防火墙
+
+```shell
+# firewalld的基本使用
+# 启动
+systemctl start firewalld
+# 关闭
+systemctl stop firewalld
+# 查看状态
+systemctl status firewalld 
+# 开机禁用
+systemctl disable firewalld
+# 开机启用
+systemctl enable firewalld
+```
+
+#### 3、关闭SELinux
+
+```shell
+# 查看SELinux状态
+getenforce
+
+# 临时关闭SELinux
+setenforce 0
+
+# 永久关闭SELinux
+vim /etc/selinux/config
+# 将 `SELINUX=enforcing` 改成 `SELINUX=disabled`
+
+# 重启
+reboot
+```
+
+#### 4、更新yum源
+
+> 解决yum安装依赖报错   `cannot find a valid baseurl for repo: base/7/x86_64`
+
+```shell
+cd /etc/yum.repos.d
+mkdir repo_bak
+# 备份配置
+mv *.repo repo_bak/
+
+# 下载新的 CentOS-Base.repo 到 /etc/yum.repos.d/
+wget http://mirrors.aliyun.com/repo/Centos-7.repo
+
+# 安装EPEL（Extra Packages for Enterprise Linux ）源  -- tips:如果这里安装不了，可尝试先清除缓存重新生成新的缓存
+# yum clean all
+# yum makecache
+yum install -y epel-release
+
+# 清除缓存
+yum clean all
+# 生成新的缓存
+yum makecache
+
+# 查看启用的yum源和所有的yum源
+yum repolist enabled
+yum repolist all
+
+# 更新yum
+yum -y update
+```
+
+#### 5、安装ifconfig
+
+```shell
+# 安装ifconfig命令
+yum install net-tools.x86_64
+# 查看ip
+ifconfig
+```
+
+#### 6、其它
+
+```shell
+# 安装wget
+yum install wget
+# 安装git
+yum install git
+```
