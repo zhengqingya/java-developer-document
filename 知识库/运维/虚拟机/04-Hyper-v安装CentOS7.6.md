@@ -26,6 +26,7 @@ CentOS7.6镜像地址：https://mirrors.aliyun.com/centos-vault/7.6.1810/isos/x8
 ![](./images/04-Hyper-v安装CentOS7.6-1765113182050.png)
 ![](./images/04-Hyper-v安装CentOS7.6-1765113266863.png)
 ![](./images/04-Hyper-v安装CentOS7.6-1765115483327.png)
+tips: 建议不要勾选动态内存，因为个人配置后，会出现内存占用大的问题。当然这个配置后期可再次修改。
 ![](./images/04-Hyper-v安装CentOS7.6-1765113380002.png)
 ![](./images/04-Hyper-v安装CentOS7.6-1765113392726.png)
 ![](./images/04-Hyper-v安装CentOS7.6-1765113657739.png)
@@ -159,9 +160,15 @@ vim /etc/selinux/config
 reboot
 ```
 
-#### 4、更新yum源
+#### 4、更新yum镜像源
 
-> 解决yum安装依赖报错   `cannot find a valid baseurl for repo: base/7/x86_64`
+> CentOS 7 官方源已停止维护（2024-06-30 后 EOL），需要切换至 Vault 源 或 国内镜像源（如阿里云、清华源）。
+
+> 总结：核心思路是绕过网络下载，直接手动创建一个指向仍可访问的CentOS存档仓库（Vault）的配置文件，让YUM先“活过来”，装上wget，之后就可以更方便地配置任何镜像源了。
+
+##### a: 使用 Vault 源
+
+> tips: 官方归档源，已停止更新。
 
 ```shell
 cd /etc/yum.repos.d
@@ -169,12 +176,55 @@ mkdir repo_bak
 # 备份配置
 mv *.repo repo_bak/
 
-# 下载新的 CentOS-Base.repo 到 /etc/yum.repos.d/
-wget http://mirrors.aliyun.com/repo/Centos-7.repo
+# 创建一个新的仓库配置文件
+cat> /etc/yum.repos.d/CentOS-Base.repo <<EOF
 
-# 安装EPEL（Extra Packages for Enterprise Linux ）源  -- tips:如果这里安装不了，可尝试先清除缓存重新生成新的缓存
-# yum clean all
-# yum makecache
+[base]
+name=CentOS-$releasever - Base
+baseurl=https://vault.centos.org/7.9.2009/os/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+[updates]
+name=CentOS-$releasever - Updates
+baseurl=https://vault.centos.org/7.9.2009/updates/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+[extras]
+name=CentOS-$releasever - Extras
+baseurl=https://vault.centos.org/7.9.2009/extras/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+EOF
+
+
+# 清理YUM缓存并测试
+yum clean all
+yum makecache
+
+# 安装您需要的软件（如wget）
+yum install -y wget
+```
+
+##### b：使用国内镜像源
+
+```shell
+# 下载阿里云的repo文件
+wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
+# 再次清理和重建缓存
+yum clean all
+yum makecache
+```
+
+##### c：配置 EPEL 源
+
+```shell
+# 启用EPEL（Extra Packages for Enterprise Linux）仓库，为CentOS/RHEL系统提供额外的软件包资源。 -- 配置完成后可以使用yum安装更多软件包。
 yum install -y epel-release
 
 # 清除缓存
@@ -194,7 +244,7 @@ yum -y update
 
 ```shell
 # 安装ifconfig命令
-yum install net-tools.x86_64
+yum install -y net-tools.x86_64
 # 查看ip
 ifconfig
 ```
@@ -203,7 +253,9 @@ ifconfig
 
 ```shell
 # 安装wget
-yum install wget
+yum install -y wget
 # 安装git
-yum install git
+yum install -y git
+# 安装htop
+yum install -y htop
 ```
