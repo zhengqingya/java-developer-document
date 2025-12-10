@@ -77,6 +77,9 @@ NOTE: It is highly recommended to change the default password immediately after 
 For additional information and details, please visit https://kubesphere.io.
 ```
 
+> tips: 许可证需要下载邮箱附件中的激活码进行激活，注意最后2个空行也要，直接全部Ctrl+C ！！！
+> ![](./images/02-单节点通过KubeKey安装KubeSphere(v4.2.0)-1765382867810.png)
+
 ### 二、卸载
 
 ```shell
