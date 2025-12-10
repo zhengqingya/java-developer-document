@@ -1,0 +1,43 @@
+apiVersion: kubekey.kubesphere.io/v1alpha2
+kind: Cluster
+metadata:
+  name: sample
+spec:
+  hosts:
+    - { name: master, address: 172.31.80.66, internalAddress: 172.31.80.66, user: root, password: "zhengqing" }
+  roleGroups:
+    etcd:
+      - master
+    control-plane:
+      - master
+    worker:
+      - master
+  controlPlaneEndpoint:
+    ## Internal loadbalancer for apiservers
+    # internalLoadbalancer: haproxy
+
+    domain: lb.kubesphere.local
+    address: ""
+    port: 6443
+  kubernetes:
+    version: v1.33.3
+    clusterName: cluster.local
+    autoRenewCerts: true
+    containerManager: docker
+  etcd:
+    type: kubekey
+  network:
+    plugin: calico
+    kubePodsCIDR: 10.233.64.0/18
+    kubeServiceCIDR: 10.233.0.0/18
+    ## multus support. https://github.com/k8snetworkplumbingwg/multus-cni
+    multusCNI:
+      enabled: false
+  registry:
+    privateRegistry: ""
+    namespaceOverride: ""
+    registryMirrors: [ ]
+    insecureRegistries: [ ]
+  addons: [ ]
+
+
