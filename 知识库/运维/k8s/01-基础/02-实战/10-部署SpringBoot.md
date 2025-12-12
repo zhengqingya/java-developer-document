@@ -1,5 +1,7 @@
 # 部署SpringBoot
 
+见 [k8s-deploy-springboot.yml](k8s-deploy-springboot.yml)
+
 ```shell
 # 创建namespace
 kubectl create namespace my-project
@@ -23,4 +25,3 @@ kubectl logs -f springboot-app-7685f98c59-t5bng -n my-project
 kubectl delete -f k8s-deploy-springboot.yml
 ```
 
-见 [k8s-deploy-springboot.yml](k8s-deploy-springboot.yml)
