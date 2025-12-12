@@ -87,4 +87,24 @@ export KKZONE=cn
 ./kk delete cluster -f config-sample.yaml
 ```
 
+### 三、扩展组件
 
+#### DevOps 安装
+
+组件坞 -> 扩展中心 -> 搜索 DevOps -> 安装
+
+![](./images/02-单节点通过KubeKey安装KubeSphere(v4.2.0)-1765549002442.png)
+
+如果安装中日志提示：PersistentVolumeClaim is not bound: kubesphere-devops-system/devops-jenkins
+
+解决：见 [搭建NFS动态PV存储](../../../01-基础/02-实战/07-存储抽象-PV&PVC-03-动态PV.md)
+
+```shell
+# 查看PVC
+kubectl get pvc devops-jenkins -n kubesphere-devops-system
+# NAME             STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+# devops-jenkins   Bound    pvc-8eb19a03-f2ee-4b78-a672-f11e7a4561e8   16Gi       RWO            nfs-storage    <unset>                 6m58s
+```
+
+查看jenkins配置文件
+![](./images/02-单节点通过KubeKey安装KubeSphere(v4.2.0)-1765549263094.png)
