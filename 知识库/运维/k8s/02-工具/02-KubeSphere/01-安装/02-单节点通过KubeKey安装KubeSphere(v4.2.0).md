@@ -4,11 +4,16 @@
 
 ### 一、安装
 
+> 基于`CentOS-Stream-10`环境
+
 #### 1、KubeKey安装k8s
 
 [config-sample.yaml](./config/4.2.0/config-sample.yaml)
 
 ```shell
+uname -r
+# 6.12.0-170.el10.x86_64
+
 # 配置主机名
 hostnamectl set-hostname master
 
