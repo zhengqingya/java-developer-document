@@ -32,12 +32,12 @@ b、拿到卡密
 ![](./images/19-Genimi学生认证-1769703722826.png)
 
 c、进入 https://kaka.kennygmail.com/ 根据卡密激活 -> 拿到银行卡信息
-![](./images/19-Genimi学生认证-1769704839943.png)
+![](./images/19-Genimi学生认证-1769707279239.png)
 
 #### 2、谷歌中添加支付方式 https://payments.google.com/gp/w/home/signup
 
 ![](./images/19-Genimi学生认证-1769704134022.png)
-![](./images/19-Genimi学生认证-1769704732746.png)
+![](./images/19-Genimi学生认证-1769707420601.png)
 
 完成
 ![](./images/19-Genimi学生认证-1769704756343.png)
