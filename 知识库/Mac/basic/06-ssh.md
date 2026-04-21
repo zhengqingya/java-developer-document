@@ -5,7 +5,7 @@ mac通过终端连接
 ```shell
 # 1、将 xx.pem 私钥文件放到 ~/.ssh/ 目录下，方便管理
 # 修改权限，仅本人可读
-# chmod 400 ~/.ssh/xxx.pem
+chmod 400 ~/.ssh/xxx.pem
 
 # 2、创建配置文件 & 配置
 touch ~/.ssh/config
