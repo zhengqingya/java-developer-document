@@ -9,7 +9,7 @@ conda create -n my_env_name python=3.13.1
 
 # 进入某一个环境
 conda activate my_env_name
-# 或
+# 或    tips: 这个方式在mac环境无效。
 activate my_env_name
 
 # 查看环境中的包
@@ -40,11 +40,13 @@ conda  create  --name  new_env_name  --clone  old_env_name
 conda remove -n my_env_name --all
 ```
 
+---
+
 eg: 创建一个python=3.10.6的虚拟环境
 
 ```shell
 conda create -n python3.10.6 python=3.10.6
-activate python3.10.6
+conda activate python3.10.6
 pip install selenium mysql-connector-python
 conda list
 
